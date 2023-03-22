@@ -10,7 +10,6 @@ import Profile from "../pages/Profile";
 import RegisterPage from "../pages/Register";
 import SearchPage from "../pages/SearchPage";
 import Bookmark from "../pages/Bookmark";
-import Predict from "../pages/Predict";
 import NewAd from "../pages/NewAd";
 import AdDetails from "../pages/AdDetails";
 import ActiveAccount from "../pages/ActiveAccount";
@@ -27,14 +26,6 @@ const AppRoutes:Array<any> = [
     icon: "fa fa-tachometer-alt",
     component: Home,
     showInNav: true,
-    private: false,
-  },
-  {
-    path: "/predict",
-    name: "پیش‌بینی",
-    icon: "fa fa-list",
-    component: Predict,
-    showInNav: false,
     private: false,
   },
   {
