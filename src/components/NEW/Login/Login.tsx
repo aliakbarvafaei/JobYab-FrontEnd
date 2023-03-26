@@ -9,22 +9,22 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
+import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Tabs } from "antd";
 import type { SizeType } from "antd/es/config-provider/SizeContext";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { number, object, string, TypeOf } from "zod";
+import { object, string, TypeOf } from "zod";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import { zodResolver } from "@hookform/resolvers/zod";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 
 const theme = createTheme();
 const userLoginSchema = object({
@@ -47,6 +47,19 @@ const userRegisterSchema = object({
   code: string().max(10, "کد ملی باید 10 رقم باشد"),
   name: string().nonempty("نام و نام‌خانوادگی اجباری است"),
   address: string(),
+});
+const userForgetSchema = object({
+  email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
+});
+const userForgetSchema2 = object({
+  email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
+  password: string()
+    .nonempty("رمزعبور اجباری است")
+    .min(8, "رمزعبور باید حداقل 8 کاراکتر باشد")
+    .max(32, "رمز عبور بیشتر از 32 کاراکتر نمیتواند باشد"),
+  code: string()
+    .nonempty("کد ارسالی اجباری است")
+    .max(5, "کد ارسالی باید 5 رقم باشد"),
 });
 const employerLoginSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -72,10 +85,28 @@ const employerRegisterSchema = object({
   activity: string().nonempty("حوزه فعالیت اجباری است"),
   count: string().nonempty("تعداد پرسنل اجباری است"),
 });
+const employerForgetSchema = object({
+  email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
+});
+const employerForgetSchema2 = object({
+  email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
+  password: string()
+    .nonempty("رمزعبور اجباری است")
+    .min(8, "رمزعبور باید حداقل 8 کاراکتر باشد")
+    .max(32, "رمز عبور بیشتر از 32 کاراکتر نمیتواند باشد"),
+  code: string()
+    .nonempty("کد ارسالی اجباری است")
+    .max(5, "کد ارسالی باید 5 رقم باشد"),
+});
+
 type userLoginInput = TypeOf<typeof userLoginSchema>;
 type userRegisterInput = TypeOf<typeof userRegisterSchema>;
+type userForgetInput = TypeOf<typeof userForgetSchema>;
+type userForgetInput2 = TypeOf<typeof userForgetSchema2>;
 type employerLoginInput = TypeOf<typeof employerLoginSchema>;
 type employerRegisterInput = TypeOf<typeof employerRegisterSchema>;
+type employerForgetInput = TypeOf<typeof employerForgetSchema>;
+type employerForgetInput2 = TypeOf<typeof employerForgetSchema2>;
 
 const LoginBox: React.FC = () => {
   const [size, setSize] = useState<SizeType>("small");
@@ -99,11 +130,23 @@ const LoginBox: React.FC = () => {
   const userRegister = useForm<userRegisterInput>({
     resolver: zodResolver(userRegisterSchema),
   });
+  const userForget = useForm<userForgetInput>({
+    resolver: zodResolver(userForgetSchema),
+  });
+  const userForget2 = useForm<userForgetInput2>({
+    resolver: zodResolver(userForgetSchema2),
+  });
   const employerLogin = useForm<employerLoginInput>({
     resolver: zodResolver(employerLoginSchema),
   });
   const employerRegiter = useForm<employerRegisterInput>({
     resolver: zodResolver(employerRegisterSchema),
+  });
+  const employerForget = useForm<employerForgetInput>({
+    resolver: zodResolver(employerForgetSchema),
+  });
+  const employerForget2 = useForm<employerForgetInput2>({
+    resolver: zodResolver(employerForgetSchema2),
   });
 
   const onSubmitHandlerUserLogin: SubmitHandler<userLoginInput> = (values) => {
@@ -116,6 +159,19 @@ const LoginBox: React.FC = () => {
     console.log(values);
     userRegister.reset();
   };
+  const onSubmitHandlerUserForget: SubmitHandler<userForgetInput> = (
+    values
+  ) => {
+    console.log(values);
+    changeLoginSign("user", 3);
+    userForget.reset();
+  };
+  const onSubmitHandlerUserForget2: SubmitHandler<userForgetInput2> = (
+    values
+  ) => {
+    console.log(values);
+    userForget2.reset();
+  };
   const onSubmitHandlerEmployerLogin: SubmitHandler<employerLoginInput> = (
     values
   ) => {
@@ -127,6 +183,19 @@ const LoginBox: React.FC = () => {
   > = (values) => {
     console.log(values);
     employerRegiter.reset();
+  };
+  const onSubmitHandlerEmployerForget: SubmitHandler<employerForgetInput> = (
+    values
+  ) => {
+    console.log(values);
+    changeLoginSign("employer", 3);
+    employerForget.reset();
+  };
+  const onSubmitHandlerEmployerForget2: SubmitHandler<employerForgetInput2> = (
+    values
+  ) => {
+    console.log(values);
+    employerForget2.reset();
   };
 
   const [iconPassword, setIconPassword] = useState("fa-eye-slash");
@@ -147,13 +216,11 @@ const LoginBox: React.FC = () => {
     setPassType2((old) => (old === "password" ? "text" : "password"));
   }
 
-  const changeLoginSign = (userORemployer: String) => {
+  const changeLoginSign = (userORemployer: String, index: Number) => {
     if (userORemployer === "user") {
-      if (user === 0) setUser(1);
-      else setUser(0);
+      setUser(index);
     } else {
-      if (employer === 0) setEmployer(1);
-      else setEmployer(0);
+      setEmployer(index);
     }
   };
 
@@ -264,14 +331,18 @@ const LoginBox: React.FC = () => {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="#" variant="body2">
+                    <Link
+                      href="#"
+                      onClick={() => changeLoginSign("user", 2)}
+                      variant="body2"
+                    >
                       فراموشی رمز؟
                     </Link>
                   </Grid>
                   <Grid item>
                     <Link
                       href="#"
-                      onClick={() => changeLoginSign("user")}
+                      onClick={() => changeLoginSign("user", 1)}
                       variant="body2"
                     >
                       {"حساب ندارید؟ ایجاد حساب"}
@@ -498,13 +569,235 @@ const LoginBox: React.FC = () => {
                   <Grid item>
                     <Link
                       href="#"
-                      onClick={() => changeLoginSign("user")}
+                      onClick={() => changeLoginSign("user", 0)}
                       variant="body2"
                     >
                       {"حساب دارید؟ ورود حساب"}
                     </Link>
                   </Grid>
                 </Grid>
+              </Box>
+            </Box>
+          </Container>
+        </ThemeProvider>,
+        <ThemeProvider theme={theme}>
+          <Container
+            style={{
+              border: "1px solid rgba(5, 5, 5, 0.06)",
+              borderTopColor: "white",
+              backgroundColor: "white",
+            }}
+            component="main"
+            maxWidth="xs"
+          >
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: "green" }}>
+                <LockResetOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                فراموشی رمز حساب کارجو
+              </Typography>
+              <Box
+                component="form"
+                // onSubmit={handleSubmit}
+                onSubmit={userForget.handleSubmit(onSubmitHandlerUserForget)}
+                noValidate
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="ایمیل"
+                  error={!!userForget.formState.errors["email"]}
+                  helperText={
+                    userForget.formState.errors["email"]
+                      ? userForget.formState.errors["email"].message
+                      : ""
+                  }
+                  {...userForget.register("email")}
+                  sx={{
+                    "& label": {
+                      left: "unset",
+                      right: "1.75rem",
+                      transformOrigin: "right",
+                      fontSize: "1rem",
+                    },
+                    "& legend": {
+                      textAlign: "right",
+                      fontSize: "0.8rem",
+                    },
+                  }}
+                  // autoComplete="email"
+                  autoFocus
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 0 }}
+                >
+                  ارسال کد
+                </Button>
+                <Button
+                  type="button"
+                  fullWidth
+                  onClick={() => changeLoginSign("user", 0)}
+                  sx={{ mt: 1, mb: 2 }}
+                >
+                  بازگشت
+                </Button>
+              </Box>
+            </Box>
+          </Container>
+        </ThemeProvider>,
+        <ThemeProvider theme={theme}>
+          <Container
+            style={{
+              border: "1px solid rgba(5, 5, 5, 0.06)",
+              borderTopColor: "white",
+              backgroundColor: "white",
+            }}
+            component="main"
+            maxWidth="xs"
+          >
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: "green" }}>
+                <LockResetOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                فراموشی رمز حساب کارجو
+              </Typography>
+              <Box
+                component="form"
+                // onSubmit={handleSubmit}
+                onSubmit={userForget2.handleSubmit(onSubmitHandlerUserForget2)}
+                noValidate
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="ایمیل"
+                  error={!!userForget2.formState.errors["email"]}
+                  helperText={
+                    userForget2.formState.errors["email"]
+                      ? userForget2.formState.errors["email"].message
+                      : ""
+                  }
+                  {...userForget2.register("email")}
+                  sx={{
+                    "& label": {
+                      left: "unset",
+                      right: "1.75rem",
+                      transformOrigin: "right",
+                      fontSize: "1rem",
+                    },
+                    "& legend": {
+                      textAlign: "right",
+                      fontSize: "0.8rem",
+                    },
+                  }}
+                  // autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  type={"number"}
+                  id="code"
+                  label="کد ارسالی"
+                  error={!!userForget2.formState.errors["code"]}
+                  helperText={
+                    userForget2.formState.errors["code"]
+                      ? userForget2.formState.errors["code"].message
+                      : ""
+                  }
+                  {...userForget2.register("code")}
+                  sx={{
+                    "& label": {
+                      left: "unset",
+                      right: "1.75rem",
+                      transformOrigin: "right",
+                      fontSize: "1rem",
+                    },
+                    "& legend": {
+                      textAlign: "right",
+                      fontSize: "0.8rem",
+                    },
+                  }}
+                  // autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  error={!!userForget2.formState.errors["password"]}
+                  helperText={
+                    userForget2.formState.errors["password"]
+                      ? userForget2.formState.errors["password"].message
+                      : ""
+                  }
+                  {...userForget2.register("password")}
+                  sx={{
+                    "& label": {
+                      left: "unset",
+                      right: "1.75rem",
+                      transformOrigin: "right",
+                      fontSize: "1rem",
+                    },
+                    "& legend": {
+                      textAlign: "right",
+                      fontSize: "0.8rem",
+                    },
+                  }}
+                  label="رمز جدید"
+                  type={passType}
+                  id="password"
+                  // autoComplete="current-password"
+                />
+                <i
+                  className={`fa ${iconPassword} absolute left-[40px] mt-[38px] cursor-pointer`}
+                  onClick={handlePassword}
+                  aria-hidden="true"
+                ></i>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 0 }}
+                >
+                  ارسال
+                </Button>
+                <Button
+                  type="button"
+                  fullWidth
+                  onClick={() => changeLoginSign("user", 0)}
+                  sx={{ mt: 1, mb: 2 }}
+                >
+                  بازگشت
+                </Button>
               </Box>
             </Box>
           </Container>
@@ -619,14 +912,18 @@ const LoginBox: React.FC = () => {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="#" variant="body2">
+                    <Link
+                      href="#"
+                      onClick={() => changeLoginSign("employer", 2)}
+                      variant="body2"
+                    >
                       فراموشی رمز؟
                     </Link>
                   </Grid>
                   <Grid item>
                     <Link
                       href="#"
-                      onClick={() => changeLoginSign("employer")}
+                      onClick={() => changeLoginSign("employer", 1)}
                       variant="body2"
                     >
                       {"حساب ندارید؟ ایجاد حساب"}
@@ -1014,13 +1311,235 @@ const LoginBox: React.FC = () => {
                   <Grid item>
                     <Link
                       href="#"
-                      onClick={() => changeLoginSign("employer")}
+                      onClick={() => changeLoginSign("employer", 0)}
                       variant="body2"
                     >
                       {"حساب دارید؟ ورود حساب"}
                     </Link>
                   </Grid>
                 </Grid>
+              </Box>
+            </Box>
+          </Container>
+        </ThemeProvider>,
+        <ThemeProvider theme={theme}>
+          <Container
+            style={{
+              border: "1px solid rgba(5, 5, 5, 0.06)",
+              borderTopColor: "white",
+              backgroundColor: "white",
+            }}
+            component="main"
+            maxWidth="xs"
+          >
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: "green" }}>
+                <LockResetOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                فراموشی رمز حساب کارفرما
+              </Typography>
+              <Box
+                component="form"
+                // onSubmit={handleSubmit}
+                onSubmit={employerForget.handleSubmit(onSubmitHandlerEmployerForget)}
+                noValidate
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="ایمیل"
+                  error={!!employerForget.formState.errors["email"]}
+                  helperText={
+                    employerForget.formState.errors["email"]
+                      ? employerForget.formState.errors["email"].message
+                      : ""
+                  }
+                  {...employerForget.register("email")}
+                  sx={{
+                    "& label": {
+                      left: "unset",
+                      right: "1.75rem",
+                      transformOrigin: "right",
+                      fontSize: "1rem",
+                    },
+                    "& legend": {
+                      textAlign: "right",
+                      fontSize: "0.8rem",
+                    },
+                  }}
+                  // autoComplete="email"
+                  autoFocus
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 0 }}
+                >
+                  ارسال کد
+                </Button>
+                <Button
+                  type="button"
+                  fullWidth
+                  onClick={() => changeLoginSign("employer", 0)}
+                  sx={{ mt: 1, mb: 2 }}
+                >
+                  بازگشت
+                </Button>
+              </Box>
+            </Box>
+          </Container>
+        </ThemeProvider>,
+        <ThemeProvider theme={theme}>
+          <Container
+            style={{
+              border: "1px solid rgba(5, 5, 5, 0.06)",
+              borderTopColor: "white",
+              backgroundColor: "white",
+            }}
+            component="main"
+            maxWidth="xs"
+          >
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: "green" }}>
+                <LockResetOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                فراموشی رمز حساب کارفرما
+              </Typography>
+              <Box
+                component="form"
+                // onSubmit={handleSubmit}
+                onSubmit={employerForget2.handleSubmit(onSubmitHandlerEmployerForget2)}
+                noValidate
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="ایمیل"
+                  error={!!employerForget2.formState.errors["email"]}
+                  helperText={
+                    employerForget2.formState.errors["email"]
+                      ? employerForget2.formState.errors["email"].message
+                      : ""
+                  }
+                  {...employerForget2.register("email")}
+                  sx={{
+                    "& label": {
+                      left: "unset",
+                      right: "1.75rem",
+                      transformOrigin: "right",
+                      fontSize: "1rem",
+                    },
+                    "& legend": {
+                      textAlign: "right",
+                      fontSize: "0.8rem",
+                    },
+                  }}
+                  // autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  type={"number"}
+                  id="code"
+                  label="کد ارسالی"
+                  error={!!employerForget2.formState.errors["code"]}
+                  helperText={
+                    employerForget2.formState.errors["code"]
+                      ? employerForget2.formState.errors["code"].message
+                      : ""
+                  }
+                  {...employerForget2.register("code")}
+                  sx={{
+                    "& label": {
+                      left: "unset",
+                      right: "1.75rem",
+                      transformOrigin: "right",
+                      fontSize: "1rem",
+                    },
+                    "& legend": {
+                      textAlign: "right",
+                      fontSize: "0.8rem",
+                    },
+                  }}
+                  // autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  error={!!employerForget2.formState.errors["password"]}
+                  helperText={
+                    employerForget2.formState.errors["password"]
+                      ? employerForget2.formState.errors["password"].message
+                      : ""
+                  }
+                  {...employerForget2.register("password")}
+                  sx={{
+                    "& label": {
+                      left: "unset",
+                      right: "1.75rem",
+                      transformOrigin: "right",
+                      fontSize: "1rem",
+                    },
+                    "& legend": {
+                      textAlign: "right",
+                      fontSize: "0.8rem",
+                    },
+                  }}
+                  label="رمز جدید"
+                  type={passType}
+                  id="password"
+                  // autoComplete="current-password"
+                />
+                <i
+                  className={`fa ${iconPassword} absolute left-[40px] mt-[38px] cursor-pointer`}
+                  onClick={handlePassword}
+                  aria-hidden="true"
+                ></i>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 0 }}
+                >
+                  ارسال
+                </Button>
+                <Button
+                  type="button"
+                  fullWidth
+                  onClick={() => changeLoginSign("employer", 0)}
+                  sx={{ mt: 1, mb: 2 }}
+                >
+                  بازگشت
+                </Button>
               </Box>
             </Box>
           </Container>
