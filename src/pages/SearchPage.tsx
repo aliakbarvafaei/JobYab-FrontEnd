@@ -79,17 +79,17 @@ const SearchPage: React.FC = () => {
         >
           <Post
             onClick={() => {
-              history.push("/PostPage");
+              history.push("/postPage");
             }}
           />
           <Post
             onClick={() => {
-              history.push("/PostPage");
+              history.push("/postPage");
             }}
           />
           <Post
             onClick={() => {
-              history.push("/PostPage");
+              history.push("/postPage");
             }}
           />
           <CustomPagination />

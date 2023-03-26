@@ -9,6 +9,7 @@ import Profile from "../pages/Profile";
 // import Profile from "../pages/Profile";
 import RegisterPage from "../pages/Register";
 import SearchPage from "../pages/SearchPage";
+import PostPage from "../pages/PostPage";
 import Bookmark from "../pages/Bookmark";
 import NewAd from "../pages/NewAd";
 import AdDetails from "../pages/AdDetails";
@@ -19,7 +20,7 @@ import EditAd from "../pages/EditAd";
 
 const indexRoutes = [{ path: "/", component: DefaultLayout }];
 
-const AppRoutes:Array<any> = [
+const AppRoutes: Array<any> = [
   {
     path: ["/home", "/"],
     name: "داشبورد",
@@ -57,6 +58,14 @@ const AppRoutes:Array<any> = [
     name: "جستجو",
     icon: "fa fa-list",
     component: SearchPage,
+    showInNav: false,
+    private: false,
+  },
+  {
+    path: "/postPage",
+    name: "صفحه آگهی",
+    icon: "fa fa-list",
+    component: PostPage,
     showInNav: false,
     private: false,
   },
