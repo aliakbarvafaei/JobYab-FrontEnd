@@ -11,7 +11,10 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 
-const Post = () => {
+interface PostProps {
+  onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
+}
+const Post = ({ onClick }: PostProps) => {
   return (
     <Grid
       container
@@ -22,6 +25,7 @@ const Post = () => {
         borderRadius: 8,
         display: "flex",
       }}
+      onClick={onClick}
     >
       <Grid item>
         <Avatar sx={{ width: 80, height: 80 }} />

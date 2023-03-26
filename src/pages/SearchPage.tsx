@@ -10,8 +10,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import SingleDropdownWithSearch from "../components/SingleDropdownWithSearch";
 import Post from "../components/Post";
 import CustomPagination from "../components/Pagination";
+import { useHistory } from "react-router-dom";
 
 const SearchPage: React.FC = () => {
+  const history = useHistory();
   return (
     <div>
       {/* <MobileMenu /> */}
@@ -75,9 +77,21 @@ const SearchPage: React.FC = () => {
             alignItems: "center",
           }}
         >
-          <Post />
-          <Post />
-          <Post />
+          <Post
+            onClick={() => {
+              history.push("/PostPage");
+            }}
+          />
+          <Post
+            onClick={() => {
+              history.push("/PostPage");
+            }}
+          />
+          <Post
+            onClick={() => {
+              history.push("/PostPage");
+            }}
+          />
           <CustomPagination />
         </div>
       </div>
