@@ -1,28 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.cdnfonts.com/css/iranian-sans');
-@font-face {font-family: "IRANSans";
+@import url("https://fonts.cdnfonts.com/css/iranian-sans");
+@font-face {
+  font-family: "IRANSans";
   src: url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.eot"); /* IE9*/
-  src: url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.woff2") format("woff2"), /* chrome、firefox */
-  url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.woff") format("woff"), /* chrome、firefox */
-  url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.svg#IRANSans") format("svg"); /* iOS 4.1- */
+  src: url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */
+      url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.woff2")
+      format("woff2"),
+    /* chrome、firefox */
+      url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.woff")
+      format("woff"),
+    /* chrome、firefox */
+      url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.ttf")
+      format("truetype"),
+    /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+      url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.svg#IRANSans")
+      format("svg"); /* iOS 4.1- */
 }
-body{
+body {
   direction: rtl;
-  font-family : IRANSans;
-  font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-    background-image: url("./assets/images/bg-body.jpeg");
-    height: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  font-family: IRANSans;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("./assets/images/bg-body.jpeg");
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .hoverItem {
   display: block;
@@ -45,4 +55,34 @@ body{
 .hoverItem:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.ant-tabs-nav-list {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ant-tabs-tab {
+  width: 48%;
+  justify-content: center;
+  margin: 0 !important;
+}
+
+.ant-tabs-nav {
+  margin: 0 !important;
+}
+
+.css-1wc848c-MuiFormHelperText-root {
+  text-align: right !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }

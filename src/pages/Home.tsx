@@ -10,6 +10,8 @@ import Option from "../components/Option/Option";
 // import SectionProductMain from "../components/SectionProductMain/SectionProductMain";
 import SectionAdSlider from "../components/SectionAdSlider/SectionAdSlider";
 import { useHistory } from "react-router-dom";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
+import Footer from "../components/Footer/Footer";
 // import { getAds } from "../services/api";
 
 const Home : React.FC = ()=> {
@@ -28,6 +30,7 @@ const Home : React.FC = ()=> {
 
   return (
     <>
+      <MobileMenu />
       {/* <Banner /> */}
       {/* <SectionCategories /> */}
       <HeaderNewComplete />
@@ -107,6 +110,7 @@ const Home : React.FC = ()=> {
       </section>
       
       <Option />
+      <Footer />
       {/* <Instagram /> */}
     </>
   );

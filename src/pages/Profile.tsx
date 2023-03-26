@@ -8,6 +8,8 @@ import TitlePages from "../components/TitlePages/TitlePages";
 import { useToast } from "../contexts/ToastState";
 import { deleteAd, getmyhomes, getUser, updateCreditAPI } from "../services/api";
 import { ads, eachToast, InformationUserTypes, ProfileInputTypes } from "../ts/interfaces";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
+import Footer from "../components/Footer/Footer";
 
 // const x:Array<ads> = [
 //   {
@@ -377,6 +379,7 @@ const Profile:React.FC = () => {
 
   return (
     <div>
+      <MobileMenu />
       <HeaderNewShort />
       <TitlePages title="پروفایل" />
       <div
@@ -734,6 +737,7 @@ const Profile:React.FC = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

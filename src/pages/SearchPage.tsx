@@ -6,10 +6,11 @@ import Box from "../assets/images/box.png"
 import TitlePages from "../components/TitlePages/TitlePages";
 import { getAdsWithPage } from "../services/api";
 import { ads, filtersInterface } from "../ts/interfaces";
-import Chip from '@mui/material/Chip';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
+import Footer from "../components/Footer/Footer";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
 
 const filtersOption = [
   { title: "دسته‌بندی", content: ["ویلا", "آپارتمان", "باغ","آپارتمان/برج"] },
@@ -132,6 +133,7 @@ const SearchPage:React.FC = () => {
   // }
   return (
     <div>
+      <MobileMenu />
       <HeaderNewShort />
       <TitlePages title="جستجو" />
       <div
@@ -353,6 +355,7 @@ const SearchPage:React.FC = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

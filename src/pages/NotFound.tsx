@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import Footer from "../components/Footer/Footer";
 import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
 import TitlePages from "../components/TitlePages/TitlePages";
 
 const NotFound:React.FC = () => {
@@ -13,6 +15,7 @@ const NotFound:React.FC = () => {
   }
   return (
     <div>
+      <MobileMenu />
       <HeaderNewShort />
       <TitlePages title="404" />
       <div
@@ -32,6 +35,7 @@ const NotFound:React.FC = () => {
           برگشت به صفحه اصلی
         </button>
       </div>
+      <Footer />
     </div>
   );
 }

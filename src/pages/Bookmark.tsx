@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import { eachToast, statesRedux } from "../ts/interfaces";
 import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
 import { convertorPrice } from "../ts/functions";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
+import Footer from "../components/Footer/Footer";
 
 
 const Bookmark:React.FC = () => {
@@ -64,6 +66,7 @@ const Bookmark:React.FC = () => {
   }
   return (
     <div>
+      <MobileMenu />
       <HeaderNewShort />
       <TitlePages title="نشان شده‌ها" />
       <div className={`${themeClass} px-total py-[50px]`}>
@@ -179,6 +182,7 @@ const Bookmark:React.FC = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
