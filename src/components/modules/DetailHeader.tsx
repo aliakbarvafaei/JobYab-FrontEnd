@@ -3,7 +3,14 @@ import BusinessIcon from "@mui/icons-material/Business";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 
-const DetailHeader = () => {
+interface DetailHeaderProps {
+  onclick?: () => void;
+  haveCompanyDetail?: boolean;
+}
+const DetailHeader = ({
+  onclick,
+  haveCompanyDetail = true,
+}: DetailHeaderProps) => {
   return (
     <Grid
       style={{
@@ -47,10 +54,16 @@ const DetailHeader = () => {
         </Grid>
       </Grid>
       <Grid item className="absolute left-0 bottom-3">
-        <Button variant="contained" style={{ marginLeft: 5 }}>
-          اطلاعات شرکت
-        </Button>
-        <IconButton style={{ marginLeft: 5 }}>
+        {haveCompanyDetail && (
+          <Button
+            variant="contained"
+            style={{ marginLeft: 5 }}
+            onClick={onclick}
+          >
+            اطلاعات شرکت
+          </Button>
+        )}
+        <IconButton style={{ marginLeft: 5, padding: 5 }}>
           <BookmarkBorderOutlinedIcon />
         </IconButton>
       </Grid>

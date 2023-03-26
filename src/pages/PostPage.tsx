@@ -4,10 +4,11 @@ import TempData from "../components/modules/TempData";
 import TitlePages from "../components/TitlePages/TitlePages";
 import Footer from "../components/Footer/Footer";
 import SendResumeSection from "../components/modules/SendResumeSection";
-import { Chip, Divider, Grid, Typography } from "@mui/material";
+import { Divider, Grid, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import SimilarPost from "../components/modules/SimilarPost";
 import DetailSection from "../components/modules/DetailSection";
+import { useHistory } from "react-router-dom";
 
 const responsive = {
   superLargeDesktop: {
@@ -25,11 +26,16 @@ const responsive = {
   },
 };
 const PostPage = () => {
+  const history = useHistory();
   return (
     <div>
       <HeaderNewShort />
       <TitlePages title="جستجو" />
-      <DetailHeader />
+      <DetailHeader
+        onclick={() => {
+          history.push("/company");
+        }}
+      />
       <div
         style={{
           display: "flex",

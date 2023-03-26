@@ -10,6 +10,7 @@ import Profile from "../pages/Profile";
 import RegisterPage from "../pages/Register";
 import SearchPage from "../pages/SearchPage";
 import PostPage from "../pages/PostPage";
+import companyPage from "../pages/companyPage";
 import Bookmark from "../pages/Bookmark";
 import NewAd from "../pages/NewAd";
 import AdDetails from "../pages/AdDetails";
@@ -66,6 +67,14 @@ const AppRoutes: Array<any> = [
     name: "صفحه آگهی",
     icon: "fa fa-list",
     component: PostPage,
+    showInNav: false,
+    private: false,
+  },
+  {
+    path: "/company",
+    name: "اطلاعات شرکت",
+    icon: "fa fa-list",
+    component: companyPage,
     showInNav: false,
     private: false,
   },
