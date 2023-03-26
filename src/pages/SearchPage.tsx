@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Card from "../components/Ads/Card";
 import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
-import Box from "../assets/images/box.png";
 import TitlePages from "../components/TitlePages/TitlePages";
 import { getAdsWithPage } from "../services/api";
 import { ads, filtersInterface } from "../ts/interfaces";
@@ -12,11 +10,13 @@ import Stack from "@mui/material/Stack";
 import Footer from "../components/Footer/Footer";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import SearchBox from "../components/SearchBox";
-import { Button, Grid } from "@mui/material";
+import { Button, Pagination, PaginationItem } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import SingleDropdownWithSearch from "../components/SingleDropdownWithSearch";
+import Post from "../components/Post";
+import CustomPagination from "../components/Pagination";
 
 const filtersOption = [
   { title: "دسته‌بندی", content: ["ویلا", "آپارتمان", "باغ", "آپارتمان/برج"] },
@@ -163,12 +163,26 @@ const SearchPage: React.FC = () => {
           marginInline: 80,
         }}
       >
-        <div style={{ background: "gray", width: "30%" }}>
+        <div style={{ background: "lightgray", width: "30%", marginTop: 10 }}>
           <p>Filter Section</p>
         </div>
-        <div style={{ width: "70%" }}></div>
+        <div
+          style={{
+            width: "70%",
+            padding: 10,
+            gap: 20,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Post />
+          <Post />
+          <Post />
+          <CustomPagination />
+        </div>
       </div>
-      <div style={{ marginTop: 300 }}>
+      <div style={{ marginTop: 400 }}>
         <Footer />
       </div>
     </div>
