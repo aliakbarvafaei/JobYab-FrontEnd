@@ -9,6 +9,7 @@ module.exports = {
     },
     fontFamily: {
       font: ["Lato", "sans-serif"],
+      Roboto: ["Roboto"]
     },
     screens: {
       xl: { max: "1279px" },
