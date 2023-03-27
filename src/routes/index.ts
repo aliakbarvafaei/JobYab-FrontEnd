@@ -16,6 +16,7 @@ import ActiveAccount from "../pages/ActiveAccount";
 import ResetPass from "../pages/ResetPass";
 import ResetPass2 from "../pages/ResetPass2";
 import EditAd from "../pages/EditAd";
+import ProfileCompany from "../pages/ProfileCompany";
 
 const indexRoutes = [{ path: "/", component: DefaultLayout }];
 
@@ -57,6 +58,14 @@ const AppRoutes:Array<any> = [
     name: "جستجو",
     icon: "fa fa-list",
     component: SearchPage,
+    showInNav: false,
+    private: false,
+  },
+  {
+    path: "/profile-company",
+    name: "جستجو",
+    icon: "fa fa-list",
+    component: ProfileCompany,
     showInNav: false,
     private: false,
   },
