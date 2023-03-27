@@ -1,10 +1,10 @@
 import React from 'react';
-import ProfilesCompanies from "../components/NEW/ProfilesCompanies/ProfilesCompanies";
+import Header from "../components/NEW/ProfilesCompanies/Header";
 
 const ProfileCompany:React.FC = () => {
     return (
         <div>
-            <ProfilesCompanies />
+            <Header />
         </div>
     );
 }
