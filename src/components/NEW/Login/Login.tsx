@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useId } from "react";
 import Box from "@mui/material/Box";
 import { useDispatch } from "react-redux";
 import Avatar from "@mui/material/Avatar";
@@ -7,6 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
+import UploadIcon from "@mui/icons-material/Upload";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
@@ -25,6 +26,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import { FormLabel } from "@material-ui/core";
 
 const theme = createTheme();
 const userLoginSchema = object({
@@ -112,6 +114,8 @@ const LoginBox: React.FC = () => {
   const [size, setSize] = useState<SizeType>("small");
   const [user, setUser] = useState<Number>(0);
   const [employer, setEmployer] = useState<Number>(0);
+  const photoId = useId();
+  const [fileValue, setFileValue] = useState<FileList | null>(null);
 
   const dispatch = useDispatch();
 
@@ -1297,7 +1301,72 @@ const LoginBox: React.FC = () => {
                     },
                   }}
                 />
-                <FormControl fullWidth>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginTop: "12px",
+                    marginBottom: "8px",
+                    width: "45%",
+                    "@media (max-width: 576px)": {
+                      width: "100%",
+                    },
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: "IRANYekan",
+                      width: "30%",
+                      color: "#00000099",
+                    }}
+                  >
+                    لوگوی شرکت:{" "}
+                  </div>
+
+                  <Button
+                    variant="outlined"
+                    component="label"
+                    sx={{
+                      fontSize: { xs: "10px", sm: "14px" },
+                      width: "65%",
+                      fontFamily: "IRANYekan",
+                    }}
+                  >
+                    <input
+                      onChange={() => {
+                        setFileValue(
+                          (document.getElementById(photoId) as HTMLInputElement)
+                            .files
+                        );
+                      }}
+                      id={photoId}
+                      accept="image/*"
+                      type="file"
+                      hidden
+                    />
+                    {fileValue != null ? (
+                      fileValue[0].name
+                    ) : (
+                      <>
+                        <UploadIcon />
+                        بارگذاری فایل
+                      </>
+                    )}
+                  </Button>
+                </Box>
+
+                <FormControl
+                  sx={{
+                    justifyContent: "center",
+                    width: "45%",
+                    "@media (max-width: 576px)": {
+                      width: "100%",
+                    },
+                  }}
+                >
                   {/* <FormLabel id="demo-radio-buttons-group-label">نوع</FormLabel> */}
                   <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"

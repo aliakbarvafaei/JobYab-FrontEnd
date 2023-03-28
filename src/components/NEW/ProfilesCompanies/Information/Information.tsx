@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useId, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -12,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import UploadIcon from "@mui/icons-material/Upload";
 
 const employerRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -30,6 +31,12 @@ const employerRegisterSchema = object({
 type employerRegisterInput = TypeOf<typeof employerRegisterSchema>;
 
 const Information: React.FC = () => {
+  const logoId = useId();
+  const resumeId = useId();
+
+  const [logoValue, setLogoValue] = useState<FileList | null>(null);
+  const [resumeValue, setResumeValue] = useState<FileList | null>(null);
+
   const employerRegiter = useForm<employerRegisterInput>({
     resolver: zodResolver(employerRegisterSchema),
   });
@@ -312,6 +319,64 @@ const Information: React.FC = () => {
               ""
             )}
           </FormControl>
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginTop: "12px",
+              marginBottom: "8px",
+              width: "45%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+              },
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "IRANYekan",
+                width: "30%",
+                color: "#00000099",
+              }}
+              className="sm:text-[12px]"
+            >
+              فایل رزومه:{" "}
+            </div>
+
+            <Button
+              variant="outlined"
+              component="label"
+              sx={{
+                fontSize: { xs: "10px", sm: "14px" },
+                width: "65%",
+                fontFamily: "IRANYekan",
+              }}
+            >
+              <input
+                onChange={() => {
+                  setResumeValue(
+                    (document.getElementById(resumeId) as HTMLInputElement)
+                      .files
+                  );
+                }}
+                id={resumeId}
+                accept="application/pdf"
+                type="file"
+                hidden
+              />
+              {resumeValue != null ? (
+                resumeValue[0].name
+              ) : (
+                <>
+                  <UploadIcon />
+                  بارگذاری فایل
+                </>
+              )}
+            </Button>
+          </Box>
+
           <TextField
             margin="normal"
             fullWidth
@@ -340,7 +405,73 @@ const Information: React.FC = () => {
               },
             }}
           />
-          <FormControl fullWidth>
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginTop: "12px",
+              marginBottom: "8px",
+              width: "45%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+              },
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "IRANYekan",
+                width: "30%",
+                color: "#00000099",
+              }}
+              className="sm:text-[12px]"
+            >
+              لوگوی شرکت:{" "}
+            </div>
+
+            <Button
+              variant="outlined"
+              component="label"
+              sx={{
+                fontSize: { xs: "10px", sm: "14px" },
+                width: "65%",
+                fontFamily: "IRANYekan",
+              }}
+            >
+              <input
+                onChange={() => {
+                  setLogoValue(
+                    (document.getElementById(logoId) as HTMLInputElement).files
+                  );
+                }}
+                id={logoId}
+                accept="image/*"
+                type="file"
+                hidden
+              />
+              {logoValue != null ? (
+                logoValue[0].name
+              ) : (
+                <>
+                  <UploadIcon />
+                  بارگذاری فایل
+                </>
+              )}
+            </Button>
+          </Box>
+
+          <FormControl
+            sx={{
+              justifyContent: "center",
+              width: "45%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+              },
+            }}
+          >
+            {/* <FormLabel id="demo-radio-buttons-group-label">نوع</FormLabel> */}
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="حقیقی"
@@ -361,12 +492,7 @@ const Information: React.FC = () => {
             </RadioGroup>
           </FormControl>
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 1 }}
-          >
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 1 }}>
             ویرایش
           </Button>
         </Box>
