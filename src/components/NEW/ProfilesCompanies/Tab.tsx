@@ -68,10 +68,12 @@ export default function BasicTabs() {
     <Box sx={{ width: "100%", fontFamily: "IRANYekan" }}>
       <Box
         sx={{
-          borderBottom: 1,
+          // borderBottom: 1,
           borderColor: "divider",
           backgroundColor: "white",
           paddingX: { sm: "80px", xs: "10px" },
+          boxShadow:"0 4px 8px 0 rgba(0,0,0,.12), 0 2px 4px 0 rgba(0,0,0,.08)",
+          position:"relative"
         }}
       >
         <Tabs
@@ -131,21 +133,30 @@ export default function BasicTabs() {
       <TabPanel
         value={value}
         index={0}
-        sx={{ backgroundColor: "#e0e5eb", minHeight: {md:"83.7vh",sm:"84.4vh",xs:"85.4vh"} }}
+        sx={{
+          backgroundColor: "#e0e5eb",
+          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.4vh" },
+        }}
       >
         <MyAds />
       </TabPanel>
       <TabPanel
         value={value}
         index={1}
-        sx={{ backgroundColor: "#e0e5eb", minHeight: {md:"83.7vh",sm:"84.4vh",xs:"85.4vh"} }}
+        sx={{
+          backgroundColor: "#e0e5eb",
+          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.4vh" },
+        }}
       >
         <Resume />
       </TabPanel>
       <TabPanel
         value={value}
         index={2}
-        sx={{ backgroundColor: "#e0e5eb", minHeight: {md:"83.7vh",sm:"84.4vh",xs:"85.4vh"} }}
+        sx={{
+          backgroundColor: "#e0e5eb",
+          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.4vh" },
+        }}
       >
         <Information />
       </TabPanel>
