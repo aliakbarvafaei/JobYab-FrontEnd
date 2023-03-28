@@ -46,7 +46,7 @@ const Header = () => {
         paddingX: { sm: "80px" },
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{padding:"0px !important"}}>
         <Toolbar disableGutters sx={{display:"flex",justifyContent:"space-between"}} >
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
