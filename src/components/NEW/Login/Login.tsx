@@ -275,6 +275,7 @@ const LoginBox: React.FC = () => {
                   {...userLogin.register("email")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -282,7 +283,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="email"
@@ -301,6 +302,7 @@ const LoginBox: React.FC = () => {
                   {...userLogin.register("password")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -308,7 +310,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   label="رمزعبور"
@@ -400,6 +402,7 @@ const LoginBox: React.FC = () => {
                   {...userRegister.register("name")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -407,7 +410,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="name"
@@ -429,6 +432,7 @@ const LoginBox: React.FC = () => {
                   {...userRegister.register("phone")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -436,7 +440,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                 />
@@ -455,6 +459,7 @@ const LoginBox: React.FC = () => {
                   {...userRegister.register("email")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -462,7 +467,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="email"
@@ -480,6 +485,7 @@ const LoginBox: React.FC = () => {
                   {...userRegister.register("password")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -487,7 +493,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   label="رمزعبور"
@@ -515,6 +521,7 @@ const LoginBox: React.FC = () => {
                   {...userRegister.register("code")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -522,7 +529,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="name"
@@ -542,6 +549,7 @@ const LoginBox: React.FC = () => {
                   {...userRegister.register("address")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -549,7 +557,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="name"
@@ -627,6 +635,7 @@ const LoginBox: React.FC = () => {
                   {...userForget.register("email")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -634,7 +643,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="email"
@@ -707,6 +716,7 @@ const LoginBox: React.FC = () => {
                   {...userForget2.register("email")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -714,7 +724,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="email"
@@ -736,6 +746,7 @@ const LoginBox: React.FC = () => {
                   {...userForget2.register("code")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -743,7 +754,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="email"
@@ -762,6 +773,7 @@ const LoginBox: React.FC = () => {
                   {...userForget2.register("password")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -769,7 +781,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   label="رمز جدید"
@@ -856,6 +868,7 @@ const LoginBox: React.FC = () => {
                   {...employerLogin.register("email")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -863,7 +876,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="email"
@@ -882,6 +895,7 @@ const LoginBox: React.FC = () => {
                   {...employerLogin.register("password")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -889,7 +903,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   label="رمزعبور"
@@ -990,6 +1004,7 @@ const LoginBox: React.FC = () => {
                       width: "100%",
                     },
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -997,7 +1012,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   autoFocus
@@ -1020,6 +1035,7 @@ const LoginBox: React.FC = () => {
                       width: "100%",
                     },
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1027,7 +1043,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="name"
@@ -1052,6 +1068,7 @@ const LoginBox: React.FC = () => {
                       width: "100%",
                     },
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1059,7 +1076,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                 />
@@ -1081,6 +1098,7 @@ const LoginBox: React.FC = () => {
                       width: "100%",
                     },
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1088,7 +1106,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                 />
@@ -1108,6 +1126,7 @@ const LoginBox: React.FC = () => {
                       width: "100%",
                     },
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1115,7 +1134,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   label="رمزعبور"
@@ -1146,6 +1165,7 @@ const LoginBox: React.FC = () => {
                       width: "100%",
                     },
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1153,7 +1173,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                 />
@@ -1167,6 +1187,7 @@ const LoginBox: React.FC = () => {
                     },
                     mt: "12px",
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1174,7 +1195,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                 >
@@ -1211,6 +1232,7 @@ const LoginBox: React.FC = () => {
                     },
                     mt: "12px",
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1218,7 +1240,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                 >
@@ -1263,6 +1285,7 @@ const LoginBox: React.FC = () => {
                   {...employerRegiter.register("bio")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1270,7 +1293,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                 />
@@ -1350,7 +1373,9 @@ const LoginBox: React.FC = () => {
               <Box
                 component="form"
                 // onSubmit={handleSubmit}
-                onSubmit={employerForget.handleSubmit(onSubmitHandlerEmployerForget)}
+                onSubmit={employerForget.handleSubmit(
+                  onSubmitHandlerEmployerForget
+                )}
                 noValidate
                 sx={{ mt: 1 }}
               >
@@ -1369,6 +1394,7 @@ const LoginBox: React.FC = () => {
                   {...employerForget.register("email")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1376,7 +1402,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="email"
@@ -1430,7 +1456,9 @@ const LoginBox: React.FC = () => {
               <Box
                 component="form"
                 // onSubmit={handleSubmit}
-                onSubmit={employerForget2.handleSubmit(onSubmitHandlerEmployerForget2)}
+                onSubmit={employerForget2.handleSubmit(
+                  onSubmitHandlerEmployerForget2
+                )}
                 noValidate
                 sx={{ mt: 1 }}
               >
@@ -1449,6 +1477,7 @@ const LoginBox: React.FC = () => {
                   {...employerForget2.register("email")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1456,7 +1485,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="email"
@@ -1478,6 +1507,7 @@ const LoginBox: React.FC = () => {
                   {...employerForget2.register("code")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1485,7 +1515,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   // autoComplete="email"
@@ -1504,6 +1534,7 @@ const LoginBox: React.FC = () => {
                   {...employerForget2.register("password")}
                   sx={{
                     "& label": {
+                      fontFamily: "IRANYekan",
                       left: "unset",
                       right: "1.75rem",
                       transformOrigin: "right",
@@ -1511,7 +1542,7 @@ const LoginBox: React.FC = () => {
                     },
                     "& legend": {
                       textAlign: "right",
-                      fontSize: "0.8rem",
+                      fontSize: "1rem",
                     },
                   }}
                   label="رمز جدید"

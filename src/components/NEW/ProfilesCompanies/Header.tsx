@@ -11,11 +11,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["خروج"];
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -43,11 +42,14 @@ const Header = () => {
     <AppBar
       position="static"
       sx={{
-        paddingX: { sm: "80px" },
+        paddingX: { sm: "80px", fontFamily: "IRANYekan" },
       }}
     >
-      <Container maxWidth="xl" sx={{padding:"0px !important"}}>
-        <Toolbar disableGutters sx={{display:"flex",justifyContent:"space-between"}} >
+      <Container maxWidth="xl" sx={{ padding: "0px !important" }}>
+        <Toolbar
+          disableGutters
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
             variant="h6"
@@ -63,7 +65,7 @@ const Header = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            JOBYAB
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -102,7 +104,6 @@ const Header = () => {
               ))}
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -118,19 +119,8 @@ const Header = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            JOBYAB
           </Typography>
-          {/* <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box> */}
 
           <Box sx={{ flexGrow: 0 }}>
             <Button
@@ -138,6 +128,7 @@ const Header = () => {
               sx={{
                 backgroundColor: "white",
                 color: "black",
+                fontFamily: "IRANYekan",
                 display: { xs: "none", md: "inline" },
               }}
             >
@@ -148,19 +139,20 @@ const Header = () => {
               onClick={handleCloseNavMenu}
               sx={{
                 my: 2,
-                color: "white",
+                color: "#e0e5eb",
                 gap: "5px",
                 paddingLeft: "20px",
+                fontFamily: "IRANYekan",
                 display: { xs: "none", md: "inline-flex" },
               }}
             >
               <ContactSupportIcon />
               پشتیبانی
             </Button>
-            <Tooltip title="Open settings">
+            <Tooltip title="حساب کاربری">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                <div className="text-[14px] pr-2 text-white md:hidden">
+                <div className="text-[14px] pr-2 text-[#e0e5eb] md:hidden">
                   حساب کاربری
                 </div>
               </IconButton>

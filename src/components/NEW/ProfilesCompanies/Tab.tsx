@@ -3,15 +3,24 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
+import MyAds from "./MyAds/MyAds";
+import Resume from "./Resume/Resume";
+import Menu from "@mui/material/Menu";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
+import Information from "./Information/Information";
 
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
+  sx: object;
 }
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, sx, ...other } = props;
 
   return (
     <div
@@ -22,7 +31,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 3, ...sx }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -37,15 +46,26 @@ function a11yProps(index: number) {
   };
 }
 
+const level = ["ارتقای سطح"];
+
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", fontFamily: "IRANYekan" }}>
       <Box
         sx={{
           borderBottom: 1,
@@ -60,30 +80,74 @@ export default function BasicTabs() {
           aria-label="basic tabs example"
         >
           <Tab
-            label="Item One"
+            label="آگهی‌های من"
             {...a11yProps(0)}
-            sx={{ borderBottom: value === 0 ? 5 : 0 }}
+            sx={{ borderBottom: value === 0 ? 5 : 0, fontFamily: "IRANYekan" }}
           />
           <Tab
-            label="Item Two"
+            label="رزومه‌ها"
             {...a11yProps(1)}
-            sx={{ borderBottom: value === 1 ? 5 : 0 }}
+            sx={{ borderBottom: value === 1 ? 5 : 0, fontFamily: "IRANYekan" }}
           />
           <Tab
-            label="Item Three"
+            label="اطلاعات شرکت"
             {...a11yProps(2)}
-            sx={{ borderBottom: value === 2 ? 5 : 0 }}
+            sx={{ borderBottom: value === 2 ? 5 : 0, fontFamily: "IRANYekan" }}
           />
+          <div className="mr-auto flex items-center">
+            <Tooltip title="سطح کاربر">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <CreditCardIcon />
+                <p className="text-[14px] border-b-[2px] border-b-green mr-2">
+                  سطح برنزی
+                </p>
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {level.map((level) => (
+                <MenuItem key={level} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{level}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </div>
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        Item One
+      <TabPanel
+        value={value}
+        index={0}
+        sx={{ backgroundColor: "#e0e5eb", minHeight: {md:"83.7vh",sm:"84.4vh",xs:"85.4vh"} }}
+      >
+        <MyAds />
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
+      <TabPanel
+        value={value}
+        index={1}
+        sx={{ backgroundColor: "#e0e5eb", minHeight: {md:"83.7vh",sm:"84.4vh",xs:"85.4vh"} }}
+      >
+        <Resume />
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
+      <TabPanel
+        value={value}
+        index={2}
+        sx={{ backgroundColor: "#e0e5eb", minHeight: {md:"83.7vh",sm:"84.4vh",xs:"85.4vh"} }}
+      >
+        <Information />
       </TabPanel>
     </Box>
   );
