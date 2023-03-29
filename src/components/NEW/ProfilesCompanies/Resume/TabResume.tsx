@@ -81,21 +81,21 @@ export default function BasicTabs() {
         index={0}
         sx={{ backgroundColor: "#e0e5eb", minHeight: "66.2vh" }}
       >
-        <Content />
+        <Content index={0} />
       </TabPanel>
       <TabPanel
         value={value}
         index={1}
         sx={{ backgroundColor: "#e0e5eb", minHeight: "66.2vh" }}
       >
-        <Content />
+        <Content index={1} />
       </TabPanel>
       <TabPanel
         value={value}
         index={2}
         sx={{ backgroundColor: "#e0e5eb", minHeight: "66.2vh" }}
       >
-        <Content />
+        <Content index={2} />
       </TabPanel>
     </Box>
   );
