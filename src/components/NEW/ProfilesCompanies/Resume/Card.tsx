@@ -14,20 +14,29 @@ import Woman2OutlinedIcon from "@mui/icons-material/Woman2Outlined";
 import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 
-const CardItem: React.FC = () => {
+const CardItem: React.FC<{ index: Number }> = ({ index }) => {
   return (
     <Card
       sx={{
         width: { sm: "80%", xs: "95%" },
+        height: "135px",
         fontFamily: "IRANYekan",
         display: "flex",
         flexDirection: "row",
       }}
     >
       <Box className="smmin:w-[88%] sm:w-[85%]">
-        <Box sx={{ py: 2, px: { xs: 1, sm: 4 }, display: "flex", gap: "10%" }}>
+        <Box
+          sx={{
+            py: { xs: 1, sm: 2 },
+            px: { xs: "6px", sm: 2, md: 4 },
+            height: "70%",
+            display: "flex",
+            gap: "10%",
+          }}
+        >
           <Avatar
-            variant="rounded"
+            variant="circular"
             src="avatar1.jpg"
             sx={{ display: { xs: "none", sm: "flex" } }}
           />
@@ -38,7 +47,7 @@ const CardItem: React.FC = () => {
               color="#1976D2"
               sx={{
                 fontFamily: "IRANYekan",
-                fontSize: { xs: "12px", sm: "16px" },
+                fontSize: { xs: "12px", sm: "14px", md: "16px" },
               }}
             >
               توسعه دهنده ارشد Front End
@@ -48,7 +57,7 @@ const CardItem: React.FC = () => {
               color="text.secondary"
               sx={{
                 fontFamily: "IRANYekan",
-                fontSize: { xs: "8px", sm: "12px" },
+                fontSize: { xs: "8px", sm: "10px", md: "12px" },
               }}
             >
               <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
@@ -59,7 +68,7 @@ const CardItem: React.FC = () => {
               color="text.secondary"
               sx={{
                 fontFamily: "IRANYekan",
-                fontSize: { xs: "8px", sm: "12px" },
+                fontSize: { xs: "8px", sm: "10px", md: "12px" },
               }}
             >
               <FactCheckOutlinedIcon
@@ -81,7 +90,9 @@ const CardItem: React.FC = () => {
               cursor: "pointer",
             }}
           >
-            <DownloadOutlinedIcon sx={{ fontSize: "35px" }} />
+            <DownloadOutlinedIcon
+              sx={{ fontSize: { xs: "25px", sm: "35px" } }}
+            />
             رزومه
           </Box>
         </Box>
@@ -91,8 +102,9 @@ const CardItem: React.FC = () => {
           alignItems="center"
           justifyContent="space-between"
           sx={{
-            px: { xs: "2px", sm: 8 },
+            px: { xs: "2px", sm: 4, md: 8 },
             py: 1,
+            height: "30%",
             bgcolor: "background.default",
           }}
         >
@@ -135,24 +147,89 @@ const CardItem: React.FC = () => {
           </Typography>
         </Stack>
       </Box>
-      <Button
-        className="smmin:w-[12%] sm:w-[15%]"
-        sx={{
-          backgroundColor: "#1976D2",
-          color: "white",
-          fontSize: { xs: "10px", sm: "14px" },
-          fontFamily: "IRANYekan",
-          borderTopRightRadius: "0px",
-          borderBottomRightRadius: "0px",
-          minWidth: "0px",
-          "&:hover": {
-            opacity: 0.5,
-            backgroundColor: "black",
-          },
-        }}
-      >
-        در حال بررسی
-      </Button>
+      {index === 0 ? (
+        <Button
+          className="smmin:w-[12%] sm:w-[15%]"
+          sx={{
+            backgroundColor: "#1976D2",
+            color: "white",
+            fontSize: { xs: "10px", sm: "14px" },
+            fontFamily: "IRANYekan",
+            borderTopRightRadius: "0px",
+            borderBottomRightRadius: "0px",
+            minWidth: "0px",
+            "&:hover": {
+              opacity: 0.5,
+              backgroundColor: "black",
+            },
+          }}
+        >
+          در حال بررسی
+        </Button>
+      ) : index === 1 ? (
+        <Box
+          className="smmin:w-[12%] sm:w-[15%]"
+          sx={{ display: "flex", flexDirection: "column", height: "100%" }}
+        >
+          <Button
+            sx={{
+              backgroundColor: "green",
+              color: "white",
+              height: "50%",
+              fontSize: { xs: "10px", sm: "14px" },
+              fontFamily: "IRANYekan",
+              borderTopRightRadius: "0px",
+              borderBottomRightRadius: "0px",
+              borderBottomLeftRadius: "0px",
+              minWidth: "0px",
+              "&:hover": {
+                opacity: 0.5,
+                backgroundColor: "black",
+              },
+            }}
+          >
+            پذیرش
+          </Button>
+          <Button
+            sx={{
+              backgroundColor: "red",
+              color: "white",
+              height: "50%",
+              fontSize: { xs: "10px", sm: "14px" },
+              fontFamily: "IRANYekan",
+              borderTopRightRadius: "0px",
+              borderTopLeftRadius: "0px",
+              borderBottomRightRadius: "0px",
+              minWidth: "0px",
+              "&:hover": {
+                opacity: 0.5,
+                backgroundColor: "black",
+              },
+            }}
+          >
+            رد
+          </Button>
+        </Box>
+      ) : (
+        <Button
+          className="smmin:w-[12%] sm:w-[15%]"
+          sx={{
+            backgroundColor: "green",
+            color: "white",
+            fontSize: { xs: "10px", sm: "14px" },
+            fontFamily: "IRANYekan",
+            borderTopRightRadius: "0px",
+            borderBottomRightRadius: "0px",
+            minWidth: "0px",
+            "&:hover": {
+              opacity: 0.5,
+              backgroundColor: "black",
+            },
+          }}
+        >
+          پذیرفته شد
+        </Button>
+      )}
     </Card>
   );
 };

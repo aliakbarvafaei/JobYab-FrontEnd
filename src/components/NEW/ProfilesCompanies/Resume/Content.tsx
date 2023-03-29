@@ -23,9 +23,9 @@ const Content: React.FC<{ index: Number }> = ({ index }) => {
       >
         {true ? (
           <>
-            <CardItem />
-            <CardItem />
-            <CardItem />
+            <CardItem index={index}/>
+            <CardItem index={index}/>
+            <CardItem index={index}/>
           </>
         ) : (
           <>
