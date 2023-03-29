@@ -2,8 +2,8 @@ import React, { useId, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
-import HeaderNewShort from '../components/HeaderNew/HeaderNewShort';
 import MobileMenu from '../components/MobileMenu/MobileMenu';
+import HeaderSection from '../components/NEW/HeaderSection/HeaderSection';
 import TitlePages from '../components/TitlePages/TitlePages';
 import { useToast } from '../contexts/ToastState';
 import { resetPassAPI } from '../services/api';
@@ -99,7 +99,7 @@ const ResetPass2:React.FC = ()=> {
     
     return <div>
         <MobileMenu />
-        <HeaderNewShort />
+        <HeaderSection />
         <TitlePages title="بازیابی رمز" />
         <div className={`${themeClass} py-[40px] px-total`}>
             <div className="w-[100%] pt-[10px]">

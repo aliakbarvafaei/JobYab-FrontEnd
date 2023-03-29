@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Card from "../components/Ads/Card";
-import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
 import Box from "../assets/images/box.png"
 import TitlePages from "../components/TitlePages/TitlePages";
 import { getAdsWithPage } from "../services/api";
@@ -11,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Footer from "../components/Footer/Footer";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
+import HeaderSection from "../components/NEW/HeaderSection/HeaderSection";
 
 const filtersOption = [
   { title: "دسته‌بندی", content: ["ویلا", "آپارتمان", "باغ","آپارتمان/برج"] },
@@ -134,7 +134,7 @@ const SearchPage:React.FC = () => {
   return (
     <div>
       <MobileMenu />
-      <HeaderNewShort />
+      <HeaderSection />
       <TitlePages title="جستجو" />
       <div
         className={`${themeClass} px-total flex smmin:flex-row sm:flex-col justify-between`}
