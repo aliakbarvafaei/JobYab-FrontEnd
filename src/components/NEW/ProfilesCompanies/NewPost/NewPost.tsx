@@ -12,9 +12,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const THEME = createTheme({
-  typography: {
-    fontFamily: `IRANYekan`,
-  },
+  // typography: {
+  //   fontFamily: `IRANYekan`,
+  // },
 });
 const step1Schema = object({
   //   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -26,8 +26,8 @@ const step1Schema = object({
     .nonempty("شماره تماس شرکت اجباری است")
     .min(11, "شماره تماس شرکت باید 11 رقم باشد")
     .max(11, "شماره تماس شرکت باید 11 رقم باشد"),
-  namePersian: string().nonempty("نام فارسی شرکت اجباری است"),
-  nameEnglish: string().nonempty("نام انگلیسی شرکت اجباری است"),
+  title: string().nonempty("عنوان آگهی اجباری است"),
+  jobCategory: string().nonempty("دسته‌بندی شغلی اجباری است"),
   //   bio: string(),
   //   websit: string(),
   //   activity: string().nonempty("حوزه فعالیت اجباری است"),
@@ -53,23 +53,24 @@ const NewPosts: React.FC = () => {
       sx={{
         mt: 0.1,
         display: "flex",
-        flexDirection: "column",
+        // flexDirection: "column",
         flexWrap: "wrap",
         alignItems: "center",
+        justifyContent: "space-between",
       }}
     >
       <TextField
         margin="normal"
         required
-        id="namePersian"
-        label="نام شرکت (فارسی)"
-        error={!!step1.formState.errors["namePersian"]}
+        id="title"
+        label="عنوان آگهی"
+        error={!!step1.formState.errors["title"]}
         helperText={
-          step1.formState.errors["namePersian"]
-            ? step1.formState.errors["namePersian"].message
+          step1.formState.errors["title"]
+            ? step1.formState.errors["title"].message
             : ""
         }
-        {...step1.register("namePersian")}
+        {...step1.register("title")}
         sx={{
           width: "45%",
           "@media (max-width: 576px)": {
@@ -87,20 +88,19 @@ const NewPosts: React.FC = () => {
             fontSize: "1rem",
           },
         }}
-        autoFocus
       />
       <TextField
         margin="normal"
         required
-        id="nameEnglish"
-        label="نام شرکت (انگلیسی)"
-        error={!!step1.formState.errors["nameEnglish"]}
+        id="jobCategory"
+        label="دسته‌بندی شغل"
+        error={!!step1.formState.errors["jobCategory"]}
         helperText={
-          step1.formState.errors["nameEnglish"]
-            ? step1.formState.errors["nameEnglish"].message
+          step1.formState.errors["jobCategory"]
+            ? step1.formState.errors["jobCategory"].message
             : ""
         }
-        {...step1.register("nameEnglish")}
+        {...step1.register("jobCategory")}
         sx={{
           width: "45%",
           "@media (max-width: 576px)": {
@@ -114,8 +114,8 @@ const NewPosts: React.FC = () => {
             fontSize: "1rem",
           },
           "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
+            textAlign: "center",
+            fontSize: "4rem",
           },
         }}
         // autoComplete="name"
