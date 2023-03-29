@@ -26,7 +26,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { FormLabel } from "@material-ui/core";
 
 const theme = createTheme();
 const userLoginSchema = object({
@@ -1280,6 +1279,7 @@ const LoginBox: React.FC = () => {
                   type={"textArea"}
                   id="bio"
                   label="معرفی شرکت"
+                  multiline
                   error={!!employerRegiter.formState.errors["bio"]}
                   helperText={
                     employerRegiter.formState.errors["bio"]
