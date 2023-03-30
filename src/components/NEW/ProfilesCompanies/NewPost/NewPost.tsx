@@ -10,41 +10,71 @@ import { object, string, TypeOf } from "zod";
 import TextField from "@mui/material/TextField";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import SingleDropdownWithSearch from "../../../SingleDropdownWithSearch";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const THEME = createTheme({
-  // typography: {
-  //   fontFamily: `IRANYekan`,
-  // },
-});
-const step1Schema = object({
-  //   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
-  //   password: string()
-  //     .nonempty("رمزعبور اجباری است")
-  //     .min(8, "رمزعبور باید حداقل 8 کاراکتر باشد")
-  //     .max(32, "رمز عبور بیشتر از 32 کاراکتر نمیتواند باشد"),
-  phone: string()
-    .nonempty("شماره تماس شرکت اجباری است")
-    .min(11, "شماره تماس شرکت باید 11 رقم باشد")
-    .max(11, "شماره تماس شرکت باید 11 رقم باشد"),
-  title: string().nonempty("عنوان آگهی اجباری است"),
-  jobCategory: string().nonempty("دسته‌بندی شغلی اجباری است"),
-  //   bio: string(),
-  //   websit: string(),
-  //   activity: string().nonempty("حوزه فعالیت اجباری است"),
-  //   count: string().nonempty("تعداد پرسنل اجباری است"),
+  typography: {
+    fontFamily: `IRANYekan`,
+  },
 });
 
+const step1Schema = object({
+  title: string().nonempty("عنوان آگهی اجباری است"),
+  type: string().nonempty("نوع همکاری اجباری است"),
+  military: string().nonempty("وضعیت سربازی اجباری است"),
+  degree: string().nonempty("حداقل مدرک تحصیلی اجباری است"),
+  work: string().nonempty("سابقه کاری اجباری است"),
+  gender: string().nonempty("جنسیت اجباری است"),
+  salary: string().nonempty("پایه حقوق اجباری است"),
+});
+const step2Schema = object({
+  title: string().nonempty("عنوان آگهی اجباری است"),
+  type: string().nonempty("نوع همکاری اجباری است"),
+  military: string().nonempty("وضعیت سربازی اجباری است"),
+  degree: string().nonempty("حداقل مدرک تحصیلی اجباری است"),
+  work: string().nonempty("سابقه کاری اجباری است"),
+  gender: string().nonempty("جنسیت اجباری است"),
+  salary: string().nonempty("پایه حقوق اجباری است"),
+});
+const step3Schema = object({
+  title: string().nonempty("عنوان آگهی اجباری است"),
+  type: string().nonempty("نوع همکاری اجباری است"),
+  military: string().nonempty("وضعیت سربازی اجباری است"),
+  degree: string().nonempty("حداقل مدرک تحصیلی اجباری است"),
+  work: string().nonempty("سابقه کاری اجباری است"),
+  gender: string().nonempty("جنسیت اجباری است"),
+  salary: string().nonempty("پایه حقوق اجباری است"),
+});
 type step1Input = TypeOf<typeof step1Schema>;
+type step2Input = TypeOf<typeof step2Schema>;
+type step3Input = TypeOf<typeof step3Schema>;
 
 const NewPosts: React.FC = () => {
   const step1 = useForm<step1Input>({
     resolver: zodResolver(step1Schema),
   });
+  const step2 = useForm<step2Input>({
+    resolver: zodResolver(step2Schema),
+  });
+  const step3 = useForm<step3Input>({
+    resolver: zodResolver(step3Schema),
+  });
   const onSubmitHandlerStep1: SubmitHandler<step1Input> = (values) => {
     console.log(values);
     handleNext();
   };
+  const onSubmitHandlerStep2: SubmitHandler<step2Input> = (values) => {
+    console.log(values);
+    handleNext();
+  };
+  const onSubmitHandlerStep3: SubmitHandler<step3Input> = (values) => {
+    console.log(values);
+    handleNext();
+  };
+
   const steps = ["", "", ""];
+
   const stepsContent = [
     <Box
       component="form"
@@ -89,23 +119,15 @@ const NewPosts: React.FC = () => {
           },
         }}
       />
-      <TextField
-        margin="normal"
+
+      <FormControl
         required
-        id="jobCategory"
-        label="دسته‌بندی شغل"
-        error={!!step1.formState.errors["jobCategory"]}
-        helperText={
-          step1.formState.errors["jobCategory"]
-            ? step1.formState.errors["jobCategory"].message
-            : ""
-        }
-        {...step1.register("jobCategory")}
         sx={{
           width: "45%",
           "@media (max-width: 576px)": {
             width: "100%",
           },
+          mt: "12px",
           "& label": {
             fontFamily: "IRANYekan",
             left: "unset",
@@ -114,28 +136,272 @@ const NewPosts: React.FC = () => {
             fontSize: "1rem",
           },
           "& legend": {
-            textAlign: "center",
-            fontSize: "4rem",
+            textAlign: "right",
+            fontSize: "1rem",
           },
         }}
-        // autoComplete="name"
-      />
-      <TextField
-        margin="normal"
+      >
+        <InputLabel id="demo-simple-select-label">نوع همکاری</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          defaultValue={""}
+          label="نوع همکاری"
+          error={!!step1.formState.errors["type"]}
+          {...step1.register("type")}
+          sx={{ justifyContent: "center", alignItems: "center" }}
+        >
+          <MenuItem value={"تمام وقت"}>تمام وقت</MenuItem>
+          <MenuItem value={"پاره وقت"}>پاره وقت</MenuItem>
+          <MenuItem value={"دور کاری"}>دور کاری</MenuItem>
+        </Select>
+        {step1.formState.errors["type"] ? (
+          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+            {step1.formState.errors["type"].message}
+          </p>
+        ) : (
+          ""
+        )}
+      </FormControl>
+
+      <FormControl
         required
-        type={"number"}
-        id="phone"
-        label="شماره تماس شرکت"
-        error={!!step1.formState.errors["phone"]}
-        helperText={
-          step1.formState.errors["phone"]
-            ? step1.formState.errors["phone"].message
-            : ""
-        }
-        {...step1.register("phone")}
-        style={{}}
         sx={{
           width: "45%",
+          "@media (max-width: 576px)": {
+            width: "100%",
+          },
+          mt: "12px",
+          "& label": {
+            fontFamily: "IRANYekan",
+            left: "unset",
+            right: "1.75rem",
+            transformOrigin: "right",
+            fontSize: "1rem",
+          },
+          "& legend": {
+            textAlign: "right",
+            fontSize: "1rem",
+          },
+        }}
+      >
+        <InputLabel id="demo-simple-select-label">وضعیت سربازی</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          defaultValue={""}
+          label="وضعیت سربازی"
+          error={!!step1.formState.errors["military"]}
+          {...step1.register("military")}
+          sx={{ justifyContent: "center", alignItems: "center" }}
+        >
+          <MenuItem value={"مهم نیست"}>مهم نیست</MenuItem>
+          <MenuItem value={"دارای کارت پایان خدمت"}>
+            دارای کارت پایان خدمت
+          </MenuItem>
+        </Select>
+        {step1.formState.errors["military"] ? (
+          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+            {step1.formState.errors["military"].message}
+          </p>
+        ) : (
+          ""
+        )}
+      </FormControl>
+
+      <FormControl
+        required
+        sx={{
+          width: "45%",
+          "@media (max-width: 576px)": {
+            width: "100%",
+          },
+          mt: "12px",
+          "& label": {
+            fontFamily: "IRANYekan",
+            left: "unset",
+            right: "1.75rem",
+            transformOrigin: "right",
+            fontSize: "1rem",
+          },
+          "& legend": {
+            textAlign: "right",
+            fontSize: "1rem",
+          },
+        }}
+      >
+        <InputLabel id="demo-simple-select-label">حداقل مدرک تحصیلی</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          defaultValue={""}
+          label="حداقل مدرک تحصیلی"
+          error={!!step1.formState.errors["degree"]}
+          {...step1.register("degree")}
+          sx={{ justifyContent: "center", alignItems: "center" }}
+        >
+          <MenuItem value={"زیر دیپلم"}>زیر دیپلم</MenuItem>
+          <MenuItem value={"دیپلم"}>دیپلم</MenuItem>
+          <MenuItem value={"کاردانی"}>کاردانی</MenuItem>
+          <MenuItem value={"کارشناسی"}>کارشناسی</MenuItem>
+          <MenuItem value={"کارشناسی ارشد"}>کارشناسی ارشد</MenuItem>
+          <MenuItem value={"دکترا"}>دکترا</MenuItem>
+        </Select>
+        {step1.formState.errors["degree"] ? (
+          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+            {step1.formState.errors["degree"].message}
+          </p>
+        ) : (
+          ""
+        )}
+      </FormControl>
+
+      <FormControl
+        required
+        sx={{
+          width: "45%",
+          "@media (max-width: 576px)": {
+            width: "100%",
+          },
+          mt: "12px",
+          "& label": {
+            fontFamily: "IRANYekan",
+            left: "unset",
+            right: "1.75rem",
+            transformOrigin: "right",
+            fontSize: "1rem",
+          },
+          "& legend": {
+            textAlign: "right",
+            fontSize: "1rem",
+          },
+        }}
+      >
+        <InputLabel id="demo-simple-select-label">سابقه کاری</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          defaultValue={""}
+          label="سابقه کاری"
+          error={!!step1.formState.errors["work"]}
+          {...step1.register("work")}
+          sx={{ justifyContent: "center", alignItems: "center" }}
+        >
+          <MenuItem value={"نیاز نیست"}>نیاز نیست</MenuItem>
+          <MenuItem value={"حداقل یک سال"}>حداقل یک سال</MenuItem>
+          <MenuItem value={"حداقل 3 سال"}>حداقل 3 سال</MenuItem>
+          <MenuItem value={"بالای 3 سال"}>بالای 3 سال</MenuItem>
+        </Select>
+        {step1.formState.errors["work"] ? (
+          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+            {step1.formState.errors["work"].message}
+          </p>
+        ) : (
+          ""
+        )}
+      </FormControl>
+
+      <FormControl
+        required
+        sx={{
+          width: "45%",
+          "@media (max-width: 576px)": {
+            width: "100%",
+          },
+          mt: "12px",
+          "& label": {
+            fontFamily: "IRANYekan",
+            left: "unset",
+            right: "1.75rem",
+            transformOrigin: "right",
+            fontSize: "1rem",
+          },
+          "& legend": {
+            textAlign: "right",
+            fontSize: "1rem",
+          },
+        }}
+      >
+        <InputLabel id="demo-simple-select-label">جنسیت</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          defaultValue={""}
+          label="جنسیت"
+          error={!!step1.formState.errors["gender"]}
+          {...step1.register("gender")}
+          sx={{ justifyContent: "center", alignItems: "center" }}
+        >
+          <MenuItem value={"مهم نیست"}>مهم نیست</MenuItem>
+          <MenuItem value={"مرد"}>مرد</MenuItem>
+          <MenuItem value={"زن"}>زن</MenuItem>
+        </Select>
+        {step1.formState.errors["gender"] ? (
+          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+            {step1.formState.errors["gender"].message}
+          </p>
+        ) : (
+          ""
+        )}
+      </FormControl>
+
+      <FormControl
+        required
+        sx={{
+          width: "45%",
+          "@media (max-width: 576px)": {
+            width: "100%",
+          },
+          mt: "12px",
+          "& label": {
+            fontFamily: "IRANYekan",
+            left: "unset",
+            right: "1.75rem",
+            transformOrigin: "right",
+            fontSize: "1rem",
+          },
+          "& legend": {
+            textAlign: "right",
+            fontSize: "1rem",
+          },
+        }}
+      >
+        <InputLabel id="demo-simple-select-label">پایه حقوق</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          defaultValue={""}
+          label="پایه حقوق"
+          error={!!step1.formState.errors["salary"]}
+          {...step1.register("salary")}
+          sx={{ justifyContent: "center", alignItems: "center" }}
+        >
+          <MenuItem value={"توافقی"}>توافقی</MenuItem>
+          <MenuItem value={"حداکثر 5 میلیون تومان"}>
+            حداکثر 5 میلیون تومان
+          </MenuItem>
+          <MenuItem value={"5 تا 7 میلیون تومان"}>5 تا 7 میلیون تومان</MenuItem>
+          <MenuItem value={"7 تا 10 میلیون تومان"}>
+            7 تا 10 میلیون تومان
+          </MenuItem>
+          <MenuItem value={"بالای 10 میلیون تومان"}>
+            بالای 10 میلیون تومان
+          </MenuItem>
+        </Select>
+        {step1.formState.errors["salary"] ? (
+          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+            {step1.formState.errors["salary"].message}
+          </p>
+        ) : (
+          ""
+        )}
+      </FormControl>
+
+      {/* <Box
+        sx={{
+          width: "45%",
+          marginTop: "16px",
+          marginBottom: "8px",
           "@media (max-width: 576px)": {
             width: "100%",
           },
@@ -151,10 +417,140 @@ const NewPosts: React.FC = () => {
             fontSize: "1rem",
           },
         }}
-      />
+      >
+        <SingleDropdownWithSearch
+          onChange={() => {}}
+          placeholder="دسته بندی مدنظر خود را انتخاب کنید"
+        />
+      </Box> */}
+
       <Button id="step1" type="submit" sx={{ display: "none" }} />
     </Box>,
-    "",
+    <Box
+      component="form"
+      onSubmit={step2.handleSubmit(onSubmitHandlerStep2)}
+      noValidate
+      sx={{
+        mt: 0.1,
+        display: "flex",
+        // flexDirection: "column",
+        flexWrap: "wrap",
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}
+    >
+      <Box
+        sx={{
+          width: "45%",
+          marginTop: "16px",
+          marginBottom: "8px",
+          "@media (max-width: 576px)": {
+            width: "100%",
+          },
+          "& label": {
+            fontFamily: "IRANYekan",
+            left: "unset",
+            right: "1.75rem",
+            transformOrigin: "right",
+            fontSize: "1rem",
+          },
+          "& legend": {
+            textAlign: "right",
+            fontSize: "1rem",
+          },
+        }}
+      >
+        <SingleDropdownWithSearch
+          onChange={() => {}}
+          placeholder="دسته بندی شغلی"
+        />
+      </Box>
+      
+      <Box
+        sx={{
+          width: "45%",
+          marginTop: "16px",
+          marginBottom: "8px",
+          "@media (max-width: 576px)": {
+            width: "100%",
+          },
+          "& label": {
+            fontFamily: "IRANYekan",
+            left: "unset",
+            right: "1.75rem",
+            transformOrigin: "right",
+            fontSize: "1rem",
+          },
+          "& legend": {
+            textAlign: "right",
+            fontSize: "1rem",
+          },
+        }}
+      >
+        <SingleDropdownWithSearch options={[{label:"sallam",value:1},{label:"bye",value:1}]}
+          onChange={(e) => {console.log(e?.label);
+          }}
+          placeholder="تکنولوژی و برچسب"
+        />
+      </Box>
+      
+      <Box
+        sx={{
+          width: "45%",
+          marginTop: "16px",
+          marginBottom: "8px",
+          "@media (max-width: 576px)": {
+            width: "100%",
+          },
+          "& label": {
+            fontFamily: "IRANYekan",
+            left: "unset",
+            right: "1.75rem",
+            transformOrigin: "right",
+            fontSize: "1rem",
+          },
+          "& legend": {
+            textAlign: "right",
+            fontSize: "1rem",
+          },
+        }}
+      >
+        <SingleDropdownWithSearch
+          onChange={() => {}}
+          placeholder="استان"
+        />
+      </Box>
+      
+      <Box
+        sx={{
+          width: "45%",
+          marginTop: "16px",
+          marginBottom: "8px",
+          marginRight:"auto",
+          "@media (max-width: 576px)": {
+            width: "100%",
+          },
+          "& label": {
+            fontFamily: "IRANYekan",
+            left: "unset",
+            right: "1.75rem",
+            transformOrigin: "right",
+            fontSize: "1rem",
+          },
+          "& legend": {
+            textAlign: "right",
+            fontSize: "1rem",
+          },
+        }}
+      >
+        <SingleDropdownWithSearch
+          onChange={() => {}}
+          placeholder="شهر"
+        />
+      </Box>
+
+      <Button id="step2" type="submit" sx={{ display: "none !important" }} />
+    </Box>,
     "",
   ];
 
@@ -206,11 +602,11 @@ const NewPosts: React.FC = () => {
   return (
     <ThemeProvider theme={THEME}>
       <Box
-        className="px-[15%] py-[2%]"
+        className="px-[15%] sm:px-[5%] py-[2%]"
         sx={{
           fontFamily: "IRANYekan",
           backgroundColor: "#e0e5eb",
-          height: "90.5vh",
+          minHeight: "90.5vh",
         }}
       >
         <h1 className="text-[20px]">ایجاد آگهی</h1>

@@ -13,6 +13,13 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import UploadIcon from "@mui/icons-material/Upload";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: `IRANYekan`,
+  },
+});
 
 const employerRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -49,6 +56,8 @@ const Information: React.FC = () => {
   };
 
   return (
+    <ThemeProvider theme={theme}>
+
     <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANYekan" }}>
       <h1 className="text-[20px]">پروفایل</h1>
       <Box
@@ -269,7 +278,7 @@ const Information: React.FC = () => {
               <MenuItem value={"بیشتر از 100"}>بیشتر از 100</MenuItem>
             </Select>
             {employerRegiter.formState.errors["count"] ? (
-              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-Roboto">
+              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
                 {employerRegiter.formState.errors["count"].message}
               </p>
             ) : (
@@ -312,7 +321,7 @@ const Information: React.FC = () => {
               <MenuItem value={"مهندسی نرم افزار"}>مهندسی نرم افزار</MenuItem>
             </Select>
             {employerRegiter.formState.errors["activity"] ? (
-              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-Roboto">
+              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
                 {employerRegiter.formState.errors["activity"].message}
               </p>
             ) : (
@@ -497,7 +506,7 @@ const Information: React.FC = () => {
           </Button>
         </Box>
       </Box>
-    </Box>
+    </Box></ThemeProvider>
   );
 };
 

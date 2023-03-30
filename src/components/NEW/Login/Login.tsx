@@ -27,7 +27,11 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
-const theme = createTheme();
+const theme = createTheme({
+  typography: {
+    fontFamily: `IRANYekan`,
+  },
+});
 const userLoginSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
   password: string()
@@ -1219,7 +1223,7 @@ const LoginBox: React.FC = () => {
                     <MenuItem value={"بیشتر از 100"}>بیشتر از 100</MenuItem>
                   </Select>
                   {employerRegiter.formState.errors["count"] ? (
-                    <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-Roboto">
+                    <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
                       {employerRegiter.formState.errors["count"].message}
                     </p>
                   ) : (
@@ -1266,7 +1270,7 @@ const LoginBox: React.FC = () => {
                     </MenuItem>
                   </Select>
                   {employerRegiter.formState.errors["activity"] ? (
-                    <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-Roboto">
+                    <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
                       {employerRegiter.formState.errors["activity"].message}
                     </p>
                   ) : (
