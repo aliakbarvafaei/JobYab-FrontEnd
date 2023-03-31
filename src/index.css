@@ -95,3 +95,6 @@ input[type="number"] {
 .css-1xpgqj5-MuiFormHelperText-root.Mui-error {
   text-align: right;
 }
+.MuiTypography-body1 {
+  font-family: IRANYekan !important;
+}

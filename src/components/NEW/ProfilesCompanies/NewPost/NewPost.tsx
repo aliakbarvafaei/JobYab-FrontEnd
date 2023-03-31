@@ -6,12 +6,9 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { object, string, TypeOf } from "zod";
-import TextField from "@mui/material/TextField";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import SingleDropdownWithSearch from "../../../SingleDropdownWithSearch";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Step3 from "./Step3";
 
 const THEME = createTheme({
   typography: {
@@ -19,546 +16,14 @@ const THEME = createTheme({
   },
 });
 
-const step1Schema = object({
-  title: string().nonempty("عنوان آگهی اجباری است"),
-  type: string().nonempty("نوع همکاری اجباری است"),
-  military: string().nonempty("وضعیت سربازی اجباری است"),
-  degree: string().nonempty("حداقل مدرک تحصیلی اجباری است"),
-  work: string().nonempty("سابقه کاری اجباری است"),
-  gender: string().nonempty("جنسیت اجباری است"),
-  salary: string().nonempty("پایه حقوق اجباری است"),
-});
-const step2Schema = object({
-  title: string().nonempty("عنوان آگهی اجباری است"),
-  type: string().nonempty("نوع همکاری اجباری است"),
-  military: string().nonempty("وضعیت سربازی اجباری است"),
-  degree: string().nonempty("حداقل مدرک تحصیلی اجباری است"),
-  work: string().nonempty("سابقه کاری اجباری است"),
-  gender: string().nonempty("جنسیت اجباری است"),
-  salary: string().nonempty("پایه حقوق اجباری است"),
-});
-const step3Schema = object({
-  title: string().nonempty("عنوان آگهی اجباری است"),
-  type: string().nonempty("نوع همکاری اجباری است"),
-  military: string().nonempty("وضعیت سربازی اجباری است"),
-  degree: string().nonempty("حداقل مدرک تحصیلی اجباری است"),
-  work: string().nonempty("سابقه کاری اجباری است"),
-  gender: string().nonempty("جنسیت اجباری است"),
-  salary: string().nonempty("پایه حقوق اجباری است"),
-});
-type step1Input = TypeOf<typeof step1Schema>;
-type step2Input = TypeOf<typeof step2Schema>;
-type step3Input = TypeOf<typeof step3Schema>;
-
 const NewPosts: React.FC = () => {
-  const step1 = useForm<step1Input>({
-    resolver: zodResolver(step1Schema),
-  });
-  const step2 = useForm<step2Input>({
-    resolver: zodResolver(step2Schema),
-  });
-  const step3 = useForm<step3Input>({
-    resolver: zodResolver(step3Schema),
-  });
-  const onSubmitHandlerStep1: SubmitHandler<step1Input> = (values) => {
-    console.log(values);
-    handleNext();
-  };
-  const onSubmitHandlerStep2: SubmitHandler<step2Input> = (values) => {
-    console.log(values);
-    handleNext();
-  };
-  const onSubmitHandlerStep3: SubmitHandler<step3Input> = (values) => {
-    console.log(values);
-    handleNext();
-  };
-
-  const steps = ["", "", ""];
-
-  const stepsContent = [
-    <Box
-      component="form"
-      onSubmit={step1.handleSubmit(onSubmitHandlerStep1)}
-      noValidate
-      sx={{
-        mt: 0.1,
-        display: "flex",
-        // flexDirection: "column",
-        flexWrap: "wrap",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      <TextField
-        margin="normal"
-        required
-        id="title"
-        label="عنوان آگهی"
-        error={!!step1.formState.errors["title"]}
-        helperText={
-          step1.formState.errors["title"]
-            ? step1.formState.errors["title"].message
-            : ""
-        }
-        {...step1.register("title")}
-        sx={{
-          width: "45%",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      />
-
-      <FormControl
-        required
-        sx={{
-          width: "45%",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          mt: "12px",
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <InputLabel id="demo-simple-select-label">نوع همکاری</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          defaultValue={""}
-          label="نوع همکاری"
-          error={!!step1.formState.errors["type"]}
-          {...step1.register("type")}
-          sx={{ justifyContent: "center", alignItems: "center" }}
-        >
-          <MenuItem value={"تمام وقت"}>تمام وقت</MenuItem>
-          <MenuItem value={"پاره وقت"}>پاره وقت</MenuItem>
-          <MenuItem value={"دور کاری"}>دور کاری</MenuItem>
-        </Select>
-        {step1.formState.errors["type"] ? (
-          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
-            {step1.formState.errors["type"].message}
-          </p>
-        ) : (
-          ""
-        )}
-      </FormControl>
-
-      <FormControl
-        required
-        sx={{
-          width: "45%",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          mt: "12px",
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <InputLabel id="demo-simple-select-label">وضعیت سربازی</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          defaultValue={""}
-          label="وضعیت سربازی"
-          error={!!step1.formState.errors["military"]}
-          {...step1.register("military")}
-          sx={{ justifyContent: "center", alignItems: "center" }}
-        >
-          <MenuItem value={"مهم نیست"}>مهم نیست</MenuItem>
-          <MenuItem value={"دارای کارت پایان خدمت"}>
-            دارای کارت پایان خدمت
-          </MenuItem>
-        </Select>
-        {step1.formState.errors["military"] ? (
-          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
-            {step1.formState.errors["military"].message}
-          </p>
-        ) : (
-          ""
-        )}
-      </FormControl>
-
-      <FormControl
-        required
-        sx={{
-          width: "45%",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          mt: "12px",
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <InputLabel id="demo-simple-select-label">حداقل مدرک تحصیلی</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          defaultValue={""}
-          label="حداقل مدرک تحصیلی"
-          error={!!step1.formState.errors["degree"]}
-          {...step1.register("degree")}
-          sx={{ justifyContent: "center", alignItems: "center" }}
-        >
-          <MenuItem value={"زیر دیپلم"}>زیر دیپلم</MenuItem>
-          <MenuItem value={"دیپلم"}>دیپلم</MenuItem>
-          <MenuItem value={"کاردانی"}>کاردانی</MenuItem>
-          <MenuItem value={"کارشناسی"}>کارشناسی</MenuItem>
-          <MenuItem value={"کارشناسی ارشد"}>کارشناسی ارشد</MenuItem>
-          <MenuItem value={"دکترا"}>دکترا</MenuItem>
-        </Select>
-        {step1.formState.errors["degree"] ? (
-          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
-            {step1.formState.errors["degree"].message}
-          </p>
-        ) : (
-          ""
-        )}
-      </FormControl>
-
-      <FormControl
-        required
-        sx={{
-          width: "45%",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          mt: "12px",
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <InputLabel id="demo-simple-select-label">سابقه کاری</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          defaultValue={""}
-          label="سابقه کاری"
-          error={!!step1.formState.errors["work"]}
-          {...step1.register("work")}
-          sx={{ justifyContent: "center", alignItems: "center" }}
-        >
-          <MenuItem value={"نیاز نیست"}>نیاز نیست</MenuItem>
-          <MenuItem value={"حداقل یک سال"}>حداقل یک سال</MenuItem>
-          <MenuItem value={"حداقل 3 سال"}>حداقل 3 سال</MenuItem>
-          <MenuItem value={"بالای 3 سال"}>بالای 3 سال</MenuItem>
-        </Select>
-        {step1.formState.errors["work"] ? (
-          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
-            {step1.formState.errors["work"].message}
-          </p>
-        ) : (
-          ""
-        )}
-      </FormControl>
-
-      <FormControl
-        required
-        sx={{
-          width: "45%",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          mt: "12px",
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <InputLabel id="demo-simple-select-label">جنسیت</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          defaultValue={""}
-          label="جنسیت"
-          error={!!step1.formState.errors["gender"]}
-          {...step1.register("gender")}
-          sx={{ justifyContent: "center", alignItems: "center" }}
-        >
-          <MenuItem value={"مهم نیست"}>مهم نیست</MenuItem>
-          <MenuItem value={"مرد"}>مرد</MenuItem>
-          <MenuItem value={"زن"}>زن</MenuItem>
-        </Select>
-        {step1.formState.errors["gender"] ? (
-          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
-            {step1.formState.errors["gender"].message}
-          </p>
-        ) : (
-          ""
-        )}
-      </FormControl>
-
-      <FormControl
-        required
-        sx={{
-          width: "45%",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          mt: "12px",
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <InputLabel id="demo-simple-select-label">پایه حقوق</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          defaultValue={""}
-          label="پایه حقوق"
-          error={!!step1.formState.errors["salary"]}
-          {...step1.register("salary")}
-          sx={{ justifyContent: "center", alignItems: "center" }}
-        >
-          <MenuItem value={"توافقی"}>توافقی</MenuItem>
-          <MenuItem value={"حداکثر 5 میلیون تومان"}>
-            حداکثر 5 میلیون تومان
-          </MenuItem>
-          <MenuItem value={"5 تا 7 میلیون تومان"}>5 تا 7 میلیون تومان</MenuItem>
-          <MenuItem value={"7 تا 10 میلیون تومان"}>
-            7 تا 10 میلیون تومان
-          </MenuItem>
-          <MenuItem value={"بالای 10 میلیون تومان"}>
-            بالای 10 میلیون تومان
-          </MenuItem>
-        </Select>
-        {step1.formState.errors["salary"] ? (
-          <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
-            {step1.formState.errors["salary"].message}
-          </p>
-        ) : (
-          ""
-        )}
-      </FormControl>
-
-      {/* <Box
-        sx={{
-          width: "45%",
-          marginTop: "16px",
-          marginBottom: "8px",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <SingleDropdownWithSearch
-          onChange={() => {}}
-          placeholder="دسته بندی مدنظر خود را انتخاب کنید"
-        />
-      </Box> */}
-
-      <Button id="step1" type="submit" sx={{ display: "none" }} />
-    </Box>,
-    <Box
-      component="form"
-      onSubmit={step2.handleSubmit(onSubmitHandlerStep2)}
-      noValidate
-      sx={{
-        mt: 0.1,
-        display: "flex",
-        // flexDirection: "column",
-        flexWrap: "wrap",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      <Box
-        sx={{
-          width: "45%",
-          marginTop: "16px",
-          marginBottom: "8px",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <SingleDropdownWithSearch
-          onChange={() => {}}
-          placeholder="دسته بندی شغلی"
-        />
-      </Box>
-      
-      <Box
-        sx={{
-          width: "45%",
-          marginTop: "16px",
-          marginBottom: "8px",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <SingleDropdownWithSearch options={[{label:"sallam",value:1},{label:"bye",value:1}]}
-          onChange={(e) => {console.log(e?.label);
-          }}
-          placeholder="تکنولوژی و برچسب"
-        />
-      </Box>
-      
-      <Box
-        sx={{
-          width: "45%",
-          marginTop: "16px",
-          marginBottom: "8px",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <SingleDropdownWithSearch
-          onChange={() => {}}
-          placeholder="استان"
-        />
-      </Box>
-      
-      <Box
-        sx={{
-          width: "45%",
-          marginTop: "16px",
-          marginBottom: "8px",
-          marginRight:"auto",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
-          },
-        }}
-      >
-        <SingleDropdownWithSearch
-          onChange={() => {}}
-          placeholder="شهر"
-        />
-      </Box>
-
-      <Button id="step2" type="submit" sx={{ display: "none !important" }} />
-    </Box>,
-    "",
-  ];
+  const steps = [{ label: "1" }, { label: "2" }, { label: "3" }];
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
 
   const isStepOptional = (step: number) => {
-    return step === 1;
+    return false;
   };
 
   const isStepSkipped = (step: number) => {
@@ -595,9 +60,9 @@ const NewPosts: React.FC = () => {
     });
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
 
   return (
     <ThemeProvider theme={THEME}>
@@ -641,7 +106,7 @@ const NewPosts: React.FC = () => {
               }
               return (
                 <Step
-                  key={label}
+                  key={index}
                   {...stepProps}
                   sx={{
                     "& svg": {
@@ -650,7 +115,7 @@ const NewPosts: React.FC = () => {
                     },
                   }}
                 >
-                  <StepLabel {...labelProps}>{label}</StepLabel>
+                  <StepLabel {...labelProps}>{}</StepLabel>
                 </Step>
               );
             })}
@@ -662,14 +127,20 @@ const NewPosts: React.FC = () => {
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <Button onClick={handleReset}>دوباره</Button>
+                <Button href="/profile-company">بازگشت به پروفایل</Button>
               </Box>
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <Typography sx={{ mt: 2, mb: 1 }}>
-                {stepsContent[activeStep]}
-              </Typography>
+              <div style={{ display: activeStep === 0 ? "block" : "none" }}>
+                <Step1 handleNext={handleNext} />
+              </div>
+              <div style={{ display: activeStep === 1 ? "block" : "none" }}>
+                <Step2 handleNext={handleNext} />
+              </div>
+              <div style={{ display: activeStep === 2 ? "block" : "none" }}>
+                <Step3 handleNext={handleNext} />
+              </div>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Button
                   color="inherit"
