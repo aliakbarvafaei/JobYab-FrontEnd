@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { object, string, TypeOf } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SingleDropdownWithSearch from "../../../SingleDropdownWithSearch";
+import { Typography } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 const step2Schema = object({
   province: string().nonempty("استان اجباری است"),
@@ -16,13 +18,35 @@ const step2Schema = object({
 type step2Input = TypeOf<typeof step2Schema>;
 
 const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
+  const [jobCategory, setJobCategory] = useState<Array<String>>([]);
+  const [technology, setTechnology] = useState<Array<String>>([]);
+
   const step2 = useForm<step2Input>({
     resolver: zodResolver(step2Schema),
   });
   const onSubmitHandlerStep2: SubmitHandler<step2Input> = (values) => {
-    console.log(values);
+    console.log({
+      ...values,
+      technology: technology,
+      jobCategory: jobCategory,
+    });
     handleNext();
   };
+
+  useEffect(() => {
+    if (jobCategory.length === 0) step2.setValue("jobCategory", "");
+    else
+      step2.setValue(
+        "jobCategory",
+        jobCategory[jobCategory.length - 1] as string
+      );
+  }, [jobCategory]);
+
+  useEffect(() => {
+    if (technology.length === 0) step2.setValue("technology", "");
+    else
+      step2.setValue("technology", technology[technology.length - 1] as string);
+  }, [technology]);
 
   return (
     <Box
@@ -33,7 +57,6 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
         mt: 0.1,
         display: "flex",
         minHeight: "285px",
-        // flexDirection: "column",
         flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "space-between",
@@ -63,19 +86,57 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
             { label: "برنامه نویس", value: "برنامه نویس" },
           ]}
           defaultValue={
-            step2.getValues("jobCategory") === undefined
-              ? undefined
+            jobCategory.length === 0
+              ? {
+                  value: "",
+                  label: "",
+                }
               : {
-                  label: step2.getValues("jobCategory") as string,
-                  value: step2.getValues("jobCategory") as string,
+                  value: jobCategory[jobCategory.length - 1] as string,
+                  label: jobCategory[jobCategory.length - 1] as string,
                 }
           }
           onChange={(e) => {
+            setJobCategory((old) => {
+              if (old.indexOf(e?.label as String) < 0)
+                return [...old, e?.label as String];
+              else return old;
+            });
+
             step2.setValue("jobCategory", e?.label as string);
             step2.clearErrors("jobCategory");
           }}
           placeholder="دسته بندی شغلی"
         />
+        <Typography component={"div"} sx={{ paddingTop: "10px" }}>
+          {jobCategory.map((item) => {
+            return (
+              <Typography
+                component={"span"}
+                sx={{
+                  backgroundColor: "#555555",
+                  color: "white",
+                  borderRadius: "4px",
+                  fontSize: "10px",
+                  padding: "1%",
+                  margin: "2px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                }}
+              >
+                {item}
+                <CloseIcon
+                  sx={{ cursor: "pointer" }}
+                  onClick={() =>
+                    setJobCategory((old) =>
+                      old.filter((element) => element !== item)
+                    )
+                  }
+                />
+              </Typography>
+            );
+          })}
+        </Typography>
       </Box>
 
       <Box
@@ -85,17 +146,6 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           marginBottom: "8px",
           "@media (max-width: 576px)": {
             width: "100%",
-          },
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
           },
         }}
       >
@@ -111,19 +161,57 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
             { label: "Python", value: "Python" },
           ]}
           defaultValue={
-            step2.getValues("technology") === undefined
-              ? undefined
+            technology.length === 0
+              ? {
+                  value: "",
+                  label: "",
+                }
               : {
-                  label: step2.getValues("technology") as string,
-                  value: step2.getValues("technology") as string,
+                  value: technology[technology.length - 1] as string,
+                  label: technology[technology.length - 1] as string,
                 }
           }
           onChange={(e) => {
+            setTechnology((old) => {
+              if (old.indexOf(e?.label as String) < 0)
+                return [...old, e?.label as String];
+              else return old;
+            });
+
             step2.setValue("technology", e?.label as string);
             step2.clearErrors("technology");
           }}
           placeholder="تکنولوژی و برچسب"
         />
+        <Typography component={"div"} sx={{ paddingTop: "10px" }}>
+          {technology.map((item) => {
+            return (
+              <Typography
+                component={"span"}
+                sx={{
+                  backgroundColor: "#555555",
+                  color: "white",
+                  borderRadius: "4px",
+                  fontSize: "10px",
+                  padding: "1%",
+                  margin: "2px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                }}
+              >
+                {item}
+                <CloseIcon
+                  sx={{ cursor: "pointer" }}
+                  onClick={() =>
+                    setTechnology((old) =>
+                      old.filter((element) => element !== item)
+                    )
+                  }
+                />
+              </Typography>
+            );
+          })}
+        </Typography>
       </Box>
 
       <Box
@@ -133,17 +221,6 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           marginBottom: "8px",
           "@media (max-width: 576px)": {
             width: "100%",
-          },
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
           },
         }}
       >
@@ -182,17 +259,6 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           marginRight: "auto",
           "@media (max-width: 576px)": {
             width: "100%",
-          },
-          "& label": {
-            fontFamily: "IRANYekan",
-            left: "unset",
-            right: "1.75rem",
-            transformOrigin: "right",
-            fontSize: "1rem",
-          },
-          "& legend": {
-            textAlign: "right",
-            fontSize: "1rem",
           },
         }}
       >

@@ -109,6 +109,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           <MenuItem value={"تمام وقت"}>تمام وقت</MenuItem>
           <MenuItem value={"پاره وقت"}>پاره وقت</MenuItem>
           <MenuItem value={"دور کاری"}>دور کاری</MenuItem>
+          <MenuItem value={"پروژه‌ای"}>پروژه‌ای</MenuItem>
         </Select>
         {step1.formState.errors["type"] ? (
           <Typography
@@ -215,6 +216,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           {...step1.register("degree")}
           sx={{ justifyContent: "center", alignItems: "center" }}
         >
+          <MenuItem value={"مهم نیست"}>مهم نیست</MenuItem>
           <MenuItem value={"زیر دیپلم"}>زیر دیپلم</MenuItem>
           <MenuItem value={"دیپلم"}>دیپلم</MenuItem>
           <MenuItem value={"کاردانی"}>کاردانی</MenuItem>

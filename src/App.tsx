@@ -17,44 +17,44 @@ const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
-        fontFamily: "IRANSans",
+        fontFamily: "IRANYekan",
       },
     },
     MuiTypography: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANSans",
+          fontFamily: "IRANYekan",
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANSans",
+          fontFamily: "IRANYekan",
         },
         outlinedSizeSmall: {
-          fontFamily: "IRANSans",
+          fontFamily: "IRANYekan",
         },
       },
     },
     MuiInputBase: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANSans",
+          fontFamily: "IRANYekan",
         },
       },
     },
     MuiInput: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANSans",
+          fontFamily: "IRANYekan",
         },
       },
     },
     MuiPagination: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANSans",
+          fontFamily: "IRANYekan",
         },
       },
     },
