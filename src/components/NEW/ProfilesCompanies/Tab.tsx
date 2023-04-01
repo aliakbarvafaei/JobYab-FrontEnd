@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import MyAds from "./MyAds/MyAds";
+import MyPosts from "./MyPosts/MyPosts";
 import Resume from "./Resume/Resume";
 import Menu from "@mui/material/Menu";
 import Tooltip from "@mui/material/Tooltip";
@@ -138,7 +138,7 @@ export default function BasicTabs() {
           minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.4vh" },
         }}
       >
-        <MyAds />
+        <MyPosts />
       </TabPanel>
       <TabPanel
         value={value}

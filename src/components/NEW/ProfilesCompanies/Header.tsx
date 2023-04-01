@@ -124,7 +124,7 @@ const Header = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Button
-              href="/profile-company/new-ad"
+              href="/profile-company/new-post"
               variant="contained"
               sx={{
                 backgroundColor: "white",

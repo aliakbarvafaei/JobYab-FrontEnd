@@ -10,7 +10,6 @@ import Profile from "../pages/Profile";
 import RegisterPage from "../pages/Register";
 import SearchPage from "../pages/SearchPage";
 import Bookmark from "../pages/Bookmark";
-import NewAd from "../pages/NewAd";
 import AdDetails from "../pages/AdDetails";
 import ActiveAccount from "../pages/ActiveAccount";
 import ResetPass from "../pages/ResetPass";
@@ -31,14 +30,6 @@ const AppRoutes:Array<any> = [
     private: false,
   },
   {
-    path: "/new-ad",
-    name: "آگهی جدید",
-    icon: "fa fa-list",
-    component: NewAd,
-    showInNav: false,
-    private: true,
-  },
-  {
     path: "/ad-details/:idad/:source",
     name: "همه محصولات",
     icon: "fa fa-list",
@@ -47,7 +38,7 @@ const AppRoutes:Array<any> = [
     private: false,
   },
   {
-    path: "/ad-edit/:idad/:source",
+    path: "/post-edit/:postId",
     name: "همه محصولات",
     icon: "fa fa-list",
     component: EditAd,
@@ -63,7 +54,7 @@ const AppRoutes:Array<any> = [
     private: false,
   },
   {
-    path: "/profile-company/new-ad",
+    path: "/profile-company/new-post",
     name: "جستجو",
     icon: "fa fa-list",
     component: NewPost,

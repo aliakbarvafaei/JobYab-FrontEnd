@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Typography,
   Stack,
@@ -10,10 +10,14 @@ import {
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
-import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
-import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 
-const CardItem: React.FC<{ index: Number }> = ({ index }) => {
+const CardItem: React.FC = () => {
+  const [labels, setLabels] = useState<Array<string>>([
+    "React",
+    "Node",
+    "Python",
+  ]);
+
   return (
     <Card
       sx={{
@@ -90,38 +94,40 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               قرارداد تمام‌ وقت (حقوق توافقی)
             </Typography>
           </Stack>
-          <Box
-            sx={{
-              marginRight: "auto",
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              alignItems: "center",
-              color: "#00000099",
-              fontSize: { xs: "8px", sm: "12px" },
-              textAlign: "center",
-              cursor: "pointer",
-            }}
-          >
-            <DownloadOutlinedIcon
-              sx={{ fontSize: { xs: "25px", sm: "35px" } }}
-            />
-            رزومه
-          </Box>
         </Box>
         <Divider />
         <Stack
           direction="row"
           alignItems="center"
-          justifyContent="space-between"
+          justifyContent="flex-start"
+          gap={"20px"}
           sx={{
-            px: { xs: "2px", sm: 4, md: 8 },
+            px: { xs: "2px", sm: 4, md: 10 },
             py: 1,
             height: "30%",
             bgcolor: "background.default",
           }}
         >
-          <Typography
+          {labels.map((item,index) => {
+            return (
+              <Typography
+                component={"span"}
+                sx={{
+                  backgroundColor: "#555555",
+                  color: "white",
+                  borderRadius: "4px",
+                  fontSize: "10px",
+                  padding: "1%",
+                  margin: "2px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                }}
+              >
+                {item}
+              </Typography>
+            );
+          })}
+          {/* <Typography
             variant="body2"
             color="text.secondary"
             sx={{
@@ -157,81 +163,42 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               sx={{ color: "grey[500]", fontSize: "16px" }}
             />{" "}
             23 ساله
-          </Typography>
+          </Typography> */}
         </Stack>
       </Box>
-      {index === 0 ? (
+
+      <Box
+        className="smmin:w-[12%] sm:w-[15%]"
+        sx={{ display: "flex", flexDirection: "column", height: "100%" }}
+      >
         <Button
-          className="smmin:w-[12%] sm:w-[15%]"
-          sx={{
-            backgroundColor: "#1976D2",
-            color: "white",
-            fontSize: { xs: "10px", sm: "14px" },
-            fontFamily: "IRANYekan",
-            borderTopRightRadius: "0px",
-            borderBottomRightRadius: "0px",
-            minWidth: "0px",
-            "&:hover": {
-              opacity: 0.5,
-              backgroundColor: "black",
-            },
-          }}
-        >
-          در حال بررسی
-        </Button>
-      ) : index === 1 ? (
-        <Box
-          className="smmin:w-[12%] sm:w-[15%]"
-          sx={{ display: "flex", flexDirection: "column", height: "100%" }}
-        >
-          <Button
-            sx={{
-              backgroundColor: "green",
-              color: "white",
-              height: "50%",
-              fontSize: { xs: "10px", sm: "14px" },
-              fontFamily: "IRANYekan",
-              borderTopRightRadius: "0px",
-              borderBottomRightRadius: "0px",
-              borderBottomLeftRadius: "0px",
-              minWidth: "0px",
-              "&:hover": {
-                opacity: 0.5,
-                backgroundColor: "black",
-              },
-            }}
-          >
-            پذیرش
-          </Button>
-          <Button
-            sx={{
-              backgroundColor: "red",
-              color: "white",
-              height: "50%",
-              fontSize: { xs: "10px", sm: "14px" },
-              fontFamily: "IRANYekan",
-              borderTopRightRadius: "0px",
-              borderTopLeftRadius: "0px",
-              borderBottomRightRadius: "0px",
-              minWidth: "0px",
-              "&:hover": {
-                opacity: 0.5,
-                backgroundColor: "black",
-              },
-            }}
-          >
-            رد
-          </Button>
-        </Box>
-      ) : (
-        <Button
-          className="smmin:w-[12%] sm:w-[15%]"
           sx={{
             backgroundColor: "green",
             color: "white",
+            height: "50%",
             fontSize: { xs: "10px", sm: "14px" },
             fontFamily: "IRANYekan",
             borderTopRightRadius: "0px",
+            borderBottomRightRadius: "0px",
+            borderBottomLeftRadius: "0px",
+            minWidth: "0px",
+            "&:hover": {
+              opacity: 0.5,
+              backgroundColor: "black",
+            },
+          }}
+        >
+          ویرایش
+        </Button>
+        <Button
+          sx={{
+            backgroundColor: "red",
+            color: "white",
+            height: "50%",
+            fontSize: { xs: "10px", sm: "14px" },
+            fontFamily: "IRANYekan",
+            borderTopRightRadius: "0px",
+            borderTopLeftRadius: "0px",
             borderBottomRightRadius: "0px",
             minWidth: "0px",
             "&:hover": {
@@ -240,9 +207,9 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             },
           }}
         >
-          پذیرفته شد
+          حذف
         </Button>
-      )}
+      </Box>
     </Card>
   );
 };

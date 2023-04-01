@@ -1,8 +1,9 @@
 import { Box } from "@mui/material";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import CardItem from "./Card";
 
-const MyAds: React.FC = () => {
+const MyPosts: React.FC = () => {
   return (
     <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANYekan" }}>
       <h1 className="text-[20px]">آگهی‌های من</h1>
@@ -19,11 +20,21 @@ const MyAds: React.FC = () => {
           alignItems: "center",
         }}
       >
-        <SearchIcon sx={{ fontSize: "4rem", color: "gray" }} />
-        لیست آگهی‌های شما خالی است
+        {true ? (
+          <>
+            <CardItem />
+            <CardItem />
+            <CardItem />
+          </>
+        ) : (
+          <>
+            <SearchIcon sx={{ fontSize: "4rem", color: "gray" }} />
+            لیست آگهی‌های این بخش خالی است
+          </>
+        )}
       </Box>
     </Box>
   );
 };
 
-export default MyAds;
+export default MyPosts;
