@@ -72,8 +72,8 @@ export default function BasicTabs() {
           borderColor: "divider",
           backgroundColor: "white",
           paddingX: { sm: "80px", xs: "10px" },
-          boxShadow:"0 4px 8px 0 rgba(0,0,0,.12), 0 2px 4px 0 rgba(0,0,0,.08)",
-          position:"relative"
+          boxShadow: "0 4px 8px 0 rgba(0,0,0,.12), 0 2px 4px 0 rgba(0,0,0,.08)",
+          position: "relative",
         }}
       >
         <Tabs
@@ -135,7 +135,7 @@ export default function BasicTabs() {
         index={0}
         sx={{
           backgroundColor: "#e0e5eb",
-          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.6vh" },
+          minHeight: "83.7vh",
         }}
       >
         <MyPosts />
@@ -145,7 +145,7 @@ export default function BasicTabs() {
         index={1}
         sx={{
           backgroundColor: "#e0e5eb",
-          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.6vh" },
+          minHeight: "83.7vh",
         }}
       >
         <Resume />
@@ -155,7 +155,7 @@ export default function BasicTabs() {
         index={2}
         sx={{
           backgroundColor: "#e0e5eb",
-          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.6vh" },
+          minHeight: "83.7vh",
         }}
       >
         <Information />

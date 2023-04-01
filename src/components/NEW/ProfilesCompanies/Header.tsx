@@ -42,7 +42,11 @@ const Header = () => {
     <AppBar
       position="static"
       sx={{
-        paddingX: { sm: "80px", fontFamily: "IRANYekan" },
+        fontFamily: "IRANYekan",
+        paddingX: { sm: "80px", xs: "20px" },
+        minHeight: "70px",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
       <Container maxWidth="xl" sx={{ padding: "0px !important" }}>
@@ -76,6 +80,7 @@ const Header = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              sx={{ padding: "0px !important" }}
             >
               <MenuIcon />
             </IconButton>
@@ -112,6 +117,7 @@ const Header = () => {
             sx={{
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
+              fontSize: { xs: "16px", sm: "20px" },
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
