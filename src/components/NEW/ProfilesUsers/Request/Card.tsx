@@ -177,6 +177,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             borderTopRightRadius: "0px",
             borderBottomRightRadius: "0px",
             minWidth: "0px",
+            cursor: "default",
             "&:hover": {
               opacity: 0.5,
               backgroundColor: "black",
@@ -196,6 +197,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             borderTopRightRadius: "0px",
             borderBottomRightRadius: "0px",
             minWidth: "0px",
+            cursor: "default",
             "&:hover": {
               opacity: 0.5,
               backgroundColor: "black",
@@ -215,6 +217,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             borderTopRightRadius: "0px",
             borderBottomRightRadius: "0px",
             minWidth: "0px",
+            cursor: "default",
             "&:hover": {
               opacity: 0.5,
               backgroundColor: "black",

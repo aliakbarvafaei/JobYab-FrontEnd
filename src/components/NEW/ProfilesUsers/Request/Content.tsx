@@ -10,9 +10,8 @@ const Content: React.FC<{ index: Number }> = ({ index }) => {
         sx={{
           backgroundColor: "#d8dbe2",
           paddingX: "0px",
-          paddingY: "10px",
+          paddingY: "20px",
           marginTop: "10px",
-          minHeight: "58vh",
           fontSize: "1rem",
           display: "flex",
           flexDirection: "column",
