@@ -48,7 +48,8 @@ const HeaderSection = () => {
       sx={{
         minHeight: "90px",
         justifyContent: "center",
-        paddingX: { sm: "80px", fontFamily: "IRANYekan" },
+        paddingX: { sm: "80px", xs: "20px" },
+        fontFamily: "IRANYekan",
       }}
     >
       <Container maxWidth="xl" sx={{ padding: "0px !important" }}>
@@ -82,6 +83,7 @@ const HeaderSection = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              sx={{ padding: "0px !important" }}
             >
               <MenuIcon />
             </IconButton>
