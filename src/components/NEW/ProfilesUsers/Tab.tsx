@@ -7,6 +7,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Request from "./Request/Request";
 import Information from "./Information/Information";
+import Messages from "../Messages/Messages";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -145,7 +146,9 @@ export default function BasicTabs() {
           backgroundColor: "#e0e5eb",
           minHeight: "80.9vh",
         }}
-      ></TabPanel>
+      >
+        <Messages />
+      </TabPanel>
     </Box>
   );
 }
