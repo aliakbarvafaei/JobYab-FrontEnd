@@ -11,6 +11,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Information from "./Information/Information";
+import Messages from "../Messages/Messages";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -96,6 +97,11 @@ export default function BasicTabs() {
             {...a11yProps(2)}
             sx={{ borderBottom: value === 2 ? 5 : 0, fontFamily: "IRANYekan" }}
           />
+          <Tab
+            label="پیام‌ها"
+            {...a11yProps(3)}
+            sx={{ borderBottom: value === 3 ? 5 : 0, fontFamily: "IRANYekan" }}
+          />
           <div className="mr-auto flex items-center">
             <Tooltip title="سطح کاربر">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -159,6 +165,16 @@ export default function BasicTabs() {
         }}
       >
         <Information />
+      </TabPanel>
+      <TabPanel
+        value={value}
+        index={3}
+        sx={{
+          backgroundColor: "#e0e5eb",
+          minHeight: "83.7vh",
+        }}
+      >
+        <Messages />
       </TabPanel>
     </Box>
   );
