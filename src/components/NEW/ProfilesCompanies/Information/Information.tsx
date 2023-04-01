@@ -13,15 +13,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import UploadIcon from "@mui/icons-material/Upload";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const theme = createTheme({
-  typography: {
-    fontFamily: `IRANYekan`,
-  },
-});
-
-const employerRegisterSchema = object({
+const companyRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
   phone: string()
     .nonempty("شماره تماس شرکت اجباری است")
@@ -35,7 +28,7 @@ const employerRegisterSchema = object({
   count: string().nonempty("تعداد پرسنل اجباری است"),
 });
 
-type employerRegisterInput = TypeOf<typeof employerRegisterSchema>;
+type companyRegisterInput = TypeOf<typeof companyRegisterSchema>;
 
 const Information: React.FC = () => {
   const logoId = useId();
@@ -44,20 +37,18 @@ const Information: React.FC = () => {
   const [logoValue, setLogoValue] = useState<FileList | null>(null);
   const [resumeValue, setResumeValue] = useState<FileList | null>(null);
 
-  const employerRegiter = useForm<employerRegisterInput>({
-    resolver: zodResolver(employerRegisterSchema),
+  const companyRegiter = useForm<companyRegisterInput>({
+    resolver: zodResolver(companyRegisterSchema),
   });
 
-  const onSubmitHandlerEmployerRegister: SubmitHandler<
-    employerRegisterInput
-  > = (values) => {
+  const onSubmitHandlerCompanyRegister: SubmitHandler<companyRegisterInput> = (
+    values
+  ) => {
     console.log(values);
-    employerRegiter.reset();
+    companyRegiter.reset();
   };
 
   return (
-    <ThemeProvider theme={theme}>
-
     <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANYekan" }}>
       <h1 className="text-[20px]">پروفایل</h1>
       <Box
@@ -72,9 +63,7 @@ const Information: React.FC = () => {
       >
         <Box
           component="form"
-          onSubmit={employerRegiter.handleSubmit(
-            onSubmitHandlerEmployerRegister
-          )}
+          onSubmit={companyRegiter.handleSubmit(onSubmitHandlerCompanyRegister)}
           noValidate
           sx={{
             mt: 0.1,
@@ -89,13 +78,13 @@ const Information: React.FC = () => {
             defaultValue={"جابینجا"}
             id="namePersian"
             label="نام شرکت (فارسی)"
-            error={!!employerRegiter.formState.errors["namePersian"]}
+            error={!!companyRegiter.formState.errors["namePersian"]}
             helperText={
-              employerRegiter.formState.errors["namePersian"]
-                ? employerRegiter.formState.errors["namePersian"].message
+              companyRegiter.formState.errors["namePersian"]
+                ? companyRegiter.formState.errors["namePersian"].message
                 : ""
             }
-            {...employerRegiter.register("namePersian")}
+            {...companyRegiter.register("namePersian")}
             sx={{
               width: "45%",
               "@media (max-width: 576px)": {
@@ -120,13 +109,13 @@ const Information: React.FC = () => {
             defaultValue={"jobinja"}
             id="nameEnglish"
             label="نام شرکت (انگلیسی)"
-            error={!!employerRegiter.formState.errors["nameEnglish"]}
+            error={!!companyRegiter.formState.errors["nameEnglish"]}
             helperText={
-              employerRegiter.formState.errors["nameEnglish"]
-                ? employerRegiter.formState.errors["nameEnglish"].message
+              companyRegiter.formState.errors["nameEnglish"]
+                ? companyRegiter.formState.errors["nameEnglish"].message
                 : ""
             }
-            {...employerRegiter.register("nameEnglish")}
+            {...companyRegiter.register("nameEnglish")}
             sx={{
               width: "45%",
               "@media (max-width: 576px)": {
@@ -153,13 +142,13 @@ const Information: React.FC = () => {
             type={"number"}
             id="phone"
             label="شماره تماس شرکت"
-            error={!!employerRegiter.formState.errors["phone"]}
+            error={!!companyRegiter.formState.errors["phone"]}
             helperText={
-              employerRegiter.formState.errors["phone"]
-                ? employerRegiter.formState.errors["phone"].message
+              companyRegiter.formState.errors["phone"]
+                ? companyRegiter.formState.errors["phone"].message
                 : ""
             }
-            {...employerRegiter.register("phone")}
+            {...companyRegiter.register("phone")}
             style={{}}
             sx={{
               width: "45%",
@@ -185,13 +174,13 @@ const Information: React.FC = () => {
             defaultValue={"ali@gmail.com"}
             id="email"
             label="ایمیل"
-            error={!!employerRegiter.formState.errors["email"]}
+            error={!!companyRegiter.formState.errors["email"]}
             helperText={
-              employerRegiter.formState.errors["email"]
-                ? employerRegiter.formState.errors["email"].message
+              companyRegiter.formState.errors["email"]
+                ? companyRegiter.formState.errors["email"].message
                 : ""
             }
-            {...employerRegiter.register("email")}
+            {...companyRegiter.register("email")}
             sx={{
               width: "45%",
               "@media (max-width: 576px)": {
@@ -216,13 +205,13 @@ const Information: React.FC = () => {
             defaultValue={"www.jobinja.ir"}
             id="website"
             label="آدرس وبسایت (اختیاری)"
-            error={!!employerRegiter.formState.errors["websit"]}
+            error={!!companyRegiter.formState.errors["websit"]}
             helperText={
-              employerRegiter.formState.errors["websit"]
-                ? employerRegiter.formState.errors["websit"].message
+              companyRegiter.formState.errors["websit"]
+                ? companyRegiter.formState.errors["websit"].message
                 : ""
             }
-            {...employerRegiter.register("websit")}
+            {...companyRegiter.register("websit")}
             sx={{
               width: "45%",
               "@media (max-width: 576px)": {
@@ -269,17 +258,17 @@ const Information: React.FC = () => {
               id="demo-simple-select"
               defaultValue={"کمتر از 10"}
               label="تعداد پرسنل"
-              error={!!employerRegiter.formState.errors["count"]}
-              {...employerRegiter.register("count")}
+              error={!!companyRegiter.formState.errors["count"]}
+              {...companyRegiter.register("count")}
               sx={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"کمتر از 10"}>کمتر از 10</MenuItem>
               <MenuItem value={"کمتر از 100"}>کمتر از 100</MenuItem>
               <MenuItem value={"بیشتر از 100"}>بیشتر از 100</MenuItem>
             </Select>
-            {employerRegiter.formState.errors["count"] ? (
+            {companyRegiter.formState.errors["count"] ? (
               <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
-                {employerRegiter.formState.errors["count"].message}
+                {companyRegiter.formState.errors["count"].message}
               </p>
             ) : (
               ""
@@ -312,17 +301,17 @@ const Information: React.FC = () => {
               id="demo-simple-select"
               defaultValue={"فناوری اطلاعات"}
               label="حوزه فعالیت"
-              error={!!employerRegiter.formState.errors["activity"]}
-              {...employerRegiter.register("activity")}
+              error={!!companyRegiter.formState.errors["activity"]}
+              {...companyRegiter.register("activity")}
               sx={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"فناوری اطلاعات"}>فناوری اطلاعات</MenuItem>
               <MenuItem value={"برنامه نویسی"}>برنامه نویسی</MenuItem>
               <MenuItem value={"مهندسی نرم افزار"}>مهندسی نرم افزار</MenuItem>
             </Select>
-            {employerRegiter.formState.errors["activity"] ? (
+            {companyRegiter.formState.errors["activity"] ? (
               <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
-                {employerRegiter.formState.errors["activity"].message}
+                {companyRegiter.formState.errors["activity"].message}
               </p>
             ) : (
               ""
@@ -393,13 +382,13 @@ const Information: React.FC = () => {
             defaultValue={"سلام من شرکت هستم."}
             id="bio"
             label="معرفی شرکت"
-            error={!!employerRegiter.formState.errors["bio"]}
+            error={!!companyRegiter.formState.errors["bio"]}
             helperText={
-              employerRegiter.formState.errors["bio"]
-                ? employerRegiter.formState.errors["bio"].message
+              companyRegiter.formState.errors["bio"]
+                ? companyRegiter.formState.errors["bio"].message
                 : ""
             }
-            {...employerRegiter.register("bio")}
+            {...companyRegiter.register("bio")}
             sx={{
               "& label": {
                 left: "unset",
@@ -506,7 +495,7 @@ const Information: React.FC = () => {
           </Button>
         </Box>
       </Box>
-    </Box></ThemeProvider>
+    </Box>
   );
 };
 
