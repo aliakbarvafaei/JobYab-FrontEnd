@@ -106,7 +106,7 @@ const AppRoutes:Array<any> = [
     icon: "fa fa-list",
     component: ProfileUser,
     showInNav: false,
-    private: true,
+    private: false,
   },
 
   {

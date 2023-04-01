@@ -1,12 +1,12 @@
 import React from 'react';
 import HeaderSection from '../components/NEW/HeaderSection/HeaderSection';
-import Tabs from '../components/NEW/ProfilesUsers/Tabs';
+import BasicTabs from '../components/NEW/ProfilesUsers/Tab';
 
 const ProfileUser:React.FC = () => {
     return (
         <div>
             <HeaderSection />
-            <Tabs />
+            <BasicTabs />
         </div>
     );
 }
