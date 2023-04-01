@@ -317,63 +317,6 @@ const Information: React.FC = () => {
             )}
           </FormControl>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginTop: "12px",
-              marginBottom: "8px",
-              width: "45%",
-              "@media (max-width: 576px)": {
-                width: "100%",
-              },
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "IRANYekan",
-                width: "30%",
-                color: "#00000099",
-              }}
-              className="sm:text-[12px]"
-            >
-              فایل رزومه:{" "}
-            </div>
-
-            <Button
-              variant="outlined"
-              component="label"
-              sx={{
-                fontSize: { xs: "10px", sm: "14px" },
-                width: "65%",
-                fontFamily: "IRANYekan",
-              }}
-            >
-              <input
-                onChange={() => {
-                  setResumeValue(
-                    (document.getElementById(resumeId) as HTMLInputElement)
-                      .files
-                  );
-                }}
-                id={resumeId}
-                accept="application/pdf"
-                type="file"
-                hidden
-              />
-              {resumeValue != null ? (
-                resumeValue[0].name
-              ) : (
-                <>
-                  <UploadIcon />
-                  بارگذاری فایل
-                </>
-              )}
-            </Button>
-          </Box>
-
           <TextField
             margin="normal"
             fullWidth
