@@ -48,9 +48,23 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               sx={{
                 fontFamily: "IRANYekan",
                 fontSize: { xs: "12px", sm: "14px", md: "16px" },
+                display: "flex",
+                alignItems: "center",
               }}
             >
-              توسعه دهنده ارشد Front End
+              <Typography component={"div"} sx={{ display: "inline" }}>
+                توسعه دهنده ارشد Front End
+              </Typography>
+              <Typography
+                component={"span"}
+                sx={{
+                  color: "#00000099",
+                  fontSize: "10px",
+                  marginRight: "5px",
+                }}
+              >
+                28 روز پیش
+              </Typography>
             </Typography>
             <Typography
               variant="body2"
