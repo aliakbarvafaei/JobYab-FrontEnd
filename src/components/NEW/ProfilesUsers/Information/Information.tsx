@@ -41,7 +41,6 @@ const Information: React.FC = () => {
       <Box
         sx={{
           marginTop: "10px",
-          minHeight: "70vh",
           fontSize: "1rem",
           backgroundColor: "white",
           padding: "15px",
