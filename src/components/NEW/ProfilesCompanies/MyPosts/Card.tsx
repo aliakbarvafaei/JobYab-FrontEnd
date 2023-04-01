@@ -50,19 +50,24 @@ const CardItem: React.FC = () => {
               color="#1976D2"
               sx={{
                 fontFamily: "IRANYekan",
-                fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 display: "flex",
                 alignItems: "center",
               }}
             >
-              <Typography component={"div"} sx={{ display: "inline" }}>
+              <Typography
+                component={"div"}
+                sx={{
+                  display: "inline",
+                  fontSize: { xs: "12px", sm: "14px", md: "16px" },
+                }}
+              >
                 توسعه دهنده ارشد Front End
               </Typography>
               <Typography
                 component={"span"}
                 sx={{
                   color: "#00000099",
-                  fontSize: "10px",
+                  fontSize: { xs: "8px", sm: "9px", md: "10px" },
                   marginRight: "5px",
                 }}
               >
@@ -108,7 +113,7 @@ const CardItem: React.FC = () => {
             bgcolor: "background.default",
           }}
         >
-          {labels.map((item,index) => {
+          {labels.map((item, index) => {
             return (
               <Typography
                 component={"span"}

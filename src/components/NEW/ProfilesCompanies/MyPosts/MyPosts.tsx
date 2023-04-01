@@ -11,7 +11,7 @@ const MyPosts: React.FC = () => {
         sx={{
           backgroundColor: "#d8dbe2",
           marginTop: "10px",
-          minHeight: "70vh",
+          paddingY:"20px",
           fontSize: "1rem",
           display: "flex",
           flexDirection: "column",

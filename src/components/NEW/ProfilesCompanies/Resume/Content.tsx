@@ -12,7 +12,6 @@ const Content: React.FC<{ index: Number }> = ({ index }) => {
           paddingX: "0px",
           paddingY: "10px",
           marginTop: "10px",
-          minHeight: "58vh",
           fontSize: "1rem",
           display: "flex",
           flexDirection: "column",

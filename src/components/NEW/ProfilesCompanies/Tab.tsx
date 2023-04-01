@@ -135,7 +135,7 @@ export default function BasicTabs() {
         index={0}
         sx={{
           backgroundColor: "#e0e5eb",
-          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.4vh" },
+          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.6vh" },
         }}
       >
         <MyPosts />
@@ -145,7 +145,7 @@ export default function BasicTabs() {
         index={1}
         sx={{
           backgroundColor: "#e0e5eb",
-          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.4vh" },
+          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.6vh" },
         }}
       >
         <Resume />
@@ -155,7 +155,7 @@ export default function BasicTabs() {
         index={2}
         sx={{
           backgroundColor: "#e0e5eb",
-          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.4vh" },
+          minHeight: { md: "83.7vh", sm: "84.4vh", xs: "85.6vh" },
         }}
       >
         <Information />
