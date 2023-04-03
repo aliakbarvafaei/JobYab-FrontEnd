@@ -6,10 +6,10 @@ import { deleteBookmark, getBookmark } from "../services/api";
 import Skeleton from "@mui/material/Skeleton";
 import { useSelector } from "react-redux";
 import { eachToast, statesRedux } from "../ts/interfaces";
-import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
 import { convertorPrice } from "../ts/functions";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import Footer from "../components/Footer/Footer";
+import HeaderSection from "../components/NEW/HeaderSection/HeaderSection";
 
 
 const Bookmark:React.FC = () => {
@@ -67,7 +67,7 @@ const Bookmark:React.FC = () => {
   return (
     <div>
       <MobileMenu />
-      <HeaderNewShort />
+      <HeaderSection />
       <TitlePages title="نشان شده‌ها" />
       <div className={`${themeClass} px-total py-[50px]`}>
         {(AdBookmark.length > 0 || loading) && (

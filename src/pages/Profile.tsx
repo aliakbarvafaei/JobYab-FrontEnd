@@ -3,13 +3,13 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import Card from "../components/Ads/Card";
 import Box from "../assets/images/box.png"
-import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
 import TitlePages from "../components/TitlePages/TitlePages";
 import { useToast } from "../contexts/ToastState";
 import { deleteAd, getmyhomes, getUser, updateCreditAPI } from "../services/api";
 import { ads, eachToast, InformationUserTypes, ProfileInputTypes } from "../ts/interfaces";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import Footer from "../components/Footer/Footer";
+import HeaderSection from "../components/NEW/HeaderSection/HeaderSection";
 
 // const x:Array<ads> = [
 //   {
@@ -380,7 +380,7 @@ const Profile:React.FC = () => {
   return (
     <div>
       <MobileMenu />
-      <HeaderNewShort />
+      <HeaderSection />
       <TitlePages title="پروفایل" />
       <div
         className={`${themeClass} px-total flex smmin:flex-row sm:flex-col justify-between`}

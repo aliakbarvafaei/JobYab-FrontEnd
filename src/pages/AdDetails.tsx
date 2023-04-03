@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Ad from "../components/Ads/Ad";
 import Footer from "../components/Footer/Footer";
-import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
+import HeaderSection from "../components/NEW/HeaderSection/HeaderSection";
 import TitlePages from "../components/TitlePages/TitlePages";
 import { getAd } from "../services/api";
 import { ads } from "../ts/interfaces";
@@ -29,7 +29,7 @@ const AdDetails:React.FC = (props) => {
   return (
     <div>
       <MobileMenu />
-      <HeaderNewShort />
+      <HeaderSection />
       <TitlePages title="آگهی" />
       {ad && <Ad ad={ad} />}
       <Footer />

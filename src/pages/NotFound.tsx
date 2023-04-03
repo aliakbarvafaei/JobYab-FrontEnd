@@ -1,8 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
-import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
+import HeaderSection from "../components/NEW/HeaderSection/HeaderSection";
 import TitlePages from "../components/TitlePages/TitlePages";
 
 const NotFound:React.FC = () => {
@@ -16,7 +16,7 @@ const NotFound:React.FC = () => {
   return (
     <div>
       <MobileMenu />
-      <HeaderNewShort />
+      <HeaderSection />
       <TitlePages title="404" />
       <div
         className={`px-total py-[50px] flex flex-col gap-[10px] items-center justify-center ${themeClass}`}
