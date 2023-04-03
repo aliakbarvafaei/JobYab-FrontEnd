@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "../../../assets/images/logo.png";
 import { FaGooglePlusG } from "@react-icons/all-files/fa/FaGooglePlusG";
 import { FaWifi } from "@react-icons/all-files/fa/FaWifi";
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 import { Link } from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 const MainFooter:React.FC = ()=> {
   const themeBorder : string = "border-darkModeGray";
@@ -13,9 +13,25 @@ const MainFooter:React.FC = ()=> {
   return (
     <div className="flex flex-row flex-wrap justify-between">
       <div className="md:w-[100%] lg:w-[45%] lgmin:w-[30%]">
-        <img className="" src={logo} alt="title" />
+        <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              display: "flex",
+              justifyContent:"center",
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            JOBYAB
+          </Typography>
         <p className="pt-[18px] text-center px-[40px] text-darkGray text-[14px] leading-[30px]">
-          ما در پیش‌خونه به شما کمک می‌کنیم تا بتوانید از قیمت خانه خود باخبر باشید و براحتی در پیش‌خونه خریدوفروش انجام دهید.
+          ما در جاب یاب به شما کمک می‌کنیم تا بتوانید از فرصت های شغلی مختلف باخبر باشید و براحتی در جاب یاب صاحب کار شوید.
         </p>
         <div className="flex flex-row justify-between items-center mt-[8px]">
           <span className="cursor-pointer">
@@ -60,19 +76,15 @@ const MainFooter:React.FC = ()=> {
         <h4
           className={`font-black text-[16px] mb-[25px] lg:mb-[15px] md:pb-[8px] md:mb-0 md:border-b-[1px] ${themeBorder} md:border-solid`}
         >
-          املاک
+          آگهی
         </h4>
         <ul className="list-none p-0 text-[16px]">
           <Link to='/search'><li className="relative inline-block pt-[13px] text-darkGray hoverItem">
-            آپارتمان
+            نشان شده‌ها
           </li></Link>
           <div></div>
           <Link to='/search'><li className="relative inline-block pt-[13px] text-darkGray hoverItem">
-            ویلایی
-          </li></Link>
-          <div></div>
-          <Link to='/search'><li className="relative inline-block pt-[13px] text-darkGray hoverItem">
-            زمین
+            فوری
           </li></Link>
           <div></div>
         </ul>

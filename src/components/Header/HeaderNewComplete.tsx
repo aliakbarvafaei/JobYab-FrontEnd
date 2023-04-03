@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import predict from "../../assets/images/predict.png";
+import { useHistory } from "react-router-dom";
 import HeaderNewShort from "./HeaderNewShort";
 
 const HeaderNewComplete: React.FC = () => {
@@ -16,13 +15,13 @@ const HeaderNewComplete: React.FC = () => {
       <HeaderNewShort />
       <div
         style={{ backgroundColor: "#D3D3D3" }}
-        className="w-[100%] h-[550px] bg-no-repeat bg-cover bg-center bg-opacity-10 flex flex-col items-center"
+        className="w-[100%] h-[300px] bg-no-repeat bg-cover bg-center bg-opacity-10 flex flex-col items-center"
       >
         <div className="flex flex-col justify-center h-full">
           <div className="text-center text-[#555658] text-[20px] md:text-[12px] font-bold leading-[40px]">
             به صورت رایگان و در سریع‌ترین زمان ممکن
             <br />
-            قیمت خانه خود را پیش‌بینی کنید
+            برای فرصت‌های شغلی مختلف رزومه ارسال کنید
           </div>
           <div className="relative text-center mt-[40px]">
             <form>
@@ -31,7 +30,7 @@ const HeaderNewComplete: React.FC = () => {
                 value={searchInput}
                 onChange={handleChange as any}
                 className="rounded-3xl w-[500px] lg:w-[400px] sm:w-[300px] mm:w-[200px] h-[50px] text-[10px] pr-[12%] mm:pr-[18%] mdmin:outline mdmin:outline-[10px] mdmin:outline-[#1976D2]"
-                placeholder="جستجو آگهی یا منطقه"
+                placeholder="جستجو آگهی"
               />
               <button
                 type="submit"
@@ -42,20 +41,6 @@ const HeaderNewComplete: React.FC = () => {
                 className="fa fa-search absolute smmin:right-[3%] sm:right-[5%] mm:right-[15%] top-[35%]"
               ></button>
             </form>
-          </div>
-          <div className="flex flex-col items-center gap-[10px] text-center text-[#555658] text-[18px] font-bold leading-[40px] pt-[30px]">
-            <Link to="/predict">
-              <img
-                src={predict}
-                className="peer w-[100px] cursor-pointer hover:scale-125 duration-[500ms]"
-                alt=""
-              />
-            </Link>
-            <Link to="/predict">
-              <span className="peer-hover:text-[#1976D2] hover:text-[#1976D2] cursor-pointer">
-                پیش‌بینی قیمت
-              </span>
-            </Link>
           </div>
         </div>
       </div>

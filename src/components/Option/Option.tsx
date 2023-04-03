@@ -20,10 +20,10 @@ const Option : React.FC = () => {
           />
           <div>
             <h2 className="text-[16px] font-bold lg:text-center group-hover:text-red">
-              پیش‌بینی رایگان
+              ارسال رزومه رایگان
             </h2>
             <p className="text-[14px] text-darkGray lg:text-center">
-              تخمین قیمت خانه‌ها به صورت کاملا رایگان
+              ارسال رزومه برای شرکت‌ها به صورت کاملا رایگان
             </p>
           </div>
         </div>
@@ -59,7 +59,7 @@ const Option : React.FC = () => {
               پیشنهاد فوق‌العاده اشتراک
             </h2>
             <p className="text-[14px] text-darkGray lg:text-center">
-              اشتراک‌های ماهانه با تخفیف برای اعضای عادی و املاک
+              اشتراک‌های ماهانه با تخفیف برای اعضای عادی و شرکت
             </p>
           </div>
         </div>
