@@ -122,6 +122,7 @@ const HeaderSection = () => {
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
+              fontSize: { xs: "16px", sm: "20px" },
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
