@@ -3,7 +3,6 @@ import DefaultLayout from "../layouts/Default";
 import Home from "../pages/Home";
 import LoginPage from "../pages/Login";
 import NotFound from "../pages/NotFound";
-import Profile from "../pages/Profile";
 // import NotFound from "../pages/NotFound";
 // import adDetail from "../pages/adDetail";
 // import Profile from "../pages/Profile";
@@ -12,12 +11,14 @@ import SearchPage from "../pages/SearchPage";
 import PostPage from "../pages/PostPage";
 import companyPage from "../pages/companyPage";
 import Bookmark from "../pages/Bookmark";
-import NewAd from "../pages/NewAd";
 import AdDetails from "../pages/AdDetails";
 import ActiveAccount from "../pages/ActiveAccount";
 import ResetPass from "../pages/ResetPass";
 import ResetPass2 from "../pages/ResetPass2";
 import EditAd from "../pages/EditAd";
+import ProfileCompany from "../pages/ProfileCompany";
+import NewPost from "../pages/NewPost";
+import ProfileUser from "../pages/Profile";
 
 const indexRoutes = [{ path: "/", component: DefaultLayout }];
 
@@ -31,14 +32,6 @@ const AppRoutes: Array<any> = [
     private: false,
   },
   {
-    path: "/new-ad",
-    name: "آگهی جدید",
-    icon: "fa fa-list",
-    component: NewAd,
-    showInNav: false,
-    private: true,
-  },
-  {
     path: "/ad-details/:idad/:source",
     name: "همه محصولات",
     icon: "fa fa-list",
@@ -47,7 +40,7 @@ const AppRoutes: Array<any> = [
     private: false,
   },
   {
-    path: "/ad-edit/:idad/:source",
+    path: "/post-edit/:postId",
     name: "همه محصولات",
     icon: "fa fa-list",
     component: EditAd,
@@ -122,9 +115,9 @@ const AppRoutes: Array<any> = [
     path: "/profile",
     name: "پروفایل",
     icon: "fa fa-list",
-    component: Profile,
+    component: ProfileUser,
     showInNav: false,
-    private: true,
+    private: false,
   },
 
   {
