@@ -34,7 +34,7 @@ const Messages: React.FC = () => {
 
   return (
     <>
-      <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANYekan" }}>
+      <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
         <Box
           sx={{
             display: "flex",
@@ -57,7 +57,7 @@ const Messages: React.FC = () => {
             <AddIcon sx={{ fontSize: { xs: "12px", sm: "18px" } }} />
           </Button>
         </Box>
-        <Box sx={{ fontFamily: "IRANYekan", paddingX: "0px" }}>
+        <Box sx={{ fontFamily: "IRANSans", paddingX: "0px" }}>
           <Box
             sx={{
               backgroundColor: "#d8dbe2",

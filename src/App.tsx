@@ -14,6 +14,9 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 const theme = createTheme({
+  typography: {
+    fontFamily: "IRANSans",
+  },
   components: {
     MuiTypography: {
       styleOverrides: {

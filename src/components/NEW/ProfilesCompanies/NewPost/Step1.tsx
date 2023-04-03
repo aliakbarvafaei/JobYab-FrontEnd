@@ -62,7 +62,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
             width: "100%",
           },
           "& label": {
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             left: "unset",
             right: "1.75rem",
             transformOrigin: "right",
@@ -84,7 +84,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           },
           mt: "12px",
           "& label": {
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             left: "unset",
             right: "1.75rem",
             transformOrigin: "right",
@@ -120,7 +120,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
             }}
           >
             {step1.formState.errors["type"].message}
@@ -139,7 +139,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           },
           mt: "12px",
           "& label": {
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             left: "unset",
             right: "1.75rem",
             transformOrigin: "right",
@@ -175,7 +175,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
             }}
           >
             {step1.formState.errors["military"].message}
@@ -194,7 +194,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           },
           mt: "12px",
           "& label": {
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             left: "unset",
             right: "1.75rem",
             transformOrigin: "right",
@@ -233,7 +233,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
             }}
           >
             {step1.formState.errors["degree"].message}
@@ -252,7 +252,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           },
           mt: "12px",
           "& label": {
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             left: "unset",
             right: "1.75rem",
             transformOrigin: "right",
@@ -288,7 +288,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
             }}
           >
             {step1.formState.errors["work"].message}
@@ -307,7 +307,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           },
           mt: "12px",
           "& label": {
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             left: "unset",
             right: "1.75rem",
             transformOrigin: "right",
@@ -342,7 +342,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
             }}
           >
             {step1.formState.errors["gender"].message}
@@ -361,7 +361,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           },
           mt: "12px",
           "& label": {
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             left: "unset",
             right: "1.75rem",
             transformOrigin: "right",
@@ -404,7 +404,7 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
             }}
           >
             {step1.formState.errors["salary"].message}

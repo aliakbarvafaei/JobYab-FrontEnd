@@ -49,7 +49,7 @@ const Information: React.FC = () => {
   };
 
   return (
-    <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANYekan" }}>
+    <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
       <h1 className="text-[20px]">پروفایل</h1>
       <Box
         sx={{
@@ -92,7 +92,7 @@ const Information: React.FC = () => {
               "& label": {
                 left: "unset",
                 right: "1.75rem",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 transformOrigin: "right",
                 fontSize: "1rem",
               },
@@ -123,7 +123,7 @@ const Information: React.FC = () => {
               "& label": {
                 left: "unset",
                 right: "1.75rem",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 transformOrigin: "right",
                 fontSize: "1rem",
               },
@@ -157,7 +157,7 @@ const Information: React.FC = () => {
               "& label": {
                 left: "unset",
                 right: "1.75rem",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 transformOrigin: "right",
                 fontSize: "1rem",
               },
@@ -188,7 +188,7 @@ const Information: React.FC = () => {
               "& label": {
                 left: "unset",
                 right: "1.75rem",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 transformOrigin: "right",
                 fontSize: "1rem",
               },
@@ -219,7 +219,7 @@ const Information: React.FC = () => {
               "& label": {
                 left: "unset",
                 right: "1.75rem",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 transformOrigin: "right",
                 fontSize: "1rem",
               },
@@ -241,7 +241,7 @@ const Information: React.FC = () => {
               "& label": {
                 left: "unset",
                 right: "1.75rem",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 transformOrigin: "right",
                 fontSize: "1rem",
               },
@@ -266,7 +266,7 @@ const Information: React.FC = () => {
               <MenuItem value={"بیشتر از 100"}>بیشتر از 100</MenuItem>
             </Select>
             {companyRegiter.formState.errors["count"] ? (
-              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANSans]">
                 {companyRegiter.formState.errors["count"].message}
               </p>
             ) : (
@@ -284,7 +284,7 @@ const Information: React.FC = () => {
               "& label": {
                 left: "unset",
                 right: "1.75rem",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 transformOrigin: "right",
                 fontSize: "1rem",
               },
@@ -309,7 +309,7 @@ const Information: React.FC = () => {
               <MenuItem value={"مهندسی نرم افزار"}>مهندسی نرم افزار</MenuItem>
             </Select>
             {companyRegiter.formState.errors["activity"] ? (
-              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANSans]">
                 {companyRegiter.formState.errors["activity"].message}
               </p>
             ) : (
@@ -335,7 +335,7 @@ const Information: React.FC = () => {
               "& label": {
                 left: "unset",
                 right: "1.75rem",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 transformOrigin: "right",
                 fontSize: "1rem",
               },
@@ -362,7 +362,7 @@ const Information: React.FC = () => {
           >
             <div
               style={{
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 width: "30%",
                 color: "#00000099",
               }}
@@ -377,7 +377,7 @@ const Information: React.FC = () => {
               sx={{
                 fontSize: { xs: "10px", sm: "14px" },
                 width: "65%",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
               }}
             >
               <input

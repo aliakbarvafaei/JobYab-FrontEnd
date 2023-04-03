@@ -36,7 +36,7 @@ const Information: React.FC = () => {
   };
 
   return (
-    <Box className="mdmin:mx-[30%]" sx={{ fontFamily: "IRANYekan" }}>
+    <Box className="mdmin:mx-[30%]" sx={{ fontFamily: "IRANSans" }}>
       <h1 className="text-[20px]">پروفایل</h1>
       <Box
         sx={{
@@ -211,7 +211,7 @@ const Information: React.FC = () => {
           >
             <div
               style={{
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 width: "30%",
                 color: "#00000099",
               }}
@@ -226,7 +226,7 @@ const Information: React.FC = () => {
               sx={{
                 fontSize: { xs: "10px", sm: "14px" },
                 width: "65%",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
               }}
             >
               <input

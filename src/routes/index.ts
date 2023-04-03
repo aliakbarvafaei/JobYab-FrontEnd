@@ -1,22 +1,14 @@
 import DefaultLayout from "../layouts/Default";
-// import Cart from "../pages/Cart";
 import Home from "../pages/Home";
 import LoginPage from "../pages/Login";
 import NotFound from "../pages/NotFound";
-// import NotFound from "../pages/NotFound";
-// import adDetail from "../pages/adDetail";
-// import Profile from "../pages/Profile";
-import RegisterPage from "../pages/Register";
+import NewPost from "../pages/NewPost";
 import SearchPage from "../pages/SearchPage";
 import PostPage from "../pages/PostPage";
 import companyPage from "../pages/companyPage";
 import Bookmark from "../pages/Bookmark";
-import AdDetails from "../pages/AdDetails";
-import ActiveAccount from "../pages/ActiveAccount";
-import ResetPass from "../pages/ResetPass";
-import ResetPass2 from "../pages/ResetPass2";
-import EditAd from "../pages/EditAd";
 import ProfileUser from "../pages/Profile";
+import ProfileCompany from "../pages/ProfileCompany";
 
 const indexRoutes = [{ path: "/", component: DefaultLayout }];
 
@@ -30,20 +22,20 @@ const AppRoutes: Array<any> = [
     private: false,
   },
   {
-    path: "/ad-details/:idad/:source",
+    path: "/profile-company",
     name: "همه محصولات",
     icon: "fa fa-list",
-    component: AdDetails,
+    component: ProfileCompany,
     showInNav: false,
     private: false,
   },
   {
-    path: "/post-edit/:postId",
+    path: "/profile-company/new-post",
     name: "همه محصولات",
     icon: "fa fa-list",
-    component: EditAd,
+    component: NewPost,
     showInNav: false,
-    private: true,
+    private: false,
   },
   {
     path: "/search",
@@ -78,38 +70,6 @@ const AppRoutes: Array<any> = [
     private: true,
   },
   {
-    path: "/activeaccount",
-    name: "فعال‌سازی حساب",
-    icon: "fa fa-list",
-    component: ActiveAccount,
-    showInNav: false,
-    private: false,
-  },
-  {
-    path: "/forgetpassword",
-    name: "بازیابی رمز",
-    icon: "fa fa-list",
-    component: ResetPass,
-    showInNav: false,
-    private: false,
-  },
-  {
-    path: "/forgetpassword2",
-    name: "بازیابی رمز",
-    icon: "fa fa-list",
-    component: ResetPass2,
-    showInNav: false,
-    private: false,
-  },
-  // {
-  //   path: "/cart",
-  //   name: "cart",
-  //   icon: "fa fa-list",
-  //   component: Cart,
-  //   showInNav: false,
-  //   private: true,
-  // },
-  {
     path: "/profile",
     name: "پروفایل",
     icon: "fa fa-list",
@@ -123,13 +83,6 @@ const AppRoutes: Array<any> = [
     name: "ورود",
     icon: "fa fa-plus",
     component: LoginPage,
-    showInNav: false,
-  },
-  {
-    path: "/register",
-    name: "ثبت نام",
-    icon: "fa fa-plus",
-    component: RegisterPage,
     showInNav: false,
   },
   {

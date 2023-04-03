@@ -100,7 +100,7 @@ const RegisterUser: React.FC<{
               {...userRegister.register("name")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -130,7 +130,7 @@ const RegisterUser: React.FC<{
               {...userRegister.register("phone")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -157,7 +157,7 @@ const RegisterUser: React.FC<{
               {...userRegister.register("email")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -183,7 +183,7 @@ const RegisterUser: React.FC<{
               {...userRegister.register("password")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -219,7 +219,7 @@ const RegisterUser: React.FC<{
               {...userRegister.register("code")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -247,7 +247,7 @@ const RegisterUser: React.FC<{
               {...userRegister.register("address")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",

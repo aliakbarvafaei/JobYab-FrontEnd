@@ -92,7 +92,7 @@ const LoginCompany: React.FC<{
               {...companyLogin.register("email")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -119,7 +119,7 @@ const LoginCompany: React.FC<{
               {...companyLogin.register("password")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",

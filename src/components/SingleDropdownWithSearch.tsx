@@ -442,7 +442,7 @@ const SingleDropdownWithSearch: React.FC<
           <Typography
             color="error"
             style={{
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
               fontSize: "12px",
               marginLeft: "14px",
               marginRight: "14px",

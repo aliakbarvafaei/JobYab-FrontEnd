@@ -62,7 +62,7 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%", fontFamily: "IRANYekan" }}>
+    <Box sx={{ width: "100%", fontFamily: "IRANSans" }}>
       <Box
         sx={{
           // borderBottom: 1,
@@ -81,17 +81,17 @@ export default function BasicTabs() {
           <Tab
             label="درخواست‌های من"
             {...a11yProps(0)}
-            sx={{ borderBottom: value === 0 ? 5 : 0, fontFamily: "IRANYekan" }}
+            sx={{ borderBottom: value === 0 ? 5 : 0, fontFamily: "IRANSans" }}
           />
           <Tab
             label="اطلاعات"
             {...a11yProps(1)}
-            sx={{ borderBottom: value === 1 ? 5 : 0, fontFamily: "IRANYekan" }}
+            sx={{ borderBottom: value === 1 ? 5 : 0, fontFamily: "IRANSans" }}
           />
           <Tab
             label="پیام‌ها"
             {...a11yProps(2)}
-            sx={{ borderBottom: value === 2 ? 5 : 0, fontFamily: "IRANYekan" }}
+            sx={{ borderBottom: value === 2 ? 5 : 0, fontFamily: "IRANSans" }}
           />
           <div className="mr-auto flex items-center">
             <Menu

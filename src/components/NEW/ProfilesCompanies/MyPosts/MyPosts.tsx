@@ -5,7 +5,7 @@ import CardItem from "./Card";
 
 const MyPosts: React.FC = () => {
   return (
-    <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANYekan" }}>
+    <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
       <h1 className="text-[20px]">آگهی‌های من</h1>
       <Box
         sx={{

@@ -47,7 +47,7 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%", fontFamily: "IRANYekan" }}>
+    <Box sx={{ width: "100%", fontFamily: "IRANSans" }}>
       <Box
         sx={{
           borderBottom: 1,
@@ -62,17 +62,17 @@ export default function BasicTabs() {
           <Tab
             label="رزومه‌های دریافتی"
             {...a11yProps(0)}
-            sx={{ fontFamily: "IRANYekan" }}
+            sx={{ fontFamily: "IRANSans" }}
           />
           <Tab
             label="درحال بررسی"
             {...a11yProps(1)}
-            sx={{ fontFamily: "IRANYekan" }}
+            sx={{ fontFamily: "IRANSans" }}
           />
           <Tab
             label="پذیرفته یا رد"
             {...a11yProps(2)}
-            sx={{ fontFamily: "IRANYekan" }}
+            sx={{ fontFamily: "IRANSans" }}
           />
         </Tabs>
       </Box>

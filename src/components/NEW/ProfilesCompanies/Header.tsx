@@ -42,7 +42,7 @@ const Header = () => {
     <AppBar
       position="static"
       sx={{
-        fontFamily: "IRANYekan",
+        fontFamily: "IRANSans",
         paddingX: { sm: "80px", xs: "20px" },
         minHeight: "70px",
         display: "flex",
@@ -135,7 +135,7 @@ const Header = () => {
               sx={{
                 backgroundColor: "white",
                 color: "black",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 display: { xs: "none", md: "inline" },
               }}
             >
@@ -149,7 +149,7 @@ const Header = () => {
                 color: "#e0e5eb",
                 gap: "5px",
                 paddingLeft: "20px",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 display: { xs: "none", md: "inline-flex" },
               }}
             >

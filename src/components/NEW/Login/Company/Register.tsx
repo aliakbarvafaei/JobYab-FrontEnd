@@ -123,7 +123,7 @@ const RegisterCompany: React.FC<{
                   width: "100%",
                 },
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -154,7 +154,7 @@ const RegisterCompany: React.FC<{
                   width: "100%",
                 },
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -187,7 +187,7 @@ const RegisterCompany: React.FC<{
                   width: "100%",
                 },
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -217,7 +217,7 @@ const RegisterCompany: React.FC<{
                   width: "100%",
                 },
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -245,7 +245,7 @@ const RegisterCompany: React.FC<{
                   width: "100%",
                 },
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -284,7 +284,7 @@ const RegisterCompany: React.FC<{
                   width: "100%",
                 },
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -306,7 +306,7 @@ const RegisterCompany: React.FC<{
                 },
                 mt: "12px",
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -333,7 +333,7 @@ const RegisterCompany: React.FC<{
                 <MenuItem value={"بیشتر از 100"}>بیشتر از 100</MenuItem>
               </Select>
               {companyRegiter.formState.errors["count"] ? (
-                <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+                <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANSans]">
                   {companyRegiter.formState.errors["count"].message}
                 </p>
               ) : (
@@ -349,7 +349,7 @@ const RegisterCompany: React.FC<{
                 },
                 mt: "12px",
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -376,7 +376,7 @@ const RegisterCompany: React.FC<{
                 <MenuItem value={"مهندسی نرم افزار"}>مهندسی نرم افزار</MenuItem>
               </Select>
               {companyRegiter.formState.errors["activity"] ? (
-                <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANYekan]">
+                <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANSans]">
                   {companyRegiter.formState.errors["activity"].message}
                 </p>
               ) : (
@@ -399,7 +399,7 @@ const RegisterCompany: React.FC<{
               {...companyRegiter.register("bio")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -428,7 +428,7 @@ const RegisterCompany: React.FC<{
             >
               <div
                 style={{
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   width: "30%",
                   color: "#00000099",
                 }}
@@ -442,7 +442,7 @@ const RegisterCompany: React.FC<{
                 sx={{
                   fontSize: { xs: "10px", sm: "14px" },
                   width: "65%",
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                 }}
               >
                 <input

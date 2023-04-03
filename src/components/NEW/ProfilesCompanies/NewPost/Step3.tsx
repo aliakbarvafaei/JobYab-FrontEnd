@@ -58,7 +58,7 @@ const Step3: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
         }}
         sx={{
           "& label": {
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             left: "unset",
             right: "1.75rem",
             transformOrigin: "right",

@@ -94,7 +94,7 @@ const ForgetPass2User: React.FC<{
               {...userForget2.register("email")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -124,7 +124,7 @@ const ForgetPass2User: React.FC<{
               {...userForget2.register("code")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
@@ -151,7 +151,7 @@ const ForgetPass2User: React.FC<{
               {...userForget2.register("password")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",

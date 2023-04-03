@@ -49,7 +49,7 @@ const HeaderSection = () => {
         minHeight: "90px",
         justifyContent: "center",
         paddingX: { sm: "80px", xs: "20px" },
-        fontFamily: "IRANYekan",
+        fontFamily: "IRANSans",
       }}
     >
       <Container maxWidth="xl" sx={{ padding: "0px !important" }}>
@@ -140,7 +140,7 @@ const HeaderSection = () => {
                 color: "#e0e5eb",
                 gap: "5px",
                 paddingLeft: "20px",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 display: { xs: "none", md: "inline-flex" },
               }}
             >
@@ -155,7 +155,7 @@ const HeaderSection = () => {
                 color: "#e0e5eb",
                 gap: "5px",
                 paddingLeft: "20px",
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 display: { xs: "none", md: "inline-flex" },
               }}
             >

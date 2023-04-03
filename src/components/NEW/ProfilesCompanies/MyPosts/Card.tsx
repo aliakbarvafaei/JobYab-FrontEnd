@@ -23,7 +23,7 @@ const CardItem: React.FC = () => {
       sx={{
         width: { sm: "80%", xs: "95%" },
         height: "135px",
-        fontFamily: "IRANYekan",
+        fontFamily: "IRANSans",
         display: "flex",
         flexDirection: "row",
       }}
@@ -49,7 +49,7 @@ const CardItem: React.FC = () => {
               fontWeight={700}
               color="#1976D2"
               sx={{
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 display: "flex",
                 alignItems: "center",
               }}
@@ -78,7 +78,7 @@ const CardItem: React.FC = () => {
               variant="body2"
               color="text.secondary"
               sx={{
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 fontSize: { xs: "8px", sm: "10px", md: "12px" },
               }}
             >
@@ -89,7 +89,7 @@ const CardItem: React.FC = () => {
               variant="body2"
               color="text.secondary"
               sx={{
-                fontFamily: "IRANYekan",
+                fontFamily: "IRANSans",
                 fontSize: { xs: "8px", sm: "10px", md: "12px" },
               }}
             >
@@ -136,7 +136,7 @@ const CardItem: React.FC = () => {
             variant="body2"
             color="text.secondary"
             sx={{
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
               fontSize: { xs: "8px", sm: "12px" },
             }}
           >
@@ -149,7 +149,7 @@ const CardItem: React.FC = () => {
             variant="body2"
             color="text.secondary"
             sx={{
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
               fontSize: { xs: "8px", sm: "12px" },
             }}
           >
@@ -160,7 +160,7 @@ const CardItem: React.FC = () => {
             variant="body2"
             color="text.secondary"
             sx={{
-              fontFamily: "IRANYekan",
+              fontFamily: "IRANSans",
               fontSize: { xs: "8px", sm: "12px" },
             }}
           >
@@ -182,7 +182,7 @@ const CardItem: React.FC = () => {
             color: "white",
             height: "50%",
             fontSize: { xs: "10px", sm: "14px" },
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             borderTopRightRadius: "0px",
             borderBottomRightRadius: "0px",
             borderBottomLeftRadius: "0px",
@@ -201,7 +201,7 @@ const CardItem: React.FC = () => {
             color: "white",
             height: "50%",
             fontSize: { xs: "10px", sm: "14px" },
-            fontFamily: "IRANYekan",
+            fontFamily: "IRANSans",
             borderTopRightRadius: "0px",
             borderTopLeftRadius: "0px",
             borderBottomRightRadius: "0px",

@@ -5,7 +5,7 @@ import CardItem from "./Card";
 
 const Content: React.FC<{ index: Number }> = ({ index }) => {
   return (
-    <Box sx={{ fontFamily: "IRANYekan", paddingX: "0px" }}>
+    <Box sx={{ fontFamily: "IRANSans", paddingX: "0px" }}>
       <Box
         sx={{
           backgroundColor: "#d8dbe2",

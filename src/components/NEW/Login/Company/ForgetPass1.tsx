@@ -79,7 +79,7 @@ const ForgetPass1Company: React.FC<{
               {...companyForget.register("email")}
               sx={{
                 "& label": {
-                  fontFamily: "IRANYekan",
+                  fontFamily: "IRANSans",
                   left: "unset",
                   right: "1.75rem",
                   transformOrigin: "right",
