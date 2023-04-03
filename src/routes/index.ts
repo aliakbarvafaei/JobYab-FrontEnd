@@ -16,8 +16,6 @@ import ActiveAccount from "../pages/ActiveAccount";
 import ResetPass from "../pages/ResetPass";
 import ResetPass2 from "../pages/ResetPass2";
 import EditAd from "../pages/EditAd";
-import ProfileCompany from "../pages/ProfileCompany";
-import NewPost from "../pages/NewPost";
 import ProfileUser from "../pages/Profile";
 
 const indexRoutes = [{ path: "/", component: DefaultLayout }];
