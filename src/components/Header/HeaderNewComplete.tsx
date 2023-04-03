@@ -1,69 +1,19 @@
 import React, { useState } from "react";
-import bg_header from "../../assets/images/bg-header.jpg";
-import Hamburger from "../mainMenu/Hamburger/Hamburger";
 import { Link, useHistory } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-import logo1_white from "../../assets/images/logo1_white.png";
 import predict from "../../assets/images/predict.png";
-import { Button } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
-import { eachToast, statesRedux } from "../../ts/interfaces";
-import { useToast } from "../../contexts/ToastState";
-import HeaderSection from "../NEW/HeaderSection/HeaderSection";
-
-const titleMenus = [
-  {
-    title: "خرید",
-    submenu: [
-      { title: "آپارتمان", pathTo: "/search" },
-      { title: "ویلایی", pathTo: "/search" },
-    ],
-  },
-  {
-    title: "رهن و اجاره",
-    submenu: [
-      { title: "آپارتمان", pathTo: "/search" },
-      { title: "ویلایی", pathTo: "/search" },
-    ],
-  },
-  {
-    title: "قیمت خانه شما",
-    submenu: [
-      { title: "آپارتمان", pathTo: "/predict" },
-      { title: "ویلایی", pathTo: "/predict" },
-    ],
-  },
-];
+import HeaderNewShort from "./HeaderNewShort";
 
 const HeaderNewComplete: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { user } = useSelector((state: statesRedux) => state.userAuth);
-  const themeClass = "bg-white";
-  const themeAccount: string = "bg-white text-black";
-
   const history = useHistory();
   const [searchInput, setSearchInput] = useState("");
 
-  const { setToastState } = useToast();
-  // const navigate = useNavig
-  const dispatch = useDispatch();
-  function addItemOnce(
-    arr: Array<eachToast>,
-    value: eachToast
-  ): Array<eachToast> {
-    arr.push(value);
-    return arr;
-  }
   function handleChange(e: React.MouseEvent) {
     setSearchInput((e.target as HTMLInputElement).value);
-  }
-  function handleHamburger() {
-    setIsOpen((old) => !old);
   }
 
   return (
     <>
-      <HeaderSection />
+      <HeaderNewShort />
       <div
         style={{ backgroundColor: "#D3D3D3" }}
         className="w-[100%] h-[550px] bg-no-repeat bg-cover bg-center bg-opacity-10 flex flex-col items-center"

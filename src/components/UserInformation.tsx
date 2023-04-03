@@ -1,22 +1,14 @@
 import React, { useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { useToast } from '../contexts/ToastState';
-import { getUser } from '../services/api';
-import { eachToast } from '../ts/interfaces';
+import { useDispatch } from "react-redux";
+import { useToast } from "../contexts/ToastState";
+import { getUser } from "../services/api";
 
-const UserInformation = ()=> {
-
-    const { setToastState } = useToast();
+const UserInformation = () => {
+  const { setToastState } = useToast();
   const dispatch = useDispatch();
 
-  function addItemOnce(arr : Array<eachToast>, value : eachToast):Array<eachToast> {
-    arr.push(value);
-    return arr;
-  }
-  
   useEffect(() => {
-    
-    const value : string | null = localStorage.getItem("token_user");
+    const value: string | null = localStorage.getItem("token_user");
     if (JSON.parse(value as string) !== "") {
       getUser()
         .then((response) => {
@@ -46,12 +38,9 @@ const UserInformation = ()=> {
     } else {
       dispatch({ type: "logout" });
     }
-    
-  }, [dispatch,setToastState]);
+  }, [dispatch, setToastState]);
 
-    return (
-        <></>
-    );
-}
+  return <></>;
+};
 
 export default UserInformation;

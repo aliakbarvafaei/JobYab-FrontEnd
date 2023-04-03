@@ -39,7 +39,6 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             src="avatar1.jpg"
             sx={{ display: { xs: "none", sm: "flex" } }}
           />
-          {/* <Woman2OutlinedIcon sx={{ color: "#00000099", fontSize: "45px" }}/> */}
           <Stack spacing={0.5}>
             <Typography
               fontWeight={700}

@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["خروج"];
 
-const HeaderSection = () => {
+const HeaderNewShort = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -213,4 +213,4 @@ const HeaderSection = () => {
   );
 };
 
-export default HeaderSection;
+export default HeaderNewShort;

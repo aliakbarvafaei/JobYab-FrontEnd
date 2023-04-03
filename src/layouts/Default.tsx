@@ -3,8 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import AppRoutes from "../routes";
 import { useToast } from "../contexts/ToastState";
 import Toast from "../components/Toast/Toast";
-// import MobileMenu from "../components/MobileMenu/MobileMenu";
-// import Footer from "../components/Footer/Footer";
 import { eachToast } from "../ts/interfaces";
 import ProtectedRoute from "../components/ProtectedRoute";
 import UserInformation from "../components/UserInformation";
@@ -81,12 +79,7 @@ const DefaultLayout : React.FC = () => {
       data-header-position="fixed"
       data-boxed-layout="full"
     >
-      {/* <Header />
-      <MainMenu /> */}
-      {/* <HeaderNewComplete /> */}
-      {/* <MobileMenu /> */}
-      {/* <FixedButtonRight />
-       */}
+
       <div className="page-wrapper d-block">
         <div className="page-content container-fluid">
           <Switch>
@@ -113,7 +106,6 @@ const DefaultLayout : React.FC = () => {
           </Switch>
         </div>
       </div>
-      {/* <Footer /> */}
       <div className="fixed top-[20px] right-[20px] flex flex-col gap-[15px] z-[1002]">
         {toastState.length > 0 &&
           toastState.map((item : eachToast, index : number) => {

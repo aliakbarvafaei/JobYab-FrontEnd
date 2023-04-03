@@ -1,38 +1,20 @@
-import React, { useEffect } from "react";
-// import Banner from "../components/Banner/Banner";
-import HeaderNewComplete from "../components/HeaderNew/HeaderNewComplete";
+import React from "react";
+import HeaderNewComplete from "../components/Header/HeaderNewComplete";
 import bronze from "../assets/images/bronze.jpg";
 import silver from "../assets/images/silver.jpg";
 import gold from "../assets/images/gold.jpg";
-// import Instagram from "../components/Instagram/Instagram";
 import Option from "../components/Option/Option";
-// import SectionCategories from "../components/SectionCategories/SectionCategories";
-// import SectionProductMain from "../components/SectionProductMain/SectionProductMain";
 import SectionAdSlider from "../components/SectionAdSlider/SectionAdSlider";
 import { useHistory } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import Footer from "../components/Footer/Footer";
-// import { getAds } from "../services/api";
 
 const Home : React.FC = ()=> {
-  // const [ads, setAds] = useState([]);
   const history = useHistory();
-  useEffect(() => {
-    // getAds()
-    //   .then((response) => {
-    //     setAds(response.data);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
-  }, []);
-  
 
   return (
     <>
       <MobileMenu />
-      {/* <Banner /> */}
-      {/* <SectionCategories /> */}
       <HeaderNewComplete />
       <SectionAdSlider />
       <div className="px-total py-[12%] flex flex-col font-bold items-center mdmin:w-[60%] md:w-[100%]">
@@ -46,7 +28,6 @@ const Home : React.FC = ()=> {
           بهترین پیشنهادها
         </p>
       </div>
-      {/* <SectionProductMain products={products} /> */}
       <section className="flex justify-center bg-[#EEEEEE]">
         <div className="bg-white smmin:h-[450px] min-w-[50%] flex smmin:flex-row sm:flex-col justify-center smmin:gap-[8%] sm:gap-[10px] rounded-3xl py-[3%] px-[2%] my-[3%] mx-[5%]">
           <div className="flex flex-col justify-between items-center text-center gap-[5%]">
@@ -111,7 +92,6 @@ const Home : React.FC = ()=> {
       
       <Option />
       <Footer />
-      {/* <Instagram /> */}
     </>
   );
 }

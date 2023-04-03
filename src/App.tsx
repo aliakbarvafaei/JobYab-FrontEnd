@@ -1,10 +1,6 @@
-// import "./assets/scss/style.scss";
 import "./index.css";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
-// import { AuthProvider } from "./contexts/Auth";
-// import { ThemeProvider } from "./contexts/theme";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { ToastProvider } from "./contexts/ToastState";
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -62,7 +58,6 @@ const App: React.FC = () => (
   <BrowserRouter>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        {/* <AuthProvider> */}
         <ToastProvider>
           <Switch>
             <TransitionGroup timeout={300} classNames="fade">
@@ -80,7 +75,6 @@ const App: React.FC = () => (
             </TransitionGroup>
           </Switch>
         </ToastProvider>
-        {/* </AuthProvider> */}
       </ThemeProvider>
     </Provider>
   </BrowserRouter>

@@ -32,10 +32,8 @@ type companyRegisterInput = TypeOf<typeof companyRegisterSchema>;
 
 const Information: React.FC = () => {
   const logoId = useId();
-  const resumeId = useId();
 
   const [logoValue, setLogoValue] = useState<FileList | null>(null);
-  const [resumeValue, setResumeValue] = useState<FileList | null>(null);
 
   const companyRegiter = useForm<companyRegisterInput>({
     resolver: zodResolver(companyRegisterSchema),
@@ -411,7 +409,6 @@ const Information: React.FC = () => {
               },
             }}
           >
-            {/* <FormLabel id="demo-radio-buttons-group-label">نوع</FormLabel> */}
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="حقیقی"

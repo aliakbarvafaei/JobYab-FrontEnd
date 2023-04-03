@@ -9,7 +9,7 @@ import { eachToast, statesRedux } from "../ts/interfaces";
 import { convertorPrice } from "../ts/functions";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import Footer from "../components/Footer/Footer";
-import HeaderSection from "../components/NEW/HeaderSection/HeaderSection";
+import HeaderNewShort from "../components/Header/HeaderNewShort";
 
 
 const Bookmark:React.FC = () => {
@@ -67,7 +67,7 @@ const Bookmark:React.FC = () => {
   return (
     <div>
       <MobileMenu />
-      <HeaderSection />
+      <HeaderNewShort />
       <TitlePages title="نشان شده‌ها" />
       <div className={`${themeClass} px-total py-[50px]`}>
         {(AdBookmark.length > 0 || loading) && (

@@ -1,4 +1,4 @@
-import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
+import HeaderNewShort from "../components/Header/HeaderNewShort";
 import DetailHeader from "../components/modules/DetailHeader";
 import TempData from "../components/modules/TempData";
 import TitlePages from "../components/TitlePages/TitlePages";

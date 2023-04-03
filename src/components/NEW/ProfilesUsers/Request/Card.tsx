@@ -12,11 +12,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 
 const CardItem: React.FC<{ index: Number }> = ({ index }) => {
-  const [labels, setLabels] = useState<Array<string>>([
-    "React",
-    "Node",
-    "Python",
-  ]);
+  const [labels] = useState<Array<string>>(["React", "Node", "Python"]);
 
   return (
     <Card
@@ -43,7 +39,6 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             src="avatar1.jpg"
             sx={{ display: { xs: "none", sm: "flex" } }}
           />
-          {/* <Woman2OutlinedIcon sx={{ color: "#00000099", fontSize: "45px" }}/> */}
           <Stack spacing={0.5}>
             <Typography
               fontWeight={700}
@@ -127,43 +122,6 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               </Typography>
             );
           })}
-          {/* <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{
-              fontFamily: "IRANSans",
-              fontSize: { xs: "8px", sm: "12px" },
-            }}
-          >
-            <DriveFileRenameOutlineOutlinedIcon
-              sx={{ color: "grey[500]", fontSize: "16px" }}
-            />{" "}
-            علی اکبر وفایی
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{
-              fontFamily: "IRANSans",
-              fontSize: { xs: "8px", sm: "12px" },
-            }}
-          >
-            <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} /> قم,
-            قم
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{
-              fontFamily: "IRANSans",
-              fontSize: { xs: "8px", sm: "12px" },
-            }}
-          >
-            <FactCheckOutlinedIcon
-              sx={{ color: "grey[500]", fontSize: "16px" }}
-            />{" "}
-            23 ساله
-          </Typography> */}
         </Stack>
       </Box>
       {index === 0 ? (

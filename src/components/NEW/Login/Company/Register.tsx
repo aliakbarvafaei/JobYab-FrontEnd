@@ -477,7 +477,6 @@ const RegisterCompany: React.FC<{
                 },
               }}
             >
-              {/* <FormLabel id="demo-radio-buttons-group-label">نوع</FormLabel> */}
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="حقیقی"

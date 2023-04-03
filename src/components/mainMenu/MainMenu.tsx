@@ -75,10 +75,6 @@ const MainMenu:React.FC = ()=> {
                   <button className="peer pl-0 text-[12px] text-darkGray font-bold">
                     {titleMenu.title}
                   </button>
-                  {/* <i
-                    className="fa fa-caret-down text-[12px] pr-[10px] text-darkGray cursor-pointer group-hover:text-red"
-                    aria-hidden="true"
-                  ></i> */}
                   {index!==titleMenus.length-1 ? <span className="pr-[12px] text-darkGray">|</span>:<></>}
                   <div
                     className={`${themeClass} absolute hidden peer-hover:block hover:flex w-[150px] py-[10px] px-[20px] left-0

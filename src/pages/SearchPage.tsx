@@ -1,7 +1,6 @@
-import HeaderNewShort from "../components/HeaderNew/HeaderNewShort";
+import HeaderNewShort from "../components/Header/HeaderNewShort";
 import TitlePages from "../components/TitlePages/TitlePages";
 import Footer from "../components/Footer/Footer";
-// import MobileMenu from "../components/MobileMenu/MobileMenu";
 import SearchBox from "../components/SearchBox";
 import { Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -16,7 +15,6 @@ const SearchPage: React.FC = () => {
   const history = useHistory();
   return (
     <div>
-      {/* <MobileMenu /> */}
       <HeaderNewShort />
       <TitlePages title="جستجو" />
       <div style={{ marginInline: 80 }}>

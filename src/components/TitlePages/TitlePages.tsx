@@ -21,9 +21,6 @@ const TitlePages:React.FC<{title: string}> = ({ title }) => {
           </span>
           / {title}{" "}
         </div>
-        {/* <div className="text-center">
-          <h2 className="text-[16px] m-0 font-black">{title}</h2>
-        </div> */}
       </div>
     </div>
   );

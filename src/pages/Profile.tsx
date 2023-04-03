@@ -1,11 +1,11 @@
 import React from 'react';
-import HeaderSection from '../components/NEW/HeaderSection/HeaderSection';
+import HeaderNewShort from '../components/Header/HeaderNewShort';
 import BasicTabs from '../components/NEW/ProfilesUsers/Tab';
 
 const ProfileUser:React.FC = () => {
     return (
         <div>
-            <HeaderSection />
+            <HeaderNewShort />
             <BasicTabs />
         </div>
     );
