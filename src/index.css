@@ -91,3 +91,10 @@ input[type="number"] {
   right: inherit !important;
   left: 7px !important;
 }
+
+.css-1xpgqj5-MuiFormHelperText-root.Mui-error {
+  text-align: right;
+}
+.MuiTypography-body1 {
+  font-family: IRANYekan !important;
+}
