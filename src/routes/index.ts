@@ -8,19 +8,19 @@ import NotFound from "../pages/NotFound";
 // import Profile from "../pages/Profile";
 import RegisterPage from "../pages/Register";
 import SearchPage from "../pages/SearchPage";
+import PostPage from "../pages/PostPage";
+import companyPage from "../pages/companyPage";
 import Bookmark from "../pages/Bookmark";
 import AdDetails from "../pages/AdDetails";
 import ActiveAccount from "../pages/ActiveAccount";
 import ResetPass from "../pages/ResetPass";
 import ResetPass2 from "../pages/ResetPass2";
 import EditAd from "../pages/EditAd";
-import ProfileCompany from "../pages/ProfileCompany";
-import NewPost from "../pages/NewPost";
 import ProfileUser from "../pages/Profile";
 
 const indexRoutes = [{ path: "/", component: DefaultLayout }];
 
-const AppRoutes:Array<any> = [
+const AppRoutes: Array<any> = [
   {
     path: ["/home", "/"],
     name: "داشبورد",
@@ -54,18 +54,18 @@ const AppRoutes:Array<any> = [
     private: false,
   },
   {
-    path: "/profile-company/new-post",
-    name: "جستجو",
+    path: "/postPage",
+    name: "صفحه آگهی",
     icon: "fa fa-list",
-    component: NewPost,
+    component: PostPage,
     showInNav: false,
     private: false,
   },
   {
-    path: "/profile-company",
-    name: "جستجو",
+    path: "/company",
+    name: "اطلاعات شرکت",
     icon: "fa fa-list",
-    component: ProfileCompany,
+    component: companyPage,
     showInNav: false,
     private: false,
   },

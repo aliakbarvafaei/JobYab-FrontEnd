@@ -14,50 +14,42 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 const theme = createTheme({
-  typography: {
-    fontFamily: `IRANYekan`,
-  },
   components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        fontFamily: "IRANYekan",
-      },
-    },
     MuiTypography: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANYekan",
+          fontFamily: "IRANSans",
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANYekan",
+          fontFamily: "IRANSans",
         },
         outlinedSizeSmall: {
-          fontFamily: "IRANYekan",
+          fontFamily: "IRANSans",
         },
       },
     },
     MuiInputBase: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANYekan",
+          fontFamily: "IRANSans",
         },
       },
     },
     MuiInput: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANYekan",
+          fontFamily: "IRANSans",
         },
       },
     },
     MuiPagination: {
       styleOverrides: {
         root: {
-          fontFamily: "IRANYekan",
+          fontFamily: "IRANSans",
         },
       },
     },

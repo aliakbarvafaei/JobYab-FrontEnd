@@ -152,8 +152,7 @@ const useStyle = makeStyles((theme) => ({
     isLoading?: boolean;
   }) => ({
     "&::placeholder": {
-      fontFamily:"IRANYekan",
-      color: isDisabled ? "#00000099" : "#00000099",
+      color: isDisabled ? theme.palette.grey[800] : theme.palette.text.disabled,
     },
   }),
 }));
