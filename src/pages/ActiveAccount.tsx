@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
-import HeaderNewShort from '../components/HeaderNew/HeaderNewShort';
 import MobileMenu from '../components/MobileMenu/MobileMenu';
+import HeaderSection from '../components/NEW/HeaderSection/HeaderSection';
 import TitlePages from '../components/TitlePages/TitlePages';
 import { useToast } from '../contexts/ToastState';
 import { activateAccountAPI, sendEmailAPI } from '../services/api';
@@ -162,7 +162,7 @@ const ActiveAccount:React.FC = ()=> {
     
     return <div>
         <MobileMenu />
-        <HeaderNewShort />
+        <HeaderSection />
         <TitlePages title="فعال‌سازی حساب" />
         <div className={`${themeClass} py-[40px] px-total`}>
             <div className="w-[100%] pt-[10px]">
