@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Request from "./Request/Request";
 import Information from "./Information/Information";
 import Messages from "../Messages/Messages";
+import Bookmark from "./Bookmark/Bookmark";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,7 +47,22 @@ function a11yProps(index: number) {
 const level = ["ارتقای سطح"];
 
 export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+  const queryParams = new URLSearchParams(window.location.search);
+
+  const [value, setValue] = React.useState(() => {
+    if (queryParams.get("section")) {
+      if (queryParams.get("section") === "request") {
+        return 0;
+      } else if (queryParams.get("section") === "information") {
+        return 1;
+      } else if (queryParams.get("section") === "message") {
+        return 2;
+      } else if (queryParams.get("section") === "bookmark") {
+        return 3;
+      } else return 0;
+    } else return 0;
+  });
+
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -76,7 +92,16 @@ export default function BasicTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          aria-label="scrollable auto tabs example"
+          variant="scrollable"
+          scrollButtons="auto"
+          sx={{
+            "& button": {
+              fontSize: { xs: "10px", sm: "14px" },
+              padding: { xs: "4px 8px", sm: "12px 16px" },
+              minWidth: "60px !important",
+            },
+          }}
         >
           <Tab
             label="درخواست‌های من"
@@ -92,6 +117,11 @@ export default function BasicTabs() {
             label="پیام‌ها"
             {...a11yProps(2)}
             sx={{ borderBottom: value === 2 ? 5 : 0, fontFamily: "IRANSans" }}
+          />
+          <Tab
+            label="نشان شده‌ها"
+            {...a11yProps(3)}
+            sx={{ borderBottom: value === 3 ? 5 : 0, fontFamily: "IRANSans" }}
           />
           <div className="mr-auto flex items-center">
             <Menu
@@ -148,6 +178,16 @@ export default function BasicTabs() {
         }}
       >
         <Messages />
+      </TabPanel>
+      <TabPanel
+        value={value}
+        index={3}
+        sx={{
+          backgroundColor: "#e0e5eb",
+          minHeight: "80.9vh",
+        }}
+      >
+        <Bookmark />
       </TabPanel>
     </Box>
   );

@@ -7,31 +7,32 @@ import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 
-const MainFooter:React.FC = ()=> {
-  const themeBorder : string = "border-darkModeGray";
+const MainFooter: React.FC = () => {
+  const themeBorder: string = "border-darkModeGray";
 
   return (
     <div className="flex flex-row flex-wrap justify-between">
       <div className="md:w-[100%] lg:w-[45%] lgmin:w-[30%]">
         <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              display: "flex",
-              justifyContent:"center",
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            JOBYAB
-          </Typography>
+          variant="h6"
+          noWrap
+          component="a"
+          href="/"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            fontFamily: "monospace",
+            fontWeight: 700,
+            letterSpacing: ".3rem",
+            color: "inherit",
+            textDecoration: "none",
+          }}
+        >
+          JOBYAB
+        </Typography>
         <p className="pt-[18px] text-center px-[40px] text-darkGray text-[14px] leading-[30px]">
-          ما در جاب یاب به شما کمک می‌کنیم تا بتوانید از فرصت های شغلی مختلف باخبر باشید و براحتی در جاب یاب صاحب کار شوید.
+          ما در جاب یاب به شما کمک می‌کنیم تا بتوانید از فرصت های شغلی مختلف
+          باخبر باشید و براحتی در جاب یاب صاحب کار شوید.
         </p>
         <div className="flex flex-row justify-between items-center mt-[8px]">
           <span className="cursor-pointer">
@@ -58,17 +59,21 @@ const MainFooter:React.FC = ()=> {
           حساب کاربری
         </h4>
         <ul className="list-none p-0 text-[16px]">
-          <Link to='/profile'><li className="relative inline-block pt-[13px] text-darkGray hoverItem">
-            آگهی های من
-          </li></Link>
+          <Link to="/profile-company?section=mypost">
+            <li className="relative inline-block pt-[13px] text-darkGray hoverItem">
+              آگهی های من
+            </li>
+          </Link>
           <div></div>
           {/* <Link to='/bookmark'><li className="relative inline-block pt-[13px] text-darkGray hoverItem">
             نشان شده‌ها
           </li></Link>
           <div></div> */}
-          <Link to='/profile'><li className="relative inline-block pt-[13px] text-darkGray hoverItem">
-            پروفایل
-          </li></Link>
+          <Link to="/profile">
+            <li className="relative inline-block pt-[13px] text-darkGray hoverItem">
+              پروفایل
+            </li>
+          </Link>
           <div></div>
         </ul>
       </div>
@@ -79,13 +84,17 @@ const MainFooter:React.FC = ()=> {
           آگهی
         </h4>
         <ul className="list-none p-0 text-[16px]">
-          <Link to='/search'><li className="relative inline-block pt-[13px] text-darkGray hoverItem">
-            نشان شده‌ها
-          </li></Link>
+          <Link to="/profile?section=bookmark">
+            <li className="relative inline-block pt-[13px] text-darkGray hoverItem">
+              نشان شده‌ها
+            </li>
+          </Link>
           <div></div>
-          <Link to='/search'><li className="relative inline-block pt-[13px] text-darkGray hoverItem">
-            فوری
-          </li></Link>
+          <Link to="/search">
+            <li className="relative inline-block pt-[13px] text-darkGray hoverItem">
+              فوری
+            </li>
+          </Link>
           <div></div>
         </ul>
       </div>
@@ -121,6 +130,6 @@ const MainFooter:React.FC = ()=> {
       </div>
     </div>
   );
-}
+};
 
 export default MainFooter;

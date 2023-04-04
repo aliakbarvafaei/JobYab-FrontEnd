@@ -57,7 +57,16 @@ export default function BasicTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          aria-label="scrollable auto tabs example"
+          variant="scrollable"
+          scrollButtons="auto"
+          sx={{
+            "& button": {
+              fontSize: { xs: "10px", sm: "14px" },
+              padding: { xs: "4px 8px", sm: "12px 16px" },
+              minWidth: "60px !important",
+            },
+          }}
         >
           <Tab
             label="رزومه‌های دریافتی"
