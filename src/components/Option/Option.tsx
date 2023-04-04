@@ -19,7 +19,7 @@ const Option : React.FC = () => {
             alt="Free"
           />
           <div>
-            <h2 className="text-[16px] font-bold lg:text-center group-hover:text-red">
+            <h2 className="text-[16px] font-bold lg:text-center group-hover:text-blue">
               ارسال رزومه رایگان
             </h2>
             <p className="text-[14px] text-darkGray lg:text-center">
@@ -37,7 +37,7 @@ const Option : React.FC = () => {
             alt="clock"
           />
           <div>
-            <h2 className="text-[16px] font-bold lg:text-center group-hover:text-red">
+            <h2 className="text-[16px] font-bold lg:text-center group-hover:text-blue">
               پشتیبانی تمام وقت
             </h2>
             <p className="text-[14px] text-darkGray lg:text-center">
@@ -55,7 +55,7 @@ const Option : React.FC = () => {
             alt="speaker"
           />
           <div>
-            <h2 className="text-[16px] font-bold lg:text-center group-hover:text-red">
+            <h2 className="text-[16px] font-bold lg:text-center group-hover:text-blue">
               پیشنهاد فوق‌العاده اشتراک
             </h2>
             <p className="text-[14px] text-darkGray lg:text-center">

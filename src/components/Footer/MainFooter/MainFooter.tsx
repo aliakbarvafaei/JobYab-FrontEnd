@@ -124,7 +124,7 @@ const MainFooter: React.FC = () => {
               className="fa fa-envelope absolute left-0 top-[16px]"
               aria-hidden="true"
             ></i>{" "}
-            ایمیل : pishkhooneh@gmail.com
+            ایمیل : jobyab@gmail.com
           </li>
         </ul>
       </div>
