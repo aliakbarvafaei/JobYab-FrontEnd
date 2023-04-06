@@ -16,8 +16,15 @@ import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import { Link } from "react-router-dom";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["خروج"];
+const pages = [
+  { title: "نشان شده‌ها", link: "/profile?section=bookmark" },
+  { title: "پشتیبانی", link: "/profile?section=message" },
+];
+const settings = [
+  { title: "درخواست‌ها", link: "/profile?section=request" },
+  { title: "اطلاعات", link: "/profile?section=information" },
+  { title: "خروج", link: "/" },
+];
 
 const HeaderNewShort = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -106,8 +113,13 @@ const HeaderNewShort = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page.title}
+                  onClick={() => {
+                    window.location.href = page.link as string;
+                  }}
+                >
+                  <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -116,7 +128,7 @@ const HeaderNewShort = () => {
             variant="h5"
             noWrap
             component="a"
-            href="#"
+            href="/"
             sx={{
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
@@ -135,6 +147,7 @@ const HeaderNewShort = () => {
             <Button
               key="نشان شده‌ها"
               //   onClick={handleCloseNavMenu}
+              href="/profile?section=bookmark"
               sx={{
                 my: 2,
                 color: "#e0e5eb",
@@ -150,6 +163,7 @@ const HeaderNewShort = () => {
             <Button
               key="پشتیبانی"
               onClick={handleCloseNavMenu}
+              href="/profile?section=message"
               sx={{
                 my: 2,
                 color: "#e0e5eb",
@@ -162,10 +176,18 @@ const HeaderNewShort = () => {
               <ContactSupportIcon />
               پشتیبانی
             </Button>
-            {false ? (
+            {true ? (
               <Tooltip title="حساب کاربری">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar
+                    sx={{
+                      width: { xs: "30px", sm: "40px" },
+                      height: { xs: "30px", sm: "40px" },
+                      fontSize: { xs: "0.8rem", sm: "1.25rem" },
+                    }}
+                    alt="Remy Sharp"
+                    src="/static/images/avatar/2.jpg"
+                  />
                   <div className="text-[14px] pr-2 text-[#e0e5eb] md:hidden">
                     حساب کاربری
                   </div>
@@ -201,8 +223,13 @@ const HeaderNewShort = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem
+                  key={setting.title}
+                  onClick={() => {
+                    window.location.href = setting.link as string;
+                  }}
+                >
+                  <Typography textAlign="center">{setting.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>

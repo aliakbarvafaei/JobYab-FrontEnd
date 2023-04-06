@@ -13,8 +13,17 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["خروج"];
+const pages = [
+  { title: "آگهی جدید", link: "/profile-company/new-post" },
+  { title: "پشتیبانی", link: "/profile-company?section=message" },
+];
+const settings = [
+  { title: "درخواست‌ها", link: "/profile-company?section=request" },
+  { title: "آگهی‌های من", link: "/profile-company?section=mypost" },
+  { title: "اطلاعات", link: "/profile-company?section=information" },
+  { title: "خروج", link: "/" },
+];
+
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -103,8 +112,13 @@ const Header = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page.title}
+                  onClick={() => {
+                    window.location.href = page.link as string;
+                  }}
+                >
+                  <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -113,7 +127,7 @@ const Header = () => {
             variant="h5"
             noWrap
             component="a"
-            href="#"
+            href="/"
             sx={{
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
@@ -144,6 +158,7 @@ const Header = () => {
             <Button
               key="پشتیبانی"
               onClick={handleCloseNavMenu}
+              href="/profile-company?section=message"
               sx={{
                 my: 2,
                 color: "#e0e5eb",
@@ -158,7 +173,15 @@ const Header = () => {
             </Button>
             <Tooltip title="حساب کاربری">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  sx={{
+                    width: { xs: "30px", sm: "40px" },
+                    height: { xs: "30px", sm: "40px" },
+                    fontSize: { xs: "0.8rem", sm: "1.25rem" },
+                  }}
+                  alt="Remy Sharp"
+                  src="/static/images/avatar/2.jpg"
+                />
                 <div className="text-[14px] pr-2 text-[#e0e5eb] md:hidden">
                   حساب کاربری
                 </div>
@@ -181,8 +204,13 @@ const Header = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem
+                  key={setting.title}
+                  onClick={() => {
+                    window.location.href = setting.link as string;
+                  }}
+                >
+                  <Typography textAlign="center">{setting.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>

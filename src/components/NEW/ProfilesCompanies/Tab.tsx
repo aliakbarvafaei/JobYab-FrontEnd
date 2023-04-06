@@ -50,7 +50,22 @@ function a11yProps(index: number) {
 const level = ["ارتقای سطح"];
 
 export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+  const queryParams = new URLSearchParams(window.location.search);
+
+  const [value, setValue] = React.useState(() => {
+    if (queryParams.get("section")) {
+      if (queryParams.get("section") === "mypost") {
+        return 0;
+      } else if (queryParams.get("section") === "request") {
+        return 1;
+      } else if (queryParams.get("section") === "information") {
+        return 2;
+      } else if (queryParams.get("section") === "message") {
+        return 3;
+      } else return 0;
+    } else return 0;
+  });
+
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -80,7 +95,16 @@ export default function BasicTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          aria-label="scrollable auto tabs example"
+          variant="scrollable"
+          scrollButtons="auto"
+          sx={{
+            "& button": {
+              fontSize: { xs: "10px", sm: "14px" },
+              padding: { xs: "4px 8px", sm: "12px 16px" },
+              minWidth: "60px !important",
+            },
+          }}
         >
           <Tab
             label="آگهی‌های من"
@@ -105,8 +129,8 @@ export default function BasicTabs() {
           <div className="mr-auto flex items-center">
             <Tooltip title="سطح کاربر">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <CreditCardIcon />
-                <p className="text-[14px] border-b-[2px] border-b-green mr-2">
+                <CreditCardIcon sx={{ width: { xs: "16px", sm: "24px" } }} />
+                <p className="smmin:text-[14px] sm:text-[10px] border-b-[2px] border-b-green smmin:mr-2 sm:mr-1">
                   سطح برنزی
                 </p>
               </IconButton>

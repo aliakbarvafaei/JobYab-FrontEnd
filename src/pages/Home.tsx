@@ -18,7 +18,7 @@ const Home : React.FC = ()=> {
       <HeaderNewComplete />
       <SectionAdSlider />
       <div className="px-total py-[12%] flex flex-col font-bold items-center mdmin:w-[60%] md:w-[100%]">
-        <h2 className="text-red md:text-[75px] lg:text-[60px] xl:text-[85px] xlmin:text-[90px]">
+        <h2 className="text-blue md:text-[75px] lg:text-[60px] xl:text-[85px] xlmin:text-[90px]">
           سال 1402
         </h2>
         <h4 className="lg:text-[35px] xl:text-[50px] xlmin:text-[55px] text-center text-white">
@@ -32,13 +32,13 @@ const Home : React.FC = ()=> {
         <div className="bg-white smmin:h-[450px] min-w-[50%] flex smmin:flex-row sm:flex-col justify-center smmin:gap-[8%] sm:gap-[10px] rounded-3xl py-[3%] px-[2%] my-[3%] mx-[5%]">
           <div className="flex flex-col justify-between items-center text-center gap-[5%]">
             <img src={bronze} className="h-[124px] w-[100px]" alt="برنز"/>
-            <h3 className="font-bold">خانه برنزی</h3>
+            <h3 className="font-bold">جاب‌یاب برنزی</h3>
             <ul className="">
               <li className="text-[12px]">✔ امکان اضافه کردن تا سه آگهی</li>
             </ul>
             <p className="flex flex-col">
               <span className="text-[12px]"> قیمت</span>
-              <span className="text-red font-bold text-[20px]">رایگان</span>
+              <span className="text-blue font-bold text-[20px]">رایگان</span>
             </p>
             <button
                 type="button"
@@ -51,17 +51,17 @@ const Home : React.FC = ()=> {
           <div className="border-darkModeGray border-[1px] shadow-[0_2px_4px_0_rgba(200,200,200)]"></div>
           <div className="flex flex-col justify-between items-center text-center gap-[5%]">
             <img src={silver} className="h-[126px] w-[100px]" alt="نقره"/>
-            <h3 className="font-bold">خانه نقره‌ای</h3>
+            <h3 className="font-bold">جاب‌یاب نقره‌ای</h3>
             <ul className="">
               <li className="text-[12px]">✔ امکان اضافه کردن تا ده آگهی</li>
             </ul>
             <p className="flex flex-col">
               <span className="text-[12px]"> قیمت</span>
-              <span className="text-red font-bold text-[20px]">۲۰,۰۰۰ تومان</span>
+              <span className="text-blue font-bold text-[20px]">۲۰,۰۰۰ تومان</span>
             </p>
             <button
                 type="button"
-                className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-red text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-red hover:border-[2px] hover:border-solid hover:text-black"
+                className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-blue text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-blue hover:border-[2px] hover:border-solid hover:text-black"
                 onClick={()=>history.push('/profile')}
               >
                 ارتقا
@@ -70,17 +70,17 @@ const Home : React.FC = ()=> {
           <div className="border-darkModeGray border-[1px] shadow-[0_2px_4px_0_rgba(200,200,200)]"></div>
           <div className="flex flex-col justify-between items-center text-center gap-[5%]">
             <img src={gold} className="h-[126px] w-[110px]" alt="طلا"/>
-            <h3 className="font-bold">خانه طلایی</h3>
+            <h3 className="font-bold">جاب‌یاب طلایی</h3>
             <ul className="">
               <li className="text-[12px]">✔ امکان اضافه کردن نامحدود آگهی</li>
             </ul>
             <p className="flex flex-col">
               <span className="text-[12px]"> قیمت</span>
-              <span className="text-red font-bold text-[20px]">۵۰,۰۰۰ تومان</span>
+              <span className="text-blue font-bold text-[20px]">۵۰,۰۰۰ تومان</span>
             </p>
             <button
                 type="button"
-                className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-red text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-red hover:border-[2px] hover:border-solid hover:text-black"
+                className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-blue text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-blue hover:border-[2px] hover:border-solid hover:text-black"
                 onClick={()=>history.push('/profile')}
               >
                 ارتقا

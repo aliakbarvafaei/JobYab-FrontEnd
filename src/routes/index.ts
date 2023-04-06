@@ -6,7 +6,6 @@ import NewPost from "../pages/NewPost";
 import SearchPage from "../pages/SearchPage";
 import PostPage from "../pages/PostPage";
 import companyPage from "../pages/companyPage";
-import Bookmark from "../pages/Bookmark";
 import ProfileUser from "../pages/Profile";
 import ProfileCompany from "../pages/ProfileCompany";
 
@@ -60,14 +59,6 @@ const AppRoutes: Array<any> = [
     component: companyPage,
     showInNav: false,
     private: false,
-  },
-  {
-    path: "/bookmark",
-    name: "نشان‌ شده‌ها",
-    icon: "fa fa-list",
-    component: Bookmark,
-    showInNav: false,
-    private: true,
   },
   {
     path: "/profile",

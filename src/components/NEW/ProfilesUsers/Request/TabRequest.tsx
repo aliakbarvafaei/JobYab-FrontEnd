@@ -57,7 +57,16 @@ export default function BasicTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          aria-label="scrollable auto tabs example"
+          variant="scrollable"
+          scrollButtons="auto"
+          sx={{
+            "& button": {
+              fontSize: { xs: "10px", sm: "14px" },
+              padding: { xs: "4px 8px", sm: "12px 16px" },
+              minWidth: "60px !important",
+            },
+          }}
         >
           <Tab
             label="درخواست‌های ارسالی"
@@ -76,25 +85,13 @@ export default function BasicTabs() {
           />
         </Tabs>
       </Box>
-      <TabPanel
-        value={value}
-        index={0}
-        sx={{ backgroundColor: "#e0e5eb"}}
-      >
+      <TabPanel value={value} index={0} sx={{ backgroundColor: "#e0e5eb" }}>
         <Content index={0} />
       </TabPanel>
-      <TabPanel
-        value={value}
-        index={1}
-        sx={{ backgroundColor: "#e0e5eb"}}
-      >
+      <TabPanel value={value} index={1} sx={{ backgroundColor: "#e0e5eb" }}>
         <Content index={1} />
       </TabPanel>
-      <TabPanel
-        value={value}
-        index={2}
-        sx={{ backgroundColor: "#e0e5eb"}}
-      >
+      <TabPanel value={value} index={2} sx={{ backgroundColor: "#e0e5eb" }}>
         <Content index={2} />
       </TabPanel>
     </Box>
