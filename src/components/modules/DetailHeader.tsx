@@ -14,12 +14,14 @@ const DetailHeader = ({
   return (
     <Grid
       style={{
-        background: "lightgray",
+        border: "1.5px solid #1976D2",
         height: 200,
         marginInline: 150,
         borderRadius: 12,
         marginTop: 10,
         position: "relative",
+        backgroundImage:
+          "linear-gradient(to left top, #1976D2,#1976D7,#1976D2)",
       }}
     >
       <Grid className="flex items-center absolute -bottom-3 right-10">
@@ -28,27 +30,33 @@ const DetailHeader = ({
         </Grid>
         <Grid>
           <Grid item style={{ marginBottom: 15 }}>
-            <Typography style={{ fontSize: 24 }}>برنامه نویس پایتون</Typography>
+            <Typography style={{ fontSize: 24, color: "white" }}>
+              برنامه نویس پایتون
+            </Typography>
           </Grid>
           <Grid item style={{ display: "flex", alignItems: "center" }}>
             <Grid item>
               <IconButton disabled>
-                <BusinessIcon />
+                <BusinessIcon style={{ color: "white" }} />
               </IconButton>
             </Grid>
             <Grid item>
-              <Typography style={{ fontSize: 12 }}>شرکت ویتراکو</Typography>
+              <Typography style={{ fontSize: 12, color: "white" }}>
+                شرکت ویتراکو
+              </Typography>
             </Grid>
           </Grid>
 
           <Grid item style={{ display: "flex", alignItems: "center" }}>
             <Grid item>
               <IconButton disabled>
-                <LocationOnIcon />
+                <LocationOnIcon style={{ color: "white" }} />
               </IconButton>
             </Grid>
             <Grid item>
-              <Typography style={{ fontSize: 12 }}>اصفهان اصفهان</Typography>
+              <Typography style={{ fontSize: 12, color: "white" }}>
+                اصفهان اصفهان
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -57,14 +65,14 @@ const DetailHeader = ({
         {haveCompanyDetail && (
           <Button
             variant="contained"
-            style={{ marginLeft: 5 }}
+            style={{ marginLeft: 5, background: "white", color: "#1976D2" }}
             onClick={onclick}
           >
             اطلاعات شرکت
           </Button>
         )}
         <IconButton style={{ marginLeft: 5, padding: 5 }}>
-          <BookmarkBorderOutlinedIcon />
+          <BookmarkBorderOutlinedIcon style={{ color: "white" }} />
         </IconButton>
       </Grid>
     </Grid>
