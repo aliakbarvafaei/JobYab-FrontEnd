@@ -52,6 +52,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        elevation: {
+          boxShadow: "none",
+        },
+      },
+    },
   },
 });
 const App: React.FC = () => (
