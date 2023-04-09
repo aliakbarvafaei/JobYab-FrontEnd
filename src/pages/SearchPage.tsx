@@ -60,14 +60,12 @@ const SearchPage: React.FC = () => {
           display: "flex",
           height: 500,
           marginInline: 80,
+          justifyContent: "center",
         }}
       >
-        <div style={{ background: "lightgray", width: "30%", marginTop: 10 }}>
-          <p>Filter Section</p>
-        </div>
         <div
           style={{
-            width: "70%",
+            width: "80%",
             padding: 10,
             gap: 20,
             display: "flex",

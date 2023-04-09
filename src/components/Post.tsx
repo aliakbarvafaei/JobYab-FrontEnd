@@ -19,16 +19,16 @@ const Post = ({ onClick }: PostProps) => {
     <Grid
       container
       style={{
-        background: "#F2F3F4",
         paddingBlock: 20,
         paddingInline: 10,
         borderRadius: 8,
         display: "flex",
+        border: "1.5px solid #1976D2",
       }}
       onClick={onClick}
     >
       <Grid item>
-        <Avatar sx={{ width: 80, height: 80 }} />
+        <Avatar sx={{ width: 80, height: 80, border: "1.5px solid #1976D2" }} />
       </Grid>
       <Grid item style={{ marginRight: 10, width: "90%" }}>
         <Grid
@@ -45,14 +45,14 @@ const Post = ({ onClick }: PostProps) => {
           <Grid item className="flex items-center">
             <Typography>9 ساعت پیش</Typography>
             <IconButton>
-              <BookmarkBorderOutlinedIcon />
+              <BookmarkBorderOutlinedIcon style={{ color: "#1976D2" }} />
             </IconButton>
           </Grid>
         </Grid>
         <Grid item style={{ display: "flex", alignItems: "center" }}>
           <Grid item>
             <IconButton disabled>
-              <BusinessIcon />
+              <BusinessIcon style={{ color: "#1976D2" }} />
             </IconButton>
           </Grid>
           <Grid item>
@@ -62,7 +62,7 @@ const Post = ({ onClick }: PostProps) => {
         <Grid item style={{ display: "flex", alignItems: "center" }}>
           <Grid item>
             <IconButton disabled>
-              <LocationOnIcon />
+              <LocationOnIcon style={{ color: "#1976D2" }} />
             </IconButton>
           </Grid>
           <Grid item>
@@ -72,7 +72,7 @@ const Post = ({ onClick }: PostProps) => {
         <Grid item style={{ display: "flex", alignItems: "center" }}>
           <Grid item>
             <IconButton disabled>
-              <FactCheckIcon />
+              <FactCheckIcon style={{ color: "#1976D2" }} />
             </IconButton>
           </Grid>
           <Grid item>
@@ -88,11 +88,26 @@ const Post = ({ onClick }: PostProps) => {
           }}
         >
           <Grid item style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <Chip label="C#" style={{ borderRadius: 8 }} />
-            <Chip label="Python" style={{ borderRadius: 8 }} />
-            <Chip label="C++" style={{ borderRadius: 8 }} />
-            <Chip label="Java" style={{ borderRadius: 8 }} />
-            <Chip label="SQL Server" style={{ borderRadius: 8 }} />
+            <Chip
+              label="C#"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
+            <Chip
+              label="Python"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
+            <Chip
+              label="C++"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
+            <Chip
+              label="Java"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
+            <Chip
+              label="SQL Server"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
           </Grid>
           <Grid item>
             <Button
