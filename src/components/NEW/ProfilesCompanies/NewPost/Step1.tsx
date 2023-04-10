@@ -20,13 +20,15 @@ const step1Schema = object({
 
 type step1Input = TypeOf<typeof step1Schema>;
 
-const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
+const Step1: React.FC<{ handleNext: (values: any) => void }> = ({
+  handleNext,
+}) => {
   const step1 = useForm<step1Input>({
     resolver: zodResolver(step1Schema),
   });
   const onSubmitHandlerStep1: SubmitHandler<step1Input> = (values) => {
     console.log(values);
-    handleNext();
+    handleNext(values);
   };
 
   return (
@@ -106,10 +108,10 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           {...step1.register("type")}
           sx={{ justifyContent: "center", alignItems: "center" }}
         >
-          <MenuItem value={"تمام وقت"}>تمام وقت</MenuItem>
-          <MenuItem value={"پاره وقت"}>پاره وقت</MenuItem>
-          <MenuItem value={"دور کاری"}>دور کاری</MenuItem>
-          <MenuItem value={"پروژه‌ای"}>پروژه‌ای</MenuItem>
+          <MenuItem value={"ft"}>تمام وقت</MenuItem>
+          <MenuItem value={"pt"}>پاره وقت</MenuItem>
+          <MenuItem value={"pr"}>دور کاری</MenuItem>
+          <MenuItem value={"re"}>پروژه‌ای</MenuItem>
         </Select>
         {step1.formState.errors["type"] ? (
           <Typography
@@ -161,10 +163,9 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           {...step1.register("military")}
           sx={{ justifyContent: "center", alignItems: "center" }}
         >
-          <MenuItem value={"مهم نیست"}>مهم نیست</MenuItem>
-          <MenuItem value={"دارای کارت پایان خدمت"}>
-            دارای کارت پایان خدمت
-          </MenuItem>
+          <MenuItem value={"1"}>مهم نیست</MenuItem>
+          <MenuItem value={"2"}>معافیت تحصیلی</MenuItem>
+          <MenuItem value={"3"}>دارای کارت پایان خدمت</MenuItem>
         </Select>
         {step1.formState.errors["military"] ? (
           <Typography
@@ -216,13 +217,14 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           {...step1.register("degree")}
           sx={{ justifyContent: "center", alignItems: "center" }}
         >
-          <MenuItem value={"مهم نیست"}>مهم نیست</MenuItem>
-          <MenuItem value={"زیر دیپلم"}>زیر دیپلم</MenuItem>
-          <MenuItem value={"دیپلم"}>دیپلم</MenuItem>
-          <MenuItem value={"کاردانی"}>کاردانی</MenuItem>
-          <MenuItem value={"کارشناسی"}>کارشناسی</MenuItem>
-          <MenuItem value={"کارشناسی ارشد"}>کارشناسی ارشد</MenuItem>
-          <MenuItem value={"دکترا"}>دکترا</MenuItem>
+          <MenuItem value={"0"}>مهم نیست</MenuItem>
+          <MenuItem value={"1"}>زیر دیپلم</MenuItem>
+          <MenuItem value={"2"}>دیپلم</MenuItem>
+          <MenuItem value={"3"}>فوق دیپلم</MenuItem>
+          <MenuItem value={"4"}>لیسانس</MenuItem>
+          <MenuItem value={"5"}>فوق لیسانس</MenuItem>
+          <MenuItem value={"6"}>دکترا</MenuItem>
+          <MenuItem value={"7"}>بالاتر از دکترا</MenuItem>
         </Select>
         {step1.formState.errors["degree"] ? (
           <Typography
@@ -274,10 +276,12 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           {...step1.register("work")}
           sx={{ justifyContent: "center", alignItems: "center" }}
         >
-          <MenuItem value={"نیاز نیست"}>نیاز نیست</MenuItem>
-          <MenuItem value={"حداقل یک سال"}>حداقل یک سال</MenuItem>
-          <MenuItem value={"حداقل 3 سال"}>حداقل 3 سال</MenuItem>
-          <MenuItem value={"بالای 3 سال"}>بالای 3 سال</MenuItem>
+          <MenuItem value={"1"}>مهم نیست</MenuItem>
+          <MenuItem value={"2"}>حداقل 1 سال</MenuItem>
+          <MenuItem value={"3"}>حداقل 2 سال</MenuItem>
+          <MenuItem value={"4"}>حداقل 3 سال</MenuItem>
+          <MenuItem value={"5"}>حداقل 4 سال</MenuItem>
+
         </Select>
         {step1.formState.errors["work"] ? (
           <Typography
@@ -329,9 +333,9 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           {...step1.register("gender")}
           sx={{ justifyContent: "center", alignItems: "center" }}
         >
-          <MenuItem value={"مهم نیست"}>مهم نیست</MenuItem>
-          <MenuItem value={"مرد"}>مرد</MenuItem>
-          <MenuItem value={"زن"}>زن</MenuItem>
+          <MenuItem value={"1"}>مهم نیست</MenuItem>
+          <MenuItem value={"m"}>مرد</MenuItem>
+          <MenuItem value={"f"}>زن</MenuItem>
         </Select>
         {step1.formState.errors["gender"] ? (
           <Typography
@@ -383,16 +387,16 @@ const Step1: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           {...step1.register("salary")}
           sx={{ justifyContent: "center", alignItems: "center" }}
         >
-          <MenuItem value={"توافقی"}>توافقی</MenuItem>
-          <MenuItem value={"حداکثر 5 میلیون تومان"}>
-            حداکثر 5 میلیون تومان
+          <MenuItem value={"1"}>توافقی</MenuItem>
+          <MenuItem value={"2"}>
+            از 5 میلیون تومان
           </MenuItem>
-          <MenuItem value={"5 تا 7 میلیون تومان"}>5 تا 7 میلیون تومان</MenuItem>
-          <MenuItem value={"7 تا 10 میلیون تومان"}>
-            7 تا 10 میلیون تومان
+          <MenuItem value={"3"}>5 از 10 میلیون تومان</MenuItem>
+          <MenuItem value={"4"}>
+            7 از 15 میلیون تومان
           </MenuItem>
-          <MenuItem value={"بالای 10 میلیون تومان"}>
-            بالای 10 میلیون تومان
+          <MenuItem value={"5"}>
+            از 20 میلیون تومان
           </MenuItem>
         </Select>
         {step1.formState.errors["salary"] ? (

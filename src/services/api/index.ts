@@ -3,56 +3,78 @@ import { filtersInterface } from "../../ts/interfaces";
 
 export const logoutAPI = () => axiosInstance.get(`/logout/`, configToken());
 
-export const loginAPI = (email : string, password : string) =>
-  axiosInstance.post(
-    "/login/",
-    {
-      username: email,
-      password: password
-    }
-  );
-export const registerAPI = (fname : string, callNumber : string, email : string, password : string, address: string, bio: string) =>
-  axiosInstance.post(
-    "/register/",
-    {
-      full_name: fname,
-      phone_number: callNumber,
-      username: email,
-      password: password,
-      address: address,
-      bio: bio
-    }
-  );
-export const sendEmailAPI = (email : string) =>
-  axiosInstance.post(
-    "/send_mail/",
-    {
-      username: email,
-    }
-  );
-export const sendEmailForgetPassAPI = (email : string) =>
-  axiosInstance.post(
-    "/send_forget_pass_email/",
-    {
-      username: email,
-    }
-  );
-export const activateAccountAPI = (code : string) =>
-  axiosInstance.post(
-    "/active_account/",
-    {
-      email_active_code: code,
-    }
-  );
-export const resetPassAPI = (code : string, newPass : string) =>
-  axiosInstance.post(
-    "/reset_pass/",
-    {
-      email_active_code: code,
-      password: newPass
-    }
-  );
-export const NewAdAPI = (token : string, category : string, type : string, status : string, city : string, region : number, neighbor: string, room : number, year : number, elevator : boolean, parking : boolean, lobby : boolean, sports_hall : boolean, guard : boolean,swimming_pool : boolean, balcony : boolean, roof_garden : boolean, remote_door : boolean, meterage : number, price : number, main_image : string, image_1 : string, image_2 : string, image_3 : string, title : string, callNumber : string, bio : string, creator: string, warehouse: boolean, location_x : number, location_y: number) =>
+export const loginAPI = (email: string, password: string) =>
+  axiosInstance.post("/login/", {
+    username: email,
+    password: password,
+  });
+export const registerAPI = (
+  fname: string,
+  callNumber: string,
+  email: string,
+  password: string,
+  address: string,
+  bio: string
+) =>
+  axiosInstance.post("/register/", {
+    full_name: fname,
+    phone_number: callNumber,
+    username: email,
+    password: password,
+    address: address,
+    bio: bio,
+  });
+export const sendEmailAPI = (email: string) =>
+  axiosInstance.post("/send_mail/", {
+    username: email,
+  });
+export const sendEmailForgetPassAPI = (email: string) =>
+  axiosInstance.post("/send_forget_pass_email/", {
+    username: email,
+  });
+export const activateAccountAPI = (code: string) =>
+  axiosInstance.post("/active_account/", {
+    email_active_code: code,
+  });
+export const resetPassAPI = (code: string, newPass: string) =>
+  axiosInstance.post("/reset_pass/", {
+    email_active_code: code,
+    password: newPass,
+  });
+export const NewPost = (data: any) => axiosInstance.post("/posts/", data);
+export const NewAdAPI = (
+  token: string,
+  category: string,
+  type: string,
+  status: string,
+  city: string,
+  region: number,
+  neighbor: string,
+  room: number,
+  year: number,
+  elevator: boolean,
+  parking: boolean,
+  lobby: boolean,
+  sports_hall: boolean,
+  guard: boolean,
+  swimming_pool: boolean,
+  balcony: boolean,
+  roof_garden: boolean,
+  remote_door: boolean,
+  meterage: number,
+  price: number,
+  main_image: string,
+  image_1: string,
+  image_2: string,
+  image_3: string,
+  title: string,
+  callNumber: string,
+  bio: string,
+  creator: string,
+  warehouse: boolean,
+  location_x: number,
+  location_y: number
+) =>
   axiosInstance.post(
     "/homes_create/",
     {
@@ -85,11 +107,45 @@ export const NewAdAPI = (token : string, category : string, type : string, statu
       seller: creator,
       warehouse: warehouse,
       location_x: location_x,
-      location_y: location_y
+      location_y: location_y,
     },
     configToken()
   );
-export const EditAdAPI = (idAd : string ,source : string ,token : string, category : string, type : string, status : string, city : string, region : number, neighbor: string, room : number, year : number, elevator : boolean, parking : boolean, lobby : boolean, sports_hall : boolean, guard : boolean,swimming_pool : boolean, balcony : boolean, roof_garden : boolean, remote_door : boolean, meterage : number, price : number, main_image : string, image_1 : string, image_2 : string, image_3 : string, title : string, callNumber : string, bio : string, creator: string, warehouse: boolean, location_x : number, location_y: number) =>
+export const EditAdAPI = (
+  idAd: string,
+  source: string,
+  token: string,
+  category: string,
+  type: string,
+  status: string,
+  city: string,
+  region: number,
+  neighbor: string,
+  room: number,
+  year: number,
+  elevator: boolean,
+  parking: boolean,
+  lobby: boolean,
+  sports_hall: boolean,
+  guard: boolean,
+  swimming_pool: boolean,
+  balcony: boolean,
+  roof_garden: boolean,
+  remote_door: boolean,
+  meterage: number,
+  price: number,
+  main_image: string,
+  image_1: string,
+  image_2: string,
+  image_3: string,
+  title: string,
+  callNumber: string,
+  bio: string,
+  creator: string,
+  warehouse: boolean,
+  location_x: number,
+  location_y: number
+) =>
   axiosInstance.put(
     `/homes/${idAd}/${source}`,
     {
@@ -122,7 +178,7 @@ export const EditAdAPI = (idAd : string ,source : string ,token : string, catego
       seller: creator,
       warehouse: warehouse,
       location_x: location_x,
-      location_y: location_y
+      location_y: location_y,
     },
     configToken()
   );
@@ -152,15 +208,9 @@ export const updateCreditAPI = (level: number) =>
 //     configToken()
 //   );
 
-export const getUser = () => axiosInstance.get(
-    `/getuser/`,
-    configToken()
-  );
+export const getUser = () => axiosInstance.get(`/getuser/`, configToken());
 
-export const getmyhomes = () => axiosInstance.get(
-    `/myhomes/`,
-    configToken()
-  );
+export const getmyhomes = () => axiosInstance.get(`/myhomes/`, configToken());
 
 // export const updatePassword = (email : string, LastPassword : string, NewPassword : string) =>
 //   axiosInstance.patch(
@@ -176,29 +226,30 @@ export const getmyhomes = () => axiosInstance.get(
 
 export const getAdsNew = () => axiosInstance.get("/homes/new/");
 
-export const getAdsWithPage = (pageNumber : number, pageSize : number, filters : filtersInterface) =>
-  axiosInstance.post(
-    "/homesfilter/",
-    {
-      pageNumber: pageNumber,
-      pageSize: pageSize,
-      filters: filters,
-    }
-  );
+export const getAdsWithPage = (
+  pageNumber: number,
+  pageSize: number,
+  filters: filtersInterface
+) =>
+  axiosInstance.post("/homesfilter/", {
+    pageNumber: pageNumber,
+    pageSize: pageSize,
+    filters: filters,
+  });
 
-export const getAd = (idAd : string, source : string) =>
+export const getAd = (idAd: string, source: string) =>
   axiosInstance.get(`/homes/${idAd}/${source}`);
 
-export const putAd = (idAd : string, source : string) =>
+export const putAd = (idAd: string, source: string) =>
   axiosInstance.put(`/homes/${idAd}/${source}`, configToken());
 
-export const deleteAd = (idAd : string, source : string) =>
+export const deleteAd = (idAd: string, source: string) =>
   axiosInstance.delete(`/homes/${idAd}/${source}`, configToken());
 
-export const getBookmark = (email : string) =>
+export const getBookmark = (email: string) =>
   axiosInstance.get(`/bookmark/${email}`, configToken());
 
-export const postBookmark = (email : string, code : number) =>
+export const postBookmark = (email: string, code: number) =>
   axiosInstance.post(
     `/bookmark/${email}`,
     {
@@ -206,7 +257,7 @@ export const postBookmark = (email : string, code : number) =>
     },
     configToken()
   );
-export const deleteBookmark = (email : string, code : string) =>
+export const deleteBookmark = (email: string, code: string) =>
   axiosInstance.delete(`/bookmark/${email}!${code}`, configToken());
 
 // export const deleteCart = (email : string, code : string) =>

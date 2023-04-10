@@ -12,14 +12,16 @@ const step3Schema = object({
 
 type step3Input = TypeOf<typeof step3Schema>;
 
-const Step3: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
+const Step3: React.FC<{ handleNext: (values: any) => void }> = ({
+  handleNext,
+}) => {
   const step3 = useForm<step3Input>({
     resolver: zodResolver(step3Schema),
   });
 
   const onSubmitHandlerStep3: SubmitHandler<step3Input> = (values) => {
     console.log(values);
-    handleNext();
+    handleNext(values);
   };
 
   return (

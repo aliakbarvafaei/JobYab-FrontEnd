@@ -8,12 +8,36 @@ import Typography from "@mui/material/Typography";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
+import { NewPost } from "../../../../services/api";
+
+interface step1 {
+  title: string;
+  type: string;
+  military: string;
+  degree: string;
+  work: string;
+  gender: string;
+  salary: string;
+}
+interface step2 {
+  province: string;
+  city: string;
+  jobCategory: string;
+  technology: string;
+}
+interface step3 {
+  bio: string;
+}
 
 const NewPosts: React.FC = () => {
   const steps = [{ label: "1" }, { label: "2" }, { label: "3" }];
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
+
+  const [step1Value, setStep1Value] = React.useState<step1 | null>(null);
+  const [step2Value, setStep2Value] = React.useState<step2 | null>(null);
+  const [step3Value, setStep3Value] = React.useState<step3 | null>(null);
 
   const isStepOptional = (step: number) => {
     return false;
@@ -23,7 +47,34 @@ const NewPosts: React.FC = () => {
     return skipped.has(step);
   };
 
-  const handleNext = () => {
+  const handleNext = (values: any) => {
+    if (activeStep === 0) setStep1Value(values);
+    else if (activeStep === 1) setStep2Value(values);
+    else if (activeStep === 2) {
+      setStep3Value(values);
+      const data = {
+        title: (step1Value as step1).title,
+        sarbazi: (step1Value as step1).military,
+        sex: (step1Value as step1).gender,
+        degree: (step1Value as step1).degree,
+        salary: (step1Value as step1).salary,
+        cooperation_type: (step1Value as step1).type,
+        experience: (step1Value as step1).work,
+        job_type: (step2Value as step2).jobCategory,
+        city: (step2Value as step2).city,
+        state: (step2Value as step2).province,
+        skills: (step2Value as step2).technology,
+        description: values.bio,
+      };
+      NewPost(data)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());

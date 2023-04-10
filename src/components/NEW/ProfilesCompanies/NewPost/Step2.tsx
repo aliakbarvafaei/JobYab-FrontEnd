@@ -17,7 +17,9 @@ const step2Schema = object({
 
 type step2Input = TypeOf<typeof step2Schema>;
 
-const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
+const Step2: React.FC<{ handleNext: (values: any) => void }> = ({
+  handleNext,
+}) => {
   const [jobCategory, setJobCategory] = useState<Array<String>>([]);
   const [technology, setTechnology] = useState<Array<String>>([]);
 
@@ -30,7 +32,11 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
       technology: technology,
       jobCategory: jobCategory,
     });
-    handleNext();
+    handleNext({
+      ...values,
+      technology: technology,
+      jobCategory: jobCategory,
+    });
   };
 
   useEffect(() => {
