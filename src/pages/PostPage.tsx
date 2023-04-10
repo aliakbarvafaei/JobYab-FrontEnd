@@ -47,16 +47,16 @@ const PostPage = () => {
         <div
           style={{
             width: "80%",
-            background: "#F2F3F4",
+            border: "1.5px solid #1976D2",
             paddingInline: 40,
             borderRadius: 8,
             marginTop: 40,
             paddingTop: 30,
-            boxShadow: "0 0 6px rgba(0, 0, 0, 0.2)",
+            boxShadow: "0 0 6px #1976D2",
           }}
         >
           <DetailSection />
-          <Divider style={{ marginBlock: 20 }} />
+          <Divider style={{ marginBlock: 20, background: "#1976D2" }} />
           <TempData />
         </div>
       </div>

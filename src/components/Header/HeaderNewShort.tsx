@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 
 const pages = [
@@ -144,6 +145,22 @@ const HeaderNewShort = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 0, alignItems: "center" }}>
+            <Button
+              key="جستجوی مشاغل"
+              //   onClick={handleCloseNavMenu}
+              href="/search"
+              sx={{
+                my: 2,
+                color: "#e0e5eb",
+                gap: "5px",
+                paddingLeft: "20px",
+                fontFamily: "IRANSans",
+                display: { xs: "none", md: "inline-flex" },
+              }}
+            >
+              <SearchIcon />
+              جستجوی مشاغل
+            </Button>
             <Button
               key="نشان شده‌ها"
               //   onClick={handleCloseNavMenu}

@@ -33,12 +33,12 @@ const CompanyPage = () => {
       <DetailHeader haveCompanyDetail={false} />
       <div
         style={{
-          background: "#F2F3F4",
+          border: "1.5px solid #1976D2",
           paddingInline: 40,
           borderRadius: 8,
           marginTop: 40,
           paddingTop: 30,
-          boxShadow: "0 0 6px rgba(0, 0, 0, 0.2)",
+          boxShadow: "0 0 6px #1976D2",
           marginInline: 80,
           paddingBlock: 20,
         }}
@@ -75,11 +75,26 @@ const CompanyPage = () => {
             تکنولوژی ها:
           </Typography>
           <Grid item style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <Chip label="C#" style={{ borderRadius: 8 }} />
-            <Chip label="Python" style={{ borderRadius: 8 }} />
-            <Chip label="C++" style={{ borderRadius: 8 }} />
-            <Chip label="Java" style={{ borderRadius: 8 }} />
-            <Chip label="SQL Server" style={{ borderRadius: 8 }} />
+            <Chip
+              label="C#"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
+            <Chip
+              label="Python"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
+            <Chip
+              label="C++"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
+            <Chip
+              label="Java"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
+            <Chip
+              label="SQL Server"
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
           </Grid>
         </Grid>
         <Grid item>
@@ -99,7 +114,7 @@ const CompanyPage = () => {
           >
             <Grid className="flex items-center">
               <IconButton style={{ marginLeft: 10 }}>
-                <LanguageOutlinedIcon />
+                <LanguageOutlinedIcon style={{ color: "#1976D2" }} />
               </IconButton>
               <Link to="www.google.com">
                 <Typography
@@ -111,7 +126,7 @@ const CompanyPage = () => {
             </Grid>
             <Grid className="flex items-center">
               <IconButton style={{ marginLeft: 10 }}>
-                <EmailOutlinedIcon />
+                <EmailOutlinedIcon style={{ color: "#1976D2" }} />
               </IconButton>
               <Link to="mailto:www.google.com">
                 <Typography
@@ -123,7 +138,7 @@ const CompanyPage = () => {
             </Grid>
             <Grid className="flex items-center">
               <IconButton style={{ marginLeft: 10 }}>
-                <LocationOnOutlinedIcon />
+                <LocationOnOutlinedIcon style={{ color: "#1976D2" }} />
               </IconButton>
               <Typography style={{ fontSize: 14 }}>
                 اصفهان، دانشگاه اصفهان
