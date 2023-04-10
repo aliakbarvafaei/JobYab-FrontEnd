@@ -23,12 +23,12 @@ const Post = ({ onClick }: PostProps) => {
         paddingInline: 10,
         borderRadius: 8,
         display: "flex",
-        border: "1.5px solid #1976D2",
+        border: "2px solid #f5f5f5",
       }}
       onClick={onClick}
     >
       <Grid item>
-        <Avatar sx={{ width: 80, height: 80, border: "1.5px solid #1976D2" }} />
+        <Avatar sx={{ width: 80, height: 80}} />
       </Grid>
       <Grid item style={{ marginRight: 10, width: "90%" }}>
         <Grid

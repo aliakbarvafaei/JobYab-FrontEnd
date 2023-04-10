@@ -151,7 +151,7 @@ const HeaderNewShort = () => {
               href="/search"
               sx={{
                 my: 2,
-                color: "#e0e5eb",
+                color: "white",
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
@@ -167,7 +167,7 @@ const HeaderNewShort = () => {
               href="/profile?section=bookmark"
               sx={{
                 my: 2,
-                color: "#e0e5eb",
+                color: "white",
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
@@ -183,7 +183,7 @@ const HeaderNewShort = () => {
               href="/profile?section=message"
               sx={{
                 my: 2,
-                color: "#e0e5eb",
+                color: "white",
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
@@ -205,7 +205,7 @@ const HeaderNewShort = () => {
                     alt="Remy Sharp"
                     src="/static/images/avatar/2.jpg"
                   />
-                  <div className="text-[14px] pr-2 text-[#e0e5eb] md:hidden">
+                  <div className="text-[14px] pr-2 text-white md:hidden">
                     حساب کاربری
                   </div>
                 </IconButton>
@@ -213,10 +213,10 @@ const HeaderNewShort = () => {
             ) : (
               <Tooltip title="ورود | ثبت نام">
                 <Link to="/login">
-                  <IconButton sx={{ p: 0, color: "#e0e5eb" }}>
+                  <IconButton sx={{ p: 0, color: "white" }}>
                     {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                     <PermIdentityOutlinedIcon />
-                    <div className="text-[14px] pr-2 text-[#e0e5eb] md:hidden">
+                    <div className="text-[14px] pr-2 text-white md:hidden">
                       ورود | ثبت نام
                     </div>
                   </IconButton>
