@@ -12,6 +12,10 @@ import Container from "@mui/material/Container";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { registerUserAPI } from "../../../../services/api";
+import { eachToast } from "../../../../ts/interfaces";
+import { useToast } from "../../../../contexts/ToastState";
+import { addItemOnce } from "../../../../ts/functions";
 
 const userRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -33,6 +37,9 @@ type userRegisterInput = TypeOf<typeof userRegisterSchema>;
 const RegisterUser: React.FC<{
   changeLoginSign: (userORcompany: String, index: Number) => void;
 }> = ({ changeLoginSign }) => {
+  const { setToastState } = useToast();
+  const [loadingReq, setloadingReq] = useState<boolean>(false);
+
   const userRegister = useForm<userRegisterInput>({
     resolver: zodResolver(userRegisterSchema),
   });
@@ -41,7 +48,51 @@ const RegisterUser: React.FC<{
     values
   ) => {
     console.log(values);
-    userRegister.reset();
+    const data = {
+      full_name: values.name,
+      username: values.email,
+      address: values.address,
+      national_code: values.code,
+      phone_number: values.phone,
+      password: values.password,
+    };
+    setloadingReq(true);
+
+    registerUserAPI(data)
+      .then((response) => {
+        setloadingReq(false);
+        if (response.status === 201) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "1",
+              description: "ثبت نام با موفقیت انجام شد",
+              key: Math.random(),
+            })
+          );
+        }
+        userRegister.reset();
+      })
+      .catch((err) => {
+        setloadingReq(false);
+        if (err.response && err.response.status === 403) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "کاربر قبلا ثبت نام کرده است",
+              key: Math.random(),
+            })
+          );
+        } else {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "سرور دردسترس نیست",
+              key: Math.random(),
+            })
+          );
+          console.error(err);
+        }
+      });
   };
 
   const [iconPassword, setIconPassword] = useState("fa-eye-slash");
@@ -54,237 +105,244 @@ const RegisterUser: React.FC<{
   }
 
   return (
-      <Container
-        style={{
-          border: "1px solid rgba(5, 5, 5, 0.06)",
-          borderTopColor: "white",
-          backgroundColor: "white",
+    <Container
+      style={{
+        border: "1px solid rgba(5, 5, 5, 0.06)",
+        borderTopColor: "white",
+        backgroundColor: "white",
+      }}
+      component="main"
+      maxWidth="xs"
+    >
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
-        component="main"
-        maxWidth="xs"
       >
-        <CssBaseline />
+        <Avatar sx={{ m: 0.5, bgcolor: "green" }}>
+          <LockOpenOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          ثبت نام کارجو
+        </Typography>
         <Box
-          sx={{
-            marginTop: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
+          component="form"
+          // onSubmit={handleSubmit}
+          onSubmit={userRegister.handleSubmit(onSubmitHandlerUserRegiter)}
+          noValidate
+          sx={{ mt: 0.1 }}
         >
-          <Avatar sx={{ m: 0.5, bgcolor: "green" }}>
-            <LockOpenOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            ثبت نام کارجو
-          </Typography>
-          <Box
-            component="form"
-            // onSubmit={handleSubmit}
-            onSubmit={userRegister.handleSubmit(onSubmitHandlerUserRegiter)}
-            noValidate
-            sx={{ mt: 0.1 }}
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="name"
+            label="نام و نام‌خانوادگی"
+            error={!!userRegister.formState.errors["name"]}
+            helperText={
+              userRegister.formState.errors["name"]
+                ? userRegister.formState.errors["name"].message
+                : ""
+            }
+            {...userRegister.register("name")}
+            sx={{
+              "& label": {
+                fontFamily: "IRANSans",
+                left: "unset",
+                right: "1.75rem",
+                transformOrigin: "right",
+                fontSize: "1rem",
+              },
+              "& legend": {
+                textAlign: "right",
+                fontSize: "1rem",
+              },
+            }}
+            // autoComplete="name"
+            autoFocus
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            type={"number"}
+            id="phone"
+            label="موبایل"
+            error={!!userRegister.formState.errors["phone"]}
+            helperText={
+              userRegister.formState.errors["phone"]
+                ? userRegister.formState.errors["phone"].message
+                : ""
+            }
+            {...userRegister.register("phone")}
+            sx={{
+              "& label": {
+                fontFamily: "IRANSans",
+                left: "unset",
+                right: "1.75rem",
+                transformOrigin: "right",
+                fontSize: "1rem",
+              },
+              "& legend": {
+                textAlign: "right",
+                fontSize: "1rem",
+              },
+            }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="ایمیل"
+            error={!!userRegister.formState.errors["email"]}
+            helperText={
+              userRegister.formState.errors["email"]
+                ? userRegister.formState.errors["email"].message
+                : ""
+            }
+            {...userRegister.register("email")}
+            sx={{
+              "& label": {
+                fontFamily: "IRANSans",
+                left: "unset",
+                right: "1.75rem",
+                transformOrigin: "right",
+                fontSize: "1rem",
+              },
+              "& legend": {
+                textAlign: "right",
+                fontSize: "1rem",
+              },
+            }}
+            // autoComplete="email"
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            error={!!userRegister.formState.errors["password"]}
+            helperText={
+              userRegister.formState.errors["password"]
+                ? userRegister.formState.errors["password"].message
+                : ""
+            }
+            {...userRegister.register("password")}
+            sx={{
+              "& label": {
+                fontFamily: "IRANSans",
+                left: "unset",
+                right: "1.75rem",
+                transformOrigin: "right",
+                fontSize: "1rem",
+              },
+              "& legend": {
+                textAlign: "right",
+                fontSize: "1rem",
+              },
+            }}
+            label="رمزعبور"
+            type={passType}
+            id="password"
+            // autoComplete="current-password"
+          />
+          <i
+            className={`fa ${iconPassword} absolute left-[40px] mt-[38px] cursor-pointer`}
+            onClick={handlePassword}
+            aria-hidden="true"
+          ></i>
+          <TextField
+            margin="normal"
+            fullWidth
+            type={"number"}
+            id="code"
+            label="کد ملی (اختیاری)"
+            error={!!userRegister.formState.errors["code"]}
+            helperText={
+              userRegister.formState.errors["code"]
+                ? userRegister.formState.errors["code"].message
+                : ""
+            }
+            {...userRegister.register("code")}
+            sx={{
+              "& label": {
+                fontFamily: "IRANSans",
+                left: "unset",
+                right: "1.75rem",
+                transformOrigin: "right",
+                fontSize: "1rem",
+              },
+              "& legend": {
+                textAlign: "right",
+                fontSize: "1rem",
+              },
+            }}
+            // autoComplete="name"
+          />
+          <TextField
+            margin="normal"
+            fullWidth
+            type={"text"}
+            id="address"
+            label="آدرس (اختیاری)"
+            error={!!userRegister.formState.errors["address"]}
+            helperText={
+              userRegister.formState.errors["address"]
+                ? userRegister.formState.errors["address"].message
+                : ""
+            }
+            {...userRegister.register("address")}
+            sx={{
+              "& label": {
+                fontFamily: "IRANSans",
+                left: "unset",
+                right: "1.75rem",
+                transformOrigin: "right",
+                fontSize: "1rem",
+              },
+              "& legend": {
+                textAlign: "right",
+                fontSize: "1rem",
+              },
+            }}
+            // autoComplete="name"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 1, mb: 2 }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="name"
-              label="نام و نام‌خانوادگی"
-              error={!!userRegister.formState.errors["name"]}
-              helperText={
-                userRegister.formState.errors["name"]
-                  ? userRegister.formState.errors["name"].message
-                  : ""
-              }
-              {...userRegister.register("name")}
-              sx={{
-                "& label": {
-                  fontFamily: "IRANSans",
-                  left: "unset",
-                  right: "1.75rem",
-                  transformOrigin: "right",
-                  fontSize: "1rem",
-                },
-                "& legend": {
-                  textAlign: "right",
-                  fontSize: "1rem",
-                },
-              }}
-              // autoComplete="name"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              type={"number"}
-              id="phone"
-              label="موبایل"
-              error={!!userRegister.formState.errors["phone"]}
-              helperText={
-                userRegister.formState.errors["phone"]
-                  ? userRegister.formState.errors["phone"].message
-                  : ""
-              }
-              {...userRegister.register("phone")}
-              sx={{
-                "& label": {
-                  fontFamily: "IRANSans",
-                  left: "unset",
-                  right: "1.75rem",
-                  transformOrigin: "right",
-                  fontSize: "1rem",
-                },
-                "& legend": {
-                  textAlign: "right",
-                  fontSize: "1rem",
-                },
-              }}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="ایمیل"
-              error={!!userRegister.formState.errors["email"]}
-              helperText={
-                userRegister.formState.errors["email"]
-                  ? userRegister.formState.errors["email"].message
-                  : ""
-              }
-              {...userRegister.register("email")}
-              sx={{
-                "& label": {
-                  fontFamily: "IRANSans",
-                  left: "unset",
-                  right: "1.75rem",
-                  transformOrigin: "right",
-                  fontSize: "1rem",
-                },
-                "& legend": {
-                  textAlign: "right",
-                  fontSize: "1rem",
-                },
-              }}
-              // autoComplete="email"
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              error={!!userRegister.formState.errors["password"]}
-              helperText={
-                userRegister.formState.errors["password"]
-                  ? userRegister.formState.errors["password"].message
-                  : ""
-              }
-              {...userRegister.register("password")}
-              sx={{
-                "& label": {
-                  fontFamily: "IRANSans",
-                  left: "unset",
-                  right: "1.75rem",
-                  transformOrigin: "right",
-                  fontSize: "1rem",
-                },
-                "& legend": {
-                  textAlign: "right",
-                  fontSize: "1rem",
-                },
-              }}
-              label="رمزعبور"
-              type={passType}
-              id="password"
-              // autoComplete="current-password"
-            />
-            <i
-              className={`fa ${iconPassword} absolute left-[40px] mt-[38px] cursor-pointer`}
-              onClick={handlePassword}
-              aria-hidden="true"
-            ></i>
-            <TextField
-              margin="normal"
-              fullWidth
-              type={"number"}
-              id="code"
-              label="کد ملی (اختیاری)"
-              error={!!userRegister.formState.errors["code"]}
-              helperText={
-                userRegister.formState.errors["code"]
-                  ? userRegister.formState.errors["code"].message
-                  : ""
-              }
-              {...userRegister.register("code")}
-              sx={{
-                "& label": {
-                  fontFamily: "IRANSans",
-                  left: "unset",
-                  right: "1.75rem",
-                  transformOrigin: "right",
-                  fontSize: "1rem",
-                },
-                "& legend": {
-                  textAlign: "right",
-                  fontSize: "1rem",
-                },
-              }}
-              // autoComplete="name"
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              type={"text"}
-              id="address"
-              label="آدرس (اختیاری)"
-              error={!!userRegister.formState.errors["address"]}
-              helperText={
-                userRegister.formState.errors["address"]
-                  ? userRegister.formState.errors["address"].message
-                  : ""
-              }
-              {...userRegister.register("address")}
-              sx={{
-                "& label": {
-                  fontFamily: "IRANSans",
-                  left: "unset",
-                  right: "1.75rem",
-                  transformOrigin: "right",
-                  fontSize: "1rem",
-                },
-                "& legend": {
-                  textAlign: "right",
-                  fontSize: "1rem",
-                },
-              }}
-              // autoComplete="name"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 1, mb: 2 }}
-            >
-              ثبت نام
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2"></Link>
-              </Grid>
-              <Grid item>
-                <Link
-                  href="#"
-                  onClick={() => changeLoginSign("user", 0)}
-                  variant="body2"
-                >
-                  {"حساب دارید؟ ورود حساب"}
-                </Link>
-              </Grid>
+            {loadingReq ? (
+              <i
+                className="fa fa-spinner fa-spin text-[50px]"
+                aria-hidden="true"
+              ></i>
+            ) : (
+              "ثبت نام"
+            )}
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2"></Link>
             </Grid>
-          </Box>
+            <Grid item>
+              <Link
+                href="#"
+                onClick={() => changeLoginSign("user", 0)}
+                variant="body2"
+              >
+                {"حساب دارید؟ ورود حساب"}
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
-      </Container>
+      </Box>
+    </Container>
   );
 };
 
