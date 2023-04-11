@@ -10,50 +10,58 @@ import Container from "@mui/material/Container";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useToast } from "../../../../contexts/ToastState";
-import { sendEmailForgetPassAPI } from "../../../../services/api";
+import { sendEmailAPI } from "../../../../services/api";
 import { eachToast } from "../../../../ts/interfaces";
+import { useToast } from "../../../../contexts/ToastState";
 import { addItemOnce } from "../../../../ts/functions";
 
-const userForgetSchema = object({
+const userActiveSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
 });
 
-type userForgetInput = TypeOf<typeof userForgetSchema>;
+type userActiveInput = TypeOf<typeof userActiveSchema>;
 
-const ForgetPass1User: React.FC<{
+const ActiveAccount1User: React.FC<{
   changeLoginSign: (userORcompany: String, index: Number) => void;
 }> = ({ changeLoginSign }) => {
   const { setToastState } = useToast();
   const [loadingReq, setloadingReq] = React.useState<boolean>(false);
 
-  const userForget = useForm<userForgetInput>({
-    resolver: zodResolver(userForgetSchema),
+  const userActive = useForm<userActiveInput>({
+    resolver: zodResolver(userActiveSchema),
   });
 
-  const onSubmitHandlerUserForget: SubmitHandler<userForgetInput> = (
+  const onSubmitHandlerUserActive: SubmitHandler<userActiveInput> = (
     values
   ) => {
     console.log(values);
     setloadingReq(true);
-    sendEmailForgetPassAPI(values.email)
+    sendEmailAPI(values.email)
       .then((response) => {
         setloadingReq(false);
         if (response.status === 200) {
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "1",
-              description: "ایمیل بازیابی رمز با موفقیت ارسال شد",
+              description: "ایمیل فعالسازی با موفقیت ارسال شد",
               key: Math.random(),
             })
           );
-          changeLoginSign("user", 3);
+          changeLoginSign("user", 5);
         }
       })
       .catch((err) => {
-        userForget.reset();
+        userActive.reset();
         setloadingReq(false);
-        if (err.response && err.response.status === 404) {
+        if (err.response && err.response.status === 403) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "حساب کاربری قبلا فعال شده است",
+              key: Math.random(),
+            })
+          );
+        } else if (err.response && err.response.status === 404) {
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "2",
@@ -97,12 +105,12 @@ const ForgetPass1User: React.FC<{
           <LockResetOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          فراموشی رمز حساب کارجو
+          فعال‌سازی حساب کارجو
         </Typography>
         <Box
           component="form"
           // onSubmit={handleSubmit}
-          onSubmit={userForget.handleSubmit(onSubmitHandlerUserForget)}
+          onSubmit={userActive.handleSubmit(onSubmitHandlerUserActive)}
           noValidate
           sx={{ mt: 1 }}
         >
@@ -112,13 +120,13 @@ const ForgetPass1User: React.FC<{
             fullWidth
             id="email"
             label="ایمیل"
-            error={!!userForget.formState.errors["email"]}
+            error={!!userActive.formState.errors["email"]}
             helperText={
-              userForget.formState.errors["email"]
-                ? userForget.formState.errors["email"].message
+              userActive.formState.errors["email"]
+                ? userActive.formState.errors["email"].message
                 : ""
             }
-            {...userForget.register("email")}
+            {...userActive.register("email")}
             sx={{
               "& label": {
                 fontFamily: "IRANSans",
@@ -157,7 +165,7 @@ const ForgetPass1User: React.FC<{
             onClick={() => changeLoginSign("user", 0)}
             sx={{ mt: 1, mb: 2 }}
           >
-            بازگشت
+            بازگشت به صفحه ورود
           </Button>
         </Box>
       </Box>
@@ -165,4 +173,4 @@ const ForgetPass1User: React.FC<{
   );
 };
 
-export default ForgetPass1User;
+export default ActiveAccount1User;

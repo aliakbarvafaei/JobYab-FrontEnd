@@ -138,7 +138,6 @@ const ForgetPass2Company: React.FC<{
                 },
               }}
               // autoComplete="email"
-              autoFocus
             />
             <TextField
               margin="normal"

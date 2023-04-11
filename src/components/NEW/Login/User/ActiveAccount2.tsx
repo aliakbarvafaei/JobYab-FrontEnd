@@ -1,34 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { activateAccountAPI } from "../../../../services/api";
 import { useToast } from "../../../../contexts/ToastState";
+import { eachToast } from "../../../../ts/interfaces";
+import { addItemOnce } from "../../../../ts/functions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { loginUserAPI } from "../../../../services/api";
-import { addItemOnce } from "../../../../ts/functions";
-import { eachToast } from "../../../../ts/interfaces";
 
-const userLoginSchema = object({
+const userActiveSchema2 = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
-  password: string()
-    .nonempty("رمزعبور اجباری است")
-    .min(8, "رمزعبور باید حداقل 8 کاراکتر باشد")
-    .max(32, "رمز عبور بیشتر از 32 کاراکتر نمیتواند باشد"),
+  code: string().nonempty("کد ارسالی اجباری است"),
 });
-type userLoginInput = TypeOf<typeof userLoginSchema>;
 
-const LoginUser: React.FC<{
+type userActiveInput2 = TypeOf<typeof userActiveSchema2>;
+
+const ActiveAccount2User: React.FC<{
   changeLoginSign: (userORcompany: String, index: Number) => void;
 }> = ({ changeLoginSign }) => {
   const { setToastState } = useToast();
@@ -36,21 +32,23 @@ const LoginUser: React.FC<{
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const userLogin = useForm<userLoginInput>({
-    resolver: zodResolver(userLoginSchema),
+  const userActive2 = useForm<userActiveInput2>({
+    resolver: zodResolver(userActiveSchema2),
   });
 
-  const onSubmitHandlerUserLogin: SubmitHandler<userLoginInput> = (values) => {
+  const onSubmitHandlerUserActive2: SubmitHandler<userActiveInput2> = (
+    values
+  ) => {
     console.log(values);
     setloadingReq(true);
-    loginUserAPI(values.email, values.password)
+    activateAccountAPI(values.code)
       .then((response) => {
         setloadingReq(false);
         if (response.status === 200) {
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "1",
-              description: `خوش آمدید`,
+              description: `فعال‌سازی انجام شد. خوش آمدید`,
               key: Math.random(),
             })
           );
@@ -68,37 +66,28 @@ const LoginUser: React.FC<{
           }
           history.push("/home");
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-          userLogin.reset();
         }
+        userActive2.reset();
       })
       .catch((err) => {
         setloadingReq(false);
-        if (err.response && err.response.status === 401) {
+        if (err.response && err.response.status === 404) {
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "2",
-              description: "حساب کاربری فعال نشده است",
+              description: "کد فعالسازی اشتباه وارد شده است",
               key: Math.random(),
             })
           );
-        } else if (err.response && err.response.status === 403) {
+        } else if (err.response && err.response.status === 400) {
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "2",
-              description: "رمز عبور نادرست است",
-              key: Math.random(),
-            })
-          );
-        } else if (err.response && err.response.status === 404) {
-          setToastState((old: Array<eachToast>) =>
-            addItemOnce(old.slice(), {
-              title: "2",
-              description: "کاربر یافت نشد. ابتدا ثبت نام کنید",
+              description: "کد را به شکل درست وارد کنید",
               key: Math.random(),
             })
           );
         } else {
-          console.error(err);
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "2",
@@ -106,18 +95,10 @@ const LoginUser: React.FC<{
               key: Math.random(),
             })
           );
+          console.error(err);
         }
       });
   };
-
-  const [iconPassword, setIconPassword] = useState("fa-eye-slash");
-  const [passType, setPassType] = useState("password");
-  function handlePassword() {
-    setIconPassword((old) =>
-      old === "fa-eye-slash" ? "fa-eye" : "fa-eye-slash"
-    );
-    setPassType((old) => (old === "password" ? "text" : "password"));
-  }
 
   return (
     <Container
@@ -139,15 +120,15 @@ const LoginUser: React.FC<{
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "green" }}>
-          <LockOutlinedIcon />
+          <LockResetOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          ورود به بخش کارجو
+          فعال‌سازی حساب کارجو
         </Typography>
         <Box
           component="form"
           // onSubmit={handleSubmit}
-          onSubmit={userLogin.handleSubmit(onSubmitHandlerUserLogin)}
+          onSubmit={userActive2.handleSubmit(onSubmitHandlerUserActive2)}
           noValidate
           sx={{ mt: 1 }}
         >
@@ -157,13 +138,13 @@ const LoginUser: React.FC<{
             fullWidth
             id="email"
             label="ایمیل"
-            error={!!userLogin.formState.errors["email"]}
+            error={!!userActive2.formState.errors["email"]}
             helperText={
-              userLogin.formState.errors["email"]
-                ? userLogin.formState.errors["email"].message
+              userActive2.formState.errors["email"]
+                ? userActive2.formState.errors["email"].message
                 : ""
             }
-            {...userLogin.register("email")}
+            {...userActive2.register("email")}
             sx={{
               "& label": {
                 fontFamily: "IRANSans",
@@ -184,13 +165,15 @@ const LoginUser: React.FC<{
             margin="normal"
             required
             fullWidth
-            error={!!userLogin.formState.errors["password"]}
+            id="code"
+            label="کد ارسالی"
+            error={!!userActive2.formState.errors["code"]}
             helperText={
-              userLogin.formState.errors["password"]
-                ? userLogin.formState.errors["password"].message
+              userActive2.formState.errors["code"]
+                ? userActive2.formState.errors["code"].message
                 : ""
             }
-            {...userLogin.register("password")}
+            {...userActive2.register("code")}
             sx={{
               "& label": {
                 fontFamily: "IRANSans",
@@ -204,17 +187,14 @@ const LoginUser: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            label="رمزعبور"
-            type={passType}
-            id="password"
-            // autoComplete="current-password"
+            // autoComplete="email"
           />
-          <i
-            className={`fa ${iconPassword} absolute left-[40px] mt-[38px] cursor-pointer`}
-            onClick={handlePassword}
-            aria-hidden="true"
-          ></i>
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3 }}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 0 }}
+          >
             {loadingReq ? (
               <i
                 style={{ fontSize: "24.5px" }}
@@ -222,41 +202,21 @@ const LoginUser: React.FC<{
                 aria-hidden="true"
               ></i>
             ) : (
-              "ورود"
+              "ارسال"
             )}
           </Button>
           <Button
             type="button"
             fullWidth
             onClick={() => changeLoginSign("user", 4)}
-            sx={{ mt: 1, mb: 2, fontSize: "12px" }}
+            sx={{ mt: 1, mb: 2 }}
           >
-            فعال‌سازی حساب
+            بازگشت
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link
-                href="#"
-                onClick={() => changeLoginSign("user", 2)}
-                variant="body2"
-              >
-                فراموشی رمز؟
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                href="#"
-                onClick={() => changeLoginSign("user", 1)}
-                variant="body2"
-              >
-                {"حساب ندارید؟ ایجاد حساب"}
-              </Link>
-            </Grid>
-          </Grid>
         </Box>
       </Box>
     </Container>
   );
 };
 
-export default LoginUser;
+export default ActiveAccount2User;

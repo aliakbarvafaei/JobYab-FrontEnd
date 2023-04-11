@@ -3,7 +3,7 @@ import { filtersInterface } from "../../ts/interfaces";
 
 export const logoutAPI = () => axiosInstance.get(`/logout/`, configToken());
 
-export const loginAPI = (email: string, password: string) =>
+export const loginUserAPI = (email: string, password: string) =>
   axiosInstance.post("/login/", {
     username: email,
     password: password,

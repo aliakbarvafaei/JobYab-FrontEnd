@@ -70,6 +70,7 @@ const RegisterUser: React.FC<{
             })
           );
         }
+        changeLoginSign("user", 4);
         userRegister.reset();
       })
       .catch((err) => {
@@ -319,7 +320,8 @@ const RegisterUser: React.FC<{
           >
             {loadingReq ? (
               <i
-                className="fa fa-spinner fa-spin text-[50px]"
+                style={{ fontSize: "24.5px" }}
+                className="fa fa-spinner fa-spin"
                 aria-hidden="true"
               ></i>
             ) : (

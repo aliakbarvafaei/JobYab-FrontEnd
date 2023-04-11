@@ -10,6 +10,8 @@ import LoginCompany from "./Company/Login";
 import RegisterCompany from "./Company/Register";
 import ForgetPass1Company from "./Company/ForgetPass1";
 import ForgetPass2Company from "./Company/ForgetPass2";
+import ActiveAccount1User from "./User/ActiveAccount1";
+import ActiveAccount2User from "./User/ActiveAccount2";
 
 const LoginBox: React.FC = () => {
   const [size] = useState<SizeType>("small");
@@ -59,6 +61,10 @@ const LoginBox: React.FC = () => {
                   <ForgetPass1User changeLoginSign={changeLoginSign} />
                 ) : user === 3 ? (
                   <ForgetPass2User changeLoginSign={changeLoginSign} />
+                ) : user === 4 ? (
+                  <ActiveAccount1User changeLoginSign={changeLoginSign} />
+                ) : user === 5 ? (
+                  <ActiveAccount2User changeLoginSign={changeLoginSign} />
                 ) : undefined
               ) : company === 0 ? (
                 <LoginCompany changeLoginSign={changeLoginSign} />
