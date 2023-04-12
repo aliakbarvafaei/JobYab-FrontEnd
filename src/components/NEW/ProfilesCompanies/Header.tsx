@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { useToast } from "../../../contexts/ToastState";
 import { addItemOnce } from "../../../ts/functions";
 import { eachToast } from "../../../ts/interfaces";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const pages = [
   { title: "آگهی جدید", link: "/profile-company/new-post" },
@@ -152,36 +152,34 @@ const Header = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Link to={"/profile-company/new-post"}>
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "white",
-                  color: "black",
-                  fontFamily: "IRANSans",
-                  display: { xs: "none", md: "inline" },
-                }}
-              >
-                + ثبت آگهی
-              </Button>
-            </Link>
-            <Link to="/profile-company?section=message">
-              <Button
-                key="پشتیبانی"
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  color: "#e0e5eb",
-                  gap: "5px",
-                  paddingLeft: "20px",
-                  fontFamily: "IRANSans",
-                  display: { xs: "none", md: "inline-flex" },
-                }}
-              >
-                <ContactSupportIcon />
-                پشتیبانی
-              </Button>
-            </Link>
+            <Button
+              variant="contained"
+              href="/profile-company/new-post"
+              sx={{
+                backgroundColor: "white",
+                color: "black",
+                fontFamily: "IRANSans",
+                display: { xs: "none", md: "inline" },
+              }}
+            >
+              + ثبت آگهی
+            </Button>
+            <Button
+              key="پشتیبانی"
+              href="/profile-company?section=message"
+              onClick={handleCloseNavMenu}
+              sx={{
+                my: 2,
+                color: "#e0e5eb",
+                gap: "5px",
+                paddingLeft: "20px",
+                fontFamily: "IRANSans",
+                display: { xs: "none", md: "inline-flex" },
+              }}
+            >
+              <ContactSupportIcon />
+              پشتیبانی
+            </Button>
             <Tooltip title="حساب کاربری">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar

@@ -154,54 +154,50 @@ const HeaderNewShort = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 0, alignItems: "center" }}>
-            <Link to="/profile-company">
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "white",
-                  color: "black",
-                  fontFamily: "IRANSans",
-                  display: { xs: "none", md: "inline" },
-                  marginX: "20px",
-                }}
-              >
-                بخش کارفرما
-              </Button>
-            </Link>
-            <Link to="/profile?section=bookmark">
-              <Button
-                key="نشان شده‌ها"
-                //   onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  color: "#e0e5eb",
-                  gap: "5px",
-                  paddingLeft: "20px",
-                  fontFamily: "IRANSans",
-                  display: { xs: "none", md: "inline-flex" },
-                }}
-              >
-                <BookmarksOutlinedIcon />
-                نشان شده‌ها
-              </Button>
-            </Link>
-            <Link to="/profile?section=message">
-              <Button
-                key="پشتیبانی"
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  color: "#e0e5eb",
-                  gap: "5px",
-                  paddingLeft: "20px",
-                  fontFamily: "IRANSans",
-                  display: { xs: "none", md: "inline-flex" },
-                }}
-              >
-                <ContactSupportIcon />
-                پشتیبانی
-              </Button>
-            </Link>
+            <Button
+              variant="contained"
+              href="/profile-company"
+              sx={{
+                backgroundColor: "white",
+                color: "black",
+                fontFamily: "IRANSans",
+                display: { xs: "none", md: "inline" },
+                marginX: "20px",
+              }}
+            >
+              بخش کارفرما
+            </Button>
+            <Button
+              key="نشان شده‌ها"
+              href="/profile?section=bookmark"
+              sx={{
+                my: 2,
+                color: "#e0e5eb",
+                gap: "5px",
+                paddingLeft: "20px",
+                fontFamily: "IRANSans",
+                display: { xs: "none", md: "inline-flex" },
+              }}
+            >
+              <BookmarksOutlinedIcon />
+              نشان شده‌ها
+            </Button>
+            <Button
+              key="پشتیبانی"
+              onClick={handleCloseNavMenu}
+              href="/profile?section=message"
+              sx={{
+                my: 2,
+                color: "#e0e5eb",
+                gap: "5px",
+                paddingLeft: "20px",
+                fontFamily: "IRANSans",
+                display: { xs: "none", md: "inline-flex" },
+              }}
+            >
+              <ContactSupportIcon />
+              پشتیبانی
+            </Button>
             {role !== null && token !== null ? (
               <Tooltip title="حساب کاربری">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

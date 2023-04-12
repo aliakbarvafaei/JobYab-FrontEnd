@@ -6,13 +6,13 @@ const ActionType = {
 };
 
 interface state {
-  role: null | string;
-  token: null | string;
+  role: undefined | null | string;
+  token: undefined | null | string;
 }
 
 const initialState = {
-  role: null,
-  token: null,
+  role: undefined,
+  token: undefined,
 };
 
 const reducer = (state: state = initialState, action: Action) => {
