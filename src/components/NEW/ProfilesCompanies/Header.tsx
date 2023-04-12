@@ -12,6 +12,11 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+import { useDispatch } from "react-redux";
+import { useToast } from "../../../contexts/ToastState";
+import { addItemOnce } from "../../../ts/functions";
+import { eachToast } from "../../../ts/interfaces";
+import { useHistory } from "react-router-dom";
 
 const pages = [
   { title: "آگهی جدید", link: "/profile-company/new-post" },
@@ -25,6 +30,10 @@ const settings = [
 ];
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const { setToastState } = useToast();
+  const history = useHistory();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -53,7 +62,7 @@ const Header = () => {
       sx={{
         fontFamily: "IRANSans",
         paddingX: { sm: "80px", xs: "20px" },
-        minHeight: "70px",
+        minHeight: "90px",
         display: "flex",
         justifyContent: "center",
       }}
@@ -144,8 +153,8 @@ const Header = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Button
-              href="/profile-company/new-post"
               variant="contained"
+              href="/profile-company/new-post"
               sx={{
                 backgroundColor: "white",
                 color: "black",
@@ -157,8 +166,8 @@ const Header = () => {
             </Button>
             <Button
               key="پشتیبانی"
-              onClick={handleCloseNavMenu}
               href="/profile-company?section=message"
+              onClick={handleCloseNavMenu}
               sx={{
                 my: 2,
                 color: "white",
@@ -207,7 +216,21 @@ const Header = () => {
                 <MenuItem
                   key={setting.title}
                   onClick={() => {
-                    window.location.href = setting.link as string;
+                    if (setting.title === "خروج") {
+                      history.push("/home");
+                      handleCloseUserMenu();
+                      dispatch({ type: "logout" });
+                      localStorage.setItem("token_user", JSON.stringify(""));
+                      setToastState((old: Array<eachToast>) =>
+                        addItemOnce(old.slice(), {
+                          title: "1",
+                          description: "خروج با موفقیت انجام شد",
+                          key: Math.random(),
+                        })
+                      );
+                    } else {
+                      window.location.href = setting.link as string;
+                    }
                   }}
                 >
                   <Typography textAlign="center">{setting.title}</Typography>

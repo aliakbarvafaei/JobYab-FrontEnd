@@ -10,12 +10,19 @@ import SingleDropdownWithSearch from "../components/SingleDropdownWithSearch";
 import Post from "../components/Post";
 import CustomPagination from "../components/Pagination";
 import { useHistory } from "react-router-dom";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
+import { statesRedux } from "../ts/interfaces";
+import { useSelector } from "react-redux";
+import Header from "../components/NEW/ProfilesCompanies/Header";
 
 const SearchPage: React.FC = () => {
   const history = useHistory();
+  const { role } = useSelector((state: statesRedux) => state.userAuth);
+  
   return (
     <div>
-      <HeaderNewShort />
+      <MobileMenu />
+      {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <TitlePages title="جستجو" />
       <div style={{ marginInline: 80 }}>
         <div

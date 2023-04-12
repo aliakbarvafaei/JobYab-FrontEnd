@@ -1,3 +1,5 @@
+import { eachToast } from "./interfaces";
+
 const arabicNumbers:Array<any> = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
 export function convertorPersan( v:any) {
   var chars = v.split('');
@@ -60,4 +62,9 @@ export var DateDiff = {
   inYears: function(d1:Date, d2:Date) {
       return d2.getFullYear()-d1.getFullYear();
   }
+}
+
+export function addItemOnce(arr: Array<eachToast>, value: eachToast) {
+  arr.push(value);
+  return arr;
 }

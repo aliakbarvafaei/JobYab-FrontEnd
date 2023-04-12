@@ -4,10 +4,14 @@ import Footer from "../components/Footer/Footer";
 import HeaderNewShort from "../components/Header/HeaderNewShort";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import TitlePages from "../components/TitlePages/TitlePages";
+import { statesRedux } from "../ts/interfaces";
+import { useSelector } from "react-redux";
+import Header from "../components/NEW/ProfilesCompanies/Header";
 
-const NotFound:React.FC = () => {
+const NotFound: React.FC = () => {
   const history = useHistory();
   const themeClass = "bg-white text-darkGray";
+  const { role } = useSelector((state: statesRedux) => state.userAuth);
 
   function handleHome() {
     history.push("/home");
@@ -16,7 +20,7 @@ const NotFound:React.FC = () => {
   return (
     <div>
       <MobileMenu />
-      <HeaderNewShort />
+      {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <TitlePages title="404" />
       <div
         className={`px-total py-[50px] flex flex-col gap-[10px] items-center justify-center ${themeClass}`}
@@ -38,6 +42,6 @@ const NotFound:React.FC = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default NotFound;

@@ -10,19 +10,19 @@ import Container from "@mui/material/Container";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useHistory } from "react-router-dom";
-import { sendEmailForgetPassAPI } from "../../../../services/api";
-import { useToast } from "../../../../contexts/ToastState";
+import { sendEmailAPI } from "../../../../services/api";
 import { eachToast } from "../../../../ts/interfaces";
+import { useToast } from "../../../../contexts/ToastState";
 import { addItemOnce } from "../../../../ts/functions";
+import { useHistory } from "react-router-dom";
 
-const companyForgetSchema = object({
+const userActiveSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
 });
 
-type companyForgetInput = TypeOf<typeof companyForgetSchema>;
+type userActiveInput = TypeOf<typeof userActiveSchema>;
 
-const ForgetPass1Company: React.FC<{
+const ActiveAccount1User: React.FC<{
   changeLoginSign: (userORcompany: String, index: Number) => void;
 }> = ({ changeLoginSign }) => {
   const { setToastState } = useToast();
@@ -31,34 +31,42 @@ const ForgetPass1Company: React.FC<{
 
   const queryParams = new URLSearchParams(window.location.search);
 
-  const companyForget = useForm<companyForgetInput>({
-    resolver: zodResolver(companyForgetSchema),
+  const userActive = useForm<userActiveInput>({
+    resolver: zodResolver(userActiveSchema),
   });
 
-  const onSubmitHandlerCompanyForget: SubmitHandler<companyForgetInput> = (
+  const onSubmitHandlerUserActive: SubmitHandler<userActiveInput> = (
     values
   ) => {
     console.log(values);
     setloadingReq(true);
-    sendEmailForgetPassAPI(values.email)
+    sendEmailAPI(values.email)
       .then((response) => {
         setloadingReq(false);
         if (response.status === 200) {
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "1",
-              description: "ایمیل بازیابی رمز با موفقیت ارسال شد",
+              description: "ایمیل فعالسازی با موفقیت ارسال شد",
               key: Math.random(),
             })
           );
           history.push(`/login?email=${values.email}`);
-          changeLoginSign("company", 3);
+          changeLoginSign("user", 5);
         }
       })
       .catch((err) => {
-        companyForget.reset();
+        userActive.reset();
         setloadingReq(false);
-        if (err.response && err.response.status === 404) {
+        if (err.response && err.response.status === 403) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "حساب کاربری قبلا فعال شده است",
+              key: Math.random(),
+            })
+          );
+        } else if (err.response && err.response.status === 404) {
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "2",
@@ -102,12 +110,12 @@ const ForgetPass1Company: React.FC<{
           <LockResetOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          فراموشی رمز حساب کارفرما
+          فعال‌سازی حساب کارجو
         </Typography>
         <Box
           component="form"
           // onSubmit={handleSubmit}
-          onSubmit={companyForget.handleSubmit(onSubmitHandlerCompanyForget)}
+          onSubmit={userActive.handleSubmit(onSubmitHandlerUserActive)}
           noValidate
           sx={{ mt: 1 }}
         >
@@ -120,13 +128,13 @@ const ForgetPass1Company: React.FC<{
             }
             id="email"
             label="ایمیل"
-            error={!!companyForget.formState.errors["email"]}
+            error={!!userActive.formState.errors["email"]}
             helperText={
-              companyForget.formState.errors["email"]
-                ? companyForget.formState.errors["email"].message
+              userActive.formState.errors["email"]
+                ? userActive.formState.errors["email"].message
                 : ""
             }
-            {...companyForget.register("email")}
+            {...userActive.register("email")}
             sx={{
               "& label": {
                 fontFamily: "IRANSans",
@@ -168,7 +176,7 @@ const ForgetPass1Company: React.FC<{
             }}
             sx={{ mt: 1, mb: 2 }}
           >
-            بازگشت
+            بازگشت به صفحه ورود
           </Button>
         </Box>
       </Box>
@@ -176,4 +184,4 @@ const ForgetPass1Company: React.FC<{
   );
 };
 
-export default ForgetPass1Company;
+export default ActiveAccount1User;
