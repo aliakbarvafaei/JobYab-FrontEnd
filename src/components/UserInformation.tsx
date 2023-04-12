@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useToast } from "../contexts/ToastState";
-import { getUser } from "../services/api";
+import { getCompany, getUser } from "../services/api";
 
 const UserInformation = () => {
   const { setToastState } = useToast();
@@ -10,7 +10,7 @@ const UserInformation = () => {
   useEffect(() => {
     const value1: string | null = localStorage.getItem("token_user");
     if (JSON.parse(value1 as string) !== "") {
-      getUser(JSON.parse(localStorage.getItem("token_user") as string))
+      getUser()
         .then((response) => {
           console.log(response.data);
 
@@ -42,7 +42,7 @@ const UserInformation = () => {
     }
     const value2: string | null = localStorage.getItem("token_company");
     if (JSON.parse(value2 as string) !== "") {
-      getUser(JSON.parse(localStorage.getItem("token_company") as string))
+      getCompany()
         .then((response) => {
           if (response.status === 200) {
             dispatch({
