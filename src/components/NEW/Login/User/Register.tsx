@@ -16,6 +16,7 @@ import { registerUserAPI } from "../../../../services/api";
 import { eachToast } from "../../../../ts/interfaces";
 import { useToast } from "../../../../contexts/ToastState";
 import { addItemOnce } from "../../../../ts/functions";
+import { useHistory } from "react-router-dom";
 
 const userRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -39,6 +40,7 @@ const RegisterUser: React.FC<{
 }> = ({ changeLoginSign }) => {
   const { setToastState } = useToast();
   const [loadingReq, setloadingReq] = useState<boolean>(false);
+  const history = useHistory();
 
   const userRegister = useForm<userRegisterInput>({
     resolver: zodResolver(userRegisterSchema),
@@ -70,6 +72,7 @@ const RegisterUser: React.FC<{
             })
           );
         }
+        history.push(`/login?email=${values.email}`);
         changeLoginSign("user", 4);
         userRegister.reset();
       })

@@ -34,6 +34,8 @@ const ForgetPass2User: React.FC<{
   const [loadingReq, setloadingReq] = React.useState<boolean>(false);
   const history = useHistory();
 
+  const queryParams = new URLSearchParams(window.location.search);
+
   const userForget2 = useForm<userForgetInput2>({
     resolver: zodResolver(userForgetSchema2),
   });
@@ -134,6 +136,9 @@ const ForgetPass2User: React.FC<{
             margin="normal"
             required
             fullWidth
+            defaultValue={
+              queryParams.get("email") ? queryParams.get("email") : ""
+            }
             id="email"
             label="ایمیل"
             error={!!userForget2.formState.errors["email"]}
@@ -240,7 +245,10 @@ const ForgetPass2User: React.FC<{
           <Button
             type="button"
             fullWidth
-            onClick={() => changeLoginSign("user", 2)}
+            onClick={() => {
+              history.push(`/login?email=${queryParams.get("email")}`);
+              changeLoginSign("user", 2);
+            }}
             sx={{ mt: 1, mb: 2 }}
           >
             بازگشت

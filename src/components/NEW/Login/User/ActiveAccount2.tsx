@@ -32,6 +32,8 @@ const ActiveAccount2User: React.FC<{
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const queryParams = new URLSearchParams(window.location.search);
+
   const userActive2 = useForm<userActiveInput2>({
     resolver: zodResolver(userActiveSchema2),
   });
@@ -135,6 +137,9 @@ const ActiveAccount2User: React.FC<{
           <TextField
             margin="normal"
             required
+            defaultValue={
+              queryParams.get("email") ? queryParams.get("email") : ""
+            }
             fullWidth
             id="email"
             label="ایمیل"
@@ -208,7 +213,9 @@ const ActiveAccount2User: React.FC<{
           <Button
             type="button"
             fullWidth
-            onClick={() => changeLoginSign("user", 4)}
+            onClick={() => {
+              changeLoginSign("user", 4);
+            }}
             sx={{ mt: 1, mb: 2 }}
           >
             بازگشت

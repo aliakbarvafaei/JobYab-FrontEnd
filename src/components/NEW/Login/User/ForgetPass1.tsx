@@ -14,6 +14,7 @@ import { useToast } from "../../../../contexts/ToastState";
 import { sendEmailForgetPassAPI } from "../../../../services/api";
 import { eachToast } from "../../../../ts/interfaces";
 import { addItemOnce } from "../../../../ts/functions";
+import { useHistory } from "react-router-dom";
 
 const userForgetSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -26,6 +27,9 @@ const ForgetPass1User: React.FC<{
 }> = ({ changeLoginSign }) => {
   const { setToastState } = useToast();
   const [loadingReq, setloadingReq] = React.useState<boolean>(false);
+  const history = useHistory();
+
+  const queryParams = new URLSearchParams(window.location.search);
 
   const userForget = useForm<userForgetInput>({
     resolver: zodResolver(userForgetSchema),
@@ -47,6 +51,7 @@ const ForgetPass1User: React.FC<{
               key: Math.random(),
             })
           );
+          history.push(`/login?email=${values.email}`);
           changeLoginSign("user", 3);
         }
       })
@@ -110,6 +115,9 @@ const ForgetPass1User: React.FC<{
             margin="normal"
             required
             fullWidth
+            defaultValue={
+              queryParams.get("email") ? queryParams.get("email") : ""
+            }
             id="email"
             label="ایمیل"
             error={!!userForget.formState.errors["email"]}
@@ -154,7 +162,10 @@ const ForgetPass1User: React.FC<{
           <Button
             type="button"
             fullWidth
-            onClick={() => changeLoginSign("user", 0)}
+            onClick={() => {
+              history.push("/login");
+              history.go(0);
+            }}
             sx={{ mt: 1, mb: 2 }}
           >
             بازگشت
