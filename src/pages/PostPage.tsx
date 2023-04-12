@@ -9,6 +9,7 @@ import Carousel from "react-multi-carousel";
 import SimilarPost from "../components/modules/SimilarPost";
 import DetailSection from "../components/modules/DetailSection";
 import { useHistory } from "react-router-dom";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
 
 const responsive = {
   superLargeDesktop: {
@@ -29,6 +30,7 @@ const PostPage = () => {
   const history = useHistory();
   return (
     <div>
+      <MobileMenu />
       <HeaderNewShort />
       <TitlePages title="جستجو" />
       <DetailHeader

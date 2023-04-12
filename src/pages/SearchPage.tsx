@@ -10,11 +10,13 @@ import SingleDropdownWithSearch from "../components/SingleDropdownWithSearch";
 import Post from "../components/Post";
 import CustomPagination from "../components/Pagination";
 import { useHistory } from "react-router-dom";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
 
 const SearchPage: React.FC = () => {
   const history = useHistory();
   return (
     <div>
+      <MobileMenu />
       <HeaderNewShort />
       <TitlePages title="جستجو" />
       <div style={{ marginInline: 80 }}>
