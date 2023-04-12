@@ -16,10 +16,15 @@ import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
+import { eachToast, statesRedux } from "../../ts/interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemOnce } from "../../ts/functions";
+import { useToast } from "../../contexts/ToastState";
 
 const pages = [
   { title: "نشان شده‌ها", link: "/profile?section=bookmark" },
   { title: "پشتیبانی", link: "/profile?section=message" },
+  { title: "بخش کارفرما", link: "/profile-company" },
 ];
 const settings = [
   { title: "درخواست‌ها", link: "/profile?section=request" },
@@ -28,6 +33,10 @@ const settings = [
 ];
 
 const HeaderNewShort = () => {
+  const { user } = useSelector((state: statesRedux) => state.userAuth);
+  const dispatch = useDispatch();
+  const { setToastState } = useToast();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -146,20 +155,17 @@ const HeaderNewShort = () => {
 
           <Box sx={{ flexGrow: 0, alignItems: "center" }}>
             <Button
-              key="جستجوی مشاغل"
-              //   onClick={handleCloseNavMenu}
-              href="/search"
+              href="/profile-company"
+              variant="contained"
               sx={{
-                my: 2,
-                color: "#e0e5eb",
-                gap: "5px",
-                paddingLeft: "20px",
+                backgroundColor: "white",
+                color: "black",
                 fontFamily: "IRANSans",
-                display: { xs: "none", md: "inline-flex" },
+                display: { xs: "none", md: "inline" },
+                marginX: "20px",
               }}
             >
-              <SearchIcon />
-              جستجوی مشاغل
+              بخش کارفرما
             </Button>
             <Button
               key="نشان شده‌ها"
@@ -193,7 +199,7 @@ const HeaderNewShort = () => {
               <ContactSupportIcon />
               پشتیبانی
             </Button>
-            {true ? (
+            {user ? (
               <Tooltip title="حساب کاربری">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
@@ -243,6 +249,17 @@ const HeaderNewShort = () => {
                 <MenuItem
                   key={setting.title}
                   onClick={() => {
+                    if (setting.title === "خروج") {
+                      dispatch({ type: "logoutuser" });
+                      localStorage.setItem("token_user", JSON.stringify(""));
+                      setToastState((old: Array<eachToast>) =>
+                        addItemOnce(old.slice(), {
+                          title: "1",
+                          description: "خروج با موفقیت انجام شد",
+                          key: Math.random(),
+                        })
+                      );
+                    }
                     window.location.href = setting.link as string;
                   }}
                 >

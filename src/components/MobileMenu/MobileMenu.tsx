@@ -63,7 +63,7 @@ const MobileMenu:React.FC = ()=> {
                       <Link
                         className="text-right text-[14px] py-[12px] hoverItem font-normal"
                         onClick={() => {
-                          dispatch({ type: "logout" });
+                          dispatch({ type: "logoutuser" });
                           localStorage.setItem("token_user", JSON.stringify(""));
                           setToastState((old : Array<eachToast>) =>
                             addItemOnce(old.slice(), {

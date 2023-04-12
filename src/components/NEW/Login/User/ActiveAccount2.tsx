@@ -53,7 +53,7 @@ const ActiveAccount2User: React.FC<{
             })
           );
           dispatch({
-            type: "login",
+            type: "loginuser",
             payload: [values.email, response.data.token],
           });
           try {

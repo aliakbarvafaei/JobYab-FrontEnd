@@ -8,19 +8,21 @@ const UserInformation = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const value: string | null = localStorage.getItem("token_user");
-    if (JSON.parse(value as string) !== "") {
-      getUser()
+    const value1: string | null = localStorage.getItem("token_user");
+    if (JSON.parse(value1 as string) !== "") {
+      getUser(JSON.parse(localStorage.getItem("token_user") as string))
         .then((response) => {
+          console.log(response.data);
+
           if (response.status === 200) {
             dispatch({
-              type: "login",
-              payload: [response.data.username, JSON.parse(value as string)],
+              type: "loginuser",
+              payload: [response.data.username, JSON.parse(value1 as string)],
             });
           }
         })
         .catch((err) => {
-          dispatch({ type: "logout" });
+          dispatch({ type: "logoutuser" });
           // setToastState((old : Array<eachToast>) =>
           //   addItemOnce(old.slice(), {
           //     title: "2",
@@ -36,7 +38,37 @@ const UserInformation = () => {
           }
         });
     } else {
-      dispatch({ type: "logout" });
+      dispatch({ type: "logoutuser" });
+    }
+    const value2: string | null = localStorage.getItem("token_company");
+    if (JSON.parse(value2 as string) !== "") {
+      getUser(JSON.parse(localStorage.getItem("token_company") as string))
+        .then((response) => {
+          if (response.status === 200) {
+            dispatch({
+              type: "logincompany",
+              payload: [response.data.username, JSON.parse(value2 as string)],
+            });
+          }
+        })
+        .catch((err) => {
+          dispatch({ type: "logoutcompany" });
+          // setToastState((old : Array<eachToast>) =>
+          //   addItemOnce(old.slice(), {
+          //     title: "2",
+          //     description:
+          //       "احراز هویت ما مشکل مواجه شد لطفا مجدد وارد شوید",
+          //     key: Math.random(),
+          //   })
+          // );
+          try {
+            localStorage.setItem("token_company", JSON.stringify(""));
+          } catch (e) {
+            console.error({ e });
+          }
+        });
+    } else {
+      dispatch({ type: "logoutcompany" });
     }
   }, [dispatch, setToastState]);
 

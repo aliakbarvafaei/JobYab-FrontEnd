@@ -4,11 +4,13 @@ export interface eachToast {
     key: number;
 }
 export interface statesRedux {
-    userAuth : stateUserAuth
+    userAuth : stateAuth
 }
-export interface stateUserAuth {
+export interface stateAuth {
     user: null | string;
-    token: null | string;
+    tokenUser: null | string;
+    company: null | string;
+    tokenCompany: null | string;
 }
 export interface HamburgerProps {
     isOpen : boolean;

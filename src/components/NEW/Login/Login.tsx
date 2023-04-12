@@ -18,16 +18,16 @@ const LoginBox: React.FC = () => {
   const [user, setUser] = useState<Number>(0);
   const [company, setCompany] = useState<Number>(0);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch({ type: "logout" });
-    try {
-      localStorage.setItem("token_user", JSON.stringify(""));
-    } catch (e) {
-      console.error({ e });
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch({ type: "logoutuser" });
+  //   try {
+  //     localStorage.setItem("token_user", JSON.stringify(""));
+  //   } catch (e) {
+  //     console.error({ e });
+  //   }
+  // }, [dispatch]);
 
   const changeLoginSign = (userORcompany: String, index: Number) => {
     if (userORcompany === "user") {

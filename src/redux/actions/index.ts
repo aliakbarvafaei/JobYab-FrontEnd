@@ -1,4 +1,4 @@
 export interface Action {
-    type: string;
-    payload: string[];
-  }
+  type: string;
+  payload: string[];
+}

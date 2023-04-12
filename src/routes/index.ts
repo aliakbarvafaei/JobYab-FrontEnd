@@ -26,7 +26,7 @@ const AppRoutes: Array<any> = [
     icon: "fa fa-list",
     component: ProfileCompany,
     showInNav: false,
-    private: false,
+    private: true,
   },
   {
     path: "/profile-company/new-post",
@@ -34,7 +34,7 @@ const AppRoutes: Array<any> = [
     icon: "fa fa-list",
     component: NewPost,
     showInNav: false,
-    private: false,
+    private: true,
   },
   {
     path: "/search",
@@ -66,7 +66,7 @@ const AppRoutes: Array<any> = [
     icon: "fa fa-list",
     component: ProfileUser,
     showInNav: false,
-    private: false,
+    private: true,
   },
 
   {

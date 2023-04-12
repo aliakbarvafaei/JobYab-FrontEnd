@@ -12,6 +12,10 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+import { useDispatch } from "react-redux";
+import { useToast } from "../../../contexts/ToastState";
+import { addItemOnce } from "../../../ts/functions";
+import { eachToast } from "../../../ts/interfaces";
 
 const pages = [
   { title: "آگهی جدید", link: "/profile-company/new-post" },
@@ -25,6 +29,9 @@ const settings = [
 ];
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const { setToastState } = useToast();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -207,6 +214,17 @@ const Header = () => {
                 <MenuItem
                   key={setting.title}
                   onClick={() => {
+                    if (setting.title === "خروج") {
+                      dispatch({ type: "logoutcompany" });
+                      localStorage.setItem("token_company", JSON.stringify(""));
+                      setToastState((old: Array<eachToast>) =>
+                        addItemOnce(old.slice(), {
+                          title: "1",
+                          description: "خروج با موفقیت انجام شد",
+                          key: Math.random(),
+                        })
+                      );
+                    }
                     window.location.href = setting.link as string;
                   }}
                 >

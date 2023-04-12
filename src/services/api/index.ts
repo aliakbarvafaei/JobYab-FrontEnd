@@ -193,7 +193,12 @@ export const updateCreditAPI = (level: number) =>
 //     configToken()
 //   );
 
-export const getUser = () => axiosInstance.get(`/getuser/`, configToken());
+export const getUser = (token:string) =>
+  axiosInstance.get(`/getuser/`, {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
 
 export const getmyhomes = () => axiosInstance.get(`/myhomes/`, configToken());
 
