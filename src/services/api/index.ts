@@ -4,12 +4,23 @@ import { filtersInterface } from "../../ts/interfaces";
 export const logoutAPI = () => axiosInstance.get(`/logout/`, tokenUser());
 
 export const loginUserAPI = (email: string, password: string) =>
-  axiosInstance.post("/login/", {
+  axiosInstance.post("/jobseeker_login/", {
     username: email,
     password: password,
   });
 export const registerUserAPI = (data: any) =>
-  axiosInstance.post("/register/", data, {
+  axiosInstance.post("/jobseeker_register/", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+export const loginCompanyAPI = (email: string, password: string) =>
+  axiosInstance.post("/employer_login/", {
+    username: email,
+    password: password,
+  });
+export const registerCompanyAPI = (data: any) =>
+  axiosInstance.post("/employer_register/", data, {
     headers: {
       "Content-Type": "multipart/form-data",
     },

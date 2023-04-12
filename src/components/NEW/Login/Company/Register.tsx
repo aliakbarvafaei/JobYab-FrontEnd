@@ -1,4 +1,4 @@
-import React, { useState, useId } from "react";
+import React, { useState, useId, ChangeEvent } from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -24,7 +24,7 @@ import { addItemOnce } from "../../../../ts/functions";
 import { eachToast } from "../../../../ts/interfaces";
 import { useHistory } from "react-router-dom";
 import { useToast } from "../../../../contexts/ToastState";
-import { registerUserAPI } from "../../../../services/api";
+import { registerCompanyAPI } from "../../../../services/api";
 
 const companyRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -53,8 +53,9 @@ const RegisterCompany: React.FC<{
   const [loadingReq, setloadingReq] = useState<boolean>(false);
   const history = useHistory();
 
+  const [typeValue, setTypeValue] = useState<string>("حقیقی");
   const photoId = useId();
-  const [fileValue, setFileValue] = useState<FileList | null>(null);
+  const [fileValue, setFileValue] = useState<File | null>(null);
 
   const companyRegiter = useForm<companyRegisterInput>({
     resolver: zodResolver(companyRegisterSchema),
@@ -65,17 +66,23 @@ const RegisterCompany: React.FC<{
   ) => {
     console.log(values);
     const data = {
-      // full_name: values.name,
-      // username: values.email,
-      // address: values.address,
-      // national_code: values.code,
-      // phone_number: values.phone,
-      // password: values.password,
-      // profile_photo: fileValue,
+      company_english_name: values.nameEnglish,
+      company_persian_name: values.namePersian,
+      introduction: values.bio,
+      website: values.websit,
+      username: values.email,
+      company_phone_number: values.phone,
+      password: values.password,
+      activity_field: values.activity,
+      number_of_personnel: values.count,
+      type: typeValue,
+      logo: fileValue,
     };
+    console.log(data);
+
     setloadingReq(true);
 
-    registerUserAPI(data)
+    registerCompanyAPI(data)
       .then((response) => {
         setloadingReq(false);
         if (response.status === 201) {
@@ -384,9 +391,9 @@ const RegisterCompany: React.FC<{
               {...companyRegiter.register("count")}
               sx={{ justifyContent: "center", alignItems: "center" }}
             >
-              <MenuItem value={"کمتر از 10"}>کمتر از 10</MenuItem>
-              <MenuItem value={"کمتر از 100"}>کمتر از 100</MenuItem>
-              <MenuItem value={"بیشتر از 100"}>بیشتر از 100</MenuItem>
+              <MenuItem value={"1"}>کمتر از 10</MenuItem>
+              <MenuItem value={"2"}>کمتر از 100</MenuItem>
+              <MenuItem value={"3"}>بیشتر از 100</MenuItem>
             </Select>
             {companyRegiter.formState.errors["count"] ? (
               <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANSans]">
@@ -502,10 +509,10 @@ const RegisterCompany: React.FC<{
               }}
             >
               <input
-                onChange={() => {
-                  setFileValue(
-                    (document.getElementById(photoId) as HTMLInputElement).files
-                  );
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  if (e.target.files) {
+                    setFileValue(e.target.files[0]);
+                  }
                 }}
                 id={photoId}
                 accept="image/*"
@@ -513,7 +520,7 @@ const RegisterCompany: React.FC<{
                 hidden
               />
               {fileValue != null ? (
-                fileValue[0].name
+                fileValue.name
               ) : (
                 <>
                   <UploadIcon />
@@ -534,7 +541,10 @@ const RegisterCompany: React.FC<{
           >
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="حقیقی"
+              value={typeValue}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setTypeValue((event.target as HTMLInputElement).value);
+              }}
               name="radio-buttons-group"
               sx={{ flexDirection: "row" }}
             >

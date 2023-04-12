@@ -14,7 +14,7 @@ import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { eachToast } from "../../../../ts/interfaces";
 import { addItemOnce } from "../../../../ts/functions";
-import { loginUserAPI } from "../../../../services/api";
+import { loginCompanyAPI } from "../../../../services/api";
 import { useDispatch } from "react-redux";
 import { useToast } from "../../../../contexts/ToastState";
 import { useHistory } from "react-router-dom";
@@ -46,7 +46,7 @@ const LoginCompany: React.FC<{
   ) => {
     console.log(values);
     setloadingReq(true);
-    loginUserAPI(values.email, values.password)
+    loginCompanyAPI(values.email, values.password)
       .then((response) => {
         setloadingReq(false);
         if (response.status === 200) {

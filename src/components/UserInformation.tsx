@@ -43,6 +43,8 @@ const UserInformation = () => {
       getCompany()
         .then((response) => {
           if (response.status === 200) {
+            console.log(response.data);
+            
             dispatch({
               type: "logincompany",
               payload: [response.data.username, JSON.parse(value2 as string)],
