@@ -14,7 +14,6 @@ import MenuItem from "@mui/material/MenuItem";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { eachToast, statesRedux } from "../../ts/interfaces";
 import { useDispatch, useSelector } from "react-redux";

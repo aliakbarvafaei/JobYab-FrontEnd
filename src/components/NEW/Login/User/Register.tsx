@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useId, useState } from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import UploadIcon from "@mui/icons-material/Upload";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -42,6 +43,9 @@ const RegisterUser: React.FC<{
   const [loadingReq, setloadingReq] = useState<boolean>(false);
   const history = useHistory();
 
+  const photoId = useId();
+  const [fileValue, setFileValue] = useState<File | null>(null);
+
   const userRegister = useForm<userRegisterInput>({
     resolver: zodResolver(userRegisterSchema),
   });
@@ -57,6 +61,7 @@ const RegisterUser: React.FC<{
       national_code: values.code,
       phone_number: values.phone,
       password: values.password,
+      profile_photo: fileValue,
     };
     setloadingReq(true);
 
@@ -64,6 +69,8 @@ const RegisterUser: React.FC<{
       .then((response) => {
         setloadingReq(false);
         if (response.status === 201) {
+          console.log(response.data);
+
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "1",
@@ -223,7 +230,6 @@ const RegisterUser: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="email"
           />
           <TextField
             margin="normal"
@@ -252,13 +258,13 @@ const RegisterUser: React.FC<{
             label="رمزعبور"
             type={passType}
             id="password"
-            // autoComplete="current-password"
           />
           <i
             className={`fa ${iconPassword} absolute left-[40px] mt-[38px] cursor-pointer`}
             onClick={handlePassword}
             aria-hidden="true"
           ></i>
+
           <TextField
             margin="normal"
             fullWidth
@@ -285,7 +291,6 @@ const RegisterUser: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="name"
           />
           <TextField
             margin="normal"
@@ -313,8 +318,57 @@ const RegisterUser: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="name"
           />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginTop: "12px",
+              marginBottom: "8px",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "IRANSans",
+                width: "30%",
+                color: "#00000099",
+              }}
+            >
+              عکس پروفایل:{" "}
+            </div>
+
+            <Button
+              variant="outlined"
+              component="label"
+              sx={{
+                fontSize: { xs: "10px", sm: "14px" },
+                width: "65%",
+                fontFamily: "IRANSans",
+              }}
+            >
+              <input
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  if (e.target.files) {
+                    setFileValue(e.target.files[0]);
+                  }
+                }}
+                id={photoId}
+                accept="image/*"
+                type="file"
+                hidden
+              />
+              {fileValue != null ? (
+                fileValue.name
+              ) : (
+                <>
+                  <UploadIcon />
+                  بارگذاری فایل
+                </>
+              )}
+            </Button>
+          </Box>
           <Button
             type="submit"
             fullWidth

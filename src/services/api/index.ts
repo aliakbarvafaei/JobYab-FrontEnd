@@ -9,7 +9,11 @@ export const loginUserAPI = (email: string, password: string) =>
     password: password,
   });
 export const registerUserAPI = (data: any) =>
-  axiosInstance.post("/register/", data);
+  axiosInstance.post("/register/", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 export const sendEmailAPI = (email: string) =>
   axiosInstance.post("/send_mail/", {
     username: email,

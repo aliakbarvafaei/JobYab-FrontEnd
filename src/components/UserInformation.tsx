@@ -12,8 +12,6 @@ const UserInformation = () => {
     if (JSON.parse(value1 as string) !== "") {
       getUser()
         .then((response) => {
-          console.log(response.data);
-
           if (response.status === 200) {
             dispatch({
               type: "loginuser",
