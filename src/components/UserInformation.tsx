@@ -16,7 +16,7 @@ const UserInformation = () => {
             dispatch({
               type: "login",
               payload: [
-                response.data.is_employer ? "company" : "user",
+                response.data.data.is_employer ? "company" : "user",
                 JSON.parse(value1 as string),
               ],
             });
