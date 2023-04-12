@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useToast } from "../../contexts/ToastState";
 import { useDispatch, useSelector } from "react-redux";
 import { eachToast, statesRedux } from "../../ts/interfaces";
 import { Box } from "@mui/material";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
-import ApartmentIcon from '@mui/icons-material/Apartment';
+import ApartmentIcon from "@mui/icons-material/Apartment";
 
 const myAccountLoggedOut = [
   { title: "ورود", pathTo: "/login" },
@@ -19,9 +19,10 @@ const myAccountLoggedIn = [
 ];
 
 const MobileMenu: React.FC = () => {
-  const { user } = useSelector((state: statesRedux) => state.userAuth);
+  const { role, token } = useSelector((state: statesRedux) => state.userAuth);
   const dispatch = useDispatch();
   const { setToastState } = useToast();
+  const history = useHistory();
 
   const themeClass = "bg-darkModeLightBlack";
 
@@ -60,14 +61,15 @@ const MobileMenu: React.FC = () => {
               className={`${themeClass} absolute hidden rounded-md group-hover:block hover:flex w-[100px] py-[10px] px-[20px] bottom-6 right-[-45px]
                   flex-col drop-shadow-lg z-[26]`}
             >
-              {user
+              {role !== null && token !== null
                 ? myAccountLoggedIn.map((item, index) => {
                     return (
                       <Box
                         className="text-right text-[14px] py-[12px] hoverItem font-normal cursor-pointer"
                         onClick={() => {
                           if (item.title === "خروج") {
-                            dispatch({ type: "logoutuser" });
+                            history.push("/home");
+                            dispatch({ type: "logout" });
                             localStorage.setItem(
                               "token_user",
                               JSON.stringify("")
@@ -79,8 +81,9 @@ const MobileMenu: React.FC = () => {
                                 key: Math.random(),
                               })
                             );
+                          } else {
+                            window.location.href = item.pathTo as string;
                           }
-                          window.location.href = item.pathTo as string;
                         }}
                         key={index}
                       >

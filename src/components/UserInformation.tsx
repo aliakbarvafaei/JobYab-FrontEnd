@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useToast } from "../contexts/ToastState";
-import { getCompany, getUser } from "../services/api";
+import { getUser } from "../services/api";
 
 const UserInformation = () => {
   const { setToastState } = useToast();
@@ -14,13 +14,13 @@ const UserInformation = () => {
         .then((response) => {
           if (response.status === 200) {
             dispatch({
-              type: "loginuser",
-              payload: [response.data.username, JSON.parse(value1 as string)],
+              type: "login",
+              payload: ["company", JSON.parse(value1 as string)],
             });
           }
         })
         .catch((err) => {
-          dispatch({ type: "logoutuser" });
+          dispatch({ type: "logout" });
           // setToastState((old : Array<eachToast>) =>
           //   addItemOnce(old.slice(), {
           //     title: "2",
@@ -36,39 +36,7 @@ const UserInformation = () => {
           }
         });
     } else {
-      dispatch({ type: "logoutuser" });
-    }
-    const value2: string | null = localStorage.getItem("token_company");
-    if (JSON.parse(value2 as string) !== "") {
-      getCompany()
-        .then((response) => {
-          if (response.status === 200) {
-            console.log(response.data);
-            
-            dispatch({
-              type: "logincompany",
-              payload: [response.data.username, JSON.parse(value2 as string)],
-            });
-          }
-        })
-        .catch((err) => {
-          dispatch({ type: "logoutcompany" });
-          // setToastState((old : Array<eachToast>) =>
-          //   addItemOnce(old.slice(), {
-          //     title: "2",
-          //     description:
-          //       "احراز هویت ما مشکل مواجه شد لطفا مجدد وارد شوید",
-          //     key: Math.random(),
-          //   })
-          // );
-          try {
-            localStorage.setItem("token_company", JSON.stringify(""));
-          } catch (e) {
-            console.error({ e });
-          }
-        });
-    } else {
-      dispatch({ type: "logoutcompany" });
+      dispatch({ type: "logout" });
     }
   }, [dispatch, setToastState]);
 

@@ -26,13 +26,3 @@ export const tokenUser = () => {
     },
   };
 };
-
-export const tokenCompany = () => {
-  return {
-    headers: {
-      Authorization: `Token ${JSON.parse(
-        localStorage.getItem("token_company") as string
-      )}`,
-    },
-  };
-};

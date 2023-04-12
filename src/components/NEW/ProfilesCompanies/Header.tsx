@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { useToast } from "../../../contexts/ToastState";
 import { addItemOnce } from "../../../ts/functions";
 import { eachToast } from "../../../ts/interfaces";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const pages = [
   { title: "آگهی جدید", link: "/profile-company/new-post" },
@@ -62,7 +62,7 @@ const Header = () => {
       sx={{
         fontFamily: "IRANSans",
         paddingX: { sm: "80px", xs: "20px" },
-        minHeight: "70px",
+        minHeight: "90px",
         display: "flex",
         justifyContent: "center",
       }}
@@ -152,34 +152,36 @@ const Header = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Button
-              href="/profile-company/new-post"
-              variant="contained"
-              sx={{
-                backgroundColor: "white",
-                color: "black",
-                fontFamily: "IRANSans",
-                display: { xs: "none", md: "inline" },
-              }}
-            >
-              + ثبت آگهی
-            </Button>
-            <Button
-              key="پشتیبانی"
-              onClick={handleCloseNavMenu}
-              href="/profile-company?section=message"
-              sx={{
-                my: 2,
-                color: "#e0e5eb",
-                gap: "5px",
-                paddingLeft: "20px",
-                fontFamily: "IRANSans",
-                display: { xs: "none", md: "inline-flex" },
-              }}
-            >
-              <ContactSupportIcon />
-              پشتیبانی
-            </Button>
+            <Link to={"/profile-company/new-post"}>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "white",
+                  color: "black",
+                  fontFamily: "IRANSans",
+                  display: { xs: "none", md: "inline" },
+                }}
+              >
+                + ثبت آگهی
+              </Button>
+            </Link>
+            <Link to="/profile-company?section=message">
+              <Button
+                key="پشتیبانی"
+                onClick={handleCloseNavMenu}
+                sx={{
+                  my: 2,
+                  color: "#e0e5eb",
+                  gap: "5px",
+                  paddingLeft: "20px",
+                  fontFamily: "IRANSans",
+                  display: { xs: "none", md: "inline-flex" },
+                }}
+              >
+                <ContactSupportIcon />
+                پشتیبانی
+              </Button>
+            </Link>
             <Tooltip title="حساب کاربری">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
@@ -217,9 +219,10 @@ const Header = () => {
                   key={setting.title}
                   onClick={() => {
                     if (setting.title === "خروج") {
-                      history.push("/");
-                      dispatch({ type: "logoutcompany" });
-                      localStorage.setItem("token_company", JSON.stringify(""));
+                      history.push("/home");
+                      handleCloseUserMenu();
+                      dispatch({ type: "logout" });
+                      localStorage.setItem("token_user", JSON.stringify(""));
                       setToastState((old: Array<eachToast>) =>
                         addItemOnce(old.slice(), {
                           title: "1",
@@ -227,8 +230,9 @@ const Header = () => {
                           key: Math.random(),
                         })
                       );
+                    } else {
+                      window.location.href = setting.link as string;
                     }
-                    window.location.href = setting.link as string;
                   }}
                 >
                   <Typography textAlign="center">{setting.title}</Typography>

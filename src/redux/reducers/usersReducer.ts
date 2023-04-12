@@ -1,55 +1,31 @@
 import { Action } from "../actions";
 
 const ActionType = {
-  LOGINUSER: "loginuser",
-  LOGOUTUSER: "logoutuser",
-  LOGINCOMPANY: "logincompany",
-  LOGOUTCOMPANY: "logoutcompany",
+  LOGIN: "login",
+  LOGOUT: "logout",
 };
 
 interface state {
-  user: null | string;
-  tokenUser: null | string;
-  company: null | string;
-  tokenCompany: null | string;
+  role: null | string;
+  token: null | string;
 }
 
 const initialState = {
-  user: null,
-  tokenUser: null,
-  company: null,
-  tokenCompany: null,
+  role: null,
+  token: null,
 };
 
 const reducer = (state: state = initialState, action: Action) => {
   switch (action.type) {
-    case ActionType.LOGINUSER:
+    case ActionType.LOGIN:
       return {
-        user: action.payload[0],
-        tokenUser: action.payload[1],
-        company: state.company,
-        tokenCompany: state.tokenCompany,
+        role: action.payload[0],
+        token: action.payload[1],
       } as state;
-    case ActionType.LOGOUTUSER:
+    case ActionType.LOGOUT:
       return {
-        user: null,
-        tokenUser: null,
-        company: state.company,
-        tokenCompany: state.tokenCompany,
-      } as state;
-    case ActionType.LOGINCOMPANY:
-      return {
-        user: state.user,
-        tokenUser: state.tokenUser,
-        company: action.payload[0],
-        tokenCompany: action.payload[1],
-      } as state;
-    case ActionType.LOGOUTCOMPANY:
-      return {
-        user: state.user,
-        tokenUser: state.tokenUser,
-        company: null,
-        tokenCompany: null,
+        role: null,
+        token: null,
       } as state;
     default:
       return state;

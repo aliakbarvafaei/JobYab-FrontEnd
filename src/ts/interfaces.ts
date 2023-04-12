@@ -7,10 +7,8 @@ export interface statesRedux {
     userAuth : stateAuth
 }
 export interface stateAuth {
-    user: null | string;
-    tokenUser: null | string;
-    company: null | string;
-    tokenCompany: null | string;
+    role: null | string;
+    token: null | string;
 }
 export interface HamburgerProps {
     isOpen : boolean;

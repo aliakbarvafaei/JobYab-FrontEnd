@@ -1,4 +1,4 @@
-import { axiosInstance, tokenUser, tokenCompany } from "../../config";
+import { axiosInstance, tokenUser } from "../../config";
 import { filtersInterface } from "../../ts/interfaces";
 
 export const logoutAPI = () => axiosInstance.get(`/logout/`, tokenUser());
@@ -109,7 +109,7 @@ export const NewAdAPI = (
       location_x: location_x,
       location_y: location_y,
     },
-    tokenCompany()
+    tokenUser()
   );
 export const EditAdAPI = (
   idAd: string,
@@ -180,7 +180,7 @@ export const EditAdAPI = (
       location_x: location_x,
       location_y: location_y,
     },
-    tokenCompany()
+    tokenUser()
   );
 export const updateCreditAPI = (level: number) =>
   axiosInstance.put(
@@ -188,7 +188,7 @@ export const updateCreditAPI = (level: number) =>
     {
       level: level,
     },
-    tokenCompany()
+    tokenUser()
   );
 // export const PredictAPI = (type : string, city : string, region : string, room : string, year : string, floor : string, elevator : string, parking : string, meterage : string, warehouse: string) =>
 //   axiosInstance.post(
@@ -209,9 +209,8 @@ export const updateCreditAPI = (level: number) =>
 //   );
 
 export const getUser = () => axiosInstance.get(`/getuser/`, tokenUser());
-export const getCompany = () => axiosInstance.get(`/getuser/`, tokenCompany());
 
-export const getmyhomes = () => axiosInstance.get(`/myhomes/`, tokenCompany());
+export const getmyhomes = () => axiosInstance.get(`/myhomes/`, tokenUser());
 
 // export const updatePassword = (email : string, LastPassword : string, NewPassword : string) =>
 //   axiosInstance.patch(
@@ -242,10 +241,10 @@ export const getAd = (idAd: string, source: string) =>
   axiosInstance.get(`/homes/${idAd}/${source}`);
 
 export const putAd = (idAd: string, source: string) =>
-  axiosInstance.put(`/homes/${idAd}/${source}`, tokenCompany());
+  axiosInstance.put(`/homes/${idAd}/${source}`, tokenUser());
 
 export const deleteAd = (idAd: string, source: string) =>
-  axiosInstance.delete(`/homes/${idAd}/${source}`, tokenCompany());
+  axiosInstance.delete(`/homes/${idAd}/${source}`, tokenUser());
 
 export const getBookmark = (email: string) =>
   axiosInstance.get(`/bookmark/${email}`, tokenUser());

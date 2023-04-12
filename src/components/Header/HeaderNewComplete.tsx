@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import HeaderNewShort from "./HeaderNewShort";
+import { statesRedux } from "../../ts/interfaces";
+import { useSelector } from "react-redux";
+import Header from "../NEW/ProfilesCompanies/Header";
 
 const HeaderNewComplete: React.FC = () => {
   const history = useHistory();
   const [searchInput, setSearchInput] = useState("");
 
+  const { role } = useSelector((state: statesRedux) => state.userAuth);
+  
   function handleChange(e: React.MouseEvent) {
     setSearchInput((e.target as HTMLInputElement).value);
   }
 
   return (
     <>
-      <HeaderNewShort />
+      {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <div
         style={{ backgroundColor: "#D3D3D3" }}
         className="w-[100%] h-[300px] bg-no-repeat bg-cover bg-center bg-opacity-10 flex flex-col items-center"

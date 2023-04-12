@@ -55,12 +55,12 @@ const ActiveAccount2Company: React.FC<{
             })
           );
           dispatch({
-            type: "logincompany",
-            payload: [values.email, response.data.token],
+            type: "login",
+            payload: ["company", response.data.token],
           });
           try {
             localStorage.setItem(
-              "token_company",
+              "token_user",
               JSON.stringify(response.data.token)
             );
           } catch (e) {

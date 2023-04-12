@@ -10,6 +10,9 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import { Link } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
+import { statesRedux } from "../ts/interfaces";
+import { useSelector } from "react-redux";
+import Header from "../components/NEW/ProfilesCompanies/Header";
 
 const responsive = {
   superLargeDesktop: {
@@ -27,10 +30,12 @@ const responsive = {
   },
 };
 const CompanyPage = () => {
+  const { role } = useSelector((state: statesRedux) => state.userAuth);
+
   return (
     <div>
       <MobileMenu />
-      <HeaderNewShort />
+      {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <TitlePages title="جستجو" />
       <DetailHeader haveCompanyDetail={false} />
       <div

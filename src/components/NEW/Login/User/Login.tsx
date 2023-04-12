@@ -55,8 +55,8 @@ const LoginUser: React.FC<{
             })
           );
           dispatch({
-            type: "loginuser",
-            payload: [values.email, response.data.token],
+            type: "login",
+            payload: ["user", response.data.token],
           });
           try {
             localStorage.setItem(
