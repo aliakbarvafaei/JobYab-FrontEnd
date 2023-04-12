@@ -28,7 +28,7 @@ const SearchPage: React.FC = () => {
         <div
           style={{
             marginTop: 50,
-            background: "lightblue",
+            background: "rgba(25, 118, 210, 0.3)",
             padding: 20,
             borderRadius: 16,
             display: "flex",
@@ -48,8 +48,9 @@ const SearchPage: React.FC = () => {
             placeholder="دسته بندی مدنظر خود را انتخاب کنید"
           />
           <Button
+          className="bg-[#ffe11b]"
             style={{
-              background: "orange",
+              background: "#ffe11b",
               paddingBlock: 10,
               paddingInline: 30,
               flexGrow: 1,
@@ -74,6 +75,7 @@ const SearchPage: React.FC = () => {
           style={{
             width: "80%",
             padding: 10,
+            marginTop: "20px",
             gap: 20,
             display: "flex",
             flexDirection: "column",
