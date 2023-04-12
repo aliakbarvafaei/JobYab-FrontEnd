@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
 import { Tabs } from "antd";
 import type { SizeType } from "antd/es/config-provider/SizeContext";
 import LoginUser from "./User/Login";
@@ -12,22 +11,13 @@ import ForgetPass1Company from "./Company/ForgetPass1";
 import ForgetPass2Company from "./Company/ForgetPass2";
 import ActiveAccount1User from "./User/ActiveAccount1";
 import ActiveAccount2User from "./User/ActiveAccount2";
+import ActiveAccount1Company from "./Company/ActiveAccount1";
+import ActiveAccount2Company from "./Company/ActiveAccount2";
 
 const LoginBox: React.FC = () => {
   const [size] = useState<SizeType>("small");
   const [user, setUser] = useState<Number>(0);
   const [company, setCompany] = useState<Number>(0);
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch({ type: "logoutuser" });
-  //   try {
-  //     localStorage.setItem("token_user", JSON.stringify(""));
-  //   } catch (e) {
-  //     console.error({ e });
-  //   }
-  // }, [dispatch]);
 
   const changeLoginSign = (userORcompany: String, index: Number) => {
     if (userORcompany === "user") {
@@ -74,6 +64,10 @@ const LoginBox: React.FC = () => {
                 <ForgetPass1Company changeLoginSign={changeLoginSign} />
               ) : company === 3 ? (
                 <ForgetPass2Company changeLoginSign={changeLoginSign} />
+              ) : company === 4 ? (
+                <ActiveAccount1Company changeLoginSign={changeLoginSign} />
+              ) : company === 5 ? (
+                <ActiveAccount2Company changeLoginSign={changeLoginSign} />
               ) : undefined,
           };
         })}

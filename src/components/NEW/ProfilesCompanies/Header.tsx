@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { useToast } from "../../../contexts/ToastState";
 import { addItemOnce } from "../../../ts/functions";
 import { eachToast } from "../../../ts/interfaces";
+import { useHistory } from "react-router-dom";
 
 const pages = [
   { title: "آگهی جدید", link: "/profile-company/new-post" },
@@ -31,6 +32,7 @@ const settings = [
 const Header = () => {
   const dispatch = useDispatch();
   const { setToastState } = useToast();
+  const history = useHistory();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -215,6 +217,7 @@ const Header = () => {
                   key={setting.title}
                   onClick={() => {
                     if (setting.title === "خروج") {
+                      history.push("/");
                       dispatch({ type: "logoutcompany" });
                       localStorage.setItem("token_company", JSON.stringify(""));
                       setToastState((old: Array<eachToast>) =>
