@@ -18,20 +18,20 @@ import Header from "../components/NEW/ProfilesCompanies/Header";
 const SearchPage: React.FC = () => {
   const history = useHistory();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
-  
+
   return (
     <div>
       <MobileMenu />
       {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <TitlePages title="جستجو" />
-      <div style={{ marginInline: 80 }}>
+      <div className="md:mr-10 md:ml-10 xl:ml-3 xl:mr-3 xlmin:mr-20 xlmin:ml-20">
         <div
+          className="flex lg:flex-col lgmin:flex-row"
           style={{
             marginTop: 50,
             background: "rgba(25, 118, 210, 0.3)",
             padding: 20,
             borderRadius: 16,
-            display: "flex",
             gap: 20,
           }}
         >
@@ -48,7 +48,7 @@ const SearchPage: React.FC = () => {
             placeholder="دسته بندی مدنظر خود را انتخاب کنید"
           />
           <Button
-          className="bg-[#ffe11b]"
+            className="bg-[#ffe11b]"
             style={{
               background: "#ffe11b",
               paddingBlock: 10,
@@ -64,16 +64,17 @@ const SearchPage: React.FC = () => {
         </div>
       </div>
       <div
+        className="md:mr-6 md:ml-6 xl:ml-4 xl:mr-4 xlmin:mr-24 xlmin:ml-24"
         style={{
           display: "flex",
-          height: 500,
-          marginInline: 80,
+          // height: 500,
+          // marginInline: 80,
           justifyContent: "center",
         }}
       >
         <div
+          className="xlmin:w-10/12 xl:w-full"
           style={{
-            width: "80%",
             padding: 10,
             marginTop: "20px",
             gap: 20,

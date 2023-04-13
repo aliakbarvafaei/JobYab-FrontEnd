@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import {
   Avatar,
   Button,
@@ -15,20 +16,21 @@ interface PostProps {
   onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
 }
 const Post = ({ onClick }: PostProps) => {
+
   return (
     <Grid
       container
+      className="flex lg:flex-col lgmin:flex-row lg:justify-center"
       style={{
         paddingBlock: 20,
         paddingInline: 10,
         borderRadius: 8,
-        display: "flex",
         border: "2px solid #f5f5f5",
       }}
       onClick={onClick}
     >
       <Grid item>
-        <Avatar sx={{ width: 80, height: 80}} />
+        <Avatar sx={{ width: 80, height: 80 }} />
       </Grid>
       <Grid item style={{ marginRight: 10, width: "90%" }}>
         <Grid
@@ -81,10 +83,11 @@ const Post = ({ onClick }: PostProps) => {
         </Grid>
         <Grid
           item
+          className="flex md:block mdmin:flex-row"
           style={{
-            display: "flex",
-            alignItems: "center",
+            // alignItems: "center",
             justifyContent: "space-between",
+            gap: 15,
           }}
         >
           <Grid item style={{ display: "flex", alignItems: "center", gap: 4 }}>
@@ -109,9 +112,10 @@ const Post = ({ onClick }: PostProps) => {
               style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
             />
           </Grid>
-          <Grid item>
+          <Grid item style={{ marginTop: 10 }}>
             <Button
               variant="outlined"
+              fullWidth
               style={{
                 fontSize: 14,
                 borderRadius: 8,
