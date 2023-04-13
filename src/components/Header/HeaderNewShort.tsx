@@ -159,7 +159,8 @@ const HeaderNewShort = () => {
               href="/profile-company"
               sx={{
                 my: 2,
-                color: "white",
+                color: "black",
+                backgroundColor: "white",
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
