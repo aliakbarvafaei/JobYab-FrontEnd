@@ -31,7 +31,7 @@ const CardItem: React.FC = () => {
             px: { xs: "6px", sm: 2, md: 4 },
             height: "70%",
             display: "flex",
-            gap: "10%",
+            gap: "30px",
           }}
         >
           <Avatar
@@ -102,7 +102,8 @@ const CardItem: React.FC = () => {
           justifyContent="flex-start"
           gap={"20px"}
           sx={{
-            px: { xs: "2px", sm: 4, md: 10 },
+            pl: { xs: "6px", sm: 2, md: 4 },
+            pr: { xs: "6px", sm: "86px", md: "102px" },
             py: 1,
             height: "30%",
             bgcolor: "background.default",

@@ -8,19 +8,21 @@ const isLocalhost = Boolean(
     )
 );
 
-const API_URL = 
-  isLocalhost
-    ? "http://localhost:8000/api/v1"
-    : 
-  "https://api.erfan-nourbakhsh.ir/api/v1";
+const API_URL = isLocalhost
+  ? "http://localhost:8000/api/v1"
+  : "https://api.erfan-nourbakhsh.ir/api/v1";
 
 export const axiosInstance = axios.create({
   // withCredentials: true,
   baseURL: API_URL,
 });
 
-export const configToken =()=> {return {
-  headers: {
-    Authorization: `Token ${JSON.parse(localStorage.getItem("token_user") as string)}`,
-  },
-}};
+export const tokenUser = () => {
+  return {
+    headers: {
+      Authorization: `Token ${JSON.parse(
+        localStorage.getItem("token_user") as string
+      )}`,
+    },
+  };
+};

@@ -1,29 +1,32 @@
-import { Action } from '../actions';
+import { Action } from "../actions";
 
 const ActionType = {
-  LOGIN : 'login',
-  LOGOUT : 'logout',
-}
+  LOGIN: "login",
+  LOGOUT: "logout",
+};
 
 interface state {
-  user: null | string;
-  token: null | string;
+  role: undefined | null | string;
+  token: undefined | null | string;
 }
 
 const initialState = {
-  user: null,
-  token: null,
+  role: undefined,
+  token: undefined,
 };
 
-const reducer = (
-  state : state = initialState,
-  action : Action
-) => {
+const reducer = (state: state = initialState, action: Action) => {
   switch (action.type) {
     case ActionType.LOGIN:
-      return { user: action.payload[0], token: action.payload[1]} as state;
+      return {
+        role: action.payload[0],
+        token: action.payload[1],
+      } as state;
     case ActionType.LOGOUT:
-      return { user: null, token: null} as state;
+      return {
+        role: null,
+        token: null,
+      } as state;
     default:
       return state;
   }

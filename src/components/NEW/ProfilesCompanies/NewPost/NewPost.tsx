@@ -9,6 +9,7 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import { NewPost } from "../../../../services/api";
+import { Link } from "react-router-dom";
 
 interface step1 {
   title: string;
@@ -170,7 +171,7 @@ const NewPosts: React.FC = () => {
             </Typography>
             <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
               <Box sx={{ flex: "1 1 auto" }} />
-              <Button href="/profile-company">بازگشت به پروفایل</Button>
+              <Link to="/profile-company">بازگشت به پروفایل</Link>
             </Box>
           </React.Fragment>
         ) : (

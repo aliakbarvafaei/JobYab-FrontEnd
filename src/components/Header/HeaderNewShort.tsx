@@ -14,12 +14,16 @@ import MenuItem from "@mui/material/MenuItem";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-import SearchIcon from "@mui/icons-material/Search";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { eachToast, statesRedux } from "../../ts/interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemOnce } from "../../ts/functions";
+import { useToast } from "../../contexts/ToastState";
 
 const pages = [
   { title: "نشان شده‌ها", link: "/profile?section=bookmark" },
   { title: "پشتیبانی", link: "/profile?section=message" },
+  { title: "بخش کارفرما", link: "/profile-company" },
 ];
 const settings = [
   { title: "درخواست‌ها", link: "/profile?section=request" },
@@ -28,6 +32,11 @@ const settings = [
 ];
 
 const HeaderNewShort = () => {
+  const { role, token } = useSelector((state: statesRedux) => state.userAuth);
+  const dispatch = useDispatch();
+  const { setToastState } = useToast();
+  const history = useHistory();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -146,28 +155,27 @@ const HeaderNewShort = () => {
 
           <Box sx={{ flexGrow: 0, alignItems: "center" }}>
             <Button
-              key="جستجوی مشاغل"
-              //   onClick={handleCloseNavMenu}
-              href="/search"
+              variant="contained"
+              href="/profile-company"
               sx={{
                 my: 2,
-                color: "#e0e5eb",
+                color: "black",
+                backgroundColor: "white",
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
-                display: { xs: "none", md: "inline-flex" },
+                display: { xs: "none", md: "inline" },
+                marginX: "20px",
               }}
             >
-              <SearchIcon />
-              جستجوی مشاغل
+              بخش کارفرما
             </Button>
             <Button
               key="نشان شده‌ها"
-              //   onClick={handleCloseNavMenu}
               href="/profile?section=bookmark"
               sx={{
                 my: 2,
-                color: "#e0e5eb",
+                color: "white",
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
@@ -183,7 +191,7 @@ const HeaderNewShort = () => {
               href="/profile?section=message"
               sx={{
                 my: 2,
-                color: "#e0e5eb",
+                color: "white",
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
@@ -193,7 +201,7 @@ const HeaderNewShort = () => {
               <ContactSupportIcon />
               پشتیبانی
             </Button>
-            {true ? (
+            {role !== null && token !== null ? (
               <Tooltip title="حساب کاربری">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
@@ -205,7 +213,7 @@ const HeaderNewShort = () => {
                     alt="Remy Sharp"
                     src="/static/images/avatar/2.jpg"
                   />
-                  <div className="text-[14px] pr-2 text-[#e0e5eb] md:hidden">
+                  <div className="text-[14px] pr-2 text-white md:hidden">
                     حساب کاربری
                   </div>
                 </IconButton>
@@ -213,10 +221,10 @@ const HeaderNewShort = () => {
             ) : (
               <Tooltip title="ورود | ثبت نام">
                 <Link to="/login">
-                  <IconButton sx={{ p: 0, color: "#e0e5eb" }}>
+                  <IconButton sx={{ p: 0, color: "white" }}>
                     {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                     <PermIdentityOutlinedIcon />
-                    <div className="text-[14px] pr-2 text-[#e0e5eb] md:hidden">
+                    <div className="text-[14px] pr-2 text-white md:hidden">
                       ورود | ثبت نام
                     </div>
                   </IconButton>
@@ -243,7 +251,21 @@ const HeaderNewShort = () => {
                 <MenuItem
                   key={setting.title}
                   onClick={() => {
-                    window.location.href = setting.link as string;
+                    if (setting.title === "خروج") {
+                      history.push("/home");
+                      handleCloseUserMenu();
+                      dispatch({ type: "logout" });
+                      localStorage.setItem("token_user", JSON.stringify(""));
+                      setToastState((old: Array<eachToast>) =>
+                        addItemOnce(old.slice(), {
+                          title: "1",
+                          description: "خروج با موفقیت انجام شد",
+                          key: Math.random(),
+                        })
+                      );
+                    } else {
+                      window.location.href = setting.link as string;
+                    }
                   }}
                 >
                   <Typography textAlign="center">{setting.title}</Typography>

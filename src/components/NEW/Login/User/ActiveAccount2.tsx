@@ -10,59 +10,82 @@ import Container from "@mui/material/Container";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useHistory } from "react-router-dom";
-import { sendEmailForgetPassAPI } from "../../../../services/api";
+import { activateAccountAPI } from "../../../../services/api";
 import { useToast } from "../../../../contexts/ToastState";
 import { eachToast } from "../../../../ts/interfaces";
 import { addItemOnce } from "../../../../ts/functions";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-const companyForgetSchema = object({
+const userActiveSchema2 = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
+  code: string().nonempty("کد ارسالی اجباری است"),
 });
 
-type companyForgetInput = TypeOf<typeof companyForgetSchema>;
+type userActiveInput2 = TypeOf<typeof userActiveSchema2>;
 
-const ForgetPass1Company: React.FC<{
+const ActiveAccount2User: React.FC<{
   changeLoginSign: (userORcompany: String, index: Number) => void;
 }> = ({ changeLoginSign }) => {
   const { setToastState } = useToast();
   const [loadingReq, setloadingReq] = React.useState<boolean>(false);
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const queryParams = new URLSearchParams(window.location.search);
 
-  const companyForget = useForm<companyForgetInput>({
-    resolver: zodResolver(companyForgetSchema),
+  const userActive2 = useForm<userActiveInput2>({
+    resolver: zodResolver(userActiveSchema2),
   });
 
-  const onSubmitHandlerCompanyForget: SubmitHandler<companyForgetInput> = (
+  const onSubmitHandlerUserActive2: SubmitHandler<userActiveInput2> = (
     values
   ) => {
     console.log(values);
     setloadingReq(true);
-    sendEmailForgetPassAPI(values.email)
+    activateAccountAPI(values.code)
       .then((response) => {
         setloadingReq(false);
         if (response.status === 200) {
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "1",
-              description: "ایمیل بازیابی رمز با موفقیت ارسال شد",
+              description: `فعال‌سازی انجام شد. خوش آمدید`,
               key: Math.random(),
             })
           );
-          history.push(`/login?email=${values.email}`);
-          changeLoginSign("company", 3);
+          dispatch({
+            type: "login",
+            payload: ["user", response.data.token],
+          });
+          try {
+            localStorage.setItem(
+              "token_user",
+              JSON.stringify(response.data.token)
+            );
+          } catch (e) {
+            console.error({ e });
+          }
+          history.push("/home");
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         }
+        userActive2.reset();
       })
       .catch((err) => {
-        companyForget.reset();
         setloadingReq(false);
         if (err.response && err.response.status === 404) {
           setToastState((old: Array<eachToast>) =>
             addItemOnce(old.slice(), {
               title: "2",
-              description: "نام کاربری وارد شده یافت نشد",
+              description: "کد فعالسازی اشتباه وارد شده است",
+              key: Math.random(),
+            })
+          );
+        } else if (err.response && err.response.status === 400) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "کد را به شکل درست وارد کنید",
               key: Math.random(),
             })
           );
@@ -102,31 +125,31 @@ const ForgetPass1Company: React.FC<{
           <LockResetOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          فراموشی رمز حساب کارفرما
+          فعال‌سازی حساب کارجو
         </Typography>
         <Box
           component="form"
           // onSubmit={handleSubmit}
-          onSubmit={companyForget.handleSubmit(onSubmitHandlerCompanyForget)}
+          onSubmit={userActive2.handleSubmit(onSubmitHandlerUserActive2)}
           noValidate
           sx={{ mt: 1 }}
         >
           <TextField
             margin="normal"
             required
-            fullWidth
             defaultValue={
               queryParams.get("email") ? queryParams.get("email") : ""
             }
+            fullWidth
             id="email"
             label="ایمیل"
-            error={!!companyForget.formState.errors["email"]}
+            error={!!userActive2.formState.errors["email"]}
             helperText={
-              companyForget.formState.errors["email"]
-                ? companyForget.formState.errors["email"].message
+              userActive2.formState.errors["email"]
+                ? userActive2.formState.errors["email"].message
                 : ""
             }
-            {...companyForget.register("email")}
+            {...userActive2.register("email")}
             sx={{
               "& label": {
                 fontFamily: "IRANSans",
@@ -143,6 +166,34 @@ const ForgetPass1Company: React.FC<{
             // autoComplete="email"
             autoFocus
           />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="code"
+            label="کد ارسالی"
+            error={!!userActive2.formState.errors["code"]}
+            helperText={
+              userActive2.formState.errors["code"]
+                ? userActive2.formState.errors["code"].message
+                : ""
+            }
+            {...userActive2.register("code")}
+            sx={{
+              "& label": {
+                fontFamily: "IRANSans",
+                left: "unset",
+                right: "1.75rem",
+                transformOrigin: "right",
+                fontSize: "1rem",
+              },
+              "& legend": {
+                textAlign: "right",
+                fontSize: "1rem",
+              },
+            }}
+            // autoComplete="email"
+          />
           <Button
             type="submit"
             fullWidth
@@ -156,15 +207,14 @@ const ForgetPass1Company: React.FC<{
                 aria-hidden="true"
               ></i>
             ) : (
-              "ارسال کد"
+              "ارسال"
             )}
           </Button>
           <Button
             type="button"
             fullWidth
             onClick={() => {
-              history.push("/login");
-              history.go(0);
+              changeLoginSign("user", 4);
             }}
             sx={{ mt: 1, mb: 2 }}
           >
@@ -176,4 +226,4 @@ const ForgetPass1Company: React.FC<{
   );
 };
 
-export default ForgetPass1Company;
+export default ActiveAccount2User;

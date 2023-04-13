@@ -21,20 +21,20 @@ const AppRoutes: Array<any> = [
     private: false,
   },
   {
-    path: "/profile-company",
-    name: "همه محصولات",
-    icon: "fa fa-list",
-    component: ProfileCompany,
-    showInNav: false,
-    private: false,
-  },
-  {
     path: "/profile-company/new-post",
     name: "همه محصولات",
     icon: "fa fa-list",
     component: NewPost,
     showInNav: false,
-    private: false,
+    private: true,
+  },
+  {
+    path: "/profile-company",
+    name: "همه محصولات",
+    icon: "fa fa-list",
+    component: ProfileCompany,
+    showInNav: false,
+    private: true,
   },
   {
     path: "/search",
@@ -66,7 +66,7 @@ const AppRoutes: Array<any> = [
     icon: "fa fa-list",
     component: ProfileUser,
     showInNav: false,
-    private: false,
+    private: true,
   },
 
   {

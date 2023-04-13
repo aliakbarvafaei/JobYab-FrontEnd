@@ -4,10 +4,10 @@ export interface eachToast {
     key: number;
 }
 export interface statesRedux {
-    userAuth : stateUserAuth
+    userAuth : stateAuth
 }
-export interface stateUserAuth {
-    user: null | string;
+export interface stateAuth {
+    role: null | string;
     token: null | string;
 }
 export interface HamburgerProps {

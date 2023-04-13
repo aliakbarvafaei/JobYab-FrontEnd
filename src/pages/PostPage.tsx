@@ -9,6 +9,10 @@ import Carousel from "react-multi-carousel";
 import SimilarPost from "../components/modules/SimilarPost";
 import DetailSection from "../components/modules/DetailSection";
 import { useHistory } from "react-router-dom";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
+import { statesRedux } from "../ts/interfaces";
+import { useSelector } from "react-redux";
+import Header from "../components/NEW/ProfilesCompanies/Header";
 
 const responsive = {
   superLargeDesktop: {
@@ -27,9 +31,12 @@ const responsive = {
 };
 const PostPage = () => {
   const history = useHistory();
+  const { role } = useSelector((state: statesRedux) => state.userAuth);
+
   return (
     <div>
-      <HeaderNewShort />
+      <MobileMenu />
+      {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <TitlePages title="جستجو" />
       <DetailHeader
         onclick={() => {

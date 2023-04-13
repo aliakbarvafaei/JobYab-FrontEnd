@@ -12,6 +12,12 @@ import Container from "@mui/material/Container";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useToast } from "../../../../contexts/ToastState";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { loginUserAPI } from "../../../../services/api";
+import { addItemOnce } from "../../../../ts/functions";
+import { eachToast } from "../../../../ts/interfaces";
 
 const userLoginSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -25,13 +31,83 @@ type userLoginInput = TypeOf<typeof userLoginSchema>;
 const LoginUser: React.FC<{
   changeLoginSign: (userORcompany: String, index: Number) => void;
 }> = ({ changeLoginSign }) => {
+  const { setToastState } = useToast();
+  const [loadingReq, setloadingReq] = React.useState<boolean>(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const userLogin = useForm<userLoginInput>({
     resolver: zodResolver(userLoginSchema),
   });
 
   const onSubmitHandlerUserLogin: SubmitHandler<userLoginInput> = (values) => {
     console.log(values);
-    userLogin.reset();
+    setloadingReq(true);
+    loginUserAPI(values.email, values.password)
+      .then((response) => {
+        setloadingReq(false);
+        if (response.status === 200) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "1",
+              description: `خوش آمدید`,
+              key: Math.random(),
+            })
+          );
+          dispatch({
+            type: "login",
+            payload: ["user", response.data.token],
+          });
+          try {
+            localStorage.setItem(
+              "token_user",
+              JSON.stringify(response.data.token)
+            );
+          } catch (e) {
+            console.error({ e });
+          }
+          history.push("/home");
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          userLogin.reset();
+        }
+      })
+      .catch((err) => {
+        setloadingReq(false);
+        if (err.response && err.response.status === 401) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "حساب کاربری فعال نشده است",
+              key: Math.random(),
+            })
+          );
+        } else if (err.response && err.response.status === 403) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "رمز عبور نادرست است",
+              key: Math.random(),
+            })
+          );
+        } else if (err.response && err.response.status === 404) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "کاربر یافت نشد. ابتدا ثبت نام کنید",
+              key: Math.random(),
+            })
+          );
+        } else {
+          console.error(err);
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "سرور دردسترس نیست",
+              key: Math.random(),
+            })
+          );
+        }
+      });
   };
 
   const [iconPassword, setIconPassword] = useState("fa-eye-slash");
@@ -138,13 +214,24 @@ const LoginUser: React.FC<{
             onClick={handlePassword}
             aria-hidden="true"
           ></i>
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3 }}>
+            {loadingReq ? (
+              <i
+                style={{ fontSize: "24.5px" }}
+                className="fa fa-spinner fa-spin"
+                aria-hidden="true"
+              ></i>
+            ) : (
+              "ورود"
+            )}
+          </Button>
           <Button
-            type="submit"
+            type="button"
             fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            onClick={() => changeLoginSign("user", 4)}
+            sx={{ mt: 1, mb: 2, fontSize: "12px" }}
           >
-            ورود
+            فعال‌سازی حساب
           </Button>
           <Grid container>
             <Grid item xs>

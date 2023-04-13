@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import HeaderNewShort from "./HeaderNewShort";
+import { statesRedux } from "../../ts/interfaces";
+import { useSelector } from "react-redux";
+import Header from "../NEW/ProfilesCompanies/Header";
 
 const HeaderNewComplete: React.FC = () => {
   const history = useHistory();
   const [searchInput, setSearchInput] = useState("");
 
+  const { role } = useSelector((state: statesRedux) => state.userAuth);
+  
   function handleChange(e: React.MouseEvent) {
     setSearchInput((e.target as HTMLInputElement).value);
   }
 
   return (
     <>
-      <HeaderNewShort />
+      {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <div
         style={{ backgroundColor: "#D3D3D3" }}
         className="w-[100%] h-[300px] bg-no-repeat bg-cover bg-center bg-opacity-10 flex flex-col items-center"
@@ -29,7 +34,7 @@ const HeaderNewComplete: React.FC = () => {
                 type="text"
                 value={searchInput}
                 onChange={handleChange as any}
-                className="rounded-3xl w-[500px] lg:w-[400px] sm:w-[300px] mm:w-[200px] h-[50px] text-[10px] pr-[12%] mm:pr-[18%] mdmin:outline mdmin:outline-[10px] mdmin:outline-[#1976D2]"
+                className="rounded-[2rem] w-[500px] lg:w-[400px] sm:w-[300px] mm:w-[200px] h-[55px] text-[14px] pr-[12%] mm:pr-[18%]"
                 placeholder="جستجو آگهی"
               />
               <button
@@ -38,7 +43,7 @@ const HeaderNewComplete: React.FC = () => {
                   if (searchInput !== "")
                     history.push(`/search?searchText=${searchInput}`);
                 }}
-                className="fa fa-search absolute smmin:right-[3%] sm:right-[5%] mm:right-[15%] top-[35%]"
+                className="fa fa-search absolute smmin:right-[4%] sm:right-[5%] mm:right-[15%] top-[35%]"
               ></button>
             </form>
           </div>
