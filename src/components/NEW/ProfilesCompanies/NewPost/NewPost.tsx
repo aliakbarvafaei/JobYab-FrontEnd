@@ -10,6 +10,9 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import { NewPost } from "../../../../services/api";
 import { Link } from "react-router-dom";
+import { eachToast } from "../../../../ts/interfaces";
+import { addItemOnce } from "../../../../ts/functions";
+import { useToast } from "../../../../contexts/ToastState";
 
 interface step1 {
   title: string;
@@ -32,6 +35,9 @@ interface step3 {
 
 const NewPosts: React.FC = () => {
   const steps = [{ label: "1" }, { label: "2" }, { label: "3" }];
+
+  const { setToastState } = useToast();
+  const [loadingReq, setloadingReq] = React.useState<boolean>(false);
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
@@ -67,23 +73,50 @@ const NewPosts: React.FC = () => {
         skills: (step2Value as step2).technology,
         description: values.bio,
       };
+      setloadingReq(true);
       NewPost(data)
         .then((response) => {
           console.log(response);
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "1",
+              description: "آگهی با موفقیت اضافه شد",
+              key: Math.random(),
+            })
+          );
+          let newSkipped = skipped;
+          if (isStepSkipped(activeStep)) {
+            newSkipped = new Set(newSkipped.values());
+            newSkipped.delete(activeStep);
+          }
+
+          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+          setSkipped(newSkipped);
+          setloadingReq(false);
         })
         .catch((err) => {
+          setloadingReq(false);
           console.log(err);
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "عملیات باخطا مواجه شد",
+              key: Math.random(),
+            })
+          );
         });
     }
 
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
+    if (activeStep === 0 || activeStep === 1) {
+      let newSkipped = skipped;
+      if (isStepSkipped(activeStep)) {
+        newSkipped = new Set(newSkipped.values());
+        newSkipped.delete(activeStep);
+      }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped(newSkipped);
+    }
   };
 
   const handleBack = () => {
@@ -200,6 +233,7 @@ const NewPosts: React.FC = () => {
                   رد
                 </Button>
               )}
+
               <Button
                 onClick={() => {
                   (
@@ -209,7 +243,17 @@ const NewPosts: React.FC = () => {
                   ).click();
                 }}
               >
-                {activeStep === steps.length - 1 ? "پایان" : "بعدی"}
+                {loadingReq ? (
+                  <i
+                    style={{ fontSize: "24.5px" }}
+                    className="fa fa-spinner fa-spin"
+                    aria-hidden="true"
+                  ></i>
+                ) : (activeStep === steps.length - 1 ? (
+                  "پایان"
+                ) : (
+                  "بعدی"
+                ))}
               </Button>
             </Box>
           </React.Fragment>

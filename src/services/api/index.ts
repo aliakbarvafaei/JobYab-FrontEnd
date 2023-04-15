@@ -42,7 +42,13 @@ export const resetPassAPI = (code: string, newPass: string) =>
     email_active_code: code,
     password: newPass,
   });
-export const NewPost = (data: any) => axiosInstance.post("/posts/", data);
+export const getSkills = () => axiosInstance.get("/skills/");
+export const getStates = () => axiosInstance.get("/states/");
+export const getCities = (stateId: number) =>
+  axiosInstance.get(`/cities/${stateId}/`);
+export const getJobTypes = () => axiosInstance.get("/jobtypes/");
+export const NewPost = (data: any) =>
+  axiosInstance.post("/posts/", data, tokenUser());
 export const NewAdAPI = (
   token: string,
   category: string,
