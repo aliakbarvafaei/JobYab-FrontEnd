@@ -14,7 +14,7 @@ import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
 import { PostType } from "../constants/types";
-import { getPostDetail } from "../services/api";
+import { getPostDetail, getSimilarPosts } from "../services/api";
 
 const responsive = {
   superLargeDesktop: {
@@ -36,6 +36,7 @@ const PostPage = () => {
   const { id } = useParams<any>();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
   const [adDetail, setAdDetail] = useState<PostType | undefined>(undefined);
+  const [similarAds, setSimilarAds] = useState<PostType[]>([]);
 
   const windowWidth = useRef(window.innerWidth);
   useEffect(() => {
@@ -49,6 +50,9 @@ const PostPage = () => {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         console.error(err);
       });
+    getSimilarPosts(id).then((data) => {
+      setSimilarAds(data.data.data);
+    });
   }, [id, history]);
   return (
     <div>
@@ -112,14 +116,11 @@ const PostPage = () => {
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 text-center"
       >
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
+        {similarAds?.map((item) => (
+          <SimilarPost data={item} />
+        ))}
       </Carousel>
       <div style={{ marginTop: 10 }}>
         <Footer />

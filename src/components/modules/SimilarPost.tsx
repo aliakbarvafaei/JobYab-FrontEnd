@@ -1,6 +1,10 @@
 import { Avatar, Typography } from "@mui/material";
+import { PostType } from "../../constants/types";
 
-const SimilarPost = () => {
+interface SimilarPostsProps {
+  data: PostType;
+}
+const SimilarPost = ({ data }: SimilarPostsProps) => {
   return (
     <div
       style={{
@@ -12,11 +16,13 @@ const SimilarPost = () => {
         alignItems: "center",
         paddingBlock: 30,
         justifyContent: "space-evenly",
+        marginLeft: "auto",
+        marginRight: "auto",
       }}
     >
-      <Avatar style={{ width: 90, height: 90 }} />
+      <Avatar style={{ width: 90, height: 90 }} src={data.user.logo ?? ""} />
       <Typography style={{ fontSize: 14, marginTop: 15 }}>
-        شرکت مستر بلیط
+        {data.user.company_persian_name}
       </Typography>
       <Typography
         className="text-xs"
@@ -27,7 +33,7 @@ const SimilarPost = () => {
           fontSize: 14,
         }}
       >
-        فرانت اند دولوپر ری‌اکت
+        {data.title}
       </Typography>
     </div>
   );

@@ -189,12 +189,12 @@ const CompanyPage = () => {
         infinite={true}
         className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
       >
+        {/* <SimilarPost />
         <SimilarPost />
         <SimilarPost />
         <SimilarPost />
         <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
+        <SimilarPost /> */}
       </Carousel>
       <div style={{ marginTop: 10 }}>
         <Footer />

@@ -242,6 +242,9 @@ export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 export const getPostDetail = (idAd: string) =>
   axiosInstance.get(`/posts/${idAd}/`);
 
+export const getSimilarPosts = (idAd: string) =>
+  axiosInstance.get(`/posts/related/${idAd}/`);
+/** */
 export const getAd = (idAd: string, source: string) =>
   axiosInstance.get(`/homes/${idAd}/${source}`);
 
