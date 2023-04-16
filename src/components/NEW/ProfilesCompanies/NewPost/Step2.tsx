@@ -1,26 +1,73 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { object, string, TypeOf } from "zod";
+import { number, object, string, TypeOf } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SingleDropdownWithSearch from "../../../SingleDropdownWithSearch";
 import { Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import {
+  getCities,
+  getJobTypes,
+  getSkills,
+  getStates,
+} from "../../../../services/api";
 
 const step2Schema = object({
-  province: string().nonempty("استان اجباری است"),
-  city: string().nonempty("شهر اجباری است"),
-  jobCategory: string().nonempty("دسته‌بندی شغلی اجباری است"),
-  technology: string().nonempty("تکنولوژی اجباری است"),
+  province: number({ required_error: "استان اجباری است" }),
+  city: number({ required_error: "شهر اجباری است" }),
+  jobCategory: number({ required_error: "دسته‌بندی شغلی اجباری است" }),
+  technology: number({ required_error: "مهارت‌ها اجباری است" }),
 });
 
 type step2Input = TypeOf<typeof step2Schema>;
 
-const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
-  const [jobCategory, setJobCategory] = useState<Array<String>>([]);
-  const [technology, setTechnology] = useState<Array<String>>([]);
+const Step2: React.FC<{ handleNext: (values: any) => void }> = ({
+  handleNext,
+}) => {
+  const [technology, setTechnology] = useState<Array<number>>([]);
 
+  const [jobType, setJobType] = useState<Array<{ id: number; title: string }>>(
+    []
+  );
+  const [skill, setSkill] = useState<Array<{ id: number; title: string }>>([]);
+  const [state, setState] = useState<Array<{ id: number; title: string }>>([]);
+  const [city, setCity] = useState<Array<{ id: number; title: string }>>([]);
+
+  useEffect(() => {
+    getSkills()
+      .then((response) => {
+        setSkill(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    getJobTypes()
+      .then((response) => {
+        setJobType(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    getStates()
+      .then((response) => {
+        setState(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const find = (
+    store: Array<{ id: number; title: string }>,
+    value: number
+  ): string => {
+    for (let i = 0; i < store.length; i++) {
+      if (store[i].id === value) return store[i].title;
+    }
+    return "";
+  };
   const step2 = useForm<step2Input>({
     resolver: zodResolver(step2Schema),
   });
@@ -28,24 +75,17 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
     console.log({
       ...values,
       technology: technology,
-      jobCategory: jobCategory,
     });
-    handleNext();
+    handleNext({
+      ...values,
+      technology: technology,
+    });
   };
 
   useEffect(() => {
-    if (jobCategory.length === 0) step2.setValue("jobCategory", "");
+    if (technology.length === 0) step2.setValue("technology", parseInt(""));
     else
-      step2.setValue(
-        "jobCategory",
-        jobCategory[jobCategory.length - 1] as string
-      );
-  }, [jobCategory]);
-
-  useEffect(() => {
-    if (technology.length === 0) step2.setValue("technology", "");
-    else
-      step2.setValue("technology", technology[technology.length - 1] as string);
+      step2.setValue("technology", technology[technology.length - 1] as number);
   }, [technology]);
 
   return (
@@ -80,63 +120,23 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
               ? "دسته‌بندی شغلی اجباری است"
               : ""
           }
-          options={[
-            { label: "فناوری اطلاعات", value: "فناوری اطلاعات" },
-            { label: "مهندسی نرم افزار", value: "مهندسی نرم افزار" },
-            { label: "برنامه نویس", value: "برنامه نویس" },
-          ]}
+          options={jobType.map((item: any) => {
+            return { label: item.title, value: item.id };
+          })}
           defaultValue={
-            jobCategory.length === 0
-              ? {
-                  value: "",
-                  label: "",
-                }
+            step2.getValues("jobCategory") === undefined
+              ? undefined
               : {
-                  value: jobCategory[jobCategory.length - 1] as string,
-                  label: jobCategory[jobCategory.length - 1] as string,
+                  label: find(jobType, step2.getValues("jobCategory")),
+                  value: step2.getValues("jobCategory"),
                 }
           }
           onChange={(e) => {
-            setJobCategory((old) => {
-              if (old.indexOf(e?.label as String) < 0)
-                return [...old, e?.label as String];
-              else return old;
-            });
-
-            step2.setValue("jobCategory", e?.label as string);
+            step2.setValue("jobCategory", e?.value as number);
             step2.clearErrors("jobCategory");
           }}
-          placeholder="دسته بندی شغلی"
+          placeholder="دسته‌بندی شغلی"
         />
-        <Typography component={"div"} sx={{ paddingTop: "10px" }}>
-          {jobCategory.map((item) => {
-            return (
-              <Typography
-                component={"span"}
-                sx={{
-                  backgroundColor: "#555555",
-                  color: "white",
-                  borderRadius: "4px",
-                  fontSize: "10px",
-                  padding: "1%",
-                  margin: "2px",
-                  display: "inline-flex",
-                  alignItems: "center",
-                }}
-              >
-                {item}
-                <CloseIcon
-                  sx={{ cursor: "pointer" }}
-                  onClick={() =>
-                    setJobCategory((old) =>
-                      old.filter((element) => element !== item)
-                    )
-                  }
-                />
-              </Typography>
-            );
-          })}
-        </Typography>
       </Box>
 
       <Box
@@ -153,13 +153,11 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           {...step2.register("technology")}
           isError={!!step2.formState.errors["technology"]}
           errorMessage={
-            !!step2.formState.errors["technology"] ? "تکتولوژی اجباری است" : ""
+            !!step2.formState.errors["technology"] ? "مهارت‌ها اجباری است" : ""
           }
-          options={[
-            { label: "React", value: "React" },
-            { label: "Flutter", value: "Flutter" },
-            { label: "Python", value: "Python" },
-          ]}
+          options={skill.map((item: any) => {
+            return { label: item.title, value: item.id };
+          })}
           defaultValue={
             technology.length === 0
               ? {
@@ -167,21 +165,21 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
                   label: "",
                 }
               : {
-                  value: technology[technology.length - 1] as string,
-                  label: technology[technology.length - 1] as string,
+                  label: find(skill, technology[technology.length - 1]),
+                  value: technology[technology.length - 1],
                 }
           }
           onChange={(e) => {
             setTechnology((old) => {
-              if (old.indexOf(e?.label as String) < 0)
-                return [...old, e?.label as String];
+              if (old.indexOf(e?.value as number) < 0)
+                return [...old, e?.value as number];
               else return old;
             });
 
-            step2.setValue("technology", e?.label as string);
+            step2.setValue("technology", e?.value as number);
             step2.clearErrors("technology");
           }}
-          placeholder="تکنولوژی و برچسب"
+          placeholder="مهارت ها"
         />
         <Typography component={"div"} sx={{ paddingTop: "10px" }}>
           {technology.map((item) => {
@@ -199,7 +197,7 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
                   alignItems: "center",
                 }}
               >
-                {item}
+                {find(skill,item)}
                 <CloseIcon
                   sx={{ cursor: "pointer" }}
                   onClick={() =>
@@ -230,21 +228,26 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           errorMessage={
             !!step2.formState.errors["province"] ? "استان اجباری است" : ""
           }
-          options={[
-            { label: "تهران", value: "تهران" },
-            { label: "اصفهان", value: "اصفهان" },
-            { label: "خراسان رضوی", value: "خراسان رضوی" },
-          ]}
+          options={state.map((item: any) => {
+            return { label: item.title, value: item.id };
+          })}
           defaultValue={
             step2.getValues("province") === undefined
               ? undefined
               : {
-                  label: step2.getValues("province") as string,
-                  value: step2.getValues("province") as string,
+                  label: find(state, step2.getValues("province")),
+                  value: step2.getValues("province"),
                 }
           }
           onChange={(e) => {
-            step2.setValue("province", e?.label as string);
+            step2.setValue("province", e?.value as number);
+            getCities(e?.value as number)
+              .then((response) => {
+                setCity(response.data.data);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
             step2.clearErrors("province");
           }}
           placeholder="استان"
@@ -268,21 +271,19 @@ const Step2: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
           errorMessage={
             !!step2.formState.errors["city"] ? "شهر اجباری است" : ""
           }
-          options={[
-            { label: "تهران", value: "تهران" },
-            { label: "اصفهان", value: "اصفهان" },
-            { label: "مشهد", value: "مشهد" },
-          ]}
+          options={city.map((item: any) => {
+            return { label: item.title, value: item.id };
+          })}
           defaultValue={
             step2.getValues("city") === undefined
               ? undefined
               : {
-                  label: step2.getValues("city") as string,
-                  value: step2.getValues("city") as string,
+                  label: find(city, step2.getValues("city")),
+                  value: step2.getValues("city"),
                 }
           }
           onChange={(e) => {
-            step2.setValue("city", e?.label as string);
+            step2.setValue("city", e?.value as number);
             step2.clearErrors("city");
           }}
           placeholder="شهر"

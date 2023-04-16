@@ -8,13 +8,43 @@ import Typography from "@mui/material/Typography";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
+import { NewPost } from "../../../../services/api";
 import { Link } from "react-router-dom";
+import { eachToast } from "../../../../ts/interfaces";
+import { addItemOnce } from "../../../../ts/functions";
+import { useToast } from "../../../../contexts/ToastState";
+
+interface step1 {
+  title: string;
+  type: string;
+  military: string;
+  degree: string;
+  work: string;
+  gender: string;
+  salary: string;
+}
+interface step2 {
+  province: string;
+  city: string;
+  jobCategory: string;
+  technology: string;
+}
+interface step3 {
+  bio: string;
+}
 
 const NewPosts: React.FC = () => {
   const steps = [{ label: "1" }, { label: "2" }, { label: "3" }];
 
+  const { setToastState } = useToast();
+  const [loadingReq, setloadingReq] = React.useState<boolean>(false);
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
+
+  const [step1Value, setStep1Value] = React.useState<step1 | null>(null);
+  const [step2Value, setStep2Value] = React.useState<step2 | null>(null);
+  const [step3Value, setStep3Value] = React.useState<step3 | null>(null);
 
   const isStepOptional = (step: number) => {
     return false;
@@ -24,15 +54,69 @@ const NewPosts: React.FC = () => {
     return skipped.has(step);
   };
 
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
+  const handleNext = (values: any) => {
+    if (activeStep === 0) setStep1Value(values);
+    else if (activeStep === 1) setStep2Value(values);
+    else if (activeStep === 2) {
+      setStep3Value(values);
+      const data = {
+        title: (step1Value as step1).title,
+        sarbazi: (step1Value as step1).military,
+        sex: (step1Value as step1).gender,
+        degree: (step1Value as step1).degree,
+        salary: (step1Value as step1).salary,
+        cooperation_type: (step1Value as step1).type,
+        experience: (step1Value as step1).work,
+        job_type: (step2Value as step2).jobCategory,
+        city: (step2Value as step2).city,
+        state: (step2Value as step2).province,
+        skills: (step2Value as step2).technology,
+        description: values.bio,
+      };
+      setloadingReq(true);
+      NewPost(data)
+        .then((response) => {
+          console.log(response);
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "1",
+              description: "آگهی با موفقیت اضافه شد",
+              key: Math.random(),
+            })
+          );
+          let newSkipped = skipped;
+          if (isStepSkipped(activeStep)) {
+            newSkipped = new Set(newSkipped.values());
+            newSkipped.delete(activeStep);
+          }
+
+          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+          setSkipped(newSkipped);
+          setloadingReq(false);
+        })
+        .catch((err) => {
+          setloadingReq(false);
+          console.log(err);
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "عملیات باخطا مواجه شد",
+              key: Math.random(),
+            })
+          );
+        });
     }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
+    if (activeStep === 0 || activeStep === 1) {
+      let newSkipped = skipped;
+      if (isStepSkipped(activeStep)) {
+        newSkipped = new Set(newSkipped.values());
+        newSkipped.delete(activeStep);
+      }
+
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped(newSkipped);
+    }
   };
 
   const handleBack = () => {
@@ -149,6 +233,7 @@ const NewPosts: React.FC = () => {
                   رد
                 </Button>
               )}
+
               <Button
                 onClick={() => {
                   (
@@ -158,7 +243,17 @@ const NewPosts: React.FC = () => {
                   ).click();
                 }}
               >
-                {activeStep === steps.length - 1 ? "پایان" : "بعدی"}
+                {loadingReq ? (
+                  <i
+                    style={{ fontSize: "24.5px" }}
+                    className="fa fa-spinner fa-spin"
+                    aria-hidden="true"
+                  ></i>
+                ) : (activeStep === steps.length - 1 ? (
+                  "پایان"
+                ) : (
+                  "بعدی"
+                ))}
               </Button>
             </Box>
           </React.Fragment>

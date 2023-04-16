@@ -164,7 +164,6 @@ const ActiveAccount2User: React.FC<{
               },
             }}
             // autoComplete="email"
-            autoFocus
           />
           <TextField
             margin="normal"
@@ -193,6 +192,7 @@ const ActiveAccount2User: React.FC<{
               },
             }}
             // autoComplete="email"
+            autoFocus
           />
           <Button
             type="submit"
