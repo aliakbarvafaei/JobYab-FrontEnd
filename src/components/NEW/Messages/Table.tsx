@@ -28,17 +28,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(email: string, title: string, text: string, time: Date) {
-  return { email, title, text, time };
+function createData(email: string, phone_number: string, text: string, created_date: string) {
+  return { email, phone_number, text, created_date };
 }
 
 const CustomizedTables: React.FC<{
-  data: Array<{ email: string; title: string; text: string; time: Date }>;
+  data: Array<{ email: string; phone_number: string; text: string; created_date: string }>;
 }> = ({ data }) => {
-  var rows: Array<{ email: string; title: string; text: string; time: Date }> =
+  var rows: Array<{ email: string; phone_number: string; text: string; created_date: string }> =
     [];
   data.forEach((item) => {
-    rows.push(createData(item.email, item.title, item.text, item.time));
+    rows.push(createData(item.email, item.phone_number, item.text, item.created_date));
   });
 
   return (
@@ -46,7 +46,7 @@ const CustomizedTables: React.FC<{
       <Table sx={{ minWidth: "100%" }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="right">عنوان پیام</StyledTableCell>
+            <StyledTableCell align="right">تلفن</StyledTableCell>
             <StyledTableCell
               align="right"
               sx={{ display: { xs: "none", sm: "table-cell" } }}
@@ -64,9 +64,9 @@ const CustomizedTables: React.FC<{
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.title}>
+            <StyledTableRow key={row.phone_number}>
               <StyledTableCell component="th" scope="row" align="right">
-                {row.title}
+                {row.phone_number}
               </StyledTableCell>
               <StyledTableCell
                 align="right"
@@ -81,7 +81,7 @@ const CustomizedTables: React.FC<{
                 {row.text}
               </StyledTableCell>
               <StyledTableCell align="right">
-                {row.time.toLocaleString("fa-IR")}
+                {new Date(row.created_date).toLocaleString("fa-IR")}
               </StyledTableCell>
             </StyledTableRow>
           ))}

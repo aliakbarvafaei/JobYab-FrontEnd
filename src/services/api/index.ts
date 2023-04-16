@@ -49,6 +49,27 @@ export const getCities = (stateId: number) =>
 export const getJobTypes = () => axiosInstance.get("/jobtypes/");
 export const NewPost = (data: any) =>
   axiosInstance.post("/posts/", data, tokenUser());
+export const getPost = (postId: number) =>
+  axiosInstance.get(`/posts/${postId}/`);
+export const UpdatePost = (data: any, postId: number) =>
+  axiosInstance.put(`/posts/${postId}/`, data, tokenUser());
+export const RemovePost = (postId: number) =>
+  axiosInstance.delete(`/posts/${postId}/`, tokenUser());
+export const getMyPosts = () =>
+  axiosInstance.get("/posts/myposts/", tokenUser());
+export const getMessages = () =>
+  axiosInstance.get("/contact-message/", tokenUser());
+export const AddMessages = (message: any) =>
+  axiosInstance.post("/contact-message/", message, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Token ${JSON.parse(
+        localStorage.getItem("token_user") as string
+      )}`,
+    },
+  });
+export const getBookmark = () =>
+  axiosInstance.get("/posts/bookmark/", tokenUser());
 export const NewAdAPI = (
   token: string,
   category: string,
@@ -253,8 +274,8 @@ export const putAd = (idAd: string, source: string) =>
 export const deleteAd = (idAd: string, source: string) =>
   axiosInstance.delete(`/homes/${idAd}/${source}`, tokenUser());
 
-export const getBookmark = (email: string) =>
-  axiosInstance.get(`/bookmark/${email}`, tokenUser());
+// export const getBookmark = (email: string) =>
+//   axiosInstance.get(`/bookmark/${email}`, tokenUser());
 
 export const postBookmark = (email: string, code: number) =>
   axiosInstance.post(

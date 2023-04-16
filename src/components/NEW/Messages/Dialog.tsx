@@ -13,9 +13,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const MessageSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
   text: string().nonempty("متن پیام اجباری است"),
-  title: string()
-    .nonempty("عنوان پیام اجباری است")
-    .max(20, "عنوان پیام بیشتر از 20 کاراکتر نمیتواند باشد"),
+  phone_number: string()
+    .nonempty("شماره تماس اجباری است")
+    .min(11, "شماره تماس باید 11 رقم باشد")
+    .max(11, "شماره تماس باید 11 رقم باشد"),
 });
 
 type MessageInput = TypeOf<typeof MessageSchema>;
@@ -25,7 +26,7 @@ const FormDialog: React.FC<{
   handleClose: () => void;
   handleCreate: (message: {
     email: string;
-    title: string;
+    phone_number: string;
     text: string;
   }) => void;
 }> = ({ open, handleClose, handleCreate }) => {
@@ -83,15 +84,16 @@ const FormDialog: React.FC<{
               margin="normal"
               required
               fullWidth
-              id="title"
-              label="عنوان"
-              error={!!Message.formState.errors["title"]}
+              type="number"
+              id="phone_number"
+              label="تلفن"
+              error={!!Message.formState.errors["phone_number"]}
               helperText={
-                Message.formState.errors["title"]
-                  ? Message.formState.errors["title"].message
+                Message.formState.errors["phone_number"]
+                  ? Message.formState.errors["phone_number"].message
                   : ""
               }
-              {...Message.register("title")}
+              {...Message.register("phone_number")}
               sx={{
                 "& label": {
                   left: "unset",

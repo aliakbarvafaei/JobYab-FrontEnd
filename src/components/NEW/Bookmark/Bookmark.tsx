@@ -1,9 +1,21 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CardItem from "./Card";
+import { getBookmark } from "../../../services/api";
 
 const Bookmark: React.FC = () => {
+  const [bookmarks, setBookmarks] = useState<Array<any>>([]);
+  useEffect(() => {
+    getBookmark()
+      .then((response) => {
+        setBookmarks(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
@@ -31,7 +43,7 @@ const Bookmark: React.FC = () => {
               alignItems: "center",
             }}
           >
-            {true ? (
+            {bookmarks.length>0 ? (
               <>
                 <CardItem />
                 <CardItem />

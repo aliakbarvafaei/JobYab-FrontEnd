@@ -1,9 +1,22 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CardItem from "./Card";
+import { getMyPosts } from "../../../../services/api";
 
 const MyPosts: React.FC = () => {
+  const [MyPosts, setMyPosts] = useState<null | Array<any>>(null);
+
+  useEffect(() => {
+    getMyPosts()
+      .then((response) => {
+        setMyPosts(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
       <h1 className="text-[20px]">آگهی‌های من</h1>
@@ -11,7 +24,7 @@ const MyPosts: React.FC = () => {
         sx={{
           backgroundColor: "#d8dbe2",
           marginTop: "10px",
-          paddingY:"20px",
+          paddingY: "20px",
           fontSize: "1rem",
           display: "flex",
           flexDirection: "column",
@@ -20,11 +33,19 @@ const MyPosts: React.FC = () => {
           alignItems: "center",
         }}
       >
-        {true ? (
+        {MyPosts === null ? (
           <>
-            <CardItem />
-            <CardItem />
-            <CardItem />
+            <i
+              style={{ fontSize: "24.5px" }}
+              className="fa fa-spinner fa-spin"
+              aria-hidden="true"
+            ></i>
+          </>
+        ) : MyPosts.length > 0 ? (
+          <>
+            {MyPosts.map((item) => (
+              <CardItem item={item} />
+            ))}
           </>
         ) : (
           <>

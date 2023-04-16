@@ -10,13 +10,39 @@ import {
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
+import { RemovePost } from "../../../../services/api";
+import { DateDiff, addItemOnce } from "../../../../ts/functions";
+import { eachToast } from "../../../../ts/interfaces";
+import { useToast } from "../../../../contexts/ToastState";
+import { useHistory } from "react-router-dom";
 
-const CardItem: React.FC = () => {
-  const [labels] = useState<Array<string>>([
-    "React",
-    "Node",
-    "Python",
-  ]);
+const CardItem: React.FC<{ item: any }> = ({ item }) => {
+  const { setToastState } = useToast();
+  const [labels] = useState<Array<{ id: number; title: string }>>(item.skills);
+  const history = useHistory();
+
+  const hanldeRemove = () => {
+    RemovePost(item.id)
+      .then((response) => {
+        setToastState((old: Array<eachToast>) =>
+          addItemOnce(old.slice(), {
+            title: "1",
+            description: "آگهی با موفقیت حذف شد",
+            key: Math.random(),
+          })
+        );
+        history.push("/profile-company?section=mypost");
+        history.go(0);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const hanldeUpdate = () => {
+    // history.push("/profile-company/update-post");
+    window.location.href = `/profile-company/update-post/${item.id}`;
+  };
 
   return (
     <Card
@@ -60,7 +86,7 @@ const CardItem: React.FC = () => {
                   fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 }}
               >
-                توسعه دهنده ارشد Front End
+                {item.title}
               </Typography>
               <Typography
                 component={"span"}
@@ -70,7 +96,44 @@ const CardItem: React.FC = () => {
                   marginRight: "5px",
                 }}
               >
-                28 روز پیش
+                <span>
+                  {DateDiff.inMonths(new Date(item.created_date), new Date()) ===
+                  0 ? (
+                    DateDiff.inWeeks(new Date(item.created_date), new Date()) ===
+                    0 ? (
+                      DateDiff.inDays(new Date(item.created_date), new Date()) ===
+                      0 ? (
+                        DateDiff.inHour(new Date(item.created_date), new Date()) ===
+                        0 ? (
+                          <>دقایقی پیش</>
+                        ) : (
+                          <>
+                            {DateDiff.inHour(
+                              new Date(item.created_date),
+                              new Date()
+                            )}{" "}
+                            ساعت پیش
+                          </>
+                        )
+                      ) : (
+                        <>
+                          {DateDiff.inDays(new Date(item.created_date), new Date())}{" "}
+                          روز پیش
+                        </>
+                      )
+                    ) : (
+                      <>
+                        {DateDiff.inWeeks(new Date(item.created_date), new Date())}{" "}
+                        هفته پیش
+                      </>
+                    )
+                  ) : (
+                    <>
+                      {DateDiff.inMonths(new Date(item.created_date), new Date())}{" "}
+                      ماه پیش
+                    </>
+                  )}
+                </span>
               </Typography>
             </Typography>
             <Typography
@@ -82,7 +145,7 @@ const CardItem: React.FC = () => {
               }}
             >
               <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
-              تهران, تهران
+              {item.city.title}, {item.state.title}
             </Typography>
             <Typography
               variant="body2"
@@ -95,7 +158,7 @@ const CardItem: React.FC = () => {
               <FactCheckOutlinedIcon
                 sx={{ color: "grey[500]", fontSize: "16px" }}
               />{" "}
-              قرارداد تمام‌ وقت (حقوق توافقی)
+              {item.cooperation_type} ({item.salary})
             </Typography>
           </Stack>
         </Box>
@@ -128,7 +191,7 @@ const CardItem: React.FC = () => {
                   alignItems: "center",
                 }}
               >
-                {item}
+                {item.title}
               </Typography>
             );
           })}
@@ -140,6 +203,7 @@ const CardItem: React.FC = () => {
         sx={{ display: "flex", flexDirection: "column", height: "100%" }}
       >
         <Button
+          onClick={hanldeUpdate}
           sx={{
             backgroundColor: "green",
             color: "white",
@@ -159,6 +223,7 @@ const CardItem: React.FC = () => {
           ویرایش
         </Button>
         <Button
+          onClick={hanldeRemove}
           sx={{
             backgroundColor: "red",
             color: "white",

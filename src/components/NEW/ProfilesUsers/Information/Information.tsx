@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useId, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -19,7 +19,7 @@ const userRegisterSchema = object({
 });
 type userRegisterInput = TypeOf<typeof userRegisterSchema>;
 
-const Information: React.FC = () => {
+const Information: React.FC<{ user: any }> = ({ user }) => {
   const resumeId = useId();
 
   const [resumeValue, setResumeValue] = useState<FileList | null>(null);
@@ -32,8 +32,16 @@ const Information: React.FC = () => {
     values
   ) => {
     console.log(values);
-    userRegister.reset();
+    // userRegister.reset();
   };
+
+  useEffect(() => {
+    userRegister.setValue("email", user.data.username);
+    userRegister.setValue("address", user.address);
+    userRegister.setValue("code", user.national_code);
+    userRegister.setValue("name", user.full_name);
+    userRegister.setValue("phone", user.phone_number);
+  }, [user]);
 
   return (
     <Box className="mdmin:mx-[30%]" sx={{ fontFamily: "IRANSans" }}>
@@ -44,7 +52,7 @@ const Information: React.FC = () => {
           fontSize: "1rem",
           backgroundColor: "white",
           padding: "15px",
-          paddingTop:"0px !important",
+          paddingTop: "0px !important",
           borderRadius: "10px",
         }}
       >
@@ -143,7 +151,7 @@ const Information: React.FC = () => {
               },
             }}
           />
-          
+
           <TextField
             margin="normal"
             fullWidth
@@ -170,7 +178,7 @@ const Information: React.FC = () => {
               },
             }}
           />
-          
+
           <TextField
             margin="normal"
             fullWidth

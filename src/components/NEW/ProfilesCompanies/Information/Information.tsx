@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useId, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -30,7 +30,7 @@ const companyRegisterSchema = object({
 
 type companyRegisterInput = TypeOf<typeof companyRegisterSchema>;
 
-const Information: React.FC = () => {
+const Information: React.FC<{ user: any }> = ({ user }) => {
   const logoId = useId();
 
   const [logoValue, setLogoValue] = useState<FileList | null>(null);
@@ -43,8 +43,17 @@ const Information: React.FC = () => {
     values
   ) => {
     console.log(values);
-    companyRegiter.reset();
+    // companyRegiter.reset();
   };
+
+  useEffect(() => {
+    companyRegiter.setValue("email", user.data.username);
+    companyRegiter.setValue("bio", user.introduction);
+    companyRegiter.setValue("namePersian", user.company_persian_name);
+    companyRegiter.setValue("nameEnglish", user.company_english_name);
+    companyRegiter.setValue("phone", user.company_phone_number);
+    companyRegiter.setValue("websit", user.website);
+  }, [user]);
 
   return (
     <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
@@ -72,7 +81,7 @@ const Information: React.FC = () => {
           <TextField
             margin="normal"
             required
-            defaultValue={"جابینجا"}
+            defaultValue={companyRegiter.getValues("namePersian")}
             id="namePersian"
             label="نام شرکت (فارسی)"
             error={!!companyRegiter.formState.errors["namePersian"]}
@@ -103,7 +112,7 @@ const Information: React.FC = () => {
           <TextField
             margin="normal"
             required
-            defaultValue={"jobinja"}
+            defaultValue={companyRegiter.getValues("nameEnglish")}
             id="nameEnglish"
             label="نام شرکت (انگلیسی)"
             error={!!companyRegiter.formState.errors["nameEnglish"]}
@@ -130,12 +139,11 @@ const Information: React.FC = () => {
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="name"
           />
           <TextField
             margin="normal"
             required
-            defaultValue={"02536661010"}
+            defaultValue={companyRegiter.getValues("phone")}
             type={"number"}
             id="phone"
             label="شماره تماس شرکت"
@@ -168,7 +176,7 @@ const Information: React.FC = () => {
           <TextField
             margin="normal"
             required
-            defaultValue={"ali@gmail.com"}
+            defaultValue={companyRegiter.getValues("email")}
             id="email"
             label="ایمیل"
             error={!!companyRegiter.formState.errors["email"]}
@@ -199,7 +207,7 @@ const Information: React.FC = () => {
           <TextField
             margin="normal"
             type={"text"}
-            defaultValue={"www.jobinja.ir"}
+            defaultValue={companyRegiter.getValues("websit")}
             id="website"
             label="آدرس وبسایت (اختیاری)"
             error={!!companyRegiter.formState.errors["websit"]}
@@ -253,7 +261,13 @@ const Information: React.FC = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              defaultValue={"کمتر از 10"}
+              defaultValue={
+                user.number_of_personnel === "1"
+                  ? "کمتر از 10"
+                  : user.number_of_personnel === "2"
+                  ? "کمتر از 100"
+                  : "بیشتر از 100"
+              }
               label="تعداد پرسنل"
               error={!!companyRegiter.formState.errors["count"]}
               {...companyRegiter.register("count")}
@@ -296,7 +310,7 @@ const Information: React.FC = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              defaultValue={"فناوری اطلاعات"}
+              defaultValue={user.activity_field}
               label="حوزه فعالیت"
               error={!!companyRegiter.formState.errors["activity"]}
               {...companyRegiter.register("activity")}
@@ -319,7 +333,7 @@ const Information: React.FC = () => {
             margin="normal"
             fullWidth
             type={"textArea"}
-            defaultValue={"سلام من شرکت هستم."}
+            defaultValue={companyRegiter.getValues("bio")}
             id="bio"
             label="معرفی شرکت"
             error={!!companyRegiter.formState.errors["bio"]}
@@ -411,7 +425,7 @@ const Information: React.FC = () => {
           >
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="حقیقی"
+              defaultValue={user.type}
               name="radio-buttons-group"
               sx={{ flexDirection: "row" }}
             >

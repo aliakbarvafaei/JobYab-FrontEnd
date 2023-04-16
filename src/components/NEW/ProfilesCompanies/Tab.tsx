@@ -49,7 +49,7 @@ function a11yProps(index: number) {
 
 const level = ["ارتقای سطح"];
 
-export default function BasicTabs() {
+export default function BasicTabs(user: null | any) {
   const queryParams = new URLSearchParams(window.location.search);
 
   const [value, setValue] = React.useState(() => {
@@ -131,7 +131,12 @@ export default function BasicTabs() {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <CreditCardIcon sx={{ width: { xs: "16px", sm: "24px" } }} />
                 <p className="smmin:text-[14px] sm:text-[10px] border-b-[2px] border-b-green smmin:mr-2 sm:mr-1">
-                  سطح برنزی
+                  سطح{" "}
+                  {user.user.level === 0
+                    ? "برنزی"
+                    : user.user.level === 1
+                    ? "نقره‌ای"
+                    : "طلایی"}
                 </p>
               </IconButton>
             </Tooltip>
@@ -188,7 +193,7 @@ export default function BasicTabs() {
           minHeight: "83.7vh",
         }}
       >
-        <Information />
+        <Information user={user.user} />
       </TabPanel>
       <TabPanel
         value={value}

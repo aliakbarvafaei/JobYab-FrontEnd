@@ -1,19 +1,33 @@
 import { Box, Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import FormDialog from "./Dialog";
 import CustomizedTables from "./Table";
+import { AddMessages, getMessages } from "../../../services/api";
+import { addItemOnce } from "../../../ts/functions";
+import { eachToast } from "../../../ts/interfaces";
+import { useToast } from "../../../contexts/ToastState";
 
 const Messages: React.FC = () => {
   const [messages, setMessages] = useState<
     Array<{
       email: string;
-      title: string;
+      phone_number: string;
       text: string;
-      time: Date;
+      created_date: string;
     }>
   >([]);
+  const { setToastState } = useToast();
+  useEffect(() => {
+    getMessages()
+      .then((response) => {
+        setMessages(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -26,10 +40,24 @@ const Messages: React.FC = () => {
 
   const handleCreate = (message: {
     email: string;
-    title: string;
+    phone_number: string;
     text: string;
   }) => {
-    setMessages((old) => [...old, { ...message, time: new Date() }]);
+    AddMessages(message)
+      .then((response) => {
+        console.log(response);
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+        setToastState((old: Array<eachToast>) =>
+          addItemOnce(old.slice(), {
+            title: "2",
+            description: "عملیات باخطا مواجه شد",
+            key: Math.random(),
+          })
+        );
+      });
   };
 
   return (

@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Request from "./Request/Request";
 import Information from "./Information/Information";
 import Messages from "../Messages/Messages";
-import Bookmark from "./Bookmark/Bookmark";
+import Bookmark from "../Bookmark/Bookmark";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,7 +46,7 @@ function a11yProps(index: number) {
 
 const level = ["ارتقای سطح"];
 
-export default function BasicTabs() {
+export default function BasicTabs(user: null | any) {
   const queryParams = new URLSearchParams(window.location.search);
 
   const [value, setValue] = React.useState(() => {
@@ -167,7 +167,7 @@ export default function BasicTabs() {
           minHeight: "80.9vh",
         }}
       >
-        <Information />
+        <Information user={user.user} />
       </TabPanel>
       <TabPanel
         value={value}

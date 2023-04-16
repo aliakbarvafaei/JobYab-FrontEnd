@@ -8,6 +8,7 @@ import PostPage from "../pages/PostPage";
 import companyPage from "../pages/companyPage";
 import ProfileUser from "../pages/Profile";
 import ProfileCompany from "../pages/ProfileCompany";
+import UpdatePost from "../pages/UpdatePost";
 
 const indexRoutes = [{ path: "/", component: DefaultLayout }];
 
@@ -25,6 +26,14 @@ const AppRoutes: Array<any> = [
     name: "همه محصولات",
     icon: "fa fa-list",
     component: NewPost,
+    showInNav: false,
+    private: true,
+  },
+  {
+    path: "/profile-company/update-post/:postId",
+    name: "همه محصولات",
+    icon: "fa fa-list",
+    component: UpdatePost,
     showInNav: false,
     private: true,
   },
