@@ -70,7 +70,9 @@ const PostPage = () => {
       <DetailHeader
         data={adDetail}
         onclick={() => {
-          history.push(`/company/${adDetail?.user.id}`);
+          // @ *todo:
+          // history.push(`/company/${adDetail?.user.id}`);
+          history.push(`/company/${adDetail?.id}`);
         }}
       />
       <div
