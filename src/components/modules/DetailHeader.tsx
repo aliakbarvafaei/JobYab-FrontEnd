@@ -13,7 +13,6 @@ const DetailHeader = ({
   haveCompanyDetail = true,
 }: DetailHeaderProps) => {
   const windowWidth = useRef(window.innerWidth);
-  console.log(windowWidth.current);
   return (
     <Grid
       className=" sm:mr-1 sm:ml-1 md:mr-10 md:ml-10 xl:ml-3 xl:mr-3 xlmin:mr-20 xlmin:ml-20"
