@@ -247,6 +247,13 @@ export const getSimilarPosts = (idAd: string) =>
 
 export const getCompaniesPosts = () => axiosInstance.get(`/posts/myposts/`);
 /** */
+
+/** General */
+export const getStates = () => axiosInstance.get(`/states/`);
+
+export const getJobTypes = () => axiosInstance.get(`/jobtypes/`);
+
+/** */
 export const getAd = (idAd: string, source: string) =>
   axiosInstance.get(`/homes/${idAd}/${source}`);
 

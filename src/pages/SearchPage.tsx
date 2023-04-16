@@ -15,15 +15,29 @@ import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
-import { getPrivatePosts } from "../services/api";
+import { getJobTypes, getPrivatePosts, getStates } from "../services/api";
+import { GeneralType, StateType } from "../constants/types";
 
 const SearchPage: React.FC = () => {
   const history = useHistory();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
   const [allPosts, setAllPosts] = useState([]);
+  const [states, setStates] = useState<StateType[]>([]);
+  const [jobTypes, setJobTypes] = useState<GeneralType[]>([]);
+
   useEffect(() => {
     getPrivatePosts().then((data) => {
       setAllPosts(data.data.data);
+    });
+  }, []);
+  useEffect(() => {
+    getStates().then((data) => {
+      setStates(data.data.data);
+    });
+  }, []);
+  useEffect(() => {
+    getJobTypes().then((data) => {
+      setJobTypes(data.data.data);
     });
   }, []);
   return (
@@ -49,10 +63,18 @@ const SearchPage: React.FC = () => {
           <SingleDropdownWithSearch
             onChange={() => {}}
             placeholder="استان مدنظر خود را انتخاب کنید"
+            options={states.map((item) => ({
+              label: item.title,
+              value: item.id,
+            }))}
           />
           <SingleDropdownWithSearch
             onChange={() => {}}
             placeholder="دسته بندی مدنظر خود را انتخاب کنید"
+            options={jobTypes.map((item) => ({
+              label: item.title,
+              value: item.id,
+            }))}
           />
           <Button
             className="bg-[#ffe11b]"
@@ -74,8 +96,6 @@ const SearchPage: React.FC = () => {
         className="md:mr-6 md:ml-6 xl:ml-4 xl:mr-4 xlmin:mr-24 xlmin:ml-24"
         style={{
           display: "flex",
-          // height: 500,
-          // marginInline: 80,
           justifyContent: "center",
         }}
       >

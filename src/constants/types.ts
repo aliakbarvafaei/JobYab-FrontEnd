@@ -1,4 +1,4 @@
-interface GeneralType {
+export interface GeneralType {
   id: number;
   title: string;
 }
@@ -58,4 +58,10 @@ export type UserType = {
   national_code: string;
   full_name: string;
   data: UserSpecificData;
+};
+
+export type StateType = {
+  id: number;
+  title: string;
+  order: number;
 };
