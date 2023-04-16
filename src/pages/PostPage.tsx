@@ -13,8 +13,8 @@ import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
-import { PostType } from "../constants/types";
-import { getPostDetail, getSimilarPosts } from "../services/api";
+import { PostType, UserType } from "../constants/types";
+import { getPostDetail, getSimilarPosts, getUser } from "../services/api";
 
 const responsive = {
   superLargeDesktop: {
@@ -37,6 +37,7 @@ const PostPage = () => {
   const { role } = useSelector((state: statesRedux) => state.userAuth);
   const [adDetail, setAdDetail] = useState<PostType | undefined>(undefined);
   const [similarAds, setSimilarAds] = useState<PostType[]>([]);
+  const [userData, setUserData] = useState<UserType | undefined>(undefined);
 
   const windowWidth = useRef(window.innerWidth);
   useEffect(() => {
@@ -50,10 +51,17 @@ const PostPage = () => {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         console.error(err);
       });
+  }, [id, history]);
+  useEffect(() => {
     getSimilarPosts(id).then((data) => {
       setSimilarAds(data.data.data);
     });
-  }, [id, history]);
+  }, [id]);
+  useEffect(() => {
+    getUser().then((data) => {
+      setUserData(data.data);
+    });
+  }, []);
   return (
     <div>
       <MobileMenu />
@@ -72,7 +80,7 @@ const PostPage = () => {
           gap: 30,
         }}
       >
-        <SendResumeSection />
+        <SendResumeSection data={userData} />
         <div
           className="smmin:w-11/12 mdmin:w-9/12"
           style={{

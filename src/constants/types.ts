@@ -2,7 +2,7 @@ interface GeneralType {
   id: number;
   title: string;
 }
-export type User = {
+type User = {
   activity_field: string;
   company_english_name: string;
   company_persian_name: string;
@@ -32,4 +32,30 @@ export type PostType = {
   state: GeneralType;
   title: string;
   user: User;
+};
+
+type UserSpecificData = {
+  date_joined: string;
+  email: string;
+  email_active_code: string;
+  first_name: string;
+  groups: string[];
+  id: number;
+  is_active: boolean;
+  is_authorized: boolean;
+  is_employer: boolean;
+  is_staff: boolean;
+  is_superuser: boolean;
+  last_login: string;
+  last_name: string;
+  password: string;
+  user_permissions: string[];
+  username: string;
+};
+export type UserType = {
+  address: string;
+  phone_number: string;
+  national_code: string;
+  full_name: string;
+  data: UserSpecificData;
 };
