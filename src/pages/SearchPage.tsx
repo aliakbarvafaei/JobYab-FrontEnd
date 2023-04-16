@@ -14,11 +14,18 @@ import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
+import { useEffect, useState } from "react";
+import { getPrivatePosts } from "../services/api";
 
 const SearchPage: React.FC = () => {
   const history = useHistory();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
-
+  const [allPosts, setAllPosts] = useState([]);
+  useEffect(() => {
+    getPrivatePosts().then((data) => {
+      setAllPosts(data.data.data);
+    });
+  }, []);
   return (
     <div>
       <MobileMenu />
@@ -83,21 +90,14 @@ const SearchPage: React.FC = () => {
             alignItems: "center",
           }}
         >
-          <Post
-            onClick={() => {
-              history.push("/postPage");
-            }}
-          />
-          <Post
-            onClick={() => {
-              history.push("/postPage");
-            }}
-          />
-          <Post
-            onClick={() => {
-              history.push("/postPage");
-            }}
-          />
+          {allPosts?.map((postDetail) => (
+            <Post
+              data={postDetail}
+              onClick={(id) => {
+                history.push(`/postPage/${id}`);
+              }}
+            />
+          ))}
           <CustomPagination />
         </div>
       </div>

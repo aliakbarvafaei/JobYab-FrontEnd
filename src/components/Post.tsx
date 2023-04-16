@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import {
   Avatar,
   Button,
@@ -11,12 +10,14 @@ import BusinessIcon from "@mui/icons-material/Business";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import { PostType } from "../constants/types";
+import { DateDiff } from "../ts/functions";
 
 interface PostProps {
-  onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
+  onClick?: (id: number) => void;
+  data: PostType;
 }
-const Post = ({ onClick }: PostProps) => {
-
+const Post = ({ onClick, data }: PostProps) => {
   return (
     <Grid
       container
@@ -27,10 +28,9 @@ const Post = ({ onClick }: PostProps) => {
         borderRadius: 8,
         border: "2px solid #f5f5f5",
       }}
-      onClick={onClick}
     >
       <Grid item>
-        <Avatar sx={{ width: 80, height: 80 }} />
+        <Avatar sx={{ width: 80, height: 80 }} src={data.user.logo ?? ""} />
       </Grid>
       <Grid item style={{ marginRight: 10, width: "90%" }}>
         <Grid
@@ -42,10 +42,57 @@ const Post = ({ onClick }: PostProps) => {
           }}
         >
           <Grid item>
-            <Typography>برنامه نویس اندروید</Typography>
+            <Typography>{data.title}</Typography>
           </Grid>
           <Grid item className="flex items-center">
-            <Typography>9 ساعت پیش</Typography>
+            <Typography>
+              <span>
+                {DateDiff.inMonths(new Date(data.created_date), new Date()) ===
+                0 ? (
+                  DateDiff.inWeeks(new Date(data.created_date), new Date()) ===
+                  0 ? (
+                    DateDiff.inDays(new Date(data.created_date), new Date()) ===
+                    0 ? (
+                      DateDiff.inHour(
+                        new Date(data.created_date),
+                        new Date()
+                      ) === 0 ? (
+                        <>دقایقی پیش</>
+                      ) : (
+                        <>
+                          {DateDiff.inHour(
+                            new Date(data.created_date),
+                            new Date()
+                          )}{" "}
+                          ساعت پیش
+                        </>
+                      )
+                    ) : (
+                      <>
+                        {DateDiff.inDays(
+                          new Date(data.created_date),
+                          new Date()
+                        )}{" "}
+                        روز پیش
+                      </>
+                    )
+                  ) : (
+                    <>
+                      {DateDiff.inWeeks(
+                        new Date(data.created_date),
+                        new Date()
+                      )}{" "}
+                      هفته پیش
+                    </>
+                  )
+                ) : (
+                  <>
+                    {DateDiff.inMonths(new Date(data.created_date), new Date())}{" "}
+                    ماه پیش
+                  </>
+                )}
+              </span>
+            </Typography>
             <IconButton>
               <BookmarkBorderOutlinedIcon style={{ color: "#1976D2" }} />
             </IconButton>
@@ -58,7 +105,9 @@ const Post = ({ onClick }: PostProps) => {
             </IconButton>
           </Grid>
           <Grid item>
-            <Typography style={{ fontSize: 12 }}>شرکت ویتراکو</Typography>
+            <Typography style={{ fontSize: 12 }}>
+              {data.user.company_persian_name}
+            </Typography>
           </Grid>
         </Grid>
         <Grid item style={{ display: "flex", alignItems: "center" }}>
@@ -68,7 +117,9 @@ const Post = ({ onClick }: PostProps) => {
             </IconButton>
           </Grid>
           <Grid item>
-            <Typography style={{ fontSize: 12 }}>اصفهان، اصفهان</Typography>
+            <Typography
+              style={{ fontSize: 12 }}
+            >{`${data.state.title} ${data.city.title}`}</Typography>
           </Grid>
         </Grid>
         <Grid item style={{ display: "flex", alignItems: "center" }}>
@@ -78,39 +129,30 @@ const Post = ({ onClick }: PostProps) => {
             </IconButton>
           </Grid>
           <Grid item>
-            <Typography style={{ fontSize: 12 }}>قرارداد تمام وقت</Typography>
+            <Typography
+              style={{ fontSize: 12 }}
+            >{`قرارداد ${data.cooperation_type}`}</Typography>
           </Grid>
         </Grid>
         <Grid
           item
           className="flex md:block mdmin:flex-row"
           style={{
-            // alignItems: "center",
             justifyContent: "space-between",
             gap: 15,
           }}
         >
           <Grid item style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <Chip
-              label="C#"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
-            <Chip
-              label="Python"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
-            <Chip
-              label="C++"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
-            <Chip
-              label="Java"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
-            <Chip
-              label="SQL Server"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
+            {data?.skills.map(({ title: skillTitle }) => (
+              <Chip
+                label={skillTitle}
+                style={{
+                  borderRadius: 8,
+                  background: "#1976D2",
+                  color: "white",
+                }}
+              />
+            ))}
           </Grid>
           <Grid item style={{ marginTop: 10 }}>
             <Button
@@ -122,6 +164,9 @@ const Post = ({ onClick }: PostProps) => {
                 paddingInline: 24,
                 paddingBlock: 12,
                 marginLeft: 12,
+              }}
+              onClick={() => {
+                onClick?.(data.id);
               }}
             >
               ارسال رزومه

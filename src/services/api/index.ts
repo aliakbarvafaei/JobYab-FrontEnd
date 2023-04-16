@@ -236,6 +236,8 @@ export const getAdsWithPage = (
     pageSize: pageSize,
     filters: filters,
   });
+/** Posts */
+export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
 export const getAd = (idAd: string, source: string) =>
   axiosInstance.get(`/homes/${idAd}/${source}`);
@@ -257,6 +259,7 @@ export const postBookmark = (email: string, code: number) =>
     },
     tokenUser()
   );
+
 export const deleteBookmark = (email: string, code: string) =>
   axiosInstance.delete(`/bookmark/${email}!${code}`, tokenUser());
 
