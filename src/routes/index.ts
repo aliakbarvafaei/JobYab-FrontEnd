@@ -53,7 +53,7 @@ const AppRoutes: Array<any> = [
     private: false,
   },
   {
-    path: "/company",
+    path: "/company/:companyId",
     name: "اطلاعات شرکت",
     icon: "fa fa-list",
     component: companyPage,
