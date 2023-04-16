@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import HeaderNewShort from "../components/Header/HeaderNewShort";
 import DetailHeader from "../components/modules/DetailHeader";
 import TempData from "../components/modules/TempData";
@@ -32,6 +33,7 @@ const responsive = {
 const PostPage = () => {
   const history = useHistory();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
+  const windowWidth = useRef(window.innerWidth);
 
   return (
     <div>
@@ -52,7 +54,7 @@ const PostPage = () => {
       >
         <SendResumeSection />
         <div
-          className="smmin:w-11/12 mdmin:w-9/12 smmin::pr-10 sm:pr-3 smmin::pl-10 sm:pl-3"
+          className="smmin:w-11/12 mdmin:w-9/12"
           style={{
             border: "1.5px solid #1976D2",
             borderRadius: 8,
@@ -60,6 +62,8 @@ const PostPage = () => {
             paddingTop: 30,
             boxShadow: "0 0 6px #1976D2",
             textAlign: "justify",
+            paddingInline: windowWidth.current < 450 ? 12 : 40,
+            marginInline: 3,
           }}
         >
           <DetailSection />
