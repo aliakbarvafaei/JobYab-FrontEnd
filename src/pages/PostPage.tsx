@@ -1,7 +1,6 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import HeaderNewShort from "../components/Header/HeaderNewShort";
 import DetailHeader from "../components/modules/DetailHeader";
-import TempData from "../components/modules/TempData";
 import TitlePages from "../components/TitlePages/TitlePages";
 import Footer from "../components/Footer/Footer";
 import SendResumeSection from "../components/modules/SendResumeSection";
@@ -9,11 +8,13 @@ import { Divider, Grid, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import SimilarPost from "../components/modules/SimilarPost";
 import DetailSection from "../components/modules/DetailSection";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
+import { PostType } from "../constants/types";
+import { getPostDetail } from "../services/api";
 
 const responsive = {
   superLargeDesktop: {
@@ -32,15 +33,30 @@ const responsive = {
 };
 const PostPage = () => {
   const history = useHistory();
+  const { id } = useParams<any>();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
-  const windowWidth = useRef(window.innerWidth);
+  const [adDetail, setAdDetail] = useState<PostType | undefined>(undefined);
 
+  const windowWidth = useRef(window.innerWidth);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    getPostDetail(id)
+      .then((data) => {
+        setAdDetail(data.data.data);
+      })
+      .catch((err) => {
+        history.push("/not-found");
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        console.error(err);
+      });
+  }, [id, history]);
   return (
     <div>
       <MobileMenu />
       {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <TitlePages title="جستجو" />
       <DetailHeader
+        data={adDetail}
         onclick={() => {
           history.push("/company");
         }}
@@ -66,9 +82,10 @@ const PostPage = () => {
             marginInline: 3,
           }}
         >
-          <DetailSection />
+          <DetailSection data={adDetail} />
           <Divider style={{ marginBlock: 20, background: "#1976D2" }} />
-          <TempData />
+          {/* <TempData description={adDetail?.description} /> */}
+          <div className="mb-3">{adDetail?.description}</div>
         </div>
       </div>
       <Grid

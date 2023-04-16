@@ -1,16 +1,19 @@
 import { Avatar, Button, Grid, IconButton, Typography } from "@mui/material";
 import BusinessIcon from "@mui/icons-material/Business";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+// import LocationOnIcon from "@mui/icons-material/LocationOn";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { useRef } from "react";
+import { PostType } from "../../constants/types";
 
 interface DetailHeaderProps {
   onclick?: () => void;
   haveCompanyDetail?: boolean;
+  data?: PostType;
 }
 const DetailHeader = ({
   onclick,
   haveCompanyDetail = true,
+  data,
 }: DetailHeaderProps) => {
   const windowWidth = useRef(window.innerWidth);
   return (
@@ -47,7 +50,7 @@ const DetailHeader = ({
                 marginBottom: windowWidth.current > 450 ? 0 : 50,
               }}
             >
-              برنامه نویس پایتون
+              {data?.title}
             </Typography>
           </Grid>
           {windowWidth.current > 450 ? (
@@ -60,12 +63,12 @@ const DetailHeader = ({
                 </Grid>
                 <Grid item>
                   <Typography style={{ fontSize: 12, color: "white" }}>
-                    شرکت ویتراکو
+                    {data?.user.company_persian_name}
                   </Typography>
                 </Grid>
               </Grid>
 
-              <Grid item style={{ display: "flex", alignItems: "center" }}>
+              {/* <Grid item style={{ display: "flex", alignItems: "center" }}>
                 <Grid item>
                   <IconButton disabled>
                     <LocationOnIcon style={{ color: "white" }} />
@@ -73,10 +76,10 @@ const DetailHeader = ({
                 </Grid>
                 <Grid item>
                   <Typography style={{ fontSize: 12, color: "white" }}>
-                    اصفهان اصفهان
+                    {`${data?.state.title}, ${data?.city.title}`}
                   </Typography>
                 </Grid>
-              </Grid>
+              </Grid> */}
             </>
           ) : null}
         </Grid>

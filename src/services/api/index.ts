@@ -239,6 +239,9 @@ export const getAdsWithPage = (
 /** Posts */
 export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
+export const getPostDetail = (idAd: string) =>
+  axiosInstance.get(`/posts/${idAd}/`);
+
 export const getAd = (idAd: string, source: string) =>
   axiosInstance.get(`/homes/${idAd}/${source}`);
 
