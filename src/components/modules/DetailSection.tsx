@@ -12,7 +12,12 @@ import DetailItem from "../modules/DetailItem";
 const DetailSection = () => {
   return (
     <Grid item container wrap="wrap" xs={12} style={{ gap: "1rem" }}>
-      <Grid item xs={12} style={{ display: "flex", gap: "2.5rem" }}>
+      <Grid
+        className="flex md:flex-col mdmin:flex-row !important"
+        // item
+        xs={12}
+        style={{ gap: "2.5rem" }}
+      >
         <Grid item xs={6} className="flex items-center">
           <DetailItem
             title="دسته‌بندی"

@@ -1,4 +1,4 @@
-import { IconButton, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
 
 interface DetailItemProps {
   title: string;
@@ -8,13 +8,16 @@ interface DetailItemProps {
 const DetailItem = ({ title, value, logo }: DetailItemProps) => {
   return (
     <>
-      <IconButton disabled style={{ marginLeft: 5 }}>
+      <IconButton disabled style={{ marginLeft: 3 }}>
         {logo}
       </IconButton>
-      <Typography style={{ fontSize: 13, fontWeight: "bold" }}>
+      <div
+        className="smmin:text-[13px] sm:text-[14px]"
+        style={{ fontWeight: "bold" }}
+      >
         {`${title}: `}
-      </Typography>
-      <Typography style={{ fontSize: 14 }}>{value}</Typography>
+      </div>
+      <div className="smmin:text-[13px] sm:text-[14px]">{value}</div>
     </>
   );
 };

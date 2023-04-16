@@ -18,7 +18,15 @@ const SimilarPost = () => {
       <Typography style={{ fontSize: 14, marginTop: 15 }}>
         شرکت مستر بلیط
       </Typography>
-      <Typography style={{ fontSize: 16, fontWeight: "bold", marginTop: 15 }}>
+      <Typography
+        className="text-xs"
+        style={{
+          fontWeight: "bold",
+          marginTop: 15,
+          textAlign: "center",
+          fontSize: 14,
+        }}
+      >
         فرانت اند دولوپر ری‌اکت
       </Typography>
     </div>
