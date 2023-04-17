@@ -1,11 +1,10 @@
 import { Box } from "@mui/material";
-import React, { useEffect, useId, useState } from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import UploadIcon from "@mui/icons-material/Upload";
 
 const userRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -20,10 +19,6 @@ const userRegisterSchema = object({
 type userRegisterInput = TypeOf<typeof userRegisterSchema>;
 
 const Information: React.FC<{ user: any }> = ({ user }) => {
-  const resumeId = useId();
-
-  const [resumeValue, setResumeValue] = useState<FileList | null>(null);
-
   const userRegister = useForm<userRegisterInput>({
     resolver: zodResolver(userRegisterSchema),
   });
@@ -37,8 +32,11 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
 
   useEffect(() => {
     userRegister.setValue("email", user.data.username);
-    userRegister.setValue("address", user.address);
-    userRegister.setValue("code", user.national_code);
+    userRegister.setValue("address", user.address === null ? "" : user.address);
+    userRegister.setValue(
+      "code",
+      user.national_code === null ? "" : user.national_code
+    );
     userRegister.setValue("name", user.full_name);
     userRegister.setValue("phone", user.phone_number);
   }, [user]);
@@ -205,60 +203,6 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
               },
             }}
           />
-
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginTop: "12px",
-              marginBottom: "8px",
-              width: "100%",
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "IRANSans",
-                width: "30%",
-                color: "#00000099",
-              }}
-              className="sm:text-[12px]"
-            >
-              فایل رزومه:{" "}
-            </div>
-
-            <Button
-              variant="outlined"
-              component="label"
-              sx={{
-                fontSize: { xs: "10px", sm: "14px" },
-                width: "65%",
-                fontFamily: "IRANSans",
-              }}
-            >
-              <input
-                onChange={() => {
-                  setResumeValue(
-                    (document.getElementById(resumeId) as HTMLInputElement)
-                      .files
-                  );
-                }}
-                id={resumeId}
-                accept="application/pdf"
-                type="file"
-                hidden
-              />
-              {resumeValue != null ? (
-                resumeValue[0].name
-              ) : (
-                <>
-                  <UploadIcon />
-                  بارگذاری فایل
-                </>
-              )}
-            </Button>
-          </Box>
 
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 1 }}>
             ویرایش

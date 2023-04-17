@@ -74,6 +74,10 @@ export const RemoveBookmark = (postId: number) =>
   axiosInstance.delete(`/posts/bookmark/${postId}/`, tokenUser());
 export const getMySentResumes = (state: number) =>
   axiosInstance.get(`/applicant/requests/?state=${state}`, tokenUser());
+export const getMyReciveResumes = (state: number) =>
+  axiosInstance.get(`/employer/requests/?state=${state}`, tokenUser());
+export const changeStateResume = (id: number) =>
+  axiosInstance.post(`/employer/request-state/${id}/`, tokenUser());
 export const NewAdAPI = (
   token: string,
   category: string,

@@ -176,3 +176,17 @@ export interface sentResume {
   resume: string;
   post: post;
 }
+export interface reciveResume {
+  id: number;
+  state: string;
+  sent_date: string;
+  resume: string;
+  post: post;
+  user: {
+    full_name: string;
+    phone_number: string;
+    data: {
+      username: string;
+    };
+  };
+}

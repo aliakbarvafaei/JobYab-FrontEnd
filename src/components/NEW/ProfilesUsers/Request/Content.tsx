@@ -9,9 +9,24 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
   const [resumes, setResumes] = useState<null | Array<sentResume>>(null);
 
   useEffect(() => {
+    if (index === 2) {
+      getMySentResumes(index + 2)
+        .then((response) => {
+          setResumes((old: null | Array<sentResume>) => {
+            if (old !== null) return [...old, ...response.data.data];
+            else return response.data.data;
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
     getMySentResumes(index + 1)
       .then((response) => {
-        setResumes(response.data.data);
+        setResumes((old: null | Array<sentResume>) => {
+          if (old !== null) return [...old, ...response.data.data];
+          else return response.data.data;
+        });
       })
       .catch((err) => {
         console.log(err);
