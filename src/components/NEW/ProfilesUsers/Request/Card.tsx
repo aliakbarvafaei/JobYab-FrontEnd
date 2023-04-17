@@ -10,9 +10,16 @@ import {
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
+import { sentResume } from "../../../../ts/interfaces";
+import { DateDiff } from "../../../../ts/functions";
 
-const CardItem: React.FC<{ index: Number }> = ({ index }) => {
-  const [labels] = useState<Array<string>>(["React", "Node", "Python"]);
+const CardItem: React.FC<{ index: Number; item: sentResume }> = ({
+  index,
+  item,
+}) => {
+  const [labels] = useState<Array<{ id: number; title: string }>>(
+    item.post.skills
+  );
 
   return (
     <Card
@@ -51,7 +58,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               }}
             >
               <Typography component={"div"} sx={{ display: "inline" }}>
-                توسعه دهنده ارشد Front End
+                {item.post.title}
               </Typography>
               <Typography
                 component={"span"}
@@ -61,7 +68,49 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
                   marginRight: "5px",
                 }}
               >
-                28 روز پیش
+                <span>
+                  {DateDiff.inMonths(new Date(item.sent_date), new Date()) ===
+                  0 ? (
+                    DateDiff.inWeeks(new Date(item.sent_date), new Date()) ===
+                    0 ? (
+                      DateDiff.inDays(new Date(item.sent_date), new Date()) ===
+                      0 ? (
+                        DateDiff.inHour(
+                          new Date(item.sent_date),
+                          new Date()
+                        ) === 0 ? (
+                          <>دقایقی پیش</>
+                        ) : (
+                          <>
+                            {DateDiff.inHour(
+                              new Date(item.sent_date),
+                              new Date()
+                            )}{" "}
+                            ساعت پیش
+                          </>
+                        )
+                      ) : (
+                        <>
+                          {DateDiff.inDays(
+                            new Date(item.sent_date),
+                            new Date()
+                          )}{" "}
+                          روز پیش
+                        </>
+                      )
+                    ) : (
+                      <>
+                        {DateDiff.inWeeks(new Date(item.sent_date), new Date())}{" "}
+                        هفته پیش
+                      </>
+                    )
+                  ) : (
+                    <>
+                      {DateDiff.inMonths(new Date(item.sent_date), new Date())}{" "}
+                      ماه پیش
+                    </>
+                  )}
+                </span>
               </Typography>
             </Typography>
             <Typography
@@ -73,7 +122,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               }}
             >
               <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
-              تهران, تهران
+              {item.post.city.title}, {item.post.state.title}
             </Typography>
             <Typography
               variant="body2"
@@ -86,7 +135,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               <FactCheckOutlinedIcon
                 sx={{ color: "grey[500]", fontSize: "16px" }}
               />{" "}
-              قرارداد تمام‌ وقت (حقوق توافقی)
+              {item.post.cooperation_type} ({item.post.salary})
             </Typography>
           </Stack>
         </Box>
@@ -119,7 +168,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
                   alignItems: "center",
                 }}
               >
-                {item}
+                {item.title}
               </Typography>
             );
           })}

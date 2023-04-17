@@ -168,3 +168,11 @@ export interface post {
   skills: Array<{ id: number; title: string }>;
   state: { id: number; title: string };
 }
+
+export interface sentResume {
+  id: number;
+  state: string;
+  sent_date: string;
+  resume: string;
+  post: post;
+}

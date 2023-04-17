@@ -1,9 +1,22 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CardItem from "./Card";
+import { getMySentResumes } from "../../../../services/api";
+import { sentResume } from "../../../../ts/interfaces";
 
-const Content: React.FC<{ index: Number }> = ({ index }) => {
+const Content: React.FC<{ index: number }> = ({ index }) => {
+  const [resumes, setResumes] = useState<null | Array<sentResume>>(null);
+
+  useEffect(() => {
+    getMySentResumes(index + 1)
+      .then((response) => {
+        setResumes(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <Box sx={{ fontFamily: "IRANSans", paddingX: "0px" }}>
       <Box
@@ -20,11 +33,19 @@ const Content: React.FC<{ index: Number }> = ({ index }) => {
           alignItems: "center",
         }}
       >
-        {true ? (
+        {resumes === null ? (
           <>
-            <CardItem index={index}/>
-            <CardItem index={index}/>
-            <CardItem index={index}/>
+            <i
+              style={{ fontSize: "24.5px" }}
+              className="fa fa-spinner fa-spin"
+              aria-hidden="true"
+            ></i>
+          </>
+        ) : resumes.length > 0 ? (
+          <>
+            {resumes.map((item) => (
+              <CardItem item={item} index={index} />
+            ))}
           </>
         ) : (
           <>
