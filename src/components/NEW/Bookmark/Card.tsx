@@ -10,9 +10,42 @@ import {
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
+import { eachToast, statesRedux } from "../../../ts/interfaces";
+import { addItemOnce } from "../../../ts/functions";
+import { useToast } from "../../../contexts/ToastState";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RemoveBookmark } from "../../../services/api";
 
 const CardItem: React.FC = () => {
   const [labels] = useState<Array<string>>(["React", "Node", "Python"]);
+  const { setToastState } = useToast();
+  const { role } = useSelector((state: statesRedux) => state.userAuth);
+
+  const handleRemove = () => {
+    RemoveBookmark(1)
+      .then((response) => {
+        setToastState((old: Array<eachToast>) =>
+          addItemOnce(old.slice(), {
+            title: "1",
+            description: "آگهی با موفقیت حذف شد",
+            key: Math.random(),
+          })
+        );
+        if (role === "user") window.location.href = "/profile?section=bookmark";
+        else window.location.href = "/profile-company?section=bookmark";
+      })
+      .catch((err) => {
+        console.log(err);
+        setToastState((old: Array<eachToast>) =>
+          addItemOnce(old.slice(), {
+            title: "2",
+            description: "عملیات با خطا مواجه شد",
+            key: Math.random(),
+          })
+        );
+      });
+  };
 
   return (
     <Card
@@ -133,6 +166,7 @@ const CardItem: React.FC = () => {
 
       <Button
         className="smmin:w-[12%] sm:w-[15%]"
+        onClick={handleRemove}
         sx={{
           backgroundColor: "red",
           color: "white",

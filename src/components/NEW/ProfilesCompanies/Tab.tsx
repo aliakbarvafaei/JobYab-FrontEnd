@@ -12,6 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Information from "./Information/Information";
 import Messages from "../Messages/Messages";
+import Bookmark from "../Bookmark/Bookmark";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -62,6 +63,8 @@ export default function BasicTabs(user: null | any) {
         return 2;
       } else if (queryParams.get("section") === "message") {
         return 3;
+      } else if (queryParams.get("section") === "bookmark") {
+        return 4;
       } else return 0;
     } else return 0;
   });
@@ -125,6 +128,11 @@ export default function BasicTabs(user: null | any) {
             label="پیام‌ها"
             {...a11yProps(3)}
             sx={{ borderBottom: value === 3 ? 5 : 0, fontFamily: "IRANSans" }}
+          />
+          <Tab
+            label="نشان شده‌ها"
+            {...a11yProps(4)}
+            sx={{ borderBottom: value === 4 ? 5 : 0, fontFamily: "IRANSans" }}
           />
           <div className="mr-auto flex items-center">
             <Tooltip title="سطح کاربر">
@@ -204,6 +212,16 @@ export default function BasicTabs(user: null | any) {
         }}
       >
         <Messages />
+      </TabPanel>
+      <TabPanel
+        value={value}
+        index={4}
+        sx={{
+          backgroundColor: "#e0e5eb",
+          minHeight: "83.7vh",
+        }}
+      >
+        <Bookmark />
       </TabPanel>
     </Box>
   );

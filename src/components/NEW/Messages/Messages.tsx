@@ -6,8 +6,9 @@ import FormDialog from "./Dialog";
 import CustomizedTables from "./Table";
 import { AddMessages, getMessages } from "../../../services/api";
 import { addItemOnce } from "../../../ts/functions";
-import { eachToast } from "../../../ts/interfaces";
+import { eachToast, statesRedux } from "../../../ts/interfaces";
 import { useToast } from "../../../contexts/ToastState";
+import { useSelector } from "react-redux";
 
 const Messages: React.FC = () => {
   const [messages, setMessages] = useState<
@@ -18,6 +19,7 @@ const Messages: React.FC = () => {
       created_date: string;
     }>
   >([]);
+  const { role } = useSelector((state: statesRedux) => state.userAuth);
   const { setToastState } = useToast();
   useEffect(() => {
     getMessages()
@@ -46,7 +48,8 @@ const Messages: React.FC = () => {
     AddMessages(message)
       .then((response) => {
         console.log(response);
-        window.location.href = "/";
+        if (role === "user") window.location.href = "/profile?section=message";
+        else window.location.href = "/profile-company?section=message";
       })
       .catch((err) => {
         console.log(err);

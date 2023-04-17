@@ -70,6 +70,8 @@ export const AddMessages = (message: any) =>
   });
 export const getBookmark = () =>
   axiosInstance.get("/posts/bookmark/", tokenUser());
+export const RemoveBookmark = (postId: number) =>
+  axiosInstance.delete(`/posts/bookmark/${postId}/`, tokenUser());
 export const NewAdAPI = (
   token: string,
   category: string,
