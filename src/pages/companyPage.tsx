@@ -39,6 +39,7 @@ const CompanyPage = () => {
       <TitlePages title="جستجو" />
       <DetailHeader haveCompanyDetail={false} />
       <div
+        className="sm:mr-3 sm:ml-3 smmin:mr-20 smmin:ml-20"
         style={{
           border: "1.5px solid #1976D2",
           paddingInline: 40,
@@ -46,7 +47,7 @@ const CompanyPage = () => {
           marginTop: 40,
           paddingTop: 30,
           boxShadow: "0 0 6px #1976D2",
-          marginInline: 80,
+          // marginInline: 80,
           paddingBlock: 20,
         }}
       >
@@ -81,7 +82,15 @@ const CompanyPage = () => {
           >
             تکنولوژی ها:
           </Typography>
-          <Grid item style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <Grid
+            item
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 4,
+              flexWrap: "wrap",
+            }}
+          >
             <Chip
               label="C#"
               style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
@@ -178,7 +187,7 @@ const CompanyPage = () => {
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="mr-10 ml-10"
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
       >
         <SimilarPost />
         <SimilarPost />

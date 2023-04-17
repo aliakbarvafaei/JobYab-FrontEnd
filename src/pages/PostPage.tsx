@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import HeaderNewShort from "../components/Header/HeaderNewShort";
 import DetailHeader from "../components/modules/DetailHeader";
 import TempData from "../components/modules/TempData";
@@ -32,6 +33,7 @@ const responsive = {
 const PostPage = () => {
   const history = useHistory();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
+  const windowWidth = useRef(window.innerWidth);
 
   return (
     <div>
@@ -44,22 +46,24 @@ const PostPage = () => {
         }}
       />
       <div
+        className="flex lg:flex-col lgmin:flex-row lg:justify-center lg:items-center lgmin:mr-6=4 lgmin:ml-4 xlmin:mr-6 xlmin:ml-6"
         style={{
           display: "flex",
-          marginInline: 80,
           gap: 30,
         }}
       >
         <SendResumeSection />
         <div
+          className="smmin:w-11/12 mdmin:w-9/12"
           style={{
-            width: "80%",
             border: "1.5px solid #1976D2",
-            paddingInline: 40,
             borderRadius: 8,
             marginTop: 40,
             paddingTop: 30,
             boxShadow: "0 0 6px #1976D2",
+            textAlign: "justify",
+            paddingInline: windowWidth.current < 450 ? 12 : 40,
+            marginInline: 3,
           }}
         >
           <DetailSection />
@@ -91,7 +95,7 @@ const PostPage = () => {
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="mr-10 ml-10"
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
       >
         <SimilarPost />
         <SimilarPost />

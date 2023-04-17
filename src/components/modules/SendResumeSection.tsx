@@ -3,14 +3,14 @@ import { Button, InputBase, Typography } from "@mui/material";
 const SendResumeSection = () => {
   return (
     <div
+      className="lgmin:w-3/12 md:w-11/12 "
       style={{
         background: "#F2F3F4",
-        width: "20%",
         marginTop: 40,
         borderRadius: 8,
         flexShrink: 0,
         paddingInline: 20,
-        maxHeight: 370,
+        maxHeight: 350,
         position: "relative",
         boxShadow: "0 0 6px rgba(0, 0, 0, 0.2)",
       }}
@@ -67,16 +67,17 @@ const SendResumeSection = () => {
           <input hidden accept="image/*" multiple type="file" />
         </Button>
       </div>
-      <Button fullWidth variant="outlined" style={{ marginTop: 25 }}>
+      <Button
+        fullWidth
+        variant="outlined"
+        style={{ marginTop: 25, marginBottom: 10 }}
+      >
         ارسال رزومه
       </Button>
       <Typography
         style={{
           fontSize: 12,
           textAlign: "center",
-          position: "absolute",
-          bottom: 10,
-          right: "17%",
         }}
       >
         فرصت ارسال رزومه:{" "}
