@@ -1,6 +1,10 @@
 import { Button, InputBase, Typography } from "@mui/material";
+import { UserType } from "../../constants/types";
 
-const SendResumeSection = () => {
+interface SendResumeSectionProps {
+  data?: UserType;
+}
+const SendResumeSection = ({ data }: SendResumeSectionProps) => {
   return (
     <div
       className="lgmin:w-3/12 md:w-11/12 "
@@ -16,7 +20,7 @@ const SendResumeSection = () => {
       }}
     >
       <InputBase
-        value="سید عرفان نوربخش "
+        value={data?.full_name}
         fullWidth
         style={{
           border: "2px solid gray",
@@ -28,7 +32,7 @@ const SendResumeSection = () => {
         classes={{ disabled: "text-center" }}
       />
       <InputBase
-        value="ErfanNourbakhsh@gmail.com"
+        value={data?.data.email ? data?.data.email : "-"}
         fullWidth
         style={{
           border: "2px solid gray",
@@ -40,7 +44,7 @@ const SendResumeSection = () => {
         classes={{ disabled: "text-center" }}
       />
       <InputBase
-        value="09134821558"
+        value={data?.phone_number}
         fullWidth
         style={{
           border: "2px solid gray",

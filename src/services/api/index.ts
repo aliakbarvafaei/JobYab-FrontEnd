@@ -243,7 +243,24 @@ export const getAdsWithPage = (
     pageSize: pageSize,
     filters: filters,
   });
+/** Posts */
+export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
+export const getPostDetail = (idAd: string) =>
+  axiosInstance.get(`/posts/${idAd}/`);
+
+export const getSimilarPosts = (idAd: string) =>
+  axiosInstance.get(`/posts/related/${idAd}/`);
+
+export const getCompaniesPosts = () => axiosInstance.get(`/posts/myposts/`);
+/** */
+
+/** General */
+export const getStates = () => axiosInstance.get(`/states/`);
+
+export const getJobTypes = () => axiosInstance.get(`/jobtypes/`);
+
+/** */
 export const getAd = (idAd: string, source: string) =>
   axiosInstance.get(`/homes/${idAd}/${source}`);
 
@@ -264,6 +281,7 @@ export const postBookmark = (email: string, code: number) =>
     },
     tokenUser()
   );
+
 export const deleteBookmark = (email: string, code: string) =>
   axiosInstance.delete(`/bookmark/${email}!${code}`, tokenUser());
 

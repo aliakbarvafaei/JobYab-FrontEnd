@@ -1,7 +1,6 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import HeaderNewShort from "../components/Header/HeaderNewShort";
 import DetailHeader from "../components/modules/DetailHeader";
-import TempData from "../components/modules/TempData";
 import TitlePages from "../components/TitlePages/TitlePages";
 import Footer from "../components/Footer/Footer";
 import SendResumeSection from "../components/modules/SendResumeSection";
@@ -9,11 +8,13 @@ import { Divider, Grid, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import SimilarPost from "../components/modules/SimilarPost";
 import DetailSection from "../components/modules/DetailSection";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
+import { PostType, UserType } from "../constants/types";
+import { getPostDetail, getSimilarPosts, getUser } from "../services/api";
 
 const responsive = {
   superLargeDesktop: {
@@ -32,17 +33,46 @@ const responsive = {
 };
 const PostPage = () => {
   const history = useHistory();
+  const { id } = useParams<any>();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
-  const windowWidth = useRef(window.innerWidth);
+  const [adDetail, setAdDetail] = useState<PostType | undefined>(undefined);
+  const [similarAds, setSimilarAds] = useState<PostType[]>([]);
+  const [userData, setUserData] = useState<UserType | undefined>(undefined);
 
+  const windowWidth = useRef(window.innerWidth);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    getPostDetail(id)
+      .then((data) => {
+        setAdDetail(data.data.data);
+      })
+      .catch((err) => {
+        history.push("/not-found");
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        console.error(err);
+      });
+  }, [id, history]);
+  useEffect(() => {
+    getSimilarPosts(id).then((data) => {
+      setSimilarAds(data.data.data);
+    });
+  }, [id]);
+  useEffect(() => {
+    getUser().then((data) => {
+      setUserData(data.data);
+    });
+  }, []);
   return (
     <div>
       <MobileMenu />
       {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <TitlePages title="جستجو" />
       <DetailHeader
+        data={adDetail}
         onclick={() => {
-          history.push("/company");
+          // @ *todo:
+          // history.push(`/company/${adDetail?.user.id}`);
+          history.push(`/company/${adDetail?.id}`);
         }}
       />
       <div
@@ -52,7 +82,7 @@ const PostPage = () => {
           gap: 30,
         }}
       >
-        <SendResumeSection />
+        <SendResumeSection data={userData} />
         <div
           className="smmin:w-11/12 mdmin:w-9/12"
           style={{
@@ -66,9 +96,10 @@ const PostPage = () => {
             marginInline: 3,
           }}
         >
-          <DetailSection />
+          <DetailSection data={adDetail} />
           <Divider style={{ marginBlock: 20, background: "#1976D2" }} />
-          <TempData />
+          {/* <TempData description={adDetail?.description} /> */}
+          <div className="mb-3">{adDetail?.description}</div>
         </div>
       </div>
       <Grid
@@ -95,14 +126,11 @@ const PostPage = () => {
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 text-center"
       >
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
+        {similarAds?.map((item) => (
+          <SimilarPost data={item} />
+        ))}
       </Carousel>
       <div style={{ marginTop: 10 }}>
         <Footer />
