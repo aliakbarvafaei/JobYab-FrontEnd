@@ -90,11 +90,9 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
         style={{ marginTop: 25, marginBottom: 10 }}
         onClick={() => {
           const data = new FormData();
-          console.log(innerFile);
           //@ts-ignore
           data.append("resume", innerFile);
           data.append("post", postId?.toString() ?? "");
-          console.log(data);
           fetch("http://localhost:8000/api/v1/applicant/requests/", {
             method: "POST",
             body: data,
@@ -103,7 +101,6 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
               Authorization: `Token ${token}`,
             },
           }).then((res) => {
-            console.log(res.status, "status");
             if (res.status === 201) {
               setToastState((old: Array<eachToast>) =>
                 addItemOnce(old.slice(), {

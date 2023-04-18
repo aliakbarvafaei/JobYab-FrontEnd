@@ -266,6 +266,17 @@ export const sendResume = (postId: string, resume: any) =>
     tokenUser()
   );
 /** */
+
+/** Bookmark */
+export const postBookmark = (id: string) =>
+  axiosInstance.post(
+    `/posts/bookmark/`,
+    {
+      post: id,
+    },
+    tokenUser()
+  );
+/** */
 export const getAd = (idAd: string, source: string) =>
   axiosInstance.get(`/homes/${idAd}/${source}`);
 
@@ -278,14 +289,14 @@ export const deleteAd = (idAd: string, source: string) =>
 export const getBookmark = (email: string) =>
   axiosInstance.get(`/bookmark/${email}`, tokenUser());
 
-export const postBookmark = (email: string, code: number) =>
-  axiosInstance.post(
-    `/bookmark/${email}`,
-    {
-      code: code,
-    },
-    tokenUser()
-  );
+// export const postBookmark = (email: string, code: number) =>
+//   axiosInstance.post(
+//     `/bookmark/${email}`,
+//     {
+//       code: code,
+//     },
+//     tokenUser()
+//   );
 
 export const deleteBookmark = (email: string, code: string) =>
   axiosInstance.delete(`/bookmark/${email}!${code}`, tokenUser());
