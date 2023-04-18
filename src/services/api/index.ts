@@ -254,6 +254,18 @@ export const getStates = () => axiosInstance.get(`/states/`);
 export const getJobTypes = () => axiosInstance.get(`/jobtypes/`);
 
 /** */
+
+/** Resume */
+export const sendResume = (postId: string, resume: any) =>
+  axiosInstance.post(
+    `/applicant/requests/`,
+    {
+      post: postId,
+      resume: resume,
+    },
+    tokenUser()
+  );
+/** */
 export const getAd = (idAd: string, source: string) =>
   axiosInstance.get(`/homes/${idAd}/${source}`);
 

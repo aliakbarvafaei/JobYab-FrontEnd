@@ -82,7 +82,7 @@ const PostPage = () => {
           gap: 30,
         }}
       >
-        <SendResumeSection data={userData} />
+        <SendResumeSection data={userData} postId={adDetail?.id} />
         <div
           className="smmin:w-11/12 mdmin:w-9/12"
           style={{
@@ -126,7 +126,7 @@ const PostPage = () => {
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 text-center"
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 flex justify-center"
       >
         {similarAds?.map((item) => (
           <SimilarPost data={item} />

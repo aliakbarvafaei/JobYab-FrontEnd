@@ -8,7 +8,7 @@ const SimilarPost = ({ data }: SimilarPostsProps) => {
   return (
     <div
       style={{
-        background: "lightblue",
+        border: "2px solid lightblue",
         margin: 10,
         borderRadius: 8,
         display: "flex",
@@ -16,8 +16,7 @@ const SimilarPost = ({ data }: SimilarPostsProps) => {
         alignItems: "center",
         paddingBlock: 30,
         justifyContent: "space-evenly",
-        marginLeft: "auto",
-        marginRight: "auto",
+        marginLeft: 5,
       }}
     >
       <Avatar style={{ width: 90, height: 90 }} src={data.user.logo ?? ""} />
