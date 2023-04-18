@@ -13,6 +13,7 @@ import Header from "../components/NEW/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
 import { getCompaniesPosts, getPostDetail } from "../services/api";
 import { PostType } from "../constants/types";
+import ApartmentIcon from "@mui/icons-material/Apartment";
 
 const responsive = {
   superLargeDesktop: {
@@ -35,7 +36,6 @@ const CompanyPage = () => {
   const { companyId } = useParams<any>();
   const [adDetail, setAdDetail] = useState<PostType | undefined>(undefined);
   const [companiesPosts, setCompaniesPosts] = useState<PostType[]>([]);
-  console.log(companiesPosts);
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     getPostDetail(companyId)
@@ -113,14 +113,14 @@ const CompanyPage = () => {
               </IconButton>
               <Typography>{adDetail?.user.number_of_personnel}</Typography>
             </Grid>
-            {/* <Grid className="flex items-center">
+            <Grid className="flex items-center">
               <IconButton style={{ marginLeft: 10 }}>
-                <LocationOnOutlinedIcon style={{ color: "#1976D2" }} />
+                <ApartmentIcon style={{ color: "#1976D2" }} />
               </IconButton>
-              <Typography style={{ fontSize: 14 }}>
-                اصفهان، دانشگاه اصفهان
+              <Typography>
+                {`${adDetail?.state.title}, ${adDetail?.city.title}` ?? ""}
               </Typography>
-            </Grid> */}
+            </Grid>
           </Grid>
         </Grid>
       </div>

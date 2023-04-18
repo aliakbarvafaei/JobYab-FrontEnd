@@ -43,7 +43,7 @@ const DetailHeader = ({
       >
         <Grid>
           <Avatar
-            src={DefaultPicture}
+            src={data?.user.logo ?? DefaultPicture}
             style={{
               width: windowWidth.current > 450 ? 160 : 120,
               height: windowWidth.current > 450 ? 160 : 120,
