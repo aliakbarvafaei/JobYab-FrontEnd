@@ -8,6 +8,8 @@ import { postBookmark } from "../../services/api";
 import { useToast } from "../../contexts/ToastState";
 import { addItemOnce } from "../../ts/functions";
 import { eachToast } from "../../ts/interfaces";
+import DefaultPicture from "../../assets/images/default.png";
+import { useHistory } from "react-router-dom";
 
 interface DetailHeaderProps {
   onclick?: () => void;
@@ -21,7 +23,7 @@ const DetailHeader = ({
 }: DetailHeaderProps) => {
   const windowWidth = useRef(window.innerWidth);
   const { setToastState } = useToast();
-
+  const history = useHistory();
   return (
     <Grid
       className=" sm:mr-1 sm:ml-1 md:mr-10 md:ml-10 xl:ml-3 xl:mr-3 xlmin:mr-20 xlmin:ml-20"
@@ -41,6 +43,7 @@ const DetailHeader = ({
       >
         <Grid>
           <Avatar
+            src={DefaultPicture}
             style={{
               width: windowWidth.current > 450 ? 160 : 120,
               height: windowWidth.current > 450 ? 160 : 120,
@@ -119,13 +122,24 @@ const DetailHeader = ({
                       }
                     })
                     .catch((err) => {
-                      setToastState((old: Array<eachToast>) =>
-                        addItemOnce(old.slice(), {
-                          title: "2",
-                          description: "مشکلی پیش آمده است.",
-                          key: Math.random(),
-                        })
-                      );
+                      if (err.response.status === 401) {
+                        setToastState((old: Array<eachToast>) =>
+                          addItemOnce(old.slice(), {
+                            title: "2",
+                            description: "ابتدا باید در وبسایت وارد شوید.",
+                            key: Math.random(),
+                          })
+                        );
+                        history.replace("/login");
+                      } else {
+                        setToastState((old: Array<eachToast>) =>
+                          addItemOnce(old.slice(), {
+                            title: "2",
+                            description: "مشکلی پیش آمده است.",
+                            key: Math.random(),
+                          })
+                        );
+                      }
                     });
                 }}
               />

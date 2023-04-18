@@ -237,6 +237,16 @@ export const getAdsWithPage = (
     filters: filters,
   });
 /** Posts */
+// export const getPrivatePosts = () =>
+//   axiosInstance.post(`/postsfilter/`, {
+//     pageNumber: 1,
+//     pageSize: 2,
+//     filters: {
+//       searchInput: "",
+//       category: "",
+//       province: "",
+//     },
+//   });
 export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
 export const getPostDetail = (idAd: string) =>

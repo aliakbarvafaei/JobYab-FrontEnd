@@ -15,7 +15,14 @@ export default function SearchBox({
   return (
     <Paper
       component="form"
-      sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        flexGrow: 1,
+        height: "fit-content",
+        paddingBlock: 0.25,
+        border: "1px solid rgba(0, 0, 0, 0.23)",
+      }}
     >
       <IconButton
         style={{ padding: 10, cursor: "auto" }}
