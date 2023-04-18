@@ -237,17 +237,23 @@ export const getAdsWithPage = (
     filters: filters,
   });
 /** Posts */
-// export const getPrivatePosts = () =>
-//   axiosInstance.post(`/postsfilter/`, {
-//     pageNumber: 1,
-//     pageSize: 2,
-//     filters: {
-//       searchInput: "",
-//       category: "",
-//       province: "",
-//     },
-//   });
-export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
+export const getPrivatePosts = (
+  pageNumber: number,
+  pageSize: number,
+  searchInput?: string,
+  category?: string,
+  province?: string
+) =>
+  axiosInstance.post(`/postsfilter/`, {
+    pageNumber: pageNumber,
+    pageSize: pageSize,
+    filters: {
+      searchInput: searchInput,
+      category: category,
+      province: province,
+    },
+  });
+// export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
 export const getPostDetail = (idAd: string) =>
   axiosInstance.get(`/posts/${idAd}/`);

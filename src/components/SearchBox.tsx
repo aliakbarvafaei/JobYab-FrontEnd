@@ -1,6 +1,6 @@
 import * as React from "react";
 import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
+import InputBase, { InputBaseProps } from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 
 interface SearchBoxProps {
@@ -11,7 +11,8 @@ interface SearchBoxProps {
 export default function SearchBox({
   placeholder = "جستجو",
   icon,
-}: SearchBoxProps) {
+  ...props
+}: SearchBoxProps & InputBaseProps) {
   return (
     <Paper
       component="form"
@@ -37,6 +38,7 @@ export default function SearchBox({
         fullWidth
         className="shadow-none"
         style={{ marginLeft: 10, boxShadow: "none" }}
+        {...props}
       />
     </Paper>
   );
