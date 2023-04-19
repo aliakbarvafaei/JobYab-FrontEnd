@@ -12,6 +12,11 @@ import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Information from "./Information/Information";
 import Messages from "../Messages/Messages";
+import Bookmark from "../Bookmark/Bookmark";
+import { ChangeLevel } from "../../../services/api";
+import { addItemOnce } from "../../../ts/functions";
+import { eachToast } from "../../../ts/interfaces";
+import { useToast } from "../../../contexts/ToastState";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,8 +54,9 @@ function a11yProps(index: number) {
 
 const level = ["ارتقای سطح"];
 
-export default function BasicTabs() {
+export default function BasicTabs(user: any) {
   const queryParams = new URLSearchParams(window.location.search);
+  const { setToastState } = useToast();
 
   const [value, setValue] = React.useState(() => {
     if (queryParams.get("section")) {
@@ -62,6 +68,8 @@ export default function BasicTabs() {
         return 2;
       } else if (queryParams.get("section") === "message") {
         return 3;
+      } else if (queryParams.get("section") === "bookmark") {
+        return 4;
       } else return 0;
     } else return 0;
   });
@@ -80,6 +88,22 @@ export default function BasicTabs() {
     setAnchorElUser(null);
   };
 
+  const changeLevel = () => {
+    ChangeLevel({ level: user.user.level + 1 })
+      .then((response) => {
+        setToastState((old: Array<eachToast>) =>
+          addItemOnce(old.slice(), {
+            title: "1",
+            description: "ارتقای سطح با موفقیت انجام شد",
+            key: Math.random(),
+          })
+        );
+        window.location.href = "/profile-company";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Box sx={{ width: "100%", fontFamily: "IRANSans" }}>
       <Box
@@ -126,37 +150,57 @@ export default function BasicTabs() {
             {...a11yProps(3)}
             sx={{ borderBottom: value === 3 ? 5 : 0, fontFamily: "IRANSans" }}
           />
+          <Tab
+            label="نشان شده‌ها"
+            {...a11yProps(4)}
+            sx={{ borderBottom: value === 4 ? 5 : 0, fontFamily: "IRANSans" }}
+          />
           <div className="mr-auto flex items-center">
             <Tooltip title="سطح کاربر">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <CreditCardIcon sx={{ width: { xs: "16px", sm: "24px" } }} />
                 <p className="smmin:text-[14px] sm:text-[10px] border-b-[2px] border-b-green smmin:mr-2 sm:mr-1">
-                  سطح برنزی
+                  سطح{" "}
+                  {user.user.level === 0
+                    ? "برنزی"
+                    : user.user.level === 1
+                    ? "نقره‌ای"
+                    : "طلایی"}
                 </p>
               </IconButton>
             </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {level.map((level) => (
-                <MenuItem key={level} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{level}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            {user.user.level !== 2 ? (
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {level.map((level) => (
+                  <MenuItem
+                    key={level}
+                    onClick={() => {
+                      handleCloseUserMenu();
+                      changeLevel();
+                    }}
+                  >
+                    <Typography textAlign="center">{level}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            ) : (
+              <></>
+            )}
           </div>
         </Tabs>
       </Box>
@@ -188,7 +232,7 @@ export default function BasicTabs() {
           minHeight: "83.7vh",
         }}
       >
-        <Information />
+        <Information user={user.user} />
       </TabPanel>
       <TabPanel
         value={value}
@@ -199,6 +243,16 @@ export default function BasicTabs() {
         }}
       >
         <Messages />
+      </TabPanel>
+      <TabPanel
+        value={value}
+        index={4}
+        sx={{
+          backgroundColor: "#e0e5eb",
+          minHeight: "83.7vh",
+        }}
+      >
+        <Bookmark />
       </TabPanel>
     </Box>
   );

@@ -8,7 +8,7 @@ const isLocalhost = Boolean(
     )
 );
 
-const API_URL = isLocalhost
+export const API_URL = isLocalhost
   ? "http://localhost:8000/api/v1"
   : "https://api.erfan-nourbakhsh.ir/api/v1";
 

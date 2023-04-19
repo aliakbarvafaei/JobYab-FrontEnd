@@ -12,8 +12,26 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
+import EmailIcon from "@mui/icons-material/Email";
+import { DateDiff } from "../../../../ts/functions";
+import { reciveResume } from "../../../../ts/interfaces";
+import { API_URL } from "../../../../config";
+import { changeStateResume } from "../../../../services/api";
 
-const CardItem: React.FC<{ index: Number }> = ({ index }) => {
+const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
+  index,
+  item,
+}) => {
+
+  const changeState = (state: number) => {
+    changeStateResume(item.id, { state: String(state) })
+      .then((response) => {
+        window.location.href = "/profile-company?section=request";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Card
       sx={{
@@ -57,7 +75,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
                   fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 }}
               >
-                توسعه دهنده ارشد Front End
+                {item.post.title}
               </Typography>
               <Typography
                 component={"span"}
@@ -67,7 +85,49 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
                   marginRight: "5px",
                 }}
               >
-                28 روز پیش
+                <span>
+                  {DateDiff.inMonths(new Date(item.sent_date), new Date()) ===
+                  0 ? (
+                    DateDiff.inWeeks(new Date(item.sent_date), new Date()) ===
+                    0 ? (
+                      DateDiff.inDays(new Date(item.sent_date), new Date()) ===
+                      0 ? (
+                        DateDiff.inHour(
+                          new Date(item.sent_date),
+                          new Date()
+                        ) === 0 ? (
+                          <>دقایقی پیش</>
+                        ) : (
+                          <>
+                            {DateDiff.inHour(
+                              new Date(item.sent_date),
+                              new Date()
+                            )}{" "}
+                            ساعت پیش
+                          </>
+                        )
+                      ) : (
+                        <>
+                          {DateDiff.inDays(
+                            new Date(item.sent_date),
+                            new Date()
+                          )}{" "}
+                          روز پیش
+                        </>
+                      )
+                    ) : (
+                      <>
+                        {DateDiff.inWeeks(new Date(item.sent_date), new Date())}{" "}
+                        هفته پیش
+                      </>
+                    )
+                  ) : (
+                    <>
+                      {DateDiff.inMonths(new Date(item.sent_date), new Date())}{" "}
+                      ماه پیش
+                    </>
+                  )}
+                </span>
               </Typography>
             </Typography>
             <Typography
@@ -79,7 +139,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               }}
             >
               <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
-              تهران, تهران
+              {item.post.city.title}, {item.post.state.title}
             </Typography>
             <Typography
               variant="body2"
@@ -92,7 +152,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               <FactCheckOutlinedIcon
                 sx={{ color: "grey[500]", fontSize: "16px" }}
               />{" "}
-              قرارداد تمام‌ وقت (حقوق توافقی)
+              {item.post.cooperation_type} ({item.post.salary})
             </Typography>
           </Stack>
           <Box
@@ -107,6 +167,9 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               textAlign: "center",
               cursor: "pointer",
             }}
+            onClick={() =>
+              (window.location.href = API_URL.split("api")[0] + item.resume)
+            }
           >
             <DownloadOutlinedIcon
               sx={{ fontSize: { xs: "25px", sm: "35px" } }}
@@ -137,7 +200,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             <DriveFileRenameOutlineOutlinedIcon
               sx={{ color: "grey[500]", fontSize: "16px" }}
             />{" "}
-            علی اکبر وفایی
+            {item.user.full_name}
           </Typography>
           <Typography
             variant="body2"
@@ -147,8 +210,8 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
               fontSize: { xs: "8px", sm: "12px" },
             }}
           >
-            <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} /> قم,
-            قم
+            <EmailIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
+            {item.user.data.username}
           </Typography>
           <Typography
             variant="body2"
@@ -161,13 +224,14 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             <FactCheckOutlinedIcon
               sx={{ color: "grey[500]", fontSize: "16px" }}
             />{" "}
-            23 ساله
+            {item.user.phone_number}
           </Typography>
         </Stack>
       </Box>
       {index === 0 ? (
         <Button
           className="smmin:w-[12%] sm:w-[15%]"
+          onClick={() => changeState(2)}
           sx={{
             backgroundColor: "#1976D2",
             color: "white",
@@ -190,6 +254,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
           sx={{ display: "flex", flexDirection: "column", height: "100%" }}
         >
           <Button
+            onClick={() => changeState(3)}
             sx={{
               backgroundColor: "green",
               color: "white",
@@ -209,6 +274,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             پذیرش
           </Button>
           <Button
+            onClick={() => changeState(4)}
             sx={{
               backgroundColor: "red",
               color: "white",
@@ -232,7 +298,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
         <Button
           className="smmin:w-[12%] sm:w-[15%]"
           sx={{
-            backgroundColor: "green",
+            backgroundColor: `${item.state === "رد شده" ? "red" : "green"}`,
             color: "white",
             fontSize: { xs: "10px", sm: "14px" },
             fontFamily: "IRANSans",
@@ -245,7 +311,7 @@ const CardItem: React.FC<{ index: Number }> = ({ index }) => {
             },
           }}
         >
-          پذیرفته شد
+          {item.state === "رد شده" ? "رد شد" : "پذیرفته شد"}
         </Button>
       )}
     </Card>

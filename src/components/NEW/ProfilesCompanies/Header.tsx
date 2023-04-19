@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 import { useDispatch } from "react-redux";
 import { useToast } from "../../../contexts/ToastState";
 import { addItemOnce } from "../../../ts/functions";
@@ -23,8 +24,8 @@ const pages = [
   { title: "پشتیبانی", link: "/profile-company?section=message" },
 ];
 const settings = [
-  { title: "درخواست‌ها", link: "/profile-company?section=request" },
   { title: "آگهی‌های من", link: "/profile-company?section=mypost" },
+  { title: "درخواست‌ها", link: "/profile-company?section=request" },
   { title: "اطلاعات", link: "/profile-company?section=information" },
   { title: "خروج", link: "/" },
 ];
@@ -159,10 +160,27 @@ const Header = () => {
                 backgroundColor: "white",
                 color: "black",
                 fontFamily: "IRANSans",
+                paddingLeft: "20px",
                 display: { xs: "none", md: "inline" },
+                marginX: "20px",
               }}
             >
               + ثبت آگهی
+            </Button>
+            <Button
+              key="نشان شده‌ها"
+              href="/profile-company?section=bookmark"
+              sx={{
+                my: 2,
+                color: "white",
+                gap: "5px",
+                paddingLeft: "20px",
+                fontFamily: "IRANSans",
+                display: { xs: "none", md: "inline-flex" },
+              }}
+            >
+              <BookmarksOutlinedIcon />
+              نشان شده‌ها
             </Button>
             <Button
               key="پشتیبانی"

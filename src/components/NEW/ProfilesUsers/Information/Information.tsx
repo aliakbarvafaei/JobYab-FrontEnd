@@ -1,11 +1,14 @@
 import { Box } from "@mui/material";
-import React, { useId, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import UploadIcon from "@mui/icons-material/Upload";
+import { updateUserAPI } from "../../../../services/api";
+import { useToast } from "../../../../contexts/ToastState";
+import { eachToast } from "../../../../ts/interfaces";
+import { addItemOnce } from "../../../../ts/functions";
 
 const userRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -19,10 +22,9 @@ const userRegisterSchema = object({
 });
 type userRegisterInput = TypeOf<typeof userRegisterSchema>;
 
-const Information: React.FC = () => {
-  const resumeId = useId();
-
-  const [resumeValue, setResumeValue] = useState<FileList | null>(null);
+const Information: React.FC<{ user: any }> = ({ user }) => {
+  const { setToastState } = useToast();
+  const [loadingReq, setloadingReq] = useState<boolean>(false);
 
   const userRegister = useForm<userRegisterInput>({
     resolver: zodResolver(userRegisterSchema),
@@ -32,8 +34,59 @@ const Information: React.FC = () => {
     values
   ) => {
     console.log(values);
-    userRegister.reset();
+    const data = {
+      full_name: values.name,
+      username: values.email,
+      address: values.address,
+      national_code: values.code,
+      phone_number: values.phone,
+    };
+    setloadingReq(true);
+
+    updateUserAPI(data)
+      .then((response) => {
+        setloadingReq(false);
+        setToastState((old: Array<eachToast>) =>
+          addItemOnce(old.slice(), {
+            title: "1",
+            description: "ویرایش با موفقیت انجام شد",
+            key: Math.random(),
+          })
+        );
+      })
+      .catch((err) => {
+        setloadingReq(false);
+        if (err.response && err.response.status === 404) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "کاربر یافت نشد",
+              key: Math.random(),
+            })
+          );
+        } else {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "سرور دردسترس نیست",
+              key: Math.random(),
+            })
+          );
+          console.error(err);
+        }
+      });
   };
+
+  useEffect(() => {
+    userRegister.setValue("email", user.data.username);
+    userRegister.setValue("address", user.address === null ? "" : user.address);
+    userRegister.setValue(
+      "code",
+      user.national_code === null ? "" : user.national_code
+    );
+    userRegister.setValue("name", user.full_name);
+    userRegister.setValue("phone", user.phone_number);
+  }, [user]);
 
   return (
     <Box className="mdmin:mx-[30%]" sx={{ fontFamily: "IRANSans" }}>
@@ -44,7 +97,7 @@ const Information: React.FC = () => {
           fontSize: "1rem",
           backgroundColor: "white",
           padding: "15px",
-          paddingTop:"0px !important",
+          paddingTop: "0px !important",
           borderRadius: "10px",
         }}
       >
@@ -62,8 +115,37 @@ const Information: React.FC = () => {
           <TextField
             margin="normal"
             required
+            InputProps={{
+              readOnly: true,
+            }}
             fullWidth
-            defaultValue={"علی اکبر وفایی"}
+            id="email"
+            label="ایمیل"
+            error={!!userRegister.formState.errors["email"]}
+            helperText={
+              userRegister.formState.errors["email"]
+                ? userRegister.formState.errors["email"].message
+                : ""
+            }
+            {...userRegister.register("email")}
+            sx={{
+              "& label": {
+                left: "unset",
+                right: "1.75rem",
+                transformOrigin: "right",
+                fontSize: "1rem",
+              },
+              "& legend": {
+                textAlign: "right",
+                fontSize: "0.8rem",
+              },
+            }}
+          />
+
+          <TextField
+            margin="normal"
+            required
+            fullWidth
             id="name"
             label="نام و نام‌خانوادگی"
             error={!!userRegister.formState.errors["name"]}
@@ -91,7 +173,6 @@ const Information: React.FC = () => {
             margin="normal"
             required
             fullWidth
-            defaultValue={"09123456789"}
             type={"number"}
             id="phone"
             label="موبایل"
@@ -118,34 +199,6 @@ const Information: React.FC = () => {
 
           <TextField
             margin="normal"
-            required
-            fullWidth
-            defaultValue={"ali@gmail.com"}
-            id="email"
-            label="ایمیل"
-            error={!!userRegister.formState.errors["email"]}
-            helperText={
-              userRegister.formState.errors["email"]
-                ? userRegister.formState.errors["email"].message
-                : ""
-            }
-            {...userRegister.register("email")}
-            sx={{
-              "& label": {
-                left: "unset",
-                right: "1.75rem",
-                transformOrigin: "right",
-                fontSize: "1rem",
-              },
-              "& legend": {
-                textAlign: "right",
-                fontSize: "0.8rem",
-              },
-            }}
-          />
-          
-          <TextField
-            margin="normal"
             fullWidth
             type={"number"}
             id="code"
@@ -170,7 +223,7 @@ const Information: React.FC = () => {
               },
             }}
           />
-          
+
           <TextField
             margin="normal"
             fullWidth
@@ -198,62 +251,16 @@ const Information: React.FC = () => {
             }}
           />
 
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginTop: "12px",
-              marginBottom: "8px",
-              width: "100%",
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "IRANSans",
-                width: "30%",
-                color: "#00000099",
-              }}
-              className="sm:text-[12px]"
-            >
-              فایل رزومه:{" "}
-            </div>
-
-            <Button
-              variant="outlined"
-              component="label"
-              sx={{
-                fontSize: { xs: "10px", sm: "14px" },
-                width: "65%",
-                fontFamily: "IRANSans",
-              }}
-            >
-              <input
-                onChange={() => {
-                  setResumeValue(
-                    (document.getElementById(resumeId) as HTMLInputElement)
-                      .files
-                  );
-                }}
-                id={resumeId}
-                accept="application/pdf"
-                type="file"
-                hidden
-              />
-              {resumeValue != null ? (
-                resumeValue[0].name
-              ) : (
-                <>
-                  <UploadIcon />
-                  بارگذاری فایل
-                </>
-              )}
-            </Button>
-          </Box>
-
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 1 }}>
-            ویرایش
+            {loadingReq ? (
+              <i
+                style={{ fontSize: "24.5px" }}
+                className="fa fa-spinner fa-spin"
+                aria-hidden="true"
+              ></i>
+            ) : (
+              "ویرایش"
+            )}
           </Button>
         </Box>
       </Box>

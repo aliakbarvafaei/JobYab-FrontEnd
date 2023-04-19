@@ -10,9 +10,43 @@ import {
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
+import { eachToast, post, statesRedux } from "../../../ts/interfaces";
+import { DateDiff, addItemOnce } from "../../../ts/functions";
+import { useToast } from "../../../contexts/ToastState";
+import { useSelector } from "react-redux";
+import { RemoveBookmark } from "../../../services/api";
 
-const CardItem: React.FC = () => {
-  const [labels] = useState<Array<string>>(["React", "Node", "Python"]);
+const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
+  const [labels] = useState<Array<{ id: number; title: string }>>(
+    item.post.skills
+  );
+  const { setToastState } = useToast();
+  const { role } = useSelector((state: statesRedux) => state.userAuth);
+
+  const handleRemove = () => {
+    RemoveBookmark(item.id)
+      .then((response) => {
+        setToastState((old: Array<eachToast>) =>
+          addItemOnce(old.slice(), {
+            title: "1",
+            description: "آگهی با موفقیت حذف شد",
+            key: Math.random(),
+          })
+        );
+        if (role === "user") window.location.href = "/profile?section=bookmark";
+        else window.location.href = "/profile-company?section=bookmark";
+      })
+      .catch((err) => {
+        console.log(err);
+        setToastState((old: Array<eachToast>) =>
+          addItemOnce(old.slice(), {
+            title: "2",
+            description: "عملیات با خطا مواجه شد",
+            key: Math.random(),
+          })
+        );
+      });
+  };
 
   return (
     <Card
@@ -56,7 +90,7 @@ const CardItem: React.FC = () => {
                   fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 }}
               >
-                توسعه دهنده ارشد Front End
+                {item.post.title}
               </Typography>
               <Typography
                 component={"span"}
@@ -66,7 +100,61 @@ const CardItem: React.FC = () => {
                   marginRight: "5px",
                 }}
               >
-                28 روز پیش
+                <span>
+                  {DateDiff.inMonths(
+                    new Date(item.post.created_date),
+                    new Date()
+                  ) === 0 ? (
+                    DateDiff.inWeeks(
+                      new Date(item.post.created_date),
+                      new Date()
+                    ) === 0 ? (
+                      DateDiff.inDays(
+                        new Date(item.post.created_date),
+                        new Date()
+                      ) === 0 ? (
+                        DateDiff.inHour(
+                          new Date(item.post.created_date),
+                          new Date()
+                        ) === 0 ? (
+                          <>دقایقی پیش</>
+                        ) : (
+                          <>
+                            {DateDiff.inHour(
+                              new Date(item.post.created_date),
+                              new Date()
+                            )}{" "}
+                            ساعت پیش
+                          </>
+                        )
+                      ) : (
+                        <>
+                          {DateDiff.inDays(
+                            new Date(item.post.created_date),
+                            new Date()
+                          )}{" "}
+                          روز پیش
+                        </>
+                      )
+                    ) : (
+                      <>
+                        {DateDiff.inWeeks(
+                          new Date(item.post.created_date),
+                          new Date()
+                        )}{" "}
+                        هفته پیش
+                      </>
+                    )
+                  ) : (
+                    <>
+                      {DateDiff.inMonths(
+                        new Date(item.post.created_date),
+                        new Date()
+                      )}{" "}
+                      ماه پیش
+                    </>
+                  )}
+                </span>
               </Typography>
             </Typography>
             <Typography
@@ -78,7 +166,7 @@ const CardItem: React.FC = () => {
               }}
             >
               <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
-              تهران, تهران
+              {item.post.city.title}, {item.post.state.title}
             </Typography>
             <Typography
               variant="body2"
@@ -91,7 +179,7 @@ const CardItem: React.FC = () => {
               <FactCheckOutlinedIcon
                 sx={{ color: "grey[500]", fontSize: "16px" }}
               />{" "}
-              قرارداد تمام‌ وقت (حقوق توافقی)
+              {item.post.cooperation_type} ({item.post.salary})
             </Typography>
           </Stack>
         </Box>
@@ -124,7 +212,7 @@ const CardItem: React.FC = () => {
                   alignItems: "center",
                 }}
               >
-                {item}
+                {item.title}
               </Typography>
             );
           })}
@@ -133,6 +221,7 @@ const CardItem: React.FC = () => {
 
       <Button
         className="smmin:w-[12%] sm:w-[15%]"
+        onClick={handleRemove}
         sx={{
           backgroundColor: "red",
           color: "white",
