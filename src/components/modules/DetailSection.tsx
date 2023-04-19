@@ -8,22 +8,32 @@ import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOu
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import MilitaryTechOutlinedIcon from "@mui/icons-material/MilitaryTechOutlined";
 import DetailItem from "../modules/DetailItem";
+import { PostType } from "../../constants/types";
 
-const DetailSection = () => {
+interface DetailSectionProps {
+  data?: PostType;
+}
+
+const DetailSection = ({ data }: DetailSectionProps) => {
   return (
     <Grid item container wrap="wrap" xs={12} style={{ gap: "1rem" }}>
-      <Grid item xs={12} style={{ display: "flex", gap: "2.5rem" }}>
+      <Grid
+        className="flex md:flex-col mdmin:flex-row !important"
+        // item
+        xs={12}
+        style={{ gap: "2.5rem" }}
+      >
         <Grid item xs={6} className="flex items-center">
           <DetailItem
             title="دسته‌بندی"
-            value="وب،‌ برنامه‌نویسی و نرم‌افزار"
+            value={data?.job_type.title ?? ""}
             logo={<DehazeIcon style={{ color: "#1976D2" }} />}
           />
         </Grid>
         <Grid item xs={6} className="flex items-center">
           <DetailItem
             title="استان/شهر"
-            value="اصفهان، اصفهان"
+            value={`${data?.state.title}, ${data?.city.title}` ?? ""}
             logo={<LocationOnIcon style={{ color: "#1976D2" }} />}
           />
         </Grid>
@@ -32,14 +42,14 @@ const DetailSection = () => {
         <Grid item xs={6} className="flex items-center">
           <DetailItem
             title="نوع همکاری"
-            value="تمام وقت"
+            value={data?.cooperation_type ?? ""}
             logo={<HandshakeIcon style={{ color: "#1976D2" }} />}
           />
         </Grid>
         <Grid item xs={6} className="flex items-center">
           <DetailItem
             title="پایه حقوق"
-            value="توافقی"
+            value={data?.salary ?? ""}
             logo={<PaidOutlinedIcon style={{ color: "#1976D2" }} />}
           />
         </Grid>
@@ -48,14 +58,14 @@ const DetailSection = () => {
         <Grid item xs={6} className="flex items-center">
           <DetailItem
             title="سابقه کار"
-            value="حداقل 2 سال"
+            value={data?.experience ?? ""}
             logo={<ManageAccountsOutlinedIcon style={{ color: "#1976D2" }} />}
           />
         </Grid>
         <Grid item xs={6} className="flex items-center">
           <DetailItem
             title="جنسیت"
-            value="مهم نیست"
+            value={data?.sex ?? ""}
             logo={<WcOutlinedIcon style={{ color: "#1976D2" }} />}
           />
         </Grid>
@@ -64,14 +74,14 @@ const DetailSection = () => {
         <Grid item xs={6} className="flex items-center">
           <DetailItem
             title="مدرک تحصیلی"
-            value="حداقل لیسانس"
+            value={data?.degree ?? ""}
             logo={<WorkspacePremiumOutlinedIcon style={{ color: "#1976D2" }} />}
           />
         </Grid>
         <Grid item xs={6} className="flex items-center">
           <DetailItem
             title="وضعیت سربازی"
-            value="مهم نیست"
+            value={data?.sarbazi ?? ""}
             logo={<MilitaryTechOutlinedIcon style={{ color: "#1976D2" }} />}
           />
         </Grid>
@@ -83,26 +93,12 @@ const DetailSection = () => {
           تکنولوژی مورد نیاز:
         </Typography>
         <Grid item style={{ display: "flex", alignItems: "center", gap: 4 }}>
-          <Chip
-            label="C#"
-            style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-          />
-          <Chip
-            label="Python"
-            style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-          />
-          <Chip
-            label="C++"
-            style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-          />
-          <Chip
-            label="Java"
-            style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-          />
-          <Chip
-            label="SQL Server"
-            style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-          />
+          {data?.skills.map(({ title: skillTitle }) => (
+            <Chip
+              label={skillTitle ?? ""}
+              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
+            />
+          ))}
         </Grid>
       </Grid>
     </Grid>

@@ -54,7 +54,7 @@ const AppRoutes: Array<any> = [
     private: false,
   },
   {
-    path: "/postPage",
+    path: "/postPage/:id",
     name: "صفحه آگهی",
     icon: "fa fa-list",
     component: PostPage,
@@ -62,7 +62,7 @@ const AppRoutes: Array<any> = [
     private: false,
   },
   {
-    path: "/company",
+    path: "/company/:companyId",
     name: "اطلاعات شرکت",
     icon: "fa fa-list",
     component: companyPage,

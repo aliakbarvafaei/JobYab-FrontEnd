@@ -2,17 +2,18 @@ import HeaderNewShort from "../components/Header/HeaderNewShort";
 import DetailHeader from "../components/modules/DetailHeader";
 import TitlePages from "../components/TitlePages/TitlePages";
 import Footer from "../components/Footer/Footer";
-import { Chip, Divider, Grid, IconButton, Typography } from "@mui/material";
-import Carousel from "react-multi-carousel";
-import SimilarPost from "../components/modules/SimilarPost";
+import { Divider, Grid, IconButton, Typography } from "@mui/material";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
+import { useEffect, useState } from "react";
+import { getCompaniesPosts, getPostDetail } from "../services/api";
+import { PostType } from "../constants/types";
+import ApartmentIcon from "@mui/icons-material/Apartment";
 
 const responsive = {
   superLargeDesktop: {
@@ -30,15 +31,36 @@ const responsive = {
   },
 };
 const CompanyPage = () => {
+  const history = useHistory();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
-
+  const { companyId } = useParams<any>();
+  const [adDetail, setAdDetail] = useState<PostType | undefined>(undefined);
+  const [companiesPosts, setCompaniesPosts] = useState<PostType[]>([]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    getPostDetail(companyId)
+      .then((data) => {
+        setAdDetail(data.data.data);
+      })
+      .catch((err) => {
+        history.push("/not-found");
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        console.error(err);
+      });
+  }, [companyId, history]);
+  useEffect(() => {
+    getCompaniesPosts().then((data) => {
+      setCompaniesPosts(data.data.data);
+    });
+  });
   return (
     <div>
       <MobileMenu />
       {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <TitlePages title="جستجو" />
-      <DetailHeader haveCompanyDetail={false} />
+      <DetailHeader haveCompanyDetail={false} data={adDetail} />
       <div
+        className="sm:mr-3 sm:ml-3 smmin:mr-20 smmin:ml-20"
         style={{
           border: "1.5px solid #1976D2",
           paddingInline: 40,
@@ -46,64 +68,22 @@ const CompanyPage = () => {
           marginTop: 40,
           paddingTop: 30,
           boxShadow: "0 0 6px #1976D2",
-          marginInline: 80,
+          // marginInline: 80,
           paddingBlock: 20,
         }}
       >
         <Typography style={{ fontSize: 18, fontWeight: "bold" }}>
-          معرفی شرکت:
+          {`معرفی شرکت ${adDetail?.user.company_persian_name} (${adDetail?.user.type})`}
+        </Typography>
+        <Typography style={{ fontSize: 15, fontWeight: "bold" }}>
+          {adDetail?.user.introduction}
         </Typography>
         <Typography
           style={{ fontSize: 14, textAlign: "justify", marginTop: 20 }}
         >
-          گروه ایده‌کاوان یه سازمان دانش‌بنیانه که آفریننده و مالک محصول‌های
-          مختلفیه: بهترینو، ویترین، دوباره، درآمد، قیمت. تمام این محصول‌ها، و
-          محصول‌های تازه‌ای که در راه هستن، دور یه ماموریت واحد شکل گرفته‌ان:
-          توانمندسازی کسب‌وکارهای کوچیک و متوسط با انحصارزدایی از قدرت فناورانه
-          و کمک کردن به این کسب‌وکارها برای این که دیده بشن و بتونن خدمات بهتری
-          به مردم ارائه کنن.کسب‌وکارهای کوچیک و متوسط برای تجربه کردن فعالیت در
-          فضای دیجیتال چالش‌های زیادی دارن؛ ما با راهکارهایی که در اختیارشون
-          می‌ذاریم این چالش‌ها رو از سر راه برمی‌داریم و به رشدشون کمک
-          می‌کنیم.خود ما هم یکی از سریع‌ترین رشدها رو، اون‌هم به شکل ارگانیک و
-          محصول‌محور، در اکوسیستم استارت‌آپی ایران تجربه کرده‌ایم که نتیجه‌ی
-          مستقیم عملکرد تیم مستعد و پرتلاش‌مون بوده.خوشحالیم که تونستیم فضایی
-          بسازیم که آدم‌های توانمند و اثرگذار کار کردن در ایده‌کاوان رو انتخاب
-          کنن و در کنار هم ارزش خلق کنیم.
+          {/* {adDetail.user.} */}
         </Typography>
-        <Grid item>
-          <Typography
-            style={{
-              fontSize: 16,
-              fontWeight: "bold",
-              marginBottom: 10,
-              marginTop: 20,
-            }}
-          >
-            تکنولوژی ها:
-          </Typography>
-          <Grid item style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <Chip
-              label="C#"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
-            <Chip
-              label="Python"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
-            <Chip
-              label="C++"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
-            <Chip
-              label="Java"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
-            <Chip
-              label="SQL Server"
-              style={{ borderRadius: 8, background: "#1976D2", color: "white" }}
-            />
-          </Grid>
-        </Grid>
+        <Grid item></Grid>
         <Grid item>
           <Typography
             style={{
@@ -123,70 +103,62 @@ const CompanyPage = () => {
               <IconButton style={{ marginLeft: 10 }}>
                 <LanguageOutlinedIcon style={{ color: "#1976D2" }} />
               </IconButton>
-              <Link to="www.google.com">
-                <Typography
-                  style={{ textDecoration: "underline", color: "blue" }}
-                >
-                  www.google.com
-                </Typography>
+              <Link to={adDetail?.user.website ?? ""}>
+                <Typography>{adDetail?.user.website ?? "---"}</Typography>
               </Link>
             </Grid>
             <Grid className="flex items-center">
               <IconButton style={{ marginLeft: 10 }}>
-                <EmailOutlinedIcon style={{ color: "#1976D2" }} />
+                <PeopleAltIcon style={{ color: "#1976D2" }} />
               </IconButton>
-              <Link to="mailto:www.google.com">
-                <Typography
-                  style={{ textDecoration: "underline", color: "blue" }}
-                >
-                  ErfanNourbakhs@gmail.com
-                </Typography>
-              </Link>
+              <Typography>{adDetail?.user.number_of_personnel}</Typography>
             </Grid>
             <Grid className="flex items-center">
               <IconButton style={{ marginLeft: 10 }}>
-                <LocationOnOutlinedIcon style={{ color: "#1976D2" }} />
+                <ApartmentIcon style={{ color: "#1976D2" }} />
               </IconButton>
-              <Typography style={{ fontSize: 14 }}>
-                اصفهان، دانشگاه اصفهان
+              <Typography>
+                {`${adDetail?.state.title}, ${adDetail?.city.title}` ?? ""}
               </Typography>
             </Grid>
           </Grid>
         </Grid>
       </div>
-      <Grid
-        item
-        style={{
-          marginTop: 20,
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography style={{ fontSize: 24 }}>تمام آگهی‌های شرکت</Typography>
-        <Divider
+      {companiesPosts.length && (
+        <Grid
+          item
           style={{
-            width: 50,
-            border: "2px solid black",
-            marginTop: 5,
-            marginBottom: 20,
+            marginTop: 20,
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
-        />
-      </Grid>
-      <Carousel
+        >
+          <Typography style={{ fontSize: 24 }}>تمام آگهی‌های شرکت</Typography>
+          <Divider
+            style={{
+              width: 50,
+              border: "2px solid black",
+              marginTop: 5,
+              marginBottom: 20,
+            }}
+          />
+        </Grid>
+      )}
+      {/* <Carousel
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="mr-10 ml-10"
-      >
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
+      > */}
+      {/* <SimilarPost />
         <SimilarPost />
         <SimilarPost />
         <SimilarPost />
         <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-      </Carousel>
+        <SimilarPost /> */}
+      {/* </Carousel> */}
       <div style={{ marginTop: 10 }}>
         <Footer />
       </div>
