@@ -14,6 +14,8 @@ export const registerUserAPI = (data: any) =>
       "Content-Type": "multipart/form-data",
     },
   });
+export const updateUserAPI = (data: any) =>
+  axiosInstance.put("/jobseeker_update/", data, tokenUser());
 export const loginCompanyAPI = (email: string, password: string) =>
   axiosInstance.post("/employer_login/", {
     username: email,
@@ -25,6 +27,8 @@ export const registerCompanyAPI = (data: any) =>
       "Content-Type": "multipart/form-data",
     },
   });
+export const updateCompanyAPI = (data: any) =>
+  axiosInstance.put("/employer_update/", data, tokenUser());
 export const sendEmailAPI = (email: string) =>
   axiosInstance.post("/send_mail/", {
     username: email,
@@ -60,14 +64,7 @@ export const getMyPosts = () =>
 export const getMessages = () =>
   axiosInstance.get("/contact-message/", tokenUser());
 export const AddMessages = (message: any) =>
-  axiosInstance.post("/contact-message/", message, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      Authorization: `Token ${JSON.parse(
-        localStorage.getItem("token_user") as string
-      )}`,
-    },
-  });
+  axiosInstance.post("/contact-message/", message, tokenUser());
 export const getBookmark = () =>
   axiosInstance.get("/posts/bookmark/", tokenUser());
 export const RemoveBookmark = (postId: number) =>
@@ -76,8 +73,17 @@ export const getMySentResumes = (state: number) =>
   axiosInstance.get(`/applicant/requests/?state=${state}`, tokenUser());
 export const getMyReciveResumes = (state: number) =>
   axiosInstance.get(`/employer/requests/?state=${state}`, tokenUser());
-export const changeStateResume = (id: number) =>
-  axiosInstance.post(`/employer/request-state/${id}/`, tokenUser());
+export const changeStateResume = (id: number, data: any) =>
+  axiosInstance.post(`/employer/request-state/${id}/`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Token ${JSON.parse(
+        localStorage.getItem("token_user") as string
+      )}`,
+    },
+  });
+export const ChangeLevel = (data: any) =>
+  axiosInstance.put("/credit/", data, tokenUser());
 export const NewAdAPI = (
   token: string,
   category: string,

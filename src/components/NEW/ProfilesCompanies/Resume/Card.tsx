@@ -16,13 +16,22 @@ import EmailIcon from "@mui/icons-material/Email";
 import { DateDiff } from "../../../../ts/functions";
 import { reciveResume } from "../../../../ts/interfaces";
 import { API_URL } from "../../../../config";
-import { useHistory } from "react-router-dom";
+import { changeStateResume } from "../../../../services/api";
 
 const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
   index,
   item,
 }) => {
-  const history = useHistory();
+
+  const changeState = (state: number) => {
+    changeStateResume(item.id, { state: String(state) })
+      .then((response) => {
+        window.location.href = "/profile-company?section=request";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Card
       sx={{
@@ -222,6 +231,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
       {index === 0 ? (
         <Button
           className="smmin:w-[12%] sm:w-[15%]"
+          onClick={() => changeState(2)}
           sx={{
             backgroundColor: "#1976D2",
             color: "white",
@@ -244,6 +254,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
           sx={{ display: "flex", flexDirection: "column", height: "100%" }}
         >
           <Button
+            onClick={() => changeState(3)}
             sx={{
               backgroundColor: "green",
               color: "white",
@@ -263,6 +274,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
             پذیرش
           </Button>
           <Button
+            onClick={() => changeState(4)}
             sx={{
               backgroundColor: "red",
               color: "white",
@@ -286,7 +298,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
         <Button
           className="smmin:w-[12%] sm:w-[15%]"
           sx={{
-            backgroundColor: "green",
+            backgroundColor: `${item.state === "رد شده" ? "red" : "green"}`,
             color: "white",
             fontSize: { xs: "10px", sm: "14px" },
             fontFamily: "IRANSans",
@@ -299,7 +311,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
             },
           }}
         >
-          پذیرفته شد
+          {item.state === "رد شده" ? "رد شد" : "پذیرفته شد"}
         </Button>
       )}
     </Card>

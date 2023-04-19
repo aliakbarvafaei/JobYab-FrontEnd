@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useEffect, useId, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -12,7 +12,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import UploadIcon from "@mui/icons-material/Upload";
+import { useToast } from "../../../../contexts/ToastState";
+import { updateCompanyAPI } from "../../../../services/api";
+import { eachToast } from "../../../../ts/interfaces";
+import { addItemOnce } from "../../../../ts/functions";
 
 const companyRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -31,9 +34,9 @@ const companyRegisterSchema = object({
 type companyRegisterInput = TypeOf<typeof companyRegisterSchema>;
 
 const Information: React.FC<{ user: any }> = ({ user }) => {
-  const logoId = useId();
-
-  const [logoValue, setLogoValue] = useState<FileList | null>(null);
+  const { setToastState } = useToast();
+  const [loadingReq, setloadingReq] = useState<boolean>(false);
+  const [typeValue, setTypeValue] = useState<string>(user.type);
 
   const companyRegiter = useForm<companyRegisterInput>({
     resolver: zodResolver(companyRegisterSchema),
@@ -43,7 +46,52 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
     values
   ) => {
     console.log(values);
-    // companyRegiter.reset();
+    const data = {
+      company_english_name: values.nameEnglish,
+      company_persian_name: values.namePersian,
+      introduction: values.bio,
+      website: values.websit,
+      username: values.email,
+      company_phone_number: values.phone,
+      activity_field: values.activity,
+      number_of_personnel: values.count,
+      type: typeValue,
+    };
+
+    setloadingReq(true);
+
+    updateCompanyAPI(data)
+      .then((response) => {
+        setloadingReq(false);
+        setToastState((old: Array<eachToast>) =>
+          addItemOnce(old.slice(), {
+            title: "1",
+            description: "ویرایش با موفقیت انجام شد",
+            key: Math.random(),
+          })
+        );
+      })
+      .catch((err) => {
+        setloadingReq(false);
+        if (err.response && err.response.status === 404) {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "کاربر یافت نشد",
+              key: Math.random(),
+            })
+          );
+        } else {
+          setToastState((old: Array<eachToast>) =>
+            addItemOnce(old.slice(), {
+              title: "2",
+              description: "سرور دردسترس نیست",
+              key: Math.random(),
+            })
+          );
+          console.error(err);
+        }
+      });
   };
 
   useEffect(() => {
@@ -81,7 +129,39 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
           <TextField
             margin="normal"
             required
-            defaultValue={companyRegiter.getValues("namePersian")}
+            InputProps={{
+              readOnly: true,
+            }}
+            id="email"
+            label="ایمیل"
+            error={!!companyRegiter.formState.errors["email"]}
+            helperText={
+              companyRegiter.formState.errors["email"]
+                ? companyRegiter.formState.errors["email"].message
+                : ""
+            }
+            {...companyRegiter.register("email")}
+            sx={{
+              width: "45%",
+              "@media (max-width: 576px)": {
+                width: "100%",
+              },
+              "& label": {
+                left: "unset",
+                right: "1.75rem",
+                fontFamily: "IRANSans",
+                transformOrigin: "right",
+                fontSize: "1rem",
+              },
+              "& legend": {
+                textAlign: "right",
+                fontSize: "1rem",
+              },
+            }}
+          />
+          <TextField
+            margin="normal"
+            required
             id="namePersian"
             label="نام شرکت (فارسی)"
             error={!!companyRegiter.formState.errors["namePersian"]}
@@ -112,7 +192,6 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
           <TextField
             margin="normal"
             required
-            defaultValue={companyRegiter.getValues("nameEnglish")}
             id="nameEnglish"
             label="نام شرکت (انگلیسی)"
             error={!!companyRegiter.formState.errors["nameEnglish"]}
@@ -143,7 +222,6 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
           <TextField
             margin="normal"
             required
-            defaultValue={companyRegiter.getValues("phone")}
             type={"number"}
             id="phone"
             label="شماره تماس شرکت"
@@ -175,39 +253,7 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
           />
           <TextField
             margin="normal"
-            required
-            defaultValue={companyRegiter.getValues("email")}
-            id="email"
-            label="ایمیل"
-            error={!!companyRegiter.formState.errors["email"]}
-            helperText={
-              companyRegiter.formState.errors["email"]
-                ? companyRegiter.formState.errors["email"].message
-                : ""
-            }
-            {...companyRegiter.register("email")}
-            sx={{
-              width: "45%",
-              "@media (max-width: 576px)": {
-                width: "100%",
-              },
-              "& label": {
-                left: "unset",
-                right: "1.75rem",
-                fontFamily: "IRANSans",
-                transformOrigin: "right",
-                fontSize: "1rem",
-              },
-              "& legend": {
-                textAlign: "right",
-                fontSize: "1rem",
-              },
-            }}
-          />
-          <TextField
-            margin="normal"
             type={"text"}
-            defaultValue={companyRegiter.getValues("websit")}
             id="website"
             label="آدرس وبسایت (اختیاری)"
             error={!!companyRegiter.formState.errors["websit"]}
@@ -261,21 +307,15 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              defaultValue={
-                user.number_of_personnel === "1"
-                  ? "کمتر از 10"
-                  : user.number_of_personnel === "2"
-                  ? "کمتر از 100"
-                  : "بیشتر از 100"
-              }
               label="تعداد پرسنل"
+              defaultValue={user.number_of_personnel}
               error={!!companyRegiter.formState.errors["count"]}
               {...companyRegiter.register("count")}
               sx={{ justifyContent: "center", alignItems: "center" }}
             >
-              <MenuItem value={"کمتر از 10"}>کمتر از 10</MenuItem>
-              <MenuItem value={"کمتر از 100"}>کمتر از 100</MenuItem>
-              <MenuItem value={"بیشتر از 100"}>بیشتر از 100</MenuItem>
+              <MenuItem value={"1"}>کمتر از 10</MenuItem>
+              <MenuItem value={"2"}>کمتر از 100</MenuItem>
+              <MenuItem value={"3"}>بیشتر از 100</MenuItem>
             </Select>
             {companyRegiter.formState.errors["count"] ? (
               <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANSans]">
@@ -333,7 +373,6 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
             margin="normal"
             fullWidth
             type={"textArea"}
-            defaultValue={companyRegiter.getValues("bio")}
             id="bio"
             label="معرفی شرکت"
             error={!!companyRegiter.formState.errors["bio"]}
@@ -358,62 +397,6 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
             }}
           />
 
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginTop: "12px",
-              marginBottom: "8px",
-              width: "45%",
-              "@media (max-width: 576px)": {
-                width: "100%",
-              },
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "IRANSans",
-                width: "30%",
-                color: "#00000099",
-              }}
-              className="sm:text-[12px]"
-            >
-              لوگوی شرکت:{" "}
-            </div>
-
-            <Button
-              variant="outlined"
-              component="label"
-              sx={{
-                fontSize: { xs: "10px", sm: "14px" },
-                width: "65%",
-                fontFamily: "IRANSans",
-              }}
-            >
-              <input
-                onChange={() => {
-                  setLogoValue(
-                    (document.getElementById(logoId) as HTMLInputElement).files
-                  );
-                }}
-                id={logoId}
-                accept="image/*"
-                type="file"
-                hidden
-              />
-              {logoValue != null ? (
-                logoValue[0].name
-              ) : (
-                <>
-                  <UploadIcon />
-                  بارگذاری فایل
-                </>
-              )}
-            </Button>
-          </Box>
-
           <FormControl
             sx={{
               justifyContent: "center",
@@ -425,7 +408,10 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
           >
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue={user.type}
+              value={typeValue}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setTypeValue((event.target as HTMLInputElement).value);
+              }}
               name="radio-buttons-group"
               sx={{ flexDirection: "row" }}
             >
@@ -444,7 +430,15 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
           </FormControl>
 
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 1 }}>
-            ویرایش
+            {loadingReq ? (
+              <i
+                style={{ fontSize: "24.5px" }}
+                className="fa fa-spinner fa-spin"
+                aria-hidden="true"
+              ></i>
+            ) : (
+              "ویرایش"
+            )}
           </Button>
         </Box>
       </Box>

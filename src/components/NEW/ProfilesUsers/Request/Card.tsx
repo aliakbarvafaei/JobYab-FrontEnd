@@ -218,7 +218,7 @@ const CardItem: React.FC<{ index: Number; item: sentResume }> = ({
         <Button
           className="smmin:w-[12%] sm:w-[15%]"
           sx={{
-            backgroundColor: "green",
+            backgroundColor: `${item.state === "رد شده" ? "red" : "green"}`,
             color: "white",
             fontSize: { xs: "10px", sm: "14px" },
             fontFamily: "IRANSans",
@@ -232,7 +232,7 @@ const CardItem: React.FC<{ index: Number; item: sentResume }> = ({
             },
           }}
         >
-          پذیرفته شد
+          {item.state === "رد شده" ? "رد شد" : "پذیرفته شد"}
         </Button>
       )}
     </Card>

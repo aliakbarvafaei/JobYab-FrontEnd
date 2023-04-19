@@ -46,7 +46,7 @@ function a11yProps(index: number) {
 
 const level = ["ارتقای سطح"];
 
-export default function BasicTabs(user: null | any) {
+export default function BasicTabs(user: any) {
   const queryParams = new URLSearchParams(window.location.search);
 
   const [value, setValue] = React.useState(() => {

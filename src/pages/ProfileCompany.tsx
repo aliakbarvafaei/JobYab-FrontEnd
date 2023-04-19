@@ -9,6 +9,8 @@ const ProfileCompany: React.FC = () => {
     getUser()
       .then((response) => {
         setUser(response.data);
+        console.log(response.data);
+
       })
       .catch((err) => {
         console.log(err);

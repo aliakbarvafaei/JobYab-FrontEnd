@@ -10,20 +10,21 @@ import {
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
-import { eachToast, statesRedux } from "../../../ts/interfaces";
-import { addItemOnce } from "../../../ts/functions";
+import { eachToast, post, statesRedux } from "../../../ts/interfaces";
+import { DateDiff, addItemOnce } from "../../../ts/functions";
 import { useToast } from "../../../contexts/ToastState";
-import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RemoveBookmark } from "../../../services/api";
 
-const CardItem: React.FC = () => {
-  const [labels] = useState<Array<string>>(["React", "Node", "Python"]);
+const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
+  const [labels] = useState<Array<{ id: number; title: string }>>(
+    item.post.skills
+  );
   const { setToastState } = useToast();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
 
   const handleRemove = () => {
-    RemoveBookmark(1)
+    RemoveBookmark(item.id)
       .then((response) => {
         setToastState((old: Array<eachToast>) =>
           addItemOnce(old.slice(), {
@@ -89,7 +90,7 @@ const CardItem: React.FC = () => {
                   fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 }}
               >
-                توسعه دهنده ارشد Front End
+                {item.post.title}
               </Typography>
               <Typography
                 component={"span"}
@@ -99,7 +100,61 @@ const CardItem: React.FC = () => {
                   marginRight: "5px",
                 }}
               >
-                28 روز پیش
+                <span>
+                  {DateDiff.inMonths(
+                    new Date(item.post.created_date),
+                    new Date()
+                  ) === 0 ? (
+                    DateDiff.inWeeks(
+                      new Date(item.post.created_date),
+                      new Date()
+                    ) === 0 ? (
+                      DateDiff.inDays(
+                        new Date(item.post.created_date),
+                        new Date()
+                      ) === 0 ? (
+                        DateDiff.inHour(
+                          new Date(item.post.created_date),
+                          new Date()
+                        ) === 0 ? (
+                          <>دقایقی پیش</>
+                        ) : (
+                          <>
+                            {DateDiff.inHour(
+                              new Date(item.post.created_date),
+                              new Date()
+                            )}{" "}
+                            ساعت پیش
+                          </>
+                        )
+                      ) : (
+                        <>
+                          {DateDiff.inDays(
+                            new Date(item.post.created_date),
+                            new Date()
+                          )}{" "}
+                          روز پیش
+                        </>
+                      )
+                    ) : (
+                      <>
+                        {DateDiff.inWeeks(
+                          new Date(item.post.created_date),
+                          new Date()
+                        )}{" "}
+                        هفته پیش
+                      </>
+                    )
+                  ) : (
+                    <>
+                      {DateDiff.inMonths(
+                        new Date(item.post.created_date),
+                        new Date()
+                      )}{" "}
+                      ماه پیش
+                    </>
+                  )}
+                </span>
               </Typography>
             </Typography>
             <Typography
@@ -111,7 +166,7 @@ const CardItem: React.FC = () => {
               }}
             >
               <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
-              تهران, تهران
+              {item.post.city.title}, {item.post.state.title}
             </Typography>
             <Typography
               variant="body2"
@@ -124,7 +179,7 @@ const CardItem: React.FC = () => {
               <FactCheckOutlinedIcon
                 sx={{ color: "grey[500]", fontSize: "16px" }}
               />{" "}
-              قرارداد تمام‌ وقت (حقوق توافقی)
+              {item.post.cooperation_type} ({item.post.salary})
             </Typography>
           </Stack>
         </Box>
@@ -157,7 +212,7 @@ const CardItem: React.FC = () => {
                   alignItems: "center",
                 }}
               >
-                {item}
+                {item.title}
               </Typography>
             );
           })}
