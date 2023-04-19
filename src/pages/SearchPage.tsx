@@ -132,6 +132,9 @@ const SearchPage: React.FC = () => {
               color: "black ",
             }}
             onClick={() => {
+              history.replace(
+                searchInput ? `/search?searchText=${searchInput}` : `/search/`
+              );
               getPrivatePosts(
                 counterPage,
                 6,
