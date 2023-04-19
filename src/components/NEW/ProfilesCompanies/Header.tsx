@@ -24,8 +24,8 @@ const pages = [
   { title: "پشتیبانی", link: "/profile-company?section=message" },
 ];
 const settings = [
-  { title: "درخواست‌ها", link: "/profile-company?section=request" },
   { title: "آگهی‌های من", link: "/profile-company?section=mypost" },
+  { title: "درخواست‌ها", link: "/profile-company?section=request" },
   { title: "اطلاعات", link: "/profile-company?section=information" },
   { title: "خروج", link: "/" },
 ];
