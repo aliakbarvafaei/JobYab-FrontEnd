@@ -3,6 +3,7 @@ import { filtersInterface } from "../../ts/interfaces";
 
 export const logoutAPI = () => axiosInstance.get(`/logout/`, tokenUser());
 
+/** User */
 export const loginUserAPI = (email: string, password: string) =>
   axiosInstance.post("/jobseeker_login/", {
     username: email,
@@ -16,6 +17,9 @@ export const registerUserAPI = (data: any) =>
   });
 export const updateUserAPI = (data: any) =>
   axiosInstance.put("/jobseeker_update/", data, tokenUser());
+/** */
+
+/** Company */
 export const loginCompanyAPI = (email: string, password: string) =>
   axiosInstance.post("/employer_login/", {
     username: email,
@@ -29,6 +33,9 @@ export const registerCompanyAPI = (data: any) =>
   });
 export const updateCompanyAPI = (data: any) =>
   axiosInstance.put("/employer_update/", data, tokenUser());
+/** */
+
+/** User & Company */
 export const sendEmailAPI = (email: string) =>
   axiosInstance.post("/send_mail/", {
     username: email,
@@ -46,11 +53,9 @@ export const resetPassAPI = (code: string, newPass: string) =>
     email_active_code: code,
     password: newPass,
   });
-export const getSkills = () => axiosInstance.get("/skills/");
-export const getStates = () => axiosInstance.get("/states/");
-export const getCities = (stateId: number) =>
-  axiosInstance.get(`/cities/${stateId}/`);
-export const getJobTypes = () => axiosInstance.get("/jobtypes/");
+/** */
+
+/** Post */
 export const NewPost = (data: any) =>
   axiosInstance.post("/posts/", data, tokenUser());
 export const getPost = (postId: number) =>
@@ -61,14 +66,31 @@ export const RemovePost = (postId: number) =>
   axiosInstance.delete(`/posts/${postId}/`, tokenUser());
 export const getMyPosts = () =>
   axiosInstance.get("/posts/myposts/", tokenUser());
+/** */
+
+/** Messages */
 export const getMessages = () =>
   axiosInstance.get("/contact-message/", tokenUser());
 export const AddMessages = (message: any) =>
   axiosInstance.post("/contact-message/", message, tokenUser());
+/** */
+
+/** Bookmark */
 export const getBookmark = () =>
   axiosInstance.get("/posts/bookmark/", tokenUser());
 export const RemoveBookmark = (postId: number) =>
   axiosInstance.delete(`/posts/bookmark/${postId}/`, tokenUser());
+export const postBookmark = (id: string) =>
+  axiosInstance.post(
+    `/posts/bookmark/`,
+    {
+      post: id,
+    },
+    tokenUser()
+  );
+/** */
+
+/** Resume */
 export const getMySentResumes = (state: number) =>
   axiosInstance.get(`/applicant/requests/?state=${state}`, tokenUser());
 export const getMyReciveResumes = (state: number) =>
@@ -82,24 +104,21 @@ export const changeStateResume = (id: number, data: any) =>
       )}`,
     },
   });
+export const sendResume = (postId: string, resume: any) =>
+  axiosInstance.post(
+    `/applicant/requests/`,
+    {
+      post: postId,
+      resume: resume,
+    },
+    tokenUser()
+  );
+/** */
+
 export const ChangeLevel = (data: any) =>
   axiosInstance.put("/credit/", data, tokenUser());
 export const getUser = () => axiosInstance.get(`/getuser/`, tokenUser());
 
-export const getmyhomes = () => axiosInstance.get(`/myhomes/`, tokenUser());
-
-export const getAdsNew = () => axiosInstance.get("/homes/new/");
-
-export const getAdsWithPage = (
-  pageNumber: number,
-  pageSize: number,
-  filters: filtersInterface
-) =>
-  axiosInstance.post("/homesfilter/", {
-    pageNumber: pageNumber,
-    pageSize: pageSize,
-    filters: filters,
-  });
 /** Posts */
 export const getPrivatePosts = (
   pageNumber: number,
@@ -133,50 +152,9 @@ export const getStates = () => axiosInstance.get(`/states/`);
 
 export const getJobTypes = () => axiosInstance.get(`/jobtypes/`);
 
+export const getSkills = () => axiosInstance.get("/skills/");
+
+export const getCities = (stateId: number) =>
+  axiosInstance.get(`/cities/${stateId}/`);
+
 /** */
-
-/** Resume */
-export const sendResume = (postId: string, resume: any) =>
-  axiosInstance.post(
-    `/applicant/requests/`,
-    {
-      post: postId,
-      resume: resume,
-    },
-    tokenUser()
-  );
-/** */
-
-/** Bookmark */
-export const postBookmark = (id: string) =>
-  axiosInstance.post(
-    `/posts/bookmark/`,
-    {
-      post: id,
-    },
-    tokenUser()
-  );
-/** */
-export const getAd = (idAd: string, source: string) =>
-  axiosInstance.get(`/homes/${idAd}/${source}`);
-
-export const putAd = (idAd: string, source: string) =>
-  axiosInstance.put(`/homes/${idAd}/${source}`, tokenUser());
-
-export const deleteAd = (idAd: string, source: string) =>
-  axiosInstance.delete(`/homes/${idAd}/${source}`, tokenUser());
-
-// export const getBookmark = (email: string) =>
-//   axiosInstance.get(`/bookmark/${email}`, tokenUser());
-
-// export const postBookmark = (email: string, code: number) =>
-//   axiosInstance.post(
-//     `/bookmark/${email}`,
-//     {
-//       code: code,
-//     },
-//     tokenUser()
-//   );
-
-export const deleteBookmark = (email: string, code: string) =>
-  axiosInstance.delete(`/bookmark/${email}!${code}`, tokenUser());

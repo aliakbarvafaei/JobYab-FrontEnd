@@ -3,7 +3,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "../Ads/Card";
 import Skeleton from "@mui/material/Skeleton";
-import { getAdsNew } from "../../services/api";
 import { ads } from "../../ts/interfaces";
 
 const responsive = {
@@ -25,15 +24,15 @@ const responsive = {
 const SectionAdSlider:React.FC = () => {
   const themeClass = "bg-white";
   const [AdsNew, setAdsNew] = useState<Array<ads>>([]);
-  useEffect(()=>{
-    getAdsNew()
-      .then((response) => {
-        setAdsNew(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  },[])
+  // useEffect(()=>{
+  //   getAdsNew()
+  //     .then((response) => {
+  //       setAdsNew(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // },[])
 
   return (
     <div
