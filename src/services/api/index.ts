@@ -240,9 +240,9 @@ export const getAdsWithPage = (
 export const getPrivatePosts = (
   pageNumber: number,
   pageSize: number,
-  searchInput?: string,
-  category?: string,
-  province?: string
+  searchInput: string,
+  category: string,
+  province: string
 ) =>
   axiosInstance.post(`/postsfilter/`, {
     pageNumber: pageNumber,

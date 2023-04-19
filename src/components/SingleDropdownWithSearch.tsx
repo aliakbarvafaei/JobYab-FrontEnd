@@ -27,6 +27,7 @@ const useStyle = makeStyles((theme) => ({
     MenuLength: number;
     isDisabled?: boolean;
     isLoading?: boolean;
+    scrollColor?: string;
   }) => ({
     fontSize: "0.875rem",
     fontWeight: "bold",
@@ -50,6 +51,7 @@ const useStyle = makeStyles((theme) => ({
     MenuLength: number;
     isDisabled?: boolean;
     isLoading?: boolean;
+    scrollColor?: string;
   }) => ({
     fontSize: "0.875rem",
     fontWeight: 500,
@@ -97,6 +99,7 @@ const useStyle = makeStyles((theme) => ({
     MenuLength: number;
     isDisabled?: boolean;
     isLoading?: boolean;
+    scrollColor?: string;
   }) => ({
     height: isLoading
       ? "3rem"
@@ -113,7 +116,17 @@ const useStyle = makeStyles((theme) => ({
     background: `${theme.palette.background.paper}`,
     width: "100%",
   }),
-  menuList: {
+  menuList: ({
+    scrollColor,
+  }: {
+    hint: string | undefined;
+    ShowDropdown: boolean;
+    isError: boolean | undefined;
+    MenuLength: number;
+    isDisabled?: boolean;
+    isLoading?: boolean;
+    scrollColor?: string;
+  }) => ({
     width: "100%",
     position: "absolute",
     padding: "0.625rem 0.625rem 0",
@@ -130,10 +143,10 @@ const useStyle = makeStyles((theme) => ({
       background: theme.palette.background.paper,
     },
     "&::-webkit-scrollbar-thumb": {
-      background: theme.palette.grey[50],
+      background: scrollColor ? scrollColor : theme.palette.grey[50],
       borderRadius: "8px",
     },
-  },
+  }),
   wrapper: {
     height: 0,
   },
@@ -150,6 +163,7 @@ const useStyle = makeStyles((theme) => ({
     MenuLength: number;
     isDisabled?: boolean;
     isLoading?: boolean;
+    scrollColor?: string;
   }) => ({
     "&::placeholder": {
       color: isDisabled ? theme.palette.grey[800] : theme.palette.text.disabled,
@@ -174,6 +188,7 @@ export interface ISingleDropdownWithSearchProps<T> {
   errorMessage?: string;
   onChange: (e: IOption<T> | undefined) => void;
   onSearchInputChange?: (text: string | undefined) => void;
+  scrollColor?: string;
 }
 interface IOption<T> {
   value: T;
@@ -200,6 +215,7 @@ const SingleDropdownWithSearch: React.FC<
   errorMessage,
   onChange,
   onSearchInputChange,
+  scrollColor,
 }) => {
   const [ShowDropdown, setShowDropdown] = useState(false);
   const [selectedItem, setSelectedItem] = useState<
@@ -223,6 +239,7 @@ const SingleDropdownWithSearch: React.FC<
     MenuLength,
     isDisabled,
     isLoading,
+    scrollColor,
   });
   useEffect(() => {
     if (initialOptions && initialOptions?.length > 0) {

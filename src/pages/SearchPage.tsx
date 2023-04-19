@@ -4,19 +4,18 @@ import Footer from "../components/Footer/Footer";
 import SearchBox from "../components/SearchBox";
 import { Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-// import LocationOnIcon from "@mui/icons-material/LocationOn";
-// import DehazeIcon from "@mui/icons-material/Dehaze";
 import SingleDropdownWithSearch from "../components/SingleDropdownWithSearch";
 import Post from "../components/Post";
 import CustomPagination from "../components/Pagination";
 import { useHistory } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
-import { filtersInterface, statesRedux } from "../ts/interfaces";
+import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
 import { getJobTypes, getPrivatePosts, getStates } from "../services/api";
 import { GeneralType, StateType } from "../constants/types";
+import { parseURLParams } from "../services/utils/ParseURL";
 
 const SearchPage: React.FC = () => {
   const history = useHistory();
@@ -25,13 +24,15 @@ const SearchPage: React.FC = () => {
   const [states, setStates] = useState<StateType[]>([]);
   const [jobTypes, setJobTypes] = useState<GeneralType[]>([]);
 
-  const [category, setCategory] = useState<string | undefined>(undefined);
-  const [province, setProvince] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState<string>("");
+  const [province, setProvince] = useState<string>("");
   const [counterPage, setcounterPage] = useState(1);
   const [searchInput, setSearchInput] = useState(() => {
-    if (history.location.search.split("=")[1]) {
-      return history.location.search.split("=")[1];
+    const parsedValue = parseURLParams(history.location.search);
+    //@ts-ignore
+    if (parsedValue.searchText?.[0]) {
+      //@ts-ignore
+      return parsedValue.searchText[0];
     } else return "";
   });
   useEffect(() => {
@@ -41,24 +42,32 @@ const SearchPage: React.FC = () => {
     //   province: province ?? "",
     // };
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    setLoading(true);
-    getPrivatePosts(counterPage, 6, searchInput, category, province)
+    getPrivatePosts(
+      counterPage,
+      6,
+      searchInput,
+      category === "همه دسته‌بندی‌ها" ? "" : category,
+      province === "تمام استان‌ها" ? "" : province
+    )
       .then((response) => {
-        setAllPosts(response.data.data);
-        setLoading(false);
+        setAllPosts(response.data);
       })
       .catch((err) => {
         console.error(err);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     getStates().then((data) => {
-      setStates(data.data.data);
+      setStates([
+        { id: -1, title: "تمام استان‌ها", order: 5 },
+        ...data.data.data,
+      ]);
     });
   }, []);
   useEffect(() => {
     getJobTypes().then((data) => {
-      setJobTypes(data.data.data);
+      setJobTypes([{ id: -1, title: "همه دسته‌بندی‌ها" }, ...data.data.data]);
     });
   }, []);
   return (
@@ -96,6 +105,7 @@ const SearchPage: React.FC = () => {
             onChange={(event) => {
               setProvince(event?.label.toString() ?? "");
             }}
+            scrollColor="rgba(25, 118, 210, 0.3)"
           />
           <SingleDropdownWithSearch
             placeholder="دسته بندی را انتخاب کنید"
@@ -108,6 +118,7 @@ const SearchPage: React.FC = () => {
             onChange={(event) => {
               setCategory(event?.label.toString() ?? "");
             }}
+            scrollColor="rgba(25, 118, 210, 0.3)"
           />
           <Button
             className="bg-[#ffe11b]"
@@ -121,10 +132,15 @@ const SearchPage: React.FC = () => {
               color: "black ",
             }}
             onClick={() => {
-              getPrivatePosts(counterPage, 6, searchInput, category, province)
+              getPrivatePosts(
+                counterPage,
+                6,
+                searchInput,
+                category === "همه دسته‌بندی‌ها" ? "" : category,
+                province === "تمام استان‌ها" ? "" : province
+              )
                 .then((response) => {
-                  setAllPosts(response.data.data);
-                  setLoading(false);
+                  setAllPosts(response.data);
                 })
                 .catch((err) => {
                   console.error(err);
@@ -162,13 +178,15 @@ const SearchPage: React.FC = () => {
               }}
             />
           ))}
-          <CustomPagination
-            count={allPosts.length}
-            page={counterPage}
-            onChange={(_, value) => {
-              setcounterPage(value);
-            }}
-          />
+          {!!allPosts.length && (
+            <CustomPagination
+              count={allPosts.length < 6 ? 1 : allPosts.length % 6}
+              page={counterPage}
+              onChange={(_, value) => {
+                setcounterPage(value);
+              }}
+            />
+          )}
         </div>
       </div>
       <div style={{ marginTop: 400 }}>
