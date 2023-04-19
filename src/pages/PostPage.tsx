@@ -82,7 +82,7 @@ const PostPage = () => {
           gap: 30,
         }}
       >
-        <SendResumeSection data={userData} />
+        <SendResumeSection data={userData} postId={adDetail?.id} />
         <div
           className="smmin:w-11/12 mdmin:w-9/12"
           style={{
@@ -102,31 +102,33 @@ const PostPage = () => {
           <div className="mb-3">{adDetail?.description}</div>
         </div>
       </div>
-      <Grid
-        item
-        style={{
-          marginTop: 20,
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography style={{ fontSize: 24 }}>آگهی‌های مشابه</Typography>
-        <Divider
+      {similarAds.length && (
+        <Grid
+          item
           style={{
-            width: 50,
-            border: "2px solid black",
-            marginTop: 5,
-            marginBottom: 20,
+            marginTop: 20,
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
-        />
-      </Grid>
+        >
+          <Typography style={{ fontSize: 24 }}>آگهی‌های مشابه</Typography>
+          <Divider
+            style={{
+              width: 50,
+              border: "2px solid black",
+              marginTop: 5,
+              marginBottom: 20,
+            }}
+          />
+        </Grid>
+      )}
       <Carousel
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 text-center"
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 flex justify-center"
       >
         {similarAds?.map((item) => (
           <SimilarPost data={item} />

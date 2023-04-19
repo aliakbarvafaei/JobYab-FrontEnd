@@ -11,13 +11,20 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { PostType } from "../constants/types";
-import { DateDiff } from "../ts/functions";
+import { DateDiff, addItemOnce } from "../ts/functions";
+import { postBookmark } from "../services/api";
+import { eachToast } from "../ts/interfaces";
+import { useToast } from "../contexts/ToastState";
+import DefaultPicture from "../assets/images/default.png";
+import { useHistory } from "react-router-dom";
 
 interface PostProps {
   onClick?: (id: number) => void;
   data: PostType;
 }
 const Post = ({ onClick, data }: PostProps) => {
+  const { setToastState } = useToast();
+  const history = useHistory();
   return (
     <Grid
       container
@@ -30,7 +37,10 @@ const Post = ({ onClick, data }: PostProps) => {
       }}
     >
       <Grid item>
-        <Avatar sx={{ width: 80, height: 80 }} src={data.user.logo ?? ""} />
+        <Avatar
+          sx={{ width: 80, height: 80 }}
+          src={data.user.logo ?? DefaultPicture}
+        />
       </Grid>
       <Grid item style={{ marginRight: 10, width: "90%" }}>
         <Grid
@@ -93,7 +103,43 @@ const Post = ({ onClick, data }: PostProps) => {
                 )}
               </span>
             </Typography>
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                postBookmark(data.id.toString() ?? "")
+                  .then((res) => {
+                    if (res.status === 201) {
+                      setToastState((old: Array<eachToast>) =>
+                        addItemOnce(old.slice(), {
+                          title: "1",
+                          description:
+                            "آگهی با موفقیت در نشان شده‌ها قرار داده شد.",
+                          key: Math.random(),
+                        })
+                      );
+                    }
+                  })
+                  .catch((err) => {
+                    if (err.response.status === 401) {
+                      setToastState((old: Array<eachToast>) =>
+                        addItemOnce(old.slice(), {
+                          title: "2",
+                          description: "ابتدا باید در وبسایت وارد شوید.",
+                          key: Math.random(),
+                        })
+                      );
+                      history.replace("/login");
+                    } else {
+                      setToastState((old: Array<eachToast>) =>
+                        addItemOnce(old.slice(), {
+                          title: "2",
+                          description: "مشکلی پیش آمده است.",
+                          key: Math.random(),
+                        })
+                      );
+                    }
+                  });
+              }}
+            >
               <BookmarkBorderOutlinedIcon style={{ color: "#1976D2" }} />
             </IconButton>
           </Grid>

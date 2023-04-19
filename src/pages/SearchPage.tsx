@@ -11,7 +11,7 @@ import Post from "../components/Post";
 import CustomPagination from "../components/Pagination";
 import { useHistory } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
-import { statesRedux } from "../ts/interfaces";
+import { filtersInterface, statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
@@ -25,10 +25,31 @@ const SearchPage: React.FC = () => {
   const [states, setStates] = useState<StateType[]>([]);
   const [jobTypes, setJobTypes] = useState<GeneralType[]>([]);
 
+  const [category, setCategory] = useState<string | undefined>(undefined);
+  const [province, setProvince] = useState<string | undefined>(undefined);
+  const [loading, setLoading] = useState(false);
+  const [counterPage, setcounterPage] = useState(1);
+  const [searchInput, setSearchInput] = useState(() => {
+    if (history.location.search.split("=")[1]) {
+      return history.location.search.split("=")[1];
+    } else return "";
+  });
   useEffect(() => {
-    getPrivatePosts().then((data) => {
-      setAllPosts(data.data.data);
-    });
+    // const filters: filtersInterface = {
+    //   searchInput: searchInput,
+    //   category: category ?? "",
+    //   province: province ?? "",
+    // };
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    setLoading(true);
+    getPrivatePosts(counterPage, 6, searchInput, category, province)
+      .then((response) => {
+        setAllPosts(response.data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
   useEffect(() => {
     getStates().then((data) => {
@@ -59,22 +80,34 @@ const SearchPage: React.FC = () => {
           <SearchBox
             icon={<SearchIcon />}
             placeholder="عنوان شغلی، مهارت و..."
+            value={searchInput}
+            onChange={(event) => {
+              setSearchInput(event.target.value);
+            }}
           />
           <SingleDropdownWithSearch
-            onChange={() => {}}
-            placeholder="استان مدنظر خود را انتخاب کنید"
+            placeholder="استان را انتخاب کنید"
             options={states.map((item) => ({
               label: item.title,
               value: item.id,
             }))}
+            //@ts-ignore
+            value={states.find((item) => item.id === province)}
+            onChange={(event) => {
+              setProvince(event?.label.toString() ?? "");
+            }}
           />
           <SingleDropdownWithSearch
-            onChange={() => {}}
-            placeholder="دسته بندی مدنظر خود را انتخاب کنید"
+            placeholder="دسته بندی را انتخاب کنید"
             options={jobTypes.map((item) => ({
               label: item.title,
               value: item.id,
             }))}
+            //@ts-ignore
+            value={jobTypes.find((item) => item.id === category)}
+            onChange={(event) => {
+              setCategory(event?.label.toString() ?? "");
+            }}
           />
           <Button
             className="bg-[#ffe11b]"
@@ -86,6 +119,17 @@ const SearchPage: React.FC = () => {
               fontSize: 18,
               fontWeight: "bold",
               color: "black ",
+            }}
+            onClick={() => {
+              getPrivatePosts(counterPage, 6, searchInput, category, province)
+                .then((response) => {
+                  setAllPosts(response.data.data);
+                  setLoading(false);
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+              setcounterPage(1);
             }}
           >
             جستجو
@@ -118,7 +162,13 @@ const SearchPage: React.FC = () => {
               }}
             />
           ))}
-          <CustomPagination />
+          <CustomPagination
+            count={allPosts.length}
+            page={counterPage}
+            onChange={(_, value) => {
+              setcounterPage(value);
+            }}
+          />
         </div>
       </div>
       <div style={{ marginTop: 400 }}>

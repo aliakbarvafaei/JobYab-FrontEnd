@@ -1,11 +1,10 @@
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { Pagination, PaginationItem } from "@mui/material";
+import { Pagination, PaginationItem, PaginationProps } from "@mui/material";
 
-const CustomPagination = () => {
+const CustomPagination = ({ ...props }: PaginationProps) => {
   return (
     <Pagination
-      count={10}
       color="primary"
       renderItem={(item) => (
         <PaginationItem
@@ -13,6 +12,7 @@ const CustomPagination = () => {
           {...item}
         />
       )}
+      {...props}
     />
   );
 };
