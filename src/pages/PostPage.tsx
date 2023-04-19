@@ -102,7 +102,7 @@ const PostPage = () => {
           <div className="mb-3">{adDetail?.description}</div>
         </div>
       </div>
-      {similarAds.length && (
+      {!!similarAds.length && (
         <Grid
           item
           style={{
