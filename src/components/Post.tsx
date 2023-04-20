@@ -69,7 +69,7 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
                 if (data?.is_bookmark) {
                   RemoveBookmark(data.id || 0)
                     .then((res) => {
-                      if (res.status === 201) {
+                      if (res.status === 204) {
                         setToastState((old: Array<eachToast>) =>
                           addItemOnce(old.slice(), {
                             title: "1",

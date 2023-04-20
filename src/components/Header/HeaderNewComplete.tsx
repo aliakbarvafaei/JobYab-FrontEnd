@@ -4,6 +4,7 @@ import HeaderNewShort from "./HeaderNewShort";
 import { statesRedux } from "../../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../ProfilesCompanies/Header";
+import backgroundImage from "../../assets/images/CompaniesBackground.jpg";
 
 const HeaderNewComplete: React.FC = () => {
   const history = useHistory();
@@ -18,7 +19,12 @@ const HeaderNewComplete: React.FC = () => {
   return (
     <>
       {role && role === "company" ? <Header /> : <HeaderNewShort />}
-      <div className="w-[100%] h-[300px] bg-no-repeat bg-cover bg-[#D3D3D3] bg-center flex flex-col items-center">
+      <div
+        className="w-[100%] h-[300px] bg-no-repeat bg-cover bg-[#D3D3D3] bg-center flex flex-col items-center"
+        style={{
+          backgroundImage: `url("${backgroundImage}")`,
+        }}
+      >
         <div className="flex flex-col justify-center h-full">
           <div className="text-center text-[#555658] text-[20px] md:text-[12px] font-bold leading-[40px]">
             به صورت رایگان و در سریع‌ترین زمان ممکن
@@ -40,7 +46,7 @@ const HeaderNewComplete: React.FC = () => {
                   history.replace(`/search?searchText=${searchInput}`);
                   history.go(0);
                 }}
-                className="fa fa-search absolute smmin:right-[4%] sm:right-[5%] mm:right-[15%] top-[35%]"
+                className="fa fa-search absolute smmin:right-[6%] sm:right-[5%] mm:right-[15%] top-[35%]"
               ></button>
             </form>
           </div>

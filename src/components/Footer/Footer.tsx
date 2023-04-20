@@ -1,8 +1,8 @@
 import React from "react";
 import MainFooter from "./MainFooter/MainFooter";
 
-const Footer : React.FC = ()=> {
-  const themeClass : string = "bg-lightGray";
+const Footer: React.FC = () => {
+  const themeClass: string = "bg-lightGray";
 
   return (
     <section>
@@ -13,6 +13,6 @@ const Footer : React.FC = ()=> {
       </div>
     </section>
   );
-}
+};
 
 export default Footer;
