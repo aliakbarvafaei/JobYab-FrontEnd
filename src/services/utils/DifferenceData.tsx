@@ -1,7 +1,7 @@
 import { DateDiff } from "../../ts/functions";
 
 const DifferenceData = (date: string) => {
-  return DateDiff.inMonths(new Date(), new Date()) === 0 ? (
+  return DateDiff.inMonths(new Date(date), new Date()) === 0 ? (
     DateDiff.inWeeks(new Date(date), new Date()) === 0 ? (
       DateDiff.inDays(new Date(date), new Date()) === 0 ? (
         DateDiff.inHour(new Date(date), new Date()) === 0 ? (

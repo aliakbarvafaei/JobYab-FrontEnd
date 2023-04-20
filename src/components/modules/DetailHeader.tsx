@@ -1,4 +1,4 @@
-import { Avatar, Button, Grid, IconButton, Typography } from "@mui/material";
+import { Button, Grid, IconButton, Typography } from "@mui/material";
 import BusinessIcon from "@mui/icons-material/Business";
 // import LocationOnIcon from "@mui/icons-material/LocationOn";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
@@ -10,6 +10,7 @@ import { addItemOnce } from "../../ts/functions";
 import { eachToast } from "../../ts/interfaces";
 import DefaultPicture from "../../assets/images/default.png";
 import { useHistory } from "react-router-dom";
+import { API_URL } from "../../config";
 
 interface DetailHeaderProps {
   onclick?: () => void;
@@ -28,13 +29,13 @@ const DetailHeader = ({
     <Grid
       className=" sm:mr-1 sm:ml-1 md:mr-10 md:ml-10 xl:ml-3 xl:mr-3 xlmin:mr-20 xlmin:ml-20"
       style={{
-        border: "1.5px solid #1976D2",
+        border: "1.5px solid var(--primary)",
         height: 200,
         borderRadius: 12,
         marginTop: 10,
         position: "relative",
         backgroundImage:
-          "linear-gradient(to left top, #1976D2,#1976D7,#1976D2)",
+          "linear-gradient(to left top,var(--primary),var(--primary),var(--primary)",
       }}
     >
       <Grid
@@ -42,9 +43,15 @@ const DetailHeader = ({
         style={{ right: windowWidth.current > 450 ? 40 : 20 }}
       >
         <Grid>
-          <Avatar
-            src={data?.user.logo ?? DefaultPicture}
+          <img
+            src={
+              data?.user.logo === null
+                ? DefaultPicture
+                : API_URL.split("api")[0] + (data?.user.logo as string)
+            }
+            alt=""
             style={{
+              borderRadius: "50%",
               width: windowWidth.current > 450 ? 160 : 120,
               height: windowWidth.current > 450 ? 160 : 120,
             }}
@@ -98,7 +105,7 @@ const DetailHeader = ({
           <>
             <Button
               variant="contained"
-              style={{ marginLeft: 5, background: "white", color: "#1976D2" }}
+              className="!ml-[5px] !bg-white !text-primary"
               onClick={onclick}
             >
               اطلاعات شرکت

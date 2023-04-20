@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeaderNewShort from "../components/Header/HeaderNewShort";
-import BasicTabs from "../components/NEW/ProfilesUsers/Tab";
+import BasicTabs from "../components/ProfilesUsers/Tab";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { getUser } from "../services/api";
 

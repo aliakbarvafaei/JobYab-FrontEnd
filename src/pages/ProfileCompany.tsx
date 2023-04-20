@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/NEW/ProfilesCompanies/Header";
-import BasicTabs from "../components/NEW/ProfilesCompanies/Tab";
+import Header from "../components/ProfilesCompanies/Header";
+import BasicTabs from "../components/ProfilesCompanies/Tab";
 import { getUser } from "../services/api";
 
 const ProfileCompany: React.FC = () => {

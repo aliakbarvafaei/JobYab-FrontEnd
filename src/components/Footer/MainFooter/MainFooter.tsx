@@ -90,11 +90,15 @@ const MainFooter: React.FC = () => {
             </li>
           </Link>
           <div></div>
-          <Link to="/search">
-            <li className="relative inline-block pt-[13px] text-darkGray hoverItem">
+          <div
+            onClick={() => {
+              window.location.href = "/search";
+            }}
+          >
+            <li className="relative inline-block pt-[13px] text-darkGray hoverItem cursor-pointer">
               فوری
             </li>
-          </Link>
+          </div>
           <div></div>
         </ul>
       </div>

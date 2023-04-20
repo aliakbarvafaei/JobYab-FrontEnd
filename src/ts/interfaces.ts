@@ -167,6 +167,7 @@ export interface post {
   sex: string;
   skills: Array<{ id: number; title: string }>;
   state: { id: number; title: string };
+  user: any;
 }
 
 export interface sentResume {

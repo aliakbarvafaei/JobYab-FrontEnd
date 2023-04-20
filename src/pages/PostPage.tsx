@@ -6,30 +6,33 @@ import Footer from "../components/Footer/Footer";
 import SendResumeSection from "../components/modules/SendResumeSection";
 import { Divider, Grid, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import SimilarPost from "../components/modules/SimilarPost";
 import DetailSection from "../components/modules/DetailSection";
 import { useHistory, useParams } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
-import Header from "../components/NEW/ProfilesCompanies/Header";
+import Header from "../components/ProfilesCompanies/Header";
 import { PostType, UserType } from "../constants/types";
 import { getPostDetail, getSimilarPosts, getUser } from "../services/api";
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 1279 },
-    items: 4,
-  },
-  desktop: {
-    breakpoint: { max: 1279, min: 767 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 767, min: 0 },
-    items: 2,
-  },
+const responsive = (length: number) => {
+  return {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 1279 },
+      items: length >= 4 ? 4 : length,
+    },
+    desktop: {
+      breakpoint: { max: 1279, min: 767 },
+      items: length >= 3 ? 3 : length,
+    },
+    tablet: {
+      breakpoint: { max: 767, min: 0 },
+      items: length >= 2 ? 2 : length,
+    },
+  };
 };
 const PostPage = () => {
   const history = useHistory();
@@ -82,22 +85,22 @@ const PostPage = () => {
           gap: 30,
         }}
       >
-        <SendResumeSection data={userData} postId={adDetail?.id} />
+        <SendResumeSection data={userData} postId={parseInt(id as string)} />
         <div
           className="smmin:w-11/12 mdmin:w-9/12"
           style={{
-            border: "1.5px solid #1976D2",
+            border: "1.5px solid var(--primary)",
             borderRadius: 8,
             marginTop: 40,
             paddingTop: 30,
-            boxShadow: "0 0 6px #1976D2",
+            boxShadow: "0 0 6px var(--primary)",
             textAlign: "justify",
             paddingInline: windowWidth.current < 450 ? 12 : 40,
             marginInline: 3,
           }}
         >
           <DetailSection data={adDetail} />
-          <Divider style={{ marginBlock: 20, background: "#1976D2" }} />
+          <Divider style={{ marginBlock: 20, background: "var(--primary)" }} />
           {/* <TempData description={adDetail?.description} /> */}
           <div className="mb-3">{adDetail?.description}</div>
         </div>
@@ -117,7 +120,7 @@ const PostPage = () => {
           <Divider
             style={{
               width: 50,
-              border: "2px solid black",
+              border: "2px solid var(--primary)",
               marginTop: 5,
               marginBottom: 20,
             }}
@@ -125,10 +128,10 @@ const PostPage = () => {
         </Grid>
       )}
       <Carousel
-        responsive={responsive}
+        responsive={responsive(similarAds.length)}
         autoPlay={true}
         infinite={true}
-        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 flex justify-center"
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
       >
         {similarAds?.map((item) => (
           <SimilarPost data={item} />

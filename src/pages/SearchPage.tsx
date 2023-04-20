@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
-import Header from "../components/NEW/ProfilesCompanies/Header";
+import Header from "../components/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
 import { getJobTypes, getPrivatePosts, getStates } from "../services/api";
 import { GeneralType, StateType } from "../constants/types";
@@ -30,7 +30,7 @@ const SearchPage: React.FC = () => {
   const [searchInput, setSearchInput] = useState(() => {
     const parsedValue = parseURLParams(history.location.search);
     //@ts-ignore
-    if (parsedValue.searchText?.[0]) {
+    if (parsedValue && parsedValue.searchText?.[0]) {
       //@ts-ignore
       return parsedValue.searchText[0];
     } else return "";
@@ -135,6 +135,7 @@ const SearchPage: React.FC = () => {
               history.replace(
                 searchInput ? `/search?searchText=${searchInput}` : `/search/`
               );
+              
               getPrivatePosts(
                 counterPage,
                 6,
@@ -144,6 +145,7 @@ const SearchPage: React.FC = () => {
               )
                 .then((response) => {
                   setAllPosts(response.data);
+                  
                 })
                 .catch((err) => {
                   console.error(err);
@@ -173,12 +175,9 @@ const SearchPage: React.FC = () => {
             alignItems: "center",
           }}
         >
-          {allPosts?.map((postDetail) => (
+          {allPosts?.map((postDetail:any) => (
             <Post
               data={postDetail}
-              onClick={(id) => {
-                history.push(`/postPage/${id}`);
-              }}
             />
           ))}
           {!!allPosts.length && (
@@ -192,7 +191,7 @@ const SearchPage: React.FC = () => {
           )}
         </div>
       </div>
-      <div style={{ marginTop: 400 }}>
+      <div style={{ marginTop: 40 }}>
         <Footer />
       </div>
     </div>

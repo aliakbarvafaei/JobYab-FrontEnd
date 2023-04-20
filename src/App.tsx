@@ -10,6 +10,14 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 const theme = createTheme({
+  palette:{
+    primary:{
+      main:"#1976D2"
+    },
+    secondary: {
+      main: '#D8DBE2',
+    },
+  },
   typography: {
     fontFamily: "IRANSans",
   },

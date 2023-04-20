@@ -9,7 +9,7 @@ module.exports = {
     },
     fontFamily: {
       font: ["Lato", "sans-serif"],
-      Roboto: ["Roboto"]
+      Roboto: ["Roboto"],
     },
     screens: {
       xl: { max: "1279px" },
@@ -34,7 +34,11 @@ module.exports = {
       darkGray: "#999999",
       white: "#ffffff",
       red: "#ff4c3b",
-      blue: "#1976D2",
+      primary: "#1976D2",
+      secondary: "#d8dbe2",
+      tabBg: "#e0e5eb",
+      error: "#D32F2F",
+      lightBlack: "#00000099",
       green: "#228B22",
       black: "#222222",
       darkModeBlack: "#232323",

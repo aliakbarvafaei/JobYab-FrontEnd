@@ -4,7 +4,6 @@ import bronze from "../assets/images/bronze.jpg";
 import silver from "../assets/images/silver.jpg";
 import gold from "../assets/images/gold.jpg";
 import Option from "../components/Option/Option";
-import SectionAdSlider from "../components/SectionAdSlider/SectionAdSlider";
 import { useHistory } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import Footer from "../components/Footer/Footer";
@@ -31,30 +30,29 @@ const Home: React.FC = () => {
     <>
       <MobileMenu />
       <HeaderNewComplete />
-      {/* <SectionAdSlider /> */}
       <div
         className="px-total py-[12%] flex flex-col font-bold items-center mdmin:w-[60%] md:w-[100%]"
         style={{ backgroundImage: 'url("../assets/images/bg-body.jpeg")' }}
       >
-        <h2 className="text-blue md:text-[75px] lg:text-[60px] xl:text-[85px] xlmin:text-[90px]">
+        <h2 className="text-primary md:text-[75px] lg:text-[60px] xl:text-[85px] xlmin:text-[90px]">
           سال 1402
         </h2>
         <h4 className="lg:text-[35px] xl:text-[50px] xlmin:text-[55px] text-center text-white">
           مناسب ترین مشاغل
         </h4>
-        <p className="lg:text-[20px] xl:text-[22px] xlmin:text-[24px] text-yellow text-center">
+        <p className="lg:text-[20px] xl:text-[22px] xlmin:text-[24px] text-[#D3D3D3] text-center">
           بهترین پیشنهادها
         </p>
       </div>
-      <Grid className="w-full py-[12%] px-[12%] flex font-bold items-center">
+      <Grid className="w-full mb-[8%] px-[5%] flex flex-wrap gap-[10px] font-bold items-center md:h-[700px] mdmin:h-[350px] justify-between">
         <Grid
           xs={12}
           sm={9}
+          className="md:!w-[100%] mdmin:!w-[64%] md:h-[50%] mdmin:h-[100%]"
           style={{
-            width: "65%",
-            border: "1.5px solid #1976D2",
+            border: "1.5px solid var(--primary)",
             borderRadius: 8,
-            boxShadow: "0 0 6px #1976D2",
+            boxShadow: "0 0 2px var(--primary)",
             paddingBottom: 5,
           }}
         >
@@ -63,22 +61,33 @@ const Home: React.FC = () => {
             style={{
               marginTop: 20,
               textAlign: "center",
+              height: "20%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <Typography style={{ fontSize: 24 }}>آگهی های فوری</Typography>
+            <Typography className="md:!text-[16px] mdmin:!text-[24px]">
+              آگهی های فوری
+            </Typography>
             <Divider
               style={{
                 width: 50,
-                border: "2px solid black",
+                border: "2px solid var(--primary)",
                 marginTop: 5,
                 marginBottom: 20,
               }}
             />
           </Grid>
-          <div style={{ display: "flex" }}>
+          <div
+            className="max-h-[70%] overflow-auto no-scrollbar"
+            style={{
+              display: "flex",
+              width: "100%",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
             {urgentPosts.map((item) => (
               <UrgentCard data={item} isUrgent />
             ))}
@@ -87,12 +96,11 @@ const Home: React.FC = () => {
         <Grid
           xs={12}
           sm={3}
+          className="md:!w-[100%] mdmin:!w-[34%] md:h-[50%] mdmin:h-[100%]"
           style={{
-            width: "35%",
-            border: "1.5px solid #1976D2",
+            border: "1.5px solid var(--primary)",
             borderRadius: 8,
-            boxShadow: "0 0 6px #1976D2",
-            marginRight: 10,
+            boxShadow: "0 0 2px var(--primary)",
             paddingBottom: 5,
           }}
         >
@@ -101,22 +109,25 @@ const Home: React.FC = () => {
             style={{
               marginTop: 20,
               textAlign: "center",
+              height: "20%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <Typography style={{ fontSize: 24 }}>آخرین آگهی ها</Typography>
+            <Typography className="md:!text-[16px] mdmin:!text-[24px]">
+              آخرین آگهی ها
+            </Typography>
             <Divider
               style={{
                 width: 50,
-                border: "2px solid black",
+                border: "2px solid var(--primary)",
                 marginTop: 5,
                 marginBottom: 20,
               }}
             />
           </Grid>
-          <div className="mr-5">
+          <div className="mr-1 h-[70%] overflow-auto no-scrollbar">
             {recentPosts.map((item) => (
               <UrgentCard data={item} isUrgent={false} />
             ))}
@@ -133,7 +144,7 @@ const Home: React.FC = () => {
             </ul>
             <p className="flex flex-col">
               <span className="text-[12px]"> قیمت</span>
-              <span className="text-blue font-bold text-[20px]">رایگان</span>
+              <span className="text-primary font-bold text-[20px]">رایگان</span>
             </p>
             <button
               type="button"
@@ -152,14 +163,14 @@ const Home: React.FC = () => {
             </ul>
             <p className="flex flex-col">
               <span className="text-[12px]"> قیمت</span>
-              <span className="text-blue font-bold text-[20px]">
+              <span className="text-primary font-bold text-[20px]">
                 ۲۰,۰۰۰ تومان
               </span>
             </p>
             <button
               type="button"
-              className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-blue text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-blue hover:border-[2px] hover:border-solid hover:text-black"
-              onClick={() => history.push("/profile")}
+              className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-primary text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-primary hover:border-[2px] hover:border-solid hover:text-black"
+              onClick={() => history.push("/profile-company")}
             >
               ارتقا
             </button>
@@ -173,14 +184,14 @@ const Home: React.FC = () => {
             </ul>
             <p className="flex flex-col">
               <span className="text-[12px]"> قیمت</span>
-              <span className="text-blue font-bold text-[20px]">
+              <span className="text-primary font-bold text-[20px]">
                 ۵۰,۰۰۰ تومان
               </span>
             </p>
             <button
               type="button"
-              className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-blue text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-blue hover:border-[2px] hover:border-solid hover:text-black"
-              onClick={() => history.push("/profile")}
+              className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-primary text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-primary hover:border-[2px] hover:border-solid hover:text-black"
+              onClick={() => history.push("/profile-company")}
             >
               ارتقا
             </button>
