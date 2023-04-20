@@ -29,7 +29,7 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
       container
       className="flex lg:flex-col lgmin:flex-row lg:justify-center"
       style={{
-        paddingBlock: 20,
+        paddingBlock: 10,
         paddingInline: 10,
         borderRadius: 8,
         border: "2px solid #f5f5f5",
@@ -151,40 +151,44 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
             </IconButton>
           </Grid>
         </Grid>
-        <Grid item style={{ display: "flex", alignItems: "center" }}>
-          <Grid item>
-            <IconButton disabled>
-              <BusinessIcon className="text-primary" />
-            </IconButton>
+        <Grid container className="flex" alignItems="center">
+          <Grid item style={{ display: "flex", alignItems: "center" }}>
+            <Grid item>
+              <IconButton disabled>
+                <BusinessIcon className="text-primary" />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <Typography style={{ fontSize: 12 }}>
+                {data.user.company_persian_name}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Typography style={{ fontSize: 12 }}>
-              {data.user.company_persian_name}
-            </Typography>
+          <div>&nbsp;| </div>
+          <Grid item style={{ display: "flex", alignItems: "center" }}>
+            <Grid item>
+              <IconButton disabled>
+                <LocationOnIcon className="text-primary" />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <Typography
+                style={{ fontSize: 12 }}
+              >{`${data.state.title} ${data.city.title}`}</Typography>
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid item style={{ display: "flex", alignItems: "center" }}>
-          <Grid item>
-            <IconButton disabled>
-              <LocationOnIcon className="text-primary" />
-            </IconButton>
-          </Grid>
-          <Grid item>
-            <Typography
-              style={{ fontSize: 12 }}
-            >{`${data.state.title} ${data.city.title}`}</Typography>
-          </Grid>
-        </Grid>
-        <Grid item style={{ display: "flex", alignItems: "center" }}>
-          <Grid item>
-            <IconButton disabled>
-              <FactCheckIcon className="text-primary" />
-            </IconButton>
-          </Grid>
-          <Grid item>
-            <Typography
-              style={{ fontSize: 12 }}
-            >{`قرارداد ${data.cooperation_type}`}</Typography>
+          <div>&nbsp;| </div>
+          <Grid item style={{ display: "flex", alignItems: "center" }}>
+            <Grid item>
+              <IconButton disabled>
+                <FactCheckIcon className="text-primary" />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <Typography
+                style={{ fontSize: 12 }}
+              >{`قرارداد ${data.cooperation_type}`}</Typography>
+            </Grid>
           </Grid>
         </Grid>
         <Grid
@@ -195,7 +199,15 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
             gap: 15,
           }}
         >
-          <Grid item style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <Grid
+            item
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 4,
+              flexWrap: "wrap",
+            }}
+          >
             {data?.skills.map(({ title: skillTitle }) => (
               <Chip
                 label={skillTitle}
