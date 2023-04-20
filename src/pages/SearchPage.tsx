@@ -44,7 +44,7 @@ const SearchPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     getTotalPosts().then((data) => {
-      setNTotalPosts(data.data.length);
+      setNTotalPosts(data.data.data.length);
     });
     getPrivatePosts(
       counterPage,
@@ -52,13 +52,9 @@ const SearchPage: React.FC = () => {
       searchInput,
       category === "همه دسته‌بندی‌ها" ? "" : category,
       province === "تمام استان‌ها" ? "" : province
-    )
-      .then((response) => {
-        setAllPosts(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    ).then((response) => {
+      setAllPosts(response.data);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
@@ -139,7 +135,7 @@ const SearchPage: React.FC = () => {
               history.replace(
                 searchInput ? `/search?searchText=${searchInput}` : `/search/`
               );
-              
+
               getPrivatePosts(
                 counterPage,
                 6,
@@ -149,7 +145,6 @@ const SearchPage: React.FC = () => {
               )
                 .then((response) => {
                   setAllPosts(response.data);
-                  
                 })
                 .catch((err) => {
                   console.error(err);
@@ -179,17 +174,20 @@ const SearchPage: React.FC = () => {
             alignItems: "center",
           }}
         >
-          {allPosts?.map((postDetail:any) => (
+          {allPosts?.map((postDetail: any) => (
             <Post
               data={postDetail}
+              onClick={(id) => {
+                window.location.href = `/postPage/${id}`;
+              }}
             />
           ))}
           {!!allPosts.length && (
             <CustomPagination
               count={
-                nTotalPosts % 3 === 0
-                  ? nTotalPosts / 3
-                  : Math.floor(allPosts.length / 6) + 1
+                nTotalPosts % 6 === 0
+                  ? nTotalPosts / 6
+                  : Math.floor(nTotalPosts / 6) + 1
               }
               page={counterPage}
               onChange={(_, value) => {

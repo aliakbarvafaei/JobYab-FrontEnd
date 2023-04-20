@@ -1,10 +1,4 @@
-import {
-  Button,
-  Chip,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Button, Chip, Grid, IconButton, Typography } from "@mui/material";
 import BusinessIcon from "@mui/icons-material/Business";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
@@ -12,12 +6,13 @@ import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlin
 import { PostType } from "../constants/types";
 import { addItemOnce } from "../ts/functions";
 import { postBookmark } from "../services/api";
-import { eachToast } from "../ts/interfaces";
+import { eachToast, statesRedux } from "../ts/interfaces";
 import { useToast } from "../contexts/ToastState";
 import DefaultPicture from "../assets/images/default.png";
 import { useHistory } from "react-router-dom";
 import DifferenceData from "../services/utils/DifferenceData";
 import { API_URL } from "../config";
+import { useSelector } from "react-redux";
 
 interface PostProps {
   onClick?: (id: number) => void;
@@ -26,6 +21,7 @@ interface PostProps {
 const Post = ({ onClick, data }: PostProps) => {
   const { setToastState } = useToast();
   const history = useHistory();
+  const { token } = useSelector((state: statesRedux) => state.userAuth);
   return (
     <Grid
       container
@@ -35,9 +31,6 @@ const Post = ({ onClick, data }: PostProps) => {
         paddingInline: 10,
         borderRadius: 8,
         border: "2px solid #f5f5f5",
-      }}
-      onClick={() => {
-        window.location.href = `/postPage/${data.id}`;
       }}
     >
       <Grid item>
@@ -68,6 +61,7 @@ const Post = ({ onClick, data }: PostProps) => {
               <span>{DifferenceData(data.created_date)}</span>
             </Typography>
             <IconButton
+              disabled={!token}
               onClick={(e) => {
                 e.stopPropagation();
                 postBookmark(data.id.toString() ?? "")
@@ -105,7 +99,9 @@ const Post = ({ onClick, data }: PostProps) => {
                   });
               }}
             >
-              <BookmarkBorderOutlinedIcon className="text-primary" />
+              <BookmarkBorderOutlinedIcon
+                className={token ? "text-primary" : "text-gray"}
+              />
             </IconButton>
           </Grid>
         </Grid>

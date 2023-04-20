@@ -136,7 +136,7 @@ export const getPrivatePosts = (
       province: province,
     },
   });
-export const getTotalPosts = () => axiosInstance.post(`/posts/`);
+export const getTotalPosts = () => axiosInstance.get(`/posts/`, tokenUser());
 // export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
 export const getPostDetail = (idAd: string) =>
@@ -153,8 +153,10 @@ export const getCompaniesPostsPublic = (id: string) =>
 export const getStates = () => axiosInstance.get(`/states/`);
 
 export const getJobTypes = () => axiosInstance.get(`/jobtypes/`);
-export const getUrgentPosts = () => axiosInstance.get(`/posts/urgent/`);
-export const getRecentPosts = () => axiosInstance.get(`/posts/recent/`);
+export const getUrgentPosts = () =>
+  axiosInstance.get(`/posts/urgent/`, tokenUser());
+export const getRecentPosts = () =>
+  axiosInstance.get(`/posts/recent/`, tokenUser());
 
 export const getSkills = () => axiosInstance.get("/skills/");
 
