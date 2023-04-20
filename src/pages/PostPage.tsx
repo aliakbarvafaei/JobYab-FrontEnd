@@ -85,7 +85,7 @@ const PostPage = () => {
           gap: 30,
         }}
       >
-        <SendResumeSection data={userData} postId={adDetail?.id} />
+        <SendResumeSection data={userData} postId={parseInt(id as string)} />
         <div
           className="smmin:w-11/12 mdmin:w-9/12"
           style={{

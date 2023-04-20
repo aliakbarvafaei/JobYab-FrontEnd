@@ -1,11 +1,12 @@
 import { Button, InputBase, Typography } from "@mui/material";
 import { UserType } from "../../constants/types";
-import { useState } from "react";
-import { eachToast, statesRedux } from "../../ts/interfaces";
+import { useEffect, useState } from "react";
+import { eachToast, sentResume, statesRedux } from "../../ts/interfaces";
 import { useSelector } from "react-redux";
 import { useToast } from "../../contexts/ToastState";
 import { addItemOnce } from "../../ts/functions";
 import { useHistory } from "react-router-dom";
+import { getMySentResumes } from "../../services/api";
 
 interface SendResumeSectionProps {
   data?: UserType;
@@ -16,6 +17,20 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
   const { role, token } = useSelector((state: statesRedux) => state.userAuth);
   const { setToastState } = useToast();
   const history = useHistory();
+  const [allow, setAllow] = useState<boolean>(false);
+
+  useEffect(() => {
+    getMySentResumes(5)
+      .then((response) => {
+        response.data.data.forEach((element: sentResume) => {
+          if (element.post.id === postId) setAllow(true);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div
       className="lgmin:w-3/12 md:w-11/12 "
@@ -31,7 +46,7 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
         // opacity: token ? 1 : 0.2,
       }}
     >
-      {role !== "user" && (
+      {(role !== "user" || allow) && (
         <>
           <div
             style={{
@@ -53,34 +68,24 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
               alignItems: "center",
               width: "100%",
               height: "100%",
-              // marginTop: "45%",
-              // left: "15%",
-              // marginLeft:"auto",
               zIndex: 99999,
               textAlign: "center",
             }}
           >
-            {/* <Typography
-          style={{
-            textAlign: "center",
-            fontSize: 12,
-            width: 250,
-            marginBottom: 10,
-          }}
-        >
-          کاربر گرامی برای ارسال رزومه برای آگهی مربوطه، باید با استفاده از دکمه
-          زیر وارد شوید.
-        </Typography> */}
             <Button
               variant="contained"
               style={{ border: "1px solid var(--primary)" }}
               onClick={() => {
-                history.push("/login");
+                if (!allow) history.push("/login");
               }}
             >
-              {role === "company"
+              {role === null
+                ? "ابتدا وارد شوید"
+                : role === "company"
                 ? "به عنوان کارجو وارد شوید"
-                : "ابتدا وارد شوید"}
+                : allow
+                ? "قبلا رزومه ارسال کرده اید"
+                : ""}
             </Button>
           </div>
         </>
