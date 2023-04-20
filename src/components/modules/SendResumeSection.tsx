@@ -5,6 +5,7 @@ import { eachToast, statesRedux } from "../../ts/interfaces";
 import { useSelector } from "react-redux";
 import { useToast } from "../../contexts/ToastState";
 import { addItemOnce } from "../../ts/functions";
+import { useHistory } from "react-router-dom";
 
 interface SendResumeSectionProps {
   data?: UserType;
@@ -14,7 +15,7 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
   const [innerFile, setFile] = useState<File | undefined>();
   const { token } = useSelector((state: statesRedux) => state.userAuth);
   const { setToastState } = useToast();
-
+  const history = useHistory();
   return (
     <div
       className="lgmin:w-3/12 md:w-11/12 "
@@ -27,8 +28,50 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
         maxHeight: 280,
         position: "relative",
         boxShadow: "0 0 6px rgba(0, 0, 0, 0.2)",
+        // opacity: token ? 1 : 0.2,
       }}
     >
+      <div
+        style={{
+          position: "absolute",
+          background: "#d9dddc",
+          opacity: 0.7,
+          width: "100%",
+          height: "100%",
+          right: 0,
+          borderRadius: 8,
+          zIndex: 9999,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "35%",
+          zIndex: 99999,
+          textAlign: "center",
+        }}
+      >
+        {/* <Typography
+          style={{
+            textAlign: "center",
+            fontSize: 12,
+            width: 250,
+            marginBottom: 10,
+          }}
+        >
+          کاربر گرامی برای ارسال رزومه برای آگهی مربوطه، باید با استفاده از دکمه
+          زیر وارد شوید.
+        </Typography> */}
+        <Button
+          style={{ border: "1px solid #1976D2" }}
+          onClick={() => {
+            history.push("/login");
+          }}
+        >
+          ابتدا باید شوید
+        </Button>
+      </div>
       <InputBase
         value={data?.full_name}
         fullWidth

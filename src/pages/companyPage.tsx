@@ -11,9 +11,11 @@ import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
-import { getCompaniesPosts, getPostDetail } from "../services/api";
+import { getCompaniesPostsPublic, getPostDetail } from "../services/api";
 import { PostType } from "../constants/types";
 import ApartmentIcon from "@mui/icons-material/Apartment";
+import Carousel from "react-multi-carousel";
+import SimilarPost from "../components/modules/SimilarPost";
 
 const responsive = {
   superLargeDesktop: {
@@ -49,10 +51,11 @@ const CompanyPage = () => {
       });
   }, [companyId, history]);
   useEffect(() => {
-    getCompaniesPosts().then((data) => {
+    getCompaniesPostsPublic(companyId).then((data) => {
       setCompaniesPosts(data.data.data);
     });
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <MobileMenu />
@@ -146,19 +149,16 @@ const CompanyPage = () => {
           />
         </Grid>
       )}
-      {/* <Carousel
+      <Carousel
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
-      > */}
-      {/* <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost />
-        <SimilarPost /> */}
-      {/* </Carousel> */}
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 flex justify-center"
+      >
+        {companiesPosts?.map((item) => (
+          <SimilarPost data={item} />
+        ))}
+      </Carousel>
       <div style={{ marginTop: 10 }}>
         <Footer />
       </div>
