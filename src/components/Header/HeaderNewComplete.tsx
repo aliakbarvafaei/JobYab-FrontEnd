@@ -26,7 +26,7 @@ const HeaderNewComplete: React.FC = () => {
         }}
       >
         <div className="flex flex-col justify-center h-full">
-          <div className="text-center text-[#555658] text-[20px] md:text-[12px] font-bold leading-[40px]">
+          <div className="text-center text-white text-[20px] md:text-[12px] font-bold leading-[40px]">
             به صورت رایگان و در سریع‌ترین زمان ممکن
             <br />
             برای فرصت‌های شغلی مختلف رزومه ارسال کنید

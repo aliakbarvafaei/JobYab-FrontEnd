@@ -40,7 +40,7 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
         borderRadius: 8,
         flexShrink: 0,
         // padding: 20,
-        maxHeight: 320,
+        maxHeight: 280,
         position: "relative",
         boxShadow: "0 0 6px rgba(0, 0, 0, 0.2)",
         // opacity: token ? 1 : 0.2,
@@ -185,7 +185,7 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
         >
           ارسال رزومه
         </Button>
-        <Typography
+        {/* <Typography
           style={{
             fontSize: 12,
             textAlign: "center",
@@ -197,7 +197,7 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
             <span style={{ color: "blue" }} children={` ${28} `} />
             روز دیگر
           </span>
-        </Typography>
+        </Typography> */}
       </div>
     </div>
   );
