@@ -191,7 +191,7 @@ const SearchPage: React.FC = () => {
           )}
         </div>
       </div>
-      <div style={{ marginTop: 400 }}>
+      <div style={{ marginTop: 40 }}>
         <Footer />
       </div>
     </div>
