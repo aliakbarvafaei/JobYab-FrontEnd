@@ -23,6 +23,8 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
     }
     getMyReciveResumes(index + 1)
       .then((response) => {
+        console.log(response.data.data);
+        
         setResumes((old: null | Array<reciveResume>) => {
           if (old !== null) return [...old, ...response.data.data];
           else return response.data.data;

@@ -5,7 +5,6 @@ import {
   Box,
   Card,
   Divider,
-  Avatar,
   Button,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -13,16 +12,16 @@ import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
-import { DateDiff } from "../../../../ts/functions";
 import { reciveResume } from "../../../../ts/interfaces";
 import { API_URL } from "../../../../config";
 import { changeStateResume } from "../../../../services/api";
+import DefaultPicture from "../../../../assets/images/default.png";
+import DifferenceData from "../../../../services/utils/DifferenceData";
 
 const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
   index,
   item,
 }) => {
-
   const changeState = (state: number) => {
     changeStateResume(item.id, { state: String(state) })
       .then((response) => {
@@ -52,15 +51,19 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
             gap: "10%",
           }}
         >
-          <Avatar
-            variant="circular"
-            src="avatar1.jpg"
-            sx={{ display: { xs: "none", sm: "flex" } }}
+          <img
+            src={
+              item.post.user.logo === null
+                ? DefaultPicture
+                : API_URL.split("api")[0] + (item.post.user.logo as string)
+            }
+            alt=""
+            className="rounded-[50%]"
           />
           <Stack spacing={0.5}>
             <Typography
               fontWeight={700}
-              color="#1976D2"
+              color="var(--primary)"
               sx={{
                 fontFamily: "IRANSans",
 
@@ -80,54 +83,12 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
               <Typography
                 component={"span"}
                 sx={{
-                  color: "#00000099",
+                  color: "var(--lightBlack)",
                   fontSize: { xs: "8px", sm: "9px", md: "10px" },
                   marginRight: "5px",
                 }}
               >
-                <span>
-                  {DateDiff.inMonths(new Date(item.sent_date), new Date()) ===
-                  0 ? (
-                    DateDiff.inWeeks(new Date(item.sent_date), new Date()) ===
-                    0 ? (
-                      DateDiff.inDays(new Date(item.sent_date), new Date()) ===
-                      0 ? (
-                        DateDiff.inHour(
-                          new Date(item.sent_date),
-                          new Date()
-                        ) === 0 ? (
-                          <>دقایقی پیش</>
-                        ) : (
-                          <>
-                            {DateDiff.inHour(
-                              new Date(item.sent_date),
-                              new Date()
-                            )}{" "}
-                            ساعت پیش
-                          </>
-                        )
-                      ) : (
-                        <>
-                          {DateDiff.inDays(
-                            new Date(item.sent_date),
-                            new Date()
-                          )}{" "}
-                          روز پیش
-                        </>
-                      )
-                    ) : (
-                      <>
-                        {DateDiff.inWeeks(new Date(item.sent_date), new Date())}{" "}
-                        هفته پیش
-                      </>
-                    )
-                  ) : (
-                    <>
-                      {DateDiff.inMonths(new Date(item.sent_date), new Date())}{" "}
-                      ماه پیش
-                    </>
-                  )}
-                </span>
+                <span>{DifferenceData(item.sent_date)}</span>
               </Typography>
             </Typography>
             <Typography
@@ -162,7 +123,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
               flexDirection: "column",
               gap: "10px",
               alignItems: "center",
-              color: "#00000099",
+              color: "var(--lightBlack)",
               fontSize: { xs: "8px", sm: "12px" },
               textAlign: "center",
               cursor: "pointer",
@@ -233,7 +194,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
           className="smmin:w-[12%] sm:w-[15%]"
           onClick={() => changeState(2)}
           sx={{
-            backgroundColor: "#1976D2",
+            backgroundColor: "var(--primary)",
             color: "white",
             fontSize: { xs: "10px", sm: "14px" },
             fontFamily: "IRANSans",

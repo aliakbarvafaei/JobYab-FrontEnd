@@ -1,6 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
 @import url("https://fonts.cdnfonts.com/css/iranian-sans");
 @font-face {
   font-family: "IRANSans";
@@ -19,6 +30,13 @@
     /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
       url("./assets/fonts/IRANSans/@font-face/3967f8bfcdf02e2b966e2f252738ddca.svg#IRANSans")
       format("svg"); /* iOS 4.1- */
+}
+:root {
+  --primary: #1976d2;
+  --secondary: #d8dbe2;
+  --tabBg: #e0e5eb;
+  --error: #D32F2F;
+  --lightBlack: #00000099;
 }
 body {
   direction: rtl;

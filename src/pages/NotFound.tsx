@@ -34,7 +34,7 @@ const NotFound: React.FC = () => {
         <button
           type="button"
           onClick={handleHome}
-          className="min-w-fit py-[1%] px-[3%] rounded-md bg-blue text-white font-bold text-[14px] hover:bg-white hover:border-blue hover:border-[2px] hover:border-solid hover:text-black"
+          className="min-w-fit py-[1%] px-[3%] rounded-md bg-primary text-white font-bold text-[14px] hover:bg-white hover:border-primary hover:border-[2px] hover:border-solid hover:text-black"
         >
           برگشت به صفحه اصلی
         </button>

@@ -118,7 +118,7 @@ const Step1: React.FC<{ handleNext: (values: any) => void }> = ({
             component={"p"}
             sx={{
               fontSize: "12px",
-              color: "#D32F2F",
+              color: "var(--error)",
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
@@ -172,7 +172,7 @@ const Step1: React.FC<{ handleNext: (values: any) => void }> = ({
             component={"p"}
             sx={{
               fontSize: "12px",
-              color: "#D32F2F",
+              color: "var(--error)",
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
@@ -231,7 +231,7 @@ const Step1: React.FC<{ handleNext: (values: any) => void }> = ({
             component={"p"}
             sx={{
               fontSize: "12px",
-              color: "#D32F2F",
+              color: "var(--error)",
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
@@ -288,7 +288,7 @@ const Step1: React.FC<{ handleNext: (values: any) => void }> = ({
             component={"p"}
             sx={{
               fontSize: "12px",
-              color: "#D32F2F",
+              color: "var(--error)",
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
@@ -342,7 +342,7 @@ const Step1: React.FC<{ handleNext: (values: any) => void }> = ({
             component={"p"}
             sx={{
               fontSize: "12px",
-              color: "#D32F2F",
+              color: "var(--error)",
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",
@@ -404,7 +404,7 @@ const Step1: React.FC<{ handleNext: (values: any) => void }> = ({
             component={"p"}
             sx={{
               fontSize: "12px",
-              color: "#D32F2F",
+              color: "var(--error)",
               marginLeft: "14px",
               marginRight: "12px",
               marginTop: "3px",

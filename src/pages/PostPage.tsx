@@ -6,6 +6,7 @@ import Footer from "../components/Footer/Footer";
 import SendResumeSection from "../components/modules/SendResumeSection";
 import { Divider, Grid, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import SimilarPost from "../components/modules/SimilarPost";
 import DetailSection from "../components/modules/DetailSection";
 import { useHistory, useParams } from "react-router-dom";
@@ -86,18 +87,18 @@ const PostPage = () => {
         <div
           className="smmin:w-11/12 mdmin:w-9/12"
           style={{
-            border: "1.5px solid #1976D2",
+            border: "1.5px solid var(--primary)",
             borderRadius: 8,
             marginTop: 40,
             paddingTop: 30,
-            boxShadow: "0 0 6px #1976D2",
+            boxShadow: "0 0 6px var(--primary)",
             textAlign: "justify",
             paddingInline: windowWidth.current < 450 ? 12 : 40,
             marginInline: 3,
           }}
         >
           <DetailSection data={adDetail} />
-          <Divider style={{ marginBlock: 20, background: "#1976D2" }} />
+          <Divider style={{ marginBlock: 20, background: "var(--primary)" }} />
           {/* <TempData description={adDetail?.description} /> */}
           <div className="mb-3">{adDetail?.description}</div>
         </div>
@@ -117,7 +118,7 @@ const PostPage = () => {
           <Divider
             style={{
               width: 50,
-              border: "2px solid black",
+              border: "2px solid var(--primary)",
               marginTop: 5,
               marginBottom: 20,
             }}
@@ -128,7 +129,7 @@ const PostPage = () => {
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 flex justify-center"
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
       >
         {similarAds?.map((item) => (
           <SimilarPost data={item} />

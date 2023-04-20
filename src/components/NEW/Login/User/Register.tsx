@@ -333,7 +333,7 @@ const RegisterUser: React.FC<{
               style={{
                 fontFamily: "IRANSans",
                 width: "30%",
-                color: "#00000099",
+                color: "var(--lightBlack)",
               }}
             >
               عکس پروفایل:{" "}

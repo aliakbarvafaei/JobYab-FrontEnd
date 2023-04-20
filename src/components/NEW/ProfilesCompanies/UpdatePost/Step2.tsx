@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { number, object, string, TypeOf } from "zod";
+import { number, object, TypeOf } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SingleDropdownWithSearch from "../../../SingleDropdownWithSearch";
@@ -213,7 +213,7 @@ const Step2: React.FC<{
               <Typography
                 component={"span"}
                 sx={{
-                  backgroundColor: "#555555",
+                  backgroundColor: "var(--primary)",
                   color: "white",
                   borderRadius: "4px",
                   fontSize: "10px",

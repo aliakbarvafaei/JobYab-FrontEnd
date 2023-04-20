@@ -9,11 +9,11 @@ interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
-  sx: object;
+  className: string;
 }
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, sx, ...other } = props;
+  const { children, value, index, className, ...other } = props;
 
   return (
     <div
@@ -24,7 +24,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ py: 1, ...sx }}>
+        <Box className={className} sx={{ py: 1 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -85,13 +85,13 @@ export default function BasicTabs() {
           />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0} sx={{ backgroundColor: "#e0e5eb" }}>
+      <TabPanel value={value} index={0} className="">
         <Content index={0} />
       </TabPanel>
-      <TabPanel value={value} index={1} sx={{ backgroundColor: "#e0e5eb" }}>
+      <TabPanel value={value} index={1} className="">
         <Content index={1} />
       </TabPanel>
-      <TabPanel value={value} index={2} sx={{ backgroundColor: "#e0e5eb" }}>
+      <TabPanel value={value} index={2} className="">
         <Content index={2} />
       </TabPanel>
     </Box>

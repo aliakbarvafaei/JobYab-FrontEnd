@@ -76,13 +76,7 @@ const Messages: React.FC = () => {
           <h1 className="text-[20px]">پیام‌ها</h1>
           <Button
             onClick={handleClickOpen}
-            sx={{
-              backgroundColor: "#1976D2",
-              color: "white",
-              fontSize: { xs: "8px", sm: "14px" },
-              marginTop: { xs: "10px", sm: "0px" },
-              "&:hover": { backgroundColor: "#00000099" },
-            }}
+            className="!bg-primary !text-white md:!text-[8px] mdmin:!text-[14px] md:!mt-[10px] hover:!bg-lightBlack"
           >
             نوشتن پیام
             <AddIcon sx={{ fontSize: { xs: "12px", sm: "18px" } }} />

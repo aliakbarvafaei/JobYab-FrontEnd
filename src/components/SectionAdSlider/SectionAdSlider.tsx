@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Carousel from "react-multi-carousel"; 
 import "react-multi-carousel/lib/styles.css";
 import Card from "../Ads/Card";
@@ -23,7 +23,7 @@ const responsive = {
 
 const SectionAdSlider:React.FC = () => {
   const themeClass = "bg-white";
-  const [AdsNew, setAdsNew] = useState<Array<ads>>([]);
+  const [AdsNew] = useState<Array<ads>>([]);
   // useEffect(()=>{
   //   getAdsNew()
   //     .then((response) => {
@@ -38,11 +38,11 @@ const SectionAdSlider:React.FC = () => {
     <div
       className={`${themeClass} flex flex-col items-center py-[50px] px-total`}
     >
-      <h4 className="text-[18px] text-blue">پیشنهادهای ویژه</h4>
+      <h4 className="text-[18px] text-primary">پیشنهادهای ویژه</h4>
       <h2 className="sm:text-[24px] smmin:text-[32px] font-bold">
         آگهی‌های جدید
       </h2>
-      <h6 className="w-[70px] border-b-blue border-b-solid border-b-[3px] mb-[15px]">{}</h6>
+      <h6 className="w-[70px] border-b-primary border-b-solid border-b-[3px] mb-[15px]">{}</h6>
       <div className="overflow-hidden w-[100%]">
         <Carousel
           responsive={responsive}

@@ -147,7 +147,7 @@ const NewPosts: React.FC = () => {
       className="px-[15%] sm:px-[5%] py-[2%]"
       sx={{
         fontFamily: "IRANSans",
-        backgroundColor: "#e0e5eb",
+        backgroundColor: "var(--tabBg)",
         minHeight: "90.5vh",
       }}
     >

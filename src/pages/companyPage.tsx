@@ -43,6 +43,8 @@ const CompanyPage = () => {
     getPostDetail(companyId)
       .then((data) => {
         setAdDetail(data.data.data);
+        console.log(data.data.data);
+        
       })
       .catch((err) => {
         history.push("/not-found");
@@ -65,12 +67,12 @@ const CompanyPage = () => {
       <div
         className="sm:mr-3 sm:ml-3 smmin:mr-20 smmin:ml-20"
         style={{
-          border: "1.5px solid #1976D2",
+          border: "1.5px solid var(--primary)",
           paddingInline: 40,
           borderRadius: 8,
           marginTop: 40,
           paddingTop: 30,
-          boxShadow: "0 0 6px #1976D2",
+          boxShadow: "0 0 6px var(--primary)",
           // marginInline: 80,
           paddingBlock: 20,
         }}
@@ -104,7 +106,7 @@ const CompanyPage = () => {
           >
             <Grid className="flex items-center">
               <IconButton style={{ marginLeft: 10 }}>
-                <LanguageOutlinedIcon style={{ color: "#1976D2" }} />
+                <LanguageOutlinedIcon style={{ color: "var(--primary)" }} />
               </IconButton>
               <Link to={adDetail?.user.website ?? ""}>
                 <Typography>{adDetail?.user.website ?? "---"}</Typography>
@@ -112,13 +114,19 @@ const CompanyPage = () => {
             </Grid>
             <Grid className="flex items-center">
               <IconButton style={{ marginLeft: 10 }}>
-                <PeopleAltIcon style={{ color: "#1976D2" }} />
+                <PeopleAltIcon style={{ color: "var(--primary)" }} />
               </IconButton>
-              <Typography>{adDetail?.user.number_of_personnel}</Typography>
+              <Typography>
+                {adDetail?.user.number_of_personnel === "1"
+                  ? "کمتر از 10 نفر"
+                  : adDetail?.user.number_of_personnel === "2"
+                  ? "کمتر از 100 نفر"
+                  : "بیشتر از 100 نفر"}
+              </Typography>
             </Grid>
             <Grid className="flex items-center">
               <IconButton style={{ marginLeft: 10 }}>
-                <ApartmentIcon style={{ color: "#1976D2" }} />
+                <ApartmentIcon style={{ color: "var(--primary)" }} />
               </IconButton>
               <Typography>
                 {`${adDetail?.state.title}, ${adDetail?.city.title}` ?? ""}
@@ -127,7 +135,7 @@ const CompanyPage = () => {
           </Grid>
         </Grid>
       </div>
-      {companiesPosts.length && (
+      {companiesPosts.length > 0 ? (
         <Grid
           item
           style={{
@@ -142,18 +150,20 @@ const CompanyPage = () => {
           <Divider
             style={{
               width: 50,
-              border: "2px solid black",
+              border: "2px solid var(--primary)",
               marginTop: 5,
               marginBottom: 20,
             }}
           />
         </Grid>
+      ) : (
+        <></>
       )}
       <Carousel
         responsive={responsive}
         autoPlay={true}
         infinite={true}
-        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10 flex justify-center"
+        className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
       >
         {companiesPosts?.map((item) => (
           <SimilarPost data={item} />

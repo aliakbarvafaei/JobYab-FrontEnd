@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-import {
-  Typography,
-  Stack,
-  Box,
-  Card,
-  Divider,
-  Avatar,
-  Button,
-} from "@mui/material";
+import { Typography, Stack, Box, Card, Divider, Button } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 import { eachToast, post, statesRedux } from "../../../ts/interfaces";
-import { DateDiff, addItemOnce } from "../../../ts/functions";
+import { addItemOnce } from "../../../ts/functions";
 import { useToast } from "../../../contexts/ToastState";
 import { useSelector } from "react-redux";
 import { RemoveBookmark } from "../../../services/api";
+import DifferenceData from "../../../services/utils/DifferenceData";
+import { API_URL } from "../../../config";
+import DefaultPicture from "../../../assets/images/default.png";
 
 const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
   const [labels] = useState<Array<{ id: number; title: string }>>(
@@ -68,15 +63,19 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
             gap: "30px",
           }}
         >
-          <Avatar
-            variant="circular"
-            src="avatar1.jpg"
-            sx={{ display: { xs: "none", sm: "flex" } }}
+          <img
+            src={
+              item.post.user.logo === null
+                ? DefaultPicture
+                : API_URL.split("api")[0] + (item.post.user.logo as string)
+            }
+            alt=""
+            className="rounded-[50%]"
           />
           <Stack spacing={0.5}>
             <Typography
               fontWeight={700}
-              color="#1976D2"
+              color="var(--primary)"
               sx={{
                 fontFamily: "IRANSans",
                 display: "flex",
@@ -95,66 +94,12 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
               <Typography
                 component={"span"}
                 sx={{
-                  color: "#00000099",
+                  color: "var(--lightBlack)",
                   fontSize: { xs: "8px", sm: "9px", md: "10px" },
                   marginRight: "5px",
                 }}
               >
-                <span>
-                  {DateDiff.inMonths(
-                    new Date(item.post.created_date),
-                    new Date()
-                  ) === 0 ? (
-                    DateDiff.inWeeks(
-                      new Date(item.post.created_date),
-                      new Date()
-                    ) === 0 ? (
-                      DateDiff.inDays(
-                        new Date(item.post.created_date),
-                        new Date()
-                      ) === 0 ? (
-                        DateDiff.inHour(
-                          new Date(item.post.created_date),
-                          new Date()
-                        ) === 0 ? (
-                          <>دقایقی پیش</>
-                        ) : (
-                          <>
-                            {DateDiff.inHour(
-                              new Date(item.post.created_date),
-                              new Date()
-                            )}{" "}
-                            ساعت پیش
-                          </>
-                        )
-                      ) : (
-                        <>
-                          {DateDiff.inDays(
-                            new Date(item.post.created_date),
-                            new Date()
-                          )}{" "}
-                          روز پیش
-                        </>
-                      )
-                    ) : (
-                      <>
-                        {DateDiff.inWeeks(
-                          new Date(item.post.created_date),
-                          new Date()
-                        )}{" "}
-                        هفته پیش
-                      </>
-                    )
-                  ) : (
-                    <>
-                      {DateDiff.inMonths(
-                        new Date(item.post.created_date),
-                        new Date()
-                      )}{" "}
-                      ماه پیش
-                    </>
-                  )}
-                </span>
+                <span>{DifferenceData(item.post.created_date)}</span>
               </Typography>
             </Typography>
             <Typography
@@ -202,7 +147,7 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
               <Typography
                 component={"span"}
                 sx={{
-                  backgroundColor: "#555555",
+                  backgroundColor: "var(--primary)",
                   color: "white",
                   borderRadius: "4px",
                   fontSize: "10px",

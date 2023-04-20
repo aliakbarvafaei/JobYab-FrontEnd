@@ -30,7 +30,7 @@ const SearchPage: React.FC = () => {
   const [searchInput, setSearchInput] = useState(() => {
     const parsedValue = parseURLParams(history.location.search);
     //@ts-ignore
-    if (parsedValue.searchText?.[0]) {
+    if (parsedValue && parsedValue.searchText?.[0]) {
       //@ts-ignore
       return parsedValue.searchText[0];
     } else return "";
@@ -135,6 +135,7 @@ const SearchPage: React.FC = () => {
               history.replace(
                 searchInput ? `/search?searchText=${searchInput}` : `/search/`
               );
+              
               getPrivatePosts(
                 counterPage,
                 6,
@@ -144,6 +145,7 @@ const SearchPage: React.FC = () => {
               )
                 .then((response) => {
                   setAllPosts(response.data);
+                  
                 })
                 .catch((err) => {
                   console.error(err);
@@ -173,12 +175,9 @@ const SearchPage: React.FC = () => {
             alignItems: "center",
           }}
         >
-          {allPosts?.map((postDetail) => (
+          {allPosts?.map((postDetail:any) => (
             <Post
               data={postDetail}
-              onClick={(id) => {
-                history.push(`/postPage/${id}`);
-              }}
             />
           ))}
           {!!allPosts.length && (

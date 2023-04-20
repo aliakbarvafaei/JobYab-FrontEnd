@@ -14,11 +14,11 @@ interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
-  sx: object;
+  className: string;
 }
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, sx, ...other } = props;
+  const { children, value, index, className, ...other } = props;
 
   return (
     <div
@@ -29,7 +29,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3, ...sx }}>
+        <Box className={className} sx={{ p: 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -149,44 +149,16 @@ export default function BasicTabs(user: any) {
           </div>
         </Tabs>
       </Box>
-      <TabPanel
-        value={value}
-        index={0}
-        sx={{
-          backgroundColor: "#e0e5eb",
-          minHeight: "80.9vh",
-        }}
-      >
+      <TabPanel value={value} index={0} className="min-h-[80.9vh] bg-tabBg">
         <Request />
       </TabPanel>
-      <TabPanel
-        value={value}
-        index={1}
-        sx={{
-          backgroundColor: "#e0e5eb",
-          minHeight: "80.9vh",
-        }}
-      >
+      <TabPanel value={value} index={1} className="min-h-[80.9vh] bg-tabBg">
         <Information user={user.user} />
       </TabPanel>
-      <TabPanel
-        value={value}
-        index={2}
-        sx={{
-          backgroundColor: "#e0e5eb",
-          minHeight: "80.9vh",
-        }}
-      >
+      <TabPanel value={value} index={2} className="min-h-[80.9vh] bg-tabBg">
         <Messages />
       </TabPanel>
-      <TabPanel
-        value={value}
-        index={3}
-        sx={{
-          backgroundColor: "#e0e5eb",
-          minHeight: "80.9vh",
-        }}
-      >
+      <TabPanel value={value} index={3} className="min-h-[80.9vh] bg-tabBg">
         <Bookmark />
       </TabPanel>
     </Box>

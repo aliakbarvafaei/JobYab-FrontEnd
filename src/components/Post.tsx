@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Button,
   Chip,
   Grid,
@@ -11,12 +10,14 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { PostType } from "../constants/types";
-import { DateDiff, addItemOnce } from "../ts/functions";
+import { addItemOnce } from "../ts/functions";
 import { postBookmark } from "../services/api";
 import { eachToast } from "../ts/interfaces";
 import { useToast } from "../contexts/ToastState";
 import DefaultPicture from "../assets/images/default.png";
 import { useHistory } from "react-router-dom";
+import DifferenceData from "../services/utils/DifferenceData";
+import { API_URL } from "../config";
 
 interface PostProps {
   onClick?: (id: number) => void;
@@ -35,11 +36,19 @@ const Post = ({ onClick, data }: PostProps) => {
         borderRadius: 8,
         border: "2px solid #f5f5f5",
       }}
+      onClick={() => {
+        window.location.href = `/postPage/${data.id}`;
+      }}
     >
       <Grid item>
-        <Avatar
-          sx={{ width: 80, height: 80 }}
-          src={data.user.logo ?? DefaultPicture}
+        <img
+          className="!w-[80px] !h-[80px] cursor-pointer rounded-[50%]"
+          src={
+            data?.user.logo === null
+              ? DefaultPicture
+              : API_URL.split("api")[0] + (data?.user.logo as string)
+          }
+          alt=""
         />
       </Grid>
       <Grid item style={{ marginRight: 10, width: "90%" }}>
@@ -52,59 +61,15 @@ const Post = ({ onClick, data }: PostProps) => {
           }}
         >
           <Grid item>
-            <Typography>{data.title}</Typography>
+            <Typography className="cursor-pointer">{data.title}</Typography>
           </Grid>
           <Grid item className="flex items-center">
             <Typography>
-              <span>
-                {DateDiff.inMonths(new Date(data.created_date), new Date()) ===
-                0 ? (
-                  DateDiff.inWeeks(new Date(data.created_date), new Date()) ===
-                  0 ? (
-                    DateDiff.inDays(new Date(data.created_date), new Date()) ===
-                    0 ? (
-                      DateDiff.inHour(
-                        new Date(data.created_date),
-                        new Date()
-                      ) === 0 ? (
-                        <>دقایقی پیش</>
-                      ) : (
-                        <>
-                          {DateDiff.inHour(
-                            new Date(data.created_date),
-                            new Date()
-                          )}{" "}
-                          ساعت پیش
-                        </>
-                      )
-                    ) : (
-                      <>
-                        {DateDiff.inDays(
-                          new Date(data.created_date),
-                          new Date()
-                        )}{" "}
-                        روز پیش
-                      </>
-                    )
-                  ) : (
-                    <>
-                      {DateDiff.inWeeks(
-                        new Date(data.created_date),
-                        new Date()
-                      )}{" "}
-                      هفته پیش
-                    </>
-                  )
-                ) : (
-                  <>
-                    {DateDiff.inMonths(new Date(data.created_date), new Date())}{" "}
-                    ماه پیش
-                  </>
-                )}
-              </span>
+              <span>{DifferenceData(data.created_date)}</span>
             </Typography>
             <IconButton
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 postBookmark(data.id.toString() ?? "")
                   .then((res) => {
                     if (res.status === 201) {
@@ -140,14 +105,14 @@ const Post = ({ onClick, data }: PostProps) => {
                   });
               }}
             >
-              <BookmarkBorderOutlinedIcon style={{ color: "#1976D2" }} />
+              <BookmarkBorderOutlinedIcon className="text-primary" />
             </IconButton>
           </Grid>
         </Grid>
         <Grid item style={{ display: "flex", alignItems: "center" }}>
           <Grid item>
             <IconButton disabled>
-              <BusinessIcon style={{ color: "#1976D2" }} />
+              <BusinessIcon className="text-primary" />
             </IconButton>
           </Grid>
           <Grid item>
@@ -159,7 +124,7 @@ const Post = ({ onClick, data }: PostProps) => {
         <Grid item style={{ display: "flex", alignItems: "center" }}>
           <Grid item>
             <IconButton disabled>
-              <LocationOnIcon style={{ color: "#1976D2" }} />
+              <LocationOnIcon className="text-primary" />
             </IconButton>
           </Grid>
           <Grid item>
@@ -171,7 +136,7 @@ const Post = ({ onClick, data }: PostProps) => {
         <Grid item style={{ display: "flex", alignItems: "center" }}>
           <Grid item>
             <IconButton disabled>
-              <FactCheckIcon style={{ color: "#1976D2" }} />
+              <FactCheckIcon className="text-primary" />
             </IconButton>
           </Grid>
           <Grid item>
@@ -192,11 +157,7 @@ const Post = ({ onClick, data }: PostProps) => {
             {data?.skills.map(({ title: skillTitle }) => (
               <Chip
                 label={skillTitle}
-                style={{
-                  borderRadius: 8,
-                  background: "#1976D2",
-                  color: "white",
-                }}
+                className="!text-white !bg-primary !rounded-[8px]"
               />
             ))}
           </Grid>

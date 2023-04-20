@@ -82,7 +82,7 @@ const Card: React.FC<{ item: ads; dir: string }> = ({ item, dir }) => {
           {item.title}{" "}
         </div>
       </Link>
-      <div id="price" className="text-right text-blue pt-[10px] opacity-90">
+      <div id="price" className="text-right text-primary pt-[10px] opacity-90">
         <h3 className="sm:text-[8px] md:text-[10px] mdmin:text-[14px] font-bold ">
           <span>قیمت : </span>
           <span>

@@ -396,7 +396,7 @@ const RegisterCompany: React.FC<{
               <MenuItem value={"3"}>بیشتر از 100</MenuItem>
             </Select>
             {companyRegiter.formState.errors["count"] ? (
-              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANSans]">
+              <p className="text-[12px] text-error mx-[14px] mt-[3px] font-[IRANSans]">
                 {companyRegiter.formState.errors["count"].message}
               </p>
             ) : (
@@ -439,7 +439,7 @@ const RegisterCompany: React.FC<{
               <MenuItem value={"مهندسی نرم افزار"}>مهندسی نرم افزار</MenuItem>
             </Select>
             {companyRegiter.formState.errors["activity"] ? (
-              <p className="text-[12px] text-[#D32F2F] mx-[14px] mt-[3px] font-[IRANSans]">
+              <p className="text-[12px] text-error mx-[14px] mt-[3px] font-[IRANSans]">
                 {companyRegiter.formState.errors["activity"].message}
               </p>
             ) : (
@@ -493,7 +493,7 @@ const RegisterCompany: React.FC<{
               style={{
                 fontFamily: "IRANSans",
                 width: "30%",
-                color: "#00000099",
+                color: "var(--lightBlack)",
               }}
             >
               لوگوی شرکت:{" "}
