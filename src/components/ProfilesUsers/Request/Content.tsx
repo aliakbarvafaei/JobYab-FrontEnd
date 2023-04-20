@@ -12,7 +12,7 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
     if (index === 2) {
       getMySentResumes(index + 2)
         .then((response) => {
-          setResumes((old: null | Array<sentResume>) => {            
+          setResumes((old: null | Array<sentResume>) => {
             if (old !== null) return [...old, ...response.data.data];
             else return response.data.data;
           });
@@ -46,6 +46,7 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
           gap: "10px",
           justifyContent: "center",
           alignItems: "center",
+          borderRadius: 4,  
         }}
       >
         {resumes === null ? (

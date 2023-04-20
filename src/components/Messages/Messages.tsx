@@ -95,6 +95,7 @@ const Messages: React.FC = () => {
               gap: "10px",
               justifyContent: "center",
               alignItems: "center",
+              borderRadius: 4,
             }}
           >
             {messages.length > 0 ? (

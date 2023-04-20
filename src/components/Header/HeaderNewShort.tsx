@@ -249,6 +249,12 @@ const HeaderNewShort = () => {
               {settings.map((setting) => (
                 <MenuItem
                   key={setting.title}
+                  sx={{
+                    "&:hover": {
+                      background: "#1976D2",
+                    },
+                  }}
+                  className="text-primary hover:text-white"
                   onClick={() => {
                     if (setting.title === "خروج") {
                       history.push("/home");
