@@ -32,7 +32,10 @@ const Home: React.FC = () => {
       <HeaderNewComplete />
       <div
         className="px-total py-[12%] flex flex-col font-bold items-center mdmin:w-[60%] md:w-[100%]"
-        style={{ backgroundImage: 'url("../assets/images/bg-body.jpeg")' }}
+        // style={{
+        //   backgroundImage: 'url("../assets/images/CompaniesBackground.jpg")',
+        //   backgroundSize: "20ox 30px",
+        // }}
       >
         <h2 className="text-primary md:text-[75px] lg:text-[60px] xl:text-[85px] xlmin:text-[90px]">
           سال 1402
