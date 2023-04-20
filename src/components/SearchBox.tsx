@@ -15,7 +15,6 @@ export default function SearchBox({
 }: SearchBoxProps & InputBaseProps) {
   return (
     <Paper
-      component="form"
       sx={{
         display: "flex",
         alignItems: "center",

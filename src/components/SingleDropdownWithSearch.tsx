@@ -38,7 +38,7 @@ const useStyle = makeStyles((theme) => ({
     fontWeight: 500,
     fontSize: "0.75rem",
     textAlign: "left",
-    color: "#00000099",
+    color: "var(--lightBlack)",
     marginBottom: "0.625rem",
   },
   control: ({
@@ -82,7 +82,7 @@ const useStyle = makeStyles((theme) => ({
     textAlign: "center",
     fontSize: "0.875rem",
     fontWeight: 500,
-    color: "#00000099",
+    color: "var(--lightBlack)",
     backgroundColor: theme.palette.background.paper,
     cursor: "pointer",
     "&:first-child": {

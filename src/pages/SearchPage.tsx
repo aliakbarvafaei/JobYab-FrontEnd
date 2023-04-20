@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
-import Header from "../components/NEW/ProfilesCompanies/Header";
+import Header from "../components/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
 import {
   getJobTypes,
@@ -139,6 +139,7 @@ const SearchPage: React.FC = () => {
               history.replace(
                 searchInput ? `/search?searchText=${searchInput}` : `/search/`
               );
+              
               getPrivatePosts(
                 counterPage,
                 6,
@@ -148,6 +149,7 @@ const SearchPage: React.FC = () => {
               )
                 .then((response) => {
                   setAllPosts(response.data);
+                  
                 })
                 .catch((err) => {
                   console.error(err);
@@ -177,12 +179,9 @@ const SearchPage: React.FC = () => {
             alignItems: "center",
           }}
         >
-          {allPosts?.map((postDetail) => (
+          {allPosts?.map((postDetail:any) => (
             <Post
               data={postDetail}
-              onClick={(id) => {
-                history.push(`/postPage/${id}`);
-              }}
             />
           ))}
           {!!allPosts.length && (
@@ -213,7 +212,7 @@ const SearchPage: React.FC = () => {
           )}
         </div>
       </div>
-      <div style={{ marginTop: 400 }}>
+      <div style={{ marginTop: 40 }}>
         <Footer />
       </div>
     </div>

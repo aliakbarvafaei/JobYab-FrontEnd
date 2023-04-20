@@ -15,12 +15,13 @@ const UrgentCard = ({ data, isUrgent }: UrgentProps) => {
   const history = useHistory();
   return (
     <Paper
+      className={isUrgent ? "md:w-[95%] mdmin:w-[46%]" : "w-[95%]"}
       style={{
-        border: "1.5px solid gray",
+        // border: "1.5px solid gray",
+        backgroundColor: "#f9f9f9",
         margin: 5,
         padding: 6,
         borderRadius: 8,
-        width: isUrgent ? "50%" : "95%",
         cursor: "pointer",
       }}
       onClick={() => {
@@ -28,7 +29,7 @@ const UrgentCard = ({ data, isUrgent }: UrgentProps) => {
       }}
     >
       <Grid className="flex justify-between item-center">
-        <div className="text-blue">{data.title}</div>
+        <div className="text-primary">{data.title}</div>
         {isUrgent ? (
           <Badge color="primary" badgeContent={"فوری"} className="mt-3 ml-5" />
         ) : (
@@ -37,13 +38,13 @@ const UrgentCard = ({ data, isUrgent }: UrgentProps) => {
           </div>
         )}
       </Grid>
-      <Grid className="flex mt-3">
-        <Grid className="flex ml-5">
-          <ApartmentIcon />
+      <Grid className="flex mt-3 font-light text-[12px]">
+        <Grid className="flex ml-5 items-center gap-[5px]">
+          <ApartmentIcon className="!w-[15px] !h-[15px]" />
           <p>{data.user.company_persian_name}</p>
         </Grid>
-        <Grid className="flex">
-          <LocationOnIcon />
+        <Grid className="flex items-center gap-[5px]">
+          <LocationOnIcon className="!w-[15px] !h-[15px]" />
           <p>{data.state.title}</p>
         </Grid>
       </Grid>

@@ -101,8 +101,14 @@ export interface InformationUserTypes {
 }
 export interface filtersInterface {
   searchInput: string;
-  category: string;
-  province: string;
+  category: string[];
+  type: string[];
+  region: string[];
+  room: string[];
+  priceRange: {
+    from: number;
+    to: number;
+  };
 }
 export interface ads {
   id: number;
@@ -144,4 +150,44 @@ export interface ads {
   created_at: string;
   is_active: boolean;
   source: string;
+}
+
+export interface post {
+  id: number;
+  title: string;
+  city: { id: number; title: string };
+  cooperation_type: string;
+  created_date: string;
+  degree: string;
+  description: string;
+  experience: string;
+  job_type: { id: number; title: string };
+  salary: string;
+  sarbazi: string;
+  sex: string;
+  skills: Array<{ id: number; title: string }>;
+  state: { id: number; title: string };
+  user: any;
+}
+
+export interface sentResume {
+  id: number;
+  state: string;
+  sent_date: string;
+  resume: string;
+  post: post;
+}
+export interface reciveResume {
+  id: number;
+  state: string;
+  sent_date: string;
+  resume: string;
+  post: post;
+  user: {
+    full_name: string;
+    phone_number: string;
+    data: {
+      username: string;
+    };
+  };
 }
