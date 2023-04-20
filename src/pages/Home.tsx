@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderNewComplete from "../components/Header/HeaderNewComplete";
 import bronze from "../assets/images/bronze.jpg";
 import silver from "../assets/images/silver.jpg";
@@ -8,16 +8,34 @@ import SectionAdSlider from "../components/SectionAdSlider/SectionAdSlider";
 import { useHistory } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import Footer from "../components/Footer/Footer";
+import { Divider, Grid, Typography } from "@mui/material";
+import { getRecentPosts, getUrgentPosts } from "../services/api";
+import UrgentCard from "../components/UrgentCard";
+import { PostType } from "../constants/types";
 
-const Home : React.FC = ()=> {
+const Home: React.FC = () => {
   const history = useHistory();
-
+  const [urgentPosts, setUrgentPosts] = useState<PostType[]>([]);
+  const [recentPosts, setRecentPosts] = useState<PostType[]>([]);
+  useEffect(() => {
+    getUrgentPosts().then((data) => {
+      setUrgentPosts(data.data);
+    });
+  }, []);
+  useEffect(() => {
+    getRecentPosts().then((data) => {
+      setRecentPosts(data.data);
+    });
+  }, []);
   return (
     <>
       <MobileMenu />
       <HeaderNewComplete />
-      <SectionAdSlider />
-      <div className="px-total py-[12%] flex flex-col font-bold items-center mdmin:w-[60%] md:w-[100%]">
+      {/* <SectionAdSlider /> */}
+      <div
+        className="px-total py-[12%] flex flex-col font-bold items-center mdmin:w-[60%] md:w-[100%]"
+        style={{ backgroundImage: 'url("../assets/images/bg-body.jpeg")' }}
+      >
         <h2 className="text-blue md:text-[75px] lg:text-[60px] xl:text-[85px] xlmin:text-[90px]">
           سال 1402
         </h2>
@@ -28,10 +46,87 @@ const Home : React.FC = ()=> {
           بهترین پیشنهادها
         </p>
       </div>
+      <Grid className="w-full py-[12%] px-[12%] flex font-bold items-center">
+        <Grid
+          xs={12}
+          sm={9}
+          style={{
+            width: "65%",
+            border: "1.5px solid #1976D2",
+            borderRadius: 8,
+            boxShadow: "0 0 6px #1976D2",
+            paddingBottom: 5,
+          }}
+        >
+          <Grid
+            item
+            style={{
+              marginTop: 20,
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography style={{ fontSize: 24 }}>آگهی های فوری</Typography>
+            <Divider
+              style={{
+                width: 50,
+                border: "2px solid black",
+                marginTop: 5,
+                marginBottom: 20,
+              }}
+            />
+          </Grid>
+          <div style={{ display: "flex" }}>
+            {urgentPosts.map((item) => (
+              <UrgentCard data={item} isUrgent />
+            ))}
+          </div>
+        </Grid>
+        <Grid
+          xs={12}
+          sm={3}
+          style={{
+            width: "35%",
+            border: "1.5px solid #1976D2",
+            borderRadius: 8,
+            boxShadow: "0 0 6px #1976D2",
+            marginRight: 10,
+            paddingBottom: 5,
+          }}
+        >
+          <Grid
+            item
+            style={{
+              marginTop: 20,
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography style={{ fontSize: 24 }}>آخرین آگهی ها</Typography>
+            <Divider
+              style={{
+                width: 50,
+                border: "2px solid black",
+                marginTop: 5,
+                marginBottom: 20,
+              }}
+            />
+          </Grid>
+          <div className="mr-5">
+            {recentPosts.map((item) => (
+              <UrgentCard data={item} isUrgent={false} />
+            ))}
+          </div>
+        </Grid>
+      </Grid>
       <section className="flex justify-center bg-[#EEEEEE]">
         <div className="bg-white smmin:h-[450px] min-w-[50%] flex smmin:flex-row sm:flex-col justify-center smmin:gap-[8%] sm:gap-[10px] rounded-3xl py-[3%] px-[2%] my-[3%] mx-[5%]">
           <div className="flex flex-col justify-between items-center text-center gap-[5%]">
-            <img src={bronze} className="h-[124px] w-[100px]" alt="برنز"/>
+            <img src={bronze} className="h-[124px] w-[100px]" alt="برنز" />
             <h3 className="font-bold">جاب‌یاب برنزی</h3>
             <ul className="">
               <li className="text-[12px]">✔ امکان اضافه کردن تا سه آگهی</li>
@@ -41,59 +136,62 @@ const Home : React.FC = ()=> {
               <span className="text-blue font-bold text-[20px]">رایگان</span>
             </p>
             <button
-                type="button"
-                disabled={true}
-                className="max-w-fit min-w-[100px] rounded-md py-[5%] px-[14%] bg-gray text-white font-bold mmmin:text-[14px] mm:text-[10px]"
-              >
-                پیش‌فرض
+              type="button"
+              disabled={true}
+              className="max-w-fit min-w-[100px] rounded-md py-[5%] px-[14%] bg-gray text-white font-bold mmmin:text-[14px] mm:text-[10px]"
+            >
+              پیش‌فرض
             </button>
           </div>
           <div className="border-darkModeGray border-[1px] shadow-[0_2px_4px_0_rgba(200,200,200)]"></div>
           <div className="flex flex-col justify-between items-center text-center gap-[5%]">
-            <img src={silver} className="h-[126px] w-[100px]" alt="نقره"/>
+            <img src={silver} className="h-[126px] w-[100px]" alt="نقره" />
             <h3 className="font-bold">جاب‌یاب نقره‌ای</h3>
             <ul className="">
               <li className="text-[12px]">✔ امکان اضافه کردن تا ده آگهی</li>
             </ul>
             <p className="flex flex-col">
               <span className="text-[12px]"> قیمت</span>
-              <span className="text-blue font-bold text-[20px]">۲۰,۰۰۰ تومان</span>
+              <span className="text-blue font-bold text-[20px]">
+                ۲۰,۰۰۰ تومان
+              </span>
             </p>
             <button
-                type="button"
-                className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-blue text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-blue hover:border-[2px] hover:border-solid hover:text-black"
-                onClick={()=>history.push('/profile')}
-              >
-                ارتقا
+              type="button"
+              className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-blue text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-blue hover:border-[2px] hover:border-solid hover:text-black"
+              onClick={() => history.push("/profile")}
+            >
+              ارتقا
             </button>
           </div>
           <div className="border-darkModeGray border-[1px] shadow-[0_2px_4px_0_rgba(200,200,200)]"></div>
           <div className="flex flex-col justify-between items-center text-center gap-[5%]">
-            <img src={gold} className="h-[126px] w-[110px]" alt="طلا"/>
+            <img src={gold} className="h-[126px] w-[110px]" alt="طلا" />
             <h3 className="font-bold">جاب‌یاب طلایی</h3>
             <ul className="">
               <li className="text-[12px]">✔ امکان اضافه کردن نامحدود آگهی</li>
             </ul>
             <p className="flex flex-col">
               <span className="text-[12px]"> قیمت</span>
-              <span className="text-blue font-bold text-[20px]">۵۰,۰۰۰ تومان</span>
+              <span className="text-blue font-bold text-[20px]">
+                ۵۰,۰۰۰ تومان
+              </span>
             </p>
             <button
-                type="button"
-                className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-blue text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-blue hover:border-[2px] hover:border-solid hover:text-black"
-                onClick={()=>history.push('/profile')}
-              >
-                ارتقا
+              type="button"
+              className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-blue text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-blue hover:border-[2px] hover:border-solid hover:text-black"
+              onClick={() => history.push("/profile")}
+            >
+              ارتقا
             </button>
           </div>
-
         </div>
       </section>
-      
+
       <Option />
       <Footer />
     </>
   );
-}
+};
 
 export default Home;

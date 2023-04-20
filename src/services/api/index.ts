@@ -269,6 +269,8 @@ export const getCompaniesPostsPublic = (id: string) =>
 export const getStates = () => axiosInstance.get(`/states/`);
 
 export const getJobTypes = () => axiosInstance.get(`/jobtypes/`);
+export const getUrgentPosts = () => axiosInstance.get(`/posts/urgent/`);
+export const getRecentPosts = () => axiosInstance.get(`/posts/recent/`);
 
 /** */
 
