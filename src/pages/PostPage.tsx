@@ -13,7 +13,7 @@ import { useHistory, useParams } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
-import Header from "../components/NEW/ProfilesCompanies/Header";
+import Header from "../components/ProfilesCompanies/Header";
 import { PostType, UserType } from "../constants/types";
 import { getPostDetail, getSimilarPosts, getUser } from "../services/api";
 

@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
-import Header from "../components/NEW/ProfilesCompanies/Header";
+import Header from "../components/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
 import { getJobTypes, getPrivatePosts, getStates } from "../services/api";
 import { GeneralType, StateType } from "../constants/types";

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import HeaderNewShort from "./HeaderNewShort";
 import { statesRedux } from "../../ts/interfaces";
 import { useSelector } from "react-redux";
-import Header from "../NEW/ProfilesCompanies/Header";
+import Header from "../ProfilesCompanies/Header";
 
 const HeaderNewComplete: React.FC = () => {
   const history = useHistory();

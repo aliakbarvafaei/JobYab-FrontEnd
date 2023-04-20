@@ -4,7 +4,6 @@ import bronze from "../assets/images/bronze.jpg";
 import silver from "../assets/images/silver.jpg";
 import gold from "../assets/images/gold.jpg";
 import Option from "../components/Option/Option";
-// import SectionAdSlider from "../components/SectionAdSlider/SectionAdSlider";
 import { useHistory } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import Footer from "../components/Footer/Footer";
@@ -31,7 +30,6 @@ const Home: React.FC = () => {
     <>
       <MobileMenu />
       <HeaderNewComplete />
-      {/* <SectionAdSlider /> */}
       <div
         className="px-total py-[12%] flex flex-col font-bold items-center mdmin:w-[60%] md:w-[100%]"
         style={{ backgroundImage: 'url("../assets/images/bg-body.jpeg")' }}
@@ -46,11 +44,11 @@ const Home: React.FC = () => {
           بهترین پیشنهادها
         </p>
       </div>
-      <Grid className="w-full mb-[8%] px-[5%] flex flex-wrap gap-[10px] font-bold items-center md:h-[700px] mdmin:h-[350px]">
+      <Grid className="w-full mb-[8%] px-[5%] flex flex-wrap gap-[10px] font-bold items-center md:h-[700px] mdmin:h-[350px] justify-between">
         <Grid
           xs={12}
           sm={9}
-          className="md:!w-[100%] mdmin:!w-[62%] md:h-[50%] mdmin:h-[100%]"
+          className="md:!w-[100%] mdmin:!w-[64%] md:h-[50%] mdmin:h-[100%]"
           style={{
             border: "1.5px solid var(--primary)",
             borderRadius: 8,
@@ -98,7 +96,7 @@ const Home: React.FC = () => {
         <Grid
           xs={12}
           sm={3}
-          className="md:!w-[100%] mdmin:!w-[32%] md:h-[50%] mdmin:h-[100%]"
+          className="md:!w-[100%] mdmin:!w-[34%] md:h-[50%] mdmin:h-[100%]"
           style={{
             border: "1.5px solid var(--primary)",
             borderRadius: 8,
@@ -172,7 +170,7 @@ const Home: React.FC = () => {
             <button
               type="button"
               className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-primary text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-primary hover:border-[2px] hover:border-solid hover:text-black"
-              onClick={() => history.push("/profile")}
+              onClick={() => history.push("/profile-company")}
             >
               ارتقا
             </button>
@@ -193,7 +191,7 @@ const Home: React.FC = () => {
             <button
               type="button"
               className="max-w-fit min-w-[100px] py-[5%] px-[14%] rounded-md bg-primary text-white font-bold mmmin:text-[14px] mm:text-[10px] hover:bg-white hover:border-primary hover:border-[2px] hover:border-solid hover:text-black"
-              onClick={() => history.push("/profile")}
+              onClick={() => history.push("/profile-company")}
             >
               ارتقا
             </button>

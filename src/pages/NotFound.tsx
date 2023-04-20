@@ -6,7 +6,7 @@ import MobileMenu from "../components/MobileMenu/MobileMenu";
 import TitlePages from "../components/TitlePages/TitlePages";
 import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
-import Header from "../components/NEW/ProfilesCompanies/Header";
+import Header from "../components/ProfilesCompanies/Header";
 
 const NotFound: React.FC = () => {
   const history = useHistory();
