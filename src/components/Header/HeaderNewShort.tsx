@@ -210,7 +210,6 @@ const HeaderNewShort = () => {
                       height: { xs: "30px", sm: "40px" },
                       fontSize: { xs: "0.8rem", sm: "1.25rem" },
                     }}
-                    alt="Remy Sharp"
                     src="/static/images/avatar/2.jpg"
                   />
                   <div className="text-[14px] pr-2 text-white md:hidden">
