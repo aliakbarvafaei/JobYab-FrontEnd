@@ -17,20 +17,22 @@ import ApartmentIcon from "@mui/icons-material/Apartment";
 import Carousel from "react-multi-carousel";
 import SimilarPost from "../components/modules/SimilarPost";
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 1279 },
-    items: 4,
-  },
-  desktop: {
-    breakpoint: { max: 1279, min: 767 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 767, min: 0 },
-    items: 2,
-  },
+const responsive = (length: number) => {
+  return {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 1279 },
+      items: length >= 4 ? 4 : length,
+    },
+    desktop: {
+      breakpoint: { max: 1279, min: 767 },
+      items: length >= 3 ? 3 : length,
+    },
+    tablet: {
+      breakpoint: { max: 767, min: 0 },
+      items: length >= 2 ? 2 : length,
+    },
+  };
 };
 const CompanyPage = () => {
   const history = useHistory();
@@ -44,7 +46,6 @@ const CompanyPage = () => {
       .then((data) => {
         setAdDetail(data.data.data);
         console.log(data.data.data);
-        
       })
       .catch((err) => {
         history.push("/not-found");
@@ -160,7 +161,7 @@ const CompanyPage = () => {
         <></>
       )}
       <Carousel
-        responsive={responsive}
+        responsive={responsive(companiesPosts.length)}
         autoPlay={true}
         infinite={true}
         className="sm:mr-3 sm:ml-3 smmin:mr-10 smmin:ml-10"
