@@ -13,7 +13,12 @@ import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/NEW/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
-import { getJobTypes, getPrivatePosts, getStates } from "../services/api";
+import {
+  getJobTypes,
+  getPrivatePosts,
+  getStates,
+  getTotalPosts,
+} from "../services/api";
 import { GeneralType, StateType } from "../constants/types";
 import { parseURLParams } from "../services/utils/ParseURL";
 
@@ -27,21 +32,20 @@ const SearchPage: React.FC = () => {
   const [category, setCategory] = useState<string>("");
   const [province, setProvince] = useState<string>("");
   const [counterPage, setcounterPage] = useState(1);
+  const [nTotalPosts, setNTotalPosts] = useState(0);
   const [searchInput, setSearchInput] = useState(() => {
     const parsedValue = parseURLParams(history.location.search);
     //@ts-ignore
-    if (parsedValue.searchText?.[0]) {
+    if (parsedValue && parsedValue.searchText?.[0]) {
       //@ts-ignore
       return parsedValue.searchText[0];
     } else return "";
   });
   useEffect(() => {
-    // const filters: filtersInterface = {
-    //   searchInput: searchInput,
-    //   category: category ?? "",
-    //   province: province ?? "",
-    // };
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    getTotalPosts().then((data) => {
+      setNTotalPosts(data.data.length);
+    });
     getPrivatePosts(
       counterPage,
       6,
@@ -183,10 +187,27 @@ const SearchPage: React.FC = () => {
           ))}
           {!!allPosts.length && (
             <CustomPagination
-              count={allPosts.length < 6 ? 1 : allPosts.length % 6}
+              count={
+                nTotalPosts % 3 === 0
+                  ? nTotalPosts / 3
+                  : Math.floor(allPosts.length / 6) + 1
+              }
               page={counterPage}
               onChange={(_, value) => {
                 setcounterPage(value);
+                getPrivatePosts(
+                  value,
+                  6,
+                  searchInput,
+                  category === "همه دسته‌بندی‌ها" ? "" : category,
+                  province === "تمام استان‌ها" ? "" : province
+                )
+                  .then((response) => {
+                    setAllPosts(response.data);
+                  })
+                  .catch((err) => {
+                    console.error(err);
+                  });
               }}
             />
           )}

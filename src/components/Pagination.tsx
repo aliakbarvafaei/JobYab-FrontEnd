@@ -8,6 +8,7 @@ const CustomPagination = ({ ...props }: PaginationProps) => {
       color="primary"
       renderItem={(item) => (
         <PaginationItem
+        style={{borderRadius:'50%'}}
           slots={{ previous: ChevronRightIcon, next: ChevronLeftIcon }}
           {...item}
         />

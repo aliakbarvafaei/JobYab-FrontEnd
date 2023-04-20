@@ -253,6 +253,7 @@ export const getPrivatePosts = (
       province: province,
     },
   });
+export const getTotalPosts = () => axiosInstance.post(`/posts/`);
 // export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
 export const getPostDetail = (idAd: string) =>
