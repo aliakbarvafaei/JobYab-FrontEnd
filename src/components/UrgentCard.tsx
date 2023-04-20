@@ -17,7 +17,8 @@ const UrgentCard = ({ data, isUrgent }: UrgentProps) => {
     <Paper
       className={isUrgent ? "md:w-[95%] mdmin:w-[46%]" : "w-[95%]"}
       style={{
-        border: "1.5px solid gray",
+        // border: "1.5px solid gray",
+        backgroundColor: "#f9f9f9",
         margin: 5,
         padding: 6,
         borderRadius: 8,
