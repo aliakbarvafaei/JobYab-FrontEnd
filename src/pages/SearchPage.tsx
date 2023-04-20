@@ -180,6 +180,17 @@ const SearchPage: React.FC = () => {
               onClick={(id) => {
                 window.location.href = `/postPage/${id}`;
               }}
+              updateData={() => {
+                getPrivatePosts(
+                  counterPage,
+                  6,
+                  searchInput,
+                  category === "همه دسته‌بندی‌ها" ? "" : category,
+                  province === "تمام استان‌ها" ? "" : province
+                ).then((response) => {
+                  setAllPosts(response.data);
+                });
+              }}
             />
           ))}
           {!!allPosts.length && (

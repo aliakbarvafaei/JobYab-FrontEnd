@@ -77,6 +77,17 @@ const PostPage = () => {
           // history.push(`/company/${adDetail?.user.id}`);
           history.push(`/company/${adDetail?.id}`);
         }}
+        updateData={() => {
+          getPostDetail(id)
+            .then((data) => {
+              setAdDetail(data.data.data);
+            })
+            .catch((err) => {
+              history.push("/not-found");
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              console.error(err);
+            });
+        }}
       />
       <div
         className="flex lg:flex-col lgmin:flex-row lg:justify-center lg:items-center lgmin:mr-6=4 lgmin:ml-4 xlmin:mr-6 xlmin:ml-6"

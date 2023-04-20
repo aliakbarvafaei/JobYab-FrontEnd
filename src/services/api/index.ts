@@ -140,13 +140,13 @@ export const getTotalPosts = () => axiosInstance.get(`/posts/`, tokenUser());
 // export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
 export const getPostDetail = (idAd: string) =>
-  axiosInstance.get(`/posts/${idAd}/`);
+  axiosInstance.get(`/posts/${idAd}/`, tokenUser());
 
 export const getSimilarPosts = (idAd: string) =>
-  axiosInstance.get(`/posts/related/${idAd}/`);
+  axiosInstance.get(`/posts/related/${idAd}/`, tokenUser());
 
 export const getCompaniesPostsPublic = (id: string) =>
-  axiosInstance.get(`/posts/company/${id}/`);
+  axiosInstance.get(`/posts/company/${id}/`, tokenUser());
 /** */
 
 /** General */

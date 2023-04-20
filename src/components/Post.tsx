@@ -3,9 +3,10 @@ import BusinessIcon from "@mui/icons-material/Business";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 import { PostType } from "../constants/types";
 import { addItemOnce } from "../ts/functions";
-import { postBookmark } from "../services/api";
+import { RemoveBookmark, postBookmark } from "../services/api";
 import { eachToast, statesRedux } from "../ts/interfaces";
 import { useToast } from "../contexts/ToastState";
 import DefaultPicture from "../assets/images/default.png";
@@ -17,8 +18,9 @@ import { useSelector } from "react-redux";
 interface PostProps {
   onClick?: (id: number) => void;
   data: PostType;
+  updateData?: () => void;
 }
-const Post = ({ onClick, data }: PostProps) => {
+const Post = ({ onClick, data, updateData }: PostProps) => {
   const { setToastState } = useToast();
   const history = useHistory();
   const { token } = useSelector((state: statesRedux) => state.userAuth);
@@ -64,44 +66,88 @@ const Post = ({ onClick, data }: PostProps) => {
               disabled={!token}
               onClick={(e) => {
                 e.stopPropagation();
-                postBookmark(data.id.toString() ?? "")
-                  .then((res) => {
-                    if (res.status === 201) {
-                      setToastState((old: Array<eachToast>) =>
-                        addItemOnce(old.slice(), {
-                          title: "1",
-                          description:
-                            "آگهی با موفقیت در نشان شده‌ها قرار داده شد.",
-                          key: Math.random(),
-                        })
-                      );
-                    }
-                  })
-                  .catch((err) => {
-                    if (err.response.status === 401) {
-                      setToastState((old: Array<eachToast>) =>
-                        addItemOnce(old.slice(), {
-                          title: "2",
-                          description: "ابتدا باید در وبسایت وارد شوید.",
-                          key: Math.random(),
-                        })
-                      );
-                      history.replace("/login");
-                    } else {
-                      setToastState((old: Array<eachToast>) =>
-                        addItemOnce(old.slice(), {
-                          title: "2",
-                          description: "مشکلی پیش آمده است.",
-                          key: Math.random(),
-                        })
-                      );
-                    }
-                  });
+                if (data?.is_bookmark) {
+                  RemoveBookmark(data.id || 0)
+                    .then((res) => {
+                      if (res.status === 201) {
+                        setToastState((old: Array<eachToast>) =>
+                          addItemOnce(old.slice(), {
+                            title: "1",
+                            description:
+                              "آگهی با موفقیت از لیست نشان شده‌ها حذف شد.",
+                            key: Math.random(),
+                          })
+                        );
+                        updateData?.();
+                      }
+                    })
+                    .catch((err) => {
+                      if (err.response.status === 401) {
+                        setToastState((old: Array<eachToast>) =>
+                          addItemOnce(old.slice(), {
+                            title: "2",
+                            description: "ابتدا باید در وبسایت وارد شوید.",
+                            key: Math.random(),
+                          })
+                        );
+                        history.replace("/login");
+                      } else {
+                        setToastState((old: Array<eachToast>) =>
+                          addItemOnce(old.slice(), {
+                            title: "2",
+                            description: "مشکلی پیش آمده است.",
+                            key: Math.random(),
+                          })
+                        );
+                      }
+                    });
+                } else {
+                  postBookmark(data.id.toString() ?? "")
+                    .then((res) => {
+                      if (res.status === 201) {
+                        setToastState((old: Array<eachToast>) =>
+                          addItemOnce(old.slice(), {
+                            title: "1",
+                            description:
+                              "آگهی با موفقیت در نشان شده‌ها قرار داده شد.",
+                            key: Math.random(),
+                          })
+                        );
+                        updateData?.();
+                      }
+                    })
+                    .catch((err) => {
+                      if (err.response.status === 401) {
+                        setToastState((old: Array<eachToast>) =>
+                          addItemOnce(old.slice(), {
+                            title: "2",
+                            description: "ابتدا باید در وبسایت وارد شوید.",
+                            key: Math.random(),
+                          })
+                        );
+                        history.replace("/login");
+                      } else {
+                        setToastState((old: Array<eachToast>) =>
+                          addItemOnce(old.slice(), {
+                            title: "2",
+                            description: "مشکلی پیش آمده است.",
+                            key: Math.random(),
+                          })
+                        );
+                      }
+                    });
+                }
               }}
             >
-              <BookmarkBorderOutlinedIcon
-                className={token ? "text-primary" : "text-gray"}
-              />
+              {data.is_bookmark ? (
+                <BookmarkIcon
+                  className={token ? "text-primary" : "text-gray"}
+                />
+              ) : (
+                <BookmarkBorderOutlinedIcon
+                  className={token ? "text-primary" : "text-gray"}
+                />
+              )}
             </IconButton>
           </Grid>
         </Grid>

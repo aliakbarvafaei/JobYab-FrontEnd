@@ -32,6 +32,7 @@ export type PostType = {
   state: GeneralType;
   title: string;
   user: User;
+  is_bookmark?: boolean;
 };
 
 type UserSpecificData = {
