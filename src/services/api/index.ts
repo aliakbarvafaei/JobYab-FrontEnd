@@ -125,17 +125,35 @@ export const getPrivatePosts = (
   pageSize: number,
   searchInput: string,
   category: string,
-  province: string
-) =>
-  axiosInstance.post(`/postsfilter/`, {
-    pageNumber: pageNumber,
-    pageSize: pageSize,
-    filters: {
-      searchInput: searchInput,
-      category: category,
-      province: province,
-    },
-  });
+  province: string,
+  token: string | null
+) => {
+  if (token) {
+    return axiosInstance.post(
+      `/postsfilter/`,
+      {
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+        filters: {
+          searchInput: searchInput,
+          category: category,
+          province: province,
+        },
+      },
+      tokenUser()
+    );
+  } else {
+    return axiosInstance.post(`/postsfilter/`, {
+      pageNumber: pageNumber,
+      pageSize: pageSize,
+      filters: {
+        searchInput: searchInput,
+        category: category,
+        province: province,
+      },
+    });
+  }
+};
 export const getTotalPosts = () => axiosInstance.get(`/posts/`, tokenUser());
 // export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
