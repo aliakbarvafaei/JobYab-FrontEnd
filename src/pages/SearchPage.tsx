@@ -43,8 +43,14 @@ const SearchPage: React.FC = () => {
   });
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    getTotalPosts().then((data) => {
-      setNTotalPosts(data.data.data.length);
+    getPrivatePosts(
+      1,
+      200,
+      searchInput,
+      category === "همه دسته‌بندی‌ها" ? "" : category,
+      province === "تمام استان‌ها" ? "" : province
+    ).then((data) => {
+      setNTotalPosts(data.data.length);
     });
     getPrivatePosts(
       counterPage,
@@ -135,9 +141,17 @@ const SearchPage: React.FC = () => {
               history.replace(
                 searchInput ? `/search?searchText=${searchInput}` : `/search/`
               );
-
               getPrivatePosts(
-                counterPage,
+                1,
+                200,
+                searchInput,
+                category === "همه دسته‌بندی‌ها" ? "" : category,
+                province === "تمام استان‌ها" ? "" : province
+              ).then((data) => {
+                setNTotalPosts(data.data.length);
+              });
+              getPrivatePosts(
+                1,
                 6,
                 searchInput,
                 category === "همه دسته‌بندی‌ها" ? "" : category,
@@ -182,6 +196,15 @@ const SearchPage: React.FC = () => {
               }}
               updateData={() => {
                 getPrivatePosts(
+                  1,
+                  200,
+                  searchInput,
+                  category === "همه دسته‌بندی‌ها" ? "" : category,
+                  province === "تمام استان‌ها" ? "" : province
+                ).then((data) => {
+                  setNTotalPosts(data.data.length);
+                });
+                getPrivatePosts(
                   counterPage,
                   6,
                   searchInput,
@@ -203,6 +226,15 @@ const SearchPage: React.FC = () => {
               page={counterPage}
               onChange={(_, value) => {
                 setcounterPage(value);
+                getPrivatePosts(
+                  1,
+                  200,
+                  searchInput,
+                  category === "همه دسته‌بندی‌ها" ? "" : category,
+                  province === "تمام استان‌ها" ? "" : province
+                ).then((data) => {
+                  setNTotalPosts(data.data.length);
+                });
                 getPrivatePosts(
                   value,
                   6,
