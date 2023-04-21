@@ -210,7 +210,6 @@ const HeaderNewShort = () => {
                       height: { xs: "30px", sm: "40px" },
                       fontSize: { xs: "0.8rem", sm: "1.25rem" },
                     }}
-                    alt="Remy Sharp"
                     src="/static/images/avatar/2.jpg"
                   />
                   <div className="text-[14px] pr-2 text-white md:hidden">
@@ -250,6 +249,12 @@ const HeaderNewShort = () => {
               {settings.map((setting) => (
                 <MenuItem
                   key={setting.title}
+                  sx={{
+                    "&:hover": {
+                      background: "#1976D2",
+                    },
+                  }}
+                  className="text-primary hover:text-white"
                   onClick={() => {
                     if (setting.title === "خروج") {
                       history.push("/home");

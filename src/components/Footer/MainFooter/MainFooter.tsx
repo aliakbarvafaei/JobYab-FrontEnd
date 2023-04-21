@@ -11,7 +11,9 @@ const MainFooter: React.FC = () => {
   const themeBorder: string = "border-darkModeGray";
 
   return (
-    <div className="flex flex-row flex-wrap justify-between">
+    <div
+      className="flex flex-row flex-wrap justify-between"
+    >
       <div className="md:w-[100%] lg:w-[45%] lgmin:w-[30%]">
         <Typography
           variant="h6"

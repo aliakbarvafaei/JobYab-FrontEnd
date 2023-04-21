@@ -11,6 +11,8 @@ import { Divider, Grid, Typography } from "@mui/material";
 import { getRecentPosts, getUrgentPosts } from "../services/api";
 import UrgentCard from "../components/UrgentCard";
 import { PostType } from "../constants/types";
+import backgroundImage from "../assets/images/back.png";
+import WhiteImage from "../assets/images/white.png";
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -32,19 +34,24 @@ const Home: React.FC = () => {
       <HeaderNewComplete />
       <div
         className="px-total py-[12%] flex flex-col font-bold items-center mdmin:w-[60%] md:w-[100%]"
-        style={{ backgroundImage: 'url("../assets/images/bg-body.jpeg")' }}
+        style={{
+          backgroundImage: `url("${backgroundImage}")`,
+          width: "100%",
+          opacity: 0.7,
+          backgroundSize: "cover",
+        }}
       >
         <h2 className="text-primary md:text-[75px] lg:text-[60px] xl:text-[85px] xlmin:text-[90px]">
           سال 1402
         </h2>
-        <h4 className="lg:text-[35px] xl:text-[50px] xlmin:text-[55px] text-center text-white">
+        <h4 className="lg:text-[35px] xl:text-[50px] xlmin:text-[55px] text-center text-primary">
           مناسب ترین مشاغل
         </h4>
-        <p className="lg:text-[20px] xl:text-[22px] xlmin:text-[24px] text-[#D3D3D3] text-center">
+        <p className="lg:text-[20px] xl:text-[22px] xlmin:text-[24px] text-primary text-center">
           بهترین پیشنهادها
         </p>
       </div>
-      <Grid className="w-full mb-[8%] px-[5%] flex flex-wrap gap-[10px] font-bold items-center md:h-[700px] mdmin:h-[350px] justify-between">
+      <Grid className="mt-5 w-full mb-[8%] px-[5%] flex flex-wrap gap-[10px] font-bold items-center md:h-[700px] mdmin:h-[350px] justify-between">
         <Grid
           xs={12}
           sm={9}
@@ -134,7 +141,10 @@ const Home: React.FC = () => {
           </div>
         </Grid>
       </Grid>
-      <section className="flex justify-center bg-[#EEEEEE]">
+      <section
+        className="flex justify-center bg-[#3594f3]"
+        style={{ backgroundImage: `url("${WhiteImage}")` }}
+      >
         <div className="bg-white smmin:h-[450px] min-w-[50%] flex smmin:flex-row sm:flex-col justify-center smmin:gap-[8%] sm:gap-[10px] rounded-3xl py-[3%] px-[2%] my-[3%] mx-[5%]">
           <div className="flex flex-col justify-between items-center text-center gap-[5%]">
             <img src={bronze} className="h-[124px] w-[100px]" alt="برنز" />

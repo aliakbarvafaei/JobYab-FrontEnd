@@ -13,7 +13,12 @@ import { statesRedux } from "../ts/interfaces";
 import { useSelector } from "react-redux";
 import Header from "../components/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
-import { getJobTypes, getPrivatePosts, getStates } from "../services/api";
+import {
+  getJobTypes,
+  getPrivatePosts,
+  getStates,
+  getTotalPosts,
+} from "../services/api";
 import { GeneralType, StateType } from "../constants/types";
 import { parseURLParams } from "../services/utils/ParseURL";
 
@@ -27,6 +32,7 @@ const SearchPage: React.FC = () => {
   const [category, setCategory] = useState<string>("");
   const [province, setProvince] = useState<string>("");
   const [counterPage, setcounterPage] = useState(1);
+  const [nTotalPosts, setNTotalPosts] = useState(0);
   const [searchInput, setSearchInput] = useState(() => {
     const parsedValue = parseURLParams(history.location.search);
     //@ts-ignore
@@ -36,25 +42,19 @@ const SearchPage: React.FC = () => {
     } else return "";
   });
   useEffect(() => {
-    // const filters: filtersInterface = {
-    //   searchInput: searchInput,
-    //   category: category ?? "",
-    //   province: province ?? "",
-    // };
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    getTotalPosts().then((data) => {
+      setNTotalPosts(data.data.data.length);
+    });
     getPrivatePosts(
       counterPage,
       6,
       searchInput,
       category === "همه دسته‌بندی‌ها" ? "" : category,
       province === "تمام استان‌ها" ? "" : province
-    )
-      .then((response) => {
-        setAllPosts(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    ).then((response) => {
+      setAllPosts(response.data);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
@@ -135,7 +135,7 @@ const SearchPage: React.FC = () => {
               history.replace(
                 searchInput ? `/search?searchText=${searchInput}` : `/search/`
               );
-              
+
               getPrivatePosts(
                 counterPage,
                 6,
@@ -145,7 +145,6 @@ const SearchPage: React.FC = () => {
               )
                 .then((response) => {
                   setAllPosts(response.data);
-                  
                 })
                 .catch((err) => {
                   console.error(err);
@@ -175,17 +174,48 @@ const SearchPage: React.FC = () => {
             alignItems: "center",
           }}
         >
-          {allPosts?.map((postDetail:any) => (
+          {allPosts?.map((postDetail: any) => (
             <Post
               data={postDetail}
+              onClick={(id) => {
+                window.location.href = `/postPage/${id}`;
+              }}
+              updateData={() => {
+                getPrivatePosts(
+                  counterPage,
+                  6,
+                  searchInput,
+                  category === "همه دسته‌بندی‌ها" ? "" : category,
+                  province === "تمام استان‌ها" ? "" : province
+                ).then((response) => {
+                  setAllPosts(response.data);
+                });
+              }}
             />
           ))}
           {!!allPosts.length && (
             <CustomPagination
-              count={allPosts.length < 6 ? 1 : allPosts.length % 6}
+              count={
+                nTotalPosts % 6 === 0
+                  ? nTotalPosts / 6
+                  : Math.floor(nTotalPosts / 6) + 1
+              }
               page={counterPage}
               onChange={(_, value) => {
                 setcounterPage(value);
+                getPrivatePosts(
+                  value,
+                  6,
+                  searchInput,
+                  category === "همه دسته‌بندی‌ها" ? "" : category,
+                  province === "تمام استان‌ها" ? "" : province
+                )
+                  .then((response) => {
+                    setAllPosts(response.data);
+                  })
+                  .catch((err) => {
+                    console.error(err);
+                  });
               }}
             />
           )}

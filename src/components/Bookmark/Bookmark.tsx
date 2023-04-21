@@ -44,6 +44,7 @@ const Bookmark: React.FC = () => {
               gap: "10px",
               justifyContent: "center",
               alignItems: "center",
+              borderRadius: 4,
             }}
           >
             {bookmarks === null ? (
