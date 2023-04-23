@@ -61,7 +61,7 @@ const Header = () => {
     <AppBar
       position="static"
       sx={{
-        fontFamily: "IRANSans",
+        fontFamily: "IRANSans !important",
         paddingX: { sm: "80px", xs: "20px" },
         minHeight: "90px",
         display: "flex",
@@ -81,7 +81,7 @@ const Header = () => {
             href="/"
             sx={{
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "monospace !important",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -142,7 +142,7 @@ const Header = () => {
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontSize: { xs: "16px", sm: "20px" },
-              fontFamily: "monospace",
+              fontFamily: "monospace !important",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -157,12 +157,14 @@ const Header = () => {
               variant="contained"
               href="/profile-company/new-post"
               sx={{
-                backgroundColor: "white",
-                color: "black",
-                fontFamily: "IRANSans",
+                backgroundColor: "white !important",
+                color: "black !important",
+                fontFamily: "IRANSans !important",
                 paddingLeft: "20px",
-                display: { xs: "none", md: "inline" },
-                marginX: "20px",
+                display: { xs: "none !important", md: "inline !important" },
+                marginX: "20px !important",
+                padding: "5px !important",
+                borderRadius: "4px !important",
               }}
             >
               + ثبت آگهی
@@ -171,12 +173,15 @@ const Header = () => {
               key="نشان شده‌ها"
               href="/profile-company?section=bookmark"
               sx={{
-                my: 2,
+                my: "2px !important",
                 color: "white",
-                gap: "5px",
-                paddingLeft: "20px",
-                fontFamily: "IRANSans",
-                display: { xs: "none", md: "inline-flex" },
+                gap: "5px !important",
+                paddingLeft: "20px !important",
+                fontFamily: "IRANSans !important",
+                display: {
+                  xs: "none !important",
+                  md: "inline-flex !important",
+                },
               }}
             >
               <BookmarksOutlinedIcon />
@@ -187,26 +192,34 @@ const Header = () => {
               href="/profile-company?section=message"
               onClick={handleCloseNavMenu}
               sx={{
-                my: 2,
-                color: "white",
-                gap: "5px",
-                paddingLeft: "20px",
-                fontFamily: "IRANSans",
-                display: { xs: "none", md: "inline-flex" },
+                my: "2px !important",
+                color: "white !important",
+                gap: "5px !important",
+                paddingLeft: "20px !important",
+                fontFamily: "IRANSans !important",
+                display: {
+                  xs: "none !important",
+                  md: "inline-flex !important",
+                },
               }}
             >
               <ContactSupportIcon />
               پشتیبانی
             </Button>
             <Tooltip title="حساب کاربری">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0 }}
+                disableFocusRipple
+                disableTouchRipple
+                disableRipple
+              >
                 <Avatar
                   sx={{
                     width: { xs: "30px", sm: "40px" },
                     height: { xs: "30px", sm: "40px" },
                     fontSize: { xs: "0.8rem", sm: "1.25rem" },
                   }}
-                  alt="Remy Sharp"
                   src="/static/images/avatar/2.jpg"
                 />
                 <div className="text-[14px] pr-2 text-white md:hidden">
@@ -215,7 +228,7 @@ const Header = () => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{ mt: "45px !important", border: "none" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -230,30 +243,37 @@ const Header = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem
-                  key={setting.title}
-                  onClick={() => {
-                    if (setting.title === "خروج") {
-                      history.push("/home");
-                      handleCloseUserMenu();
-                      dispatch({ type: "logout" });
-                      localStorage.setItem("token_user", JSON.stringify(""));
-                      setToastState((old: Array<eachToast>) =>
-                        addItemOnce(old.slice(), {
-                          title: "1",
-                          description: "خروج با موفقیت انجام شد",
-                          key: Math.random(),
-                        })
-                      );
-                    } else {
-                      window.location.href = setting.link as string;
-                    }
-                  }}
-                >
-                  <Typography textAlign="center">{setting.title}</Typography>
-                </MenuItem>
-              ))}
+              <div
+                style={{
+                  display: "flex !important",
+                  flexDirection: "column",
+                }}
+              >
+                {settings.map((setting) => (
+                  <MenuItem
+                    key={setting.title}
+                    onClick={() => {
+                      if (setting.title === "خروج") {
+                        history.push("/home");
+                        handleCloseUserMenu();
+                        dispatch({ type: "logout" });
+                        localStorage.setItem("token_user", JSON.stringify(""));
+                        setToastState((old: Array<eachToast>) =>
+                          addItemOnce(old.slice(), {
+                            title: "1",
+                            description: "خروج با موفقیت انجام شد",
+                            key: Math.random(),
+                          })
+                        );
+                      } else {
+                        window.location.href = setting.link as string;
+                      }
+                    }}
+                  >
+                    <Typography textAlign="center">{setting.title}</Typography>
+                  </MenuItem>
+                ))}
+              </div>
             </Menu>
           </Box>
         </Toolbar>

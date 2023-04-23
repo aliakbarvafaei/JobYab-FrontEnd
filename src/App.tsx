@@ -10,12 +10,12 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 const theme = createTheme({
-  palette:{
-    primary:{
-      main:"#1976D2"
+  palette: {
+    primary: {
+      main: "#1976D2",
     },
     secondary: {
-      main: '#D8DBE2',
+      main: "#D8DBE2",
     },
   },
   typography: {
@@ -64,6 +64,13 @@ const theme = createTheme({
       styleOverrides: {
         elevation: {
           boxShadow: "none",
+        },
+      },
+    },
+    MuiMenu: {
+      styleOverrides: {
+        list: {
+          border: "2px solid #1976D2",
         },
       },
     },

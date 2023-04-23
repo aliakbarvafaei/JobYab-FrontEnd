@@ -37,8 +37,7 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
     >
       <Grid item>
         <img
-          onClick={() => (window.location.href = `/postPage/${data.id}`)}
-          className="!w-[80px] !h-[80px] cursor-pointer rounded-[50%]"
+          className="!w-[80px] !h-[80px] rounded-[50%]"
           src={
             data?.user.logo === null
               ? DefaultPicture
@@ -57,16 +56,11 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
           }}
         >
           <Grid item>
-            <Typography
-              onClick={() => (window.location.href = `/postPage/${data.id}`)}
-              className="cursor-pointer"
-            >
-              {data.title}
-            </Typography>
+            <Typography>{data.title}</Typography>
           </Grid>
           <Grid item className="flex items-center">
             <Typography>
-              <span className="px-[24px] pt-[20px]">
+              <span className="px-[24px] pt-[20px] text-sm">
                 {DifferenceData(data.created_date)}
               </span>
             </Typography>
@@ -227,12 +221,14 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
             <Button
               variant="outlined"
               fullWidth
+              disableRipple
               style={{
                 fontSize: 14,
                 borderRadius: 8,
                 paddingInline: 24,
                 paddingBlock: 12,
                 marginLeft: 12,
+                border: "1.5px solid #1976D2",
               }}
               onClick={() => {
                 onClick?.(data.id);
