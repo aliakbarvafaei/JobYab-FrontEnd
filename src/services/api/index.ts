@@ -125,10 +125,9 @@ export const getPrivatePosts = (
   pageSize: number,
   searchInput: string,
   category: string,
-  province: string,
-  token: string | null
+  province: string
 ) => {
-  if (token && token !== "") {
+  if (JSON.parse(localStorage.getItem("token_user") as string) !== "") {
     return axiosInstance.post(
       `/postsfilter/`,
       {
