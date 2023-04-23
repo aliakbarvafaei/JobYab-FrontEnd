@@ -67,13 +67,6 @@ const theme = createTheme({
         },
       },
     },
-    MuiMenu: {
-      styleOverrides: {
-        list: {
-          border: "2px solid #1976D2",
-        },
-      },
-    },
   },
 });
 const App: React.FC = () => (

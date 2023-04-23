@@ -28,10 +28,10 @@ const SearchPage: React.FC = () => {
   const [province, setProvince] = useState<string>("");
   const [counterPage, setcounterPage] = useState(1);
   const [nTotalPosts, setNTotalPosts] = useState(0);
-  const [loading1, setLoading1] = useState(false);
-  const [loading2, setLoading2] = useState(false);
-  const [loading3, setLoading3] = useState(false);
-  const [loading4, setLoading4] = useState(false);
+  // const [loading1, setLoading1] = useState(false);
+  // const [loading2, setLoading2] = useState(false);
+  // const [loading3, setLoading3] = useState(false);
+  // const [loading4, setLoading4] = useState(false);
   const [searchInput, setSearchInput] = useState(() => {
     const parsedValue = parseURLParams(history.location.search);
     //@ts-ignore
@@ -51,7 +51,7 @@ const SearchPage: React.FC = () => {
       token
     ).then((data) => {
       setNTotalPosts(data.data.length);
-      setLoading1(true);
+      // setLoading1(true);
     });
     getPrivatePosts(
       counterPage,
@@ -62,7 +62,7 @@ const SearchPage: React.FC = () => {
       token
     ).then((response) => {
       setAllPosts(response.data);
-      setLoading2(true);
+      // setLoading2(true);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -72,21 +72,21 @@ const SearchPage: React.FC = () => {
         { id: -1, title: "تمام استان‌ها", order: 5 },
         ...data.data.data,
       ]);
-      setLoading3(true);
+      // setLoading3(true);
     });
   }, []);
   useEffect(() => {
     getJobTypes().then((data) => {
       setJobTypes([{ id: -1, title: "همه دسته‌بندی‌ها" }, ...data.data.data]);
     });
-    setLoading4(true);
+    // setLoading4(true);
   }, []);
   return (
     <div>
       <MobileMenu />
       {role && role === "company" ? <Header /> : <HeaderNewShort />}
       <TitlePages title="جستجو" />
-      {loading1 && loading2 && loading3 && loading4 ? (
+      {true ? (
         <>
           <div className="md:mr-10 md:ml-10 xl:ml-3 xl:mr-3 xlmin:mr-20 xlmin:ml-20">
             <div

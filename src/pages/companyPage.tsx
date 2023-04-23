@@ -54,11 +54,13 @@ const CompanyPage = () => {
       });
   }, [companyId, history]);
   useEffect(() => {
-    getCompaniesPostsPublic(companyId).then((data) => {
-      setCompaniesPosts(data.data.data);
-    });
+    if (adDetail !== undefined) {
+      getCompaniesPostsPublic(String(adDetail?.user.id)).then((data) => {
+        setCompaniesPosts(data.data.data);
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [adDetail]);
   return (
     <div>
       <MobileMenu />
