@@ -125,10 +125,9 @@ export const getPrivatePosts = (
   pageSize: number,
   searchInput: string,
   category: string,
-  province: string,
-  token: string | null
+  province: string
 ) => {
-  if (token) {
+  if (JSON.parse(localStorage.getItem("token_user") as string) !== "") {
     return axiosInstance.post(
       `/postsfilter/`,
       {
@@ -154,27 +153,28 @@ export const getPrivatePosts = (
     });
   }
 };
-export const getTotalPosts = () => axiosInstance.get(`/posts/`, tokenUser());
+export const getTotalPosts = () => axiosInstance.get(`/posts/`);
 // export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
-export const getPostDetail = (idAd: string) =>
-  axiosInstance.get(`/posts/${idAd}/`, tokenUser());
+export const getPostDetail = (idAd: string) => {
+  if (JSON.parse(localStorage.getItem("token_user") as string) === "")
+    return axiosInstance.get(`/posts/${idAd}/`);
+  else return axiosInstance.get(`/posts/${idAd}/`, tokenUser());
+};
 
 export const getSimilarPosts = (idAd: string) =>
-  axiosInstance.get(`/posts/related/${idAd}/`, tokenUser());
+  axiosInstance.get(`/posts/related/${idAd}/`);
 
 export const getCompaniesPostsPublic = (id: string) =>
-  axiosInstance.get(`/posts/company/${id}/`, tokenUser());
+  axiosInstance.get(`/posts/company/${id}/`);
 /** */
 
 /** General */
 export const getStates = () => axiosInstance.get(`/states/`);
 
 export const getJobTypes = () => axiosInstance.get(`/jobtypes/`);
-export const getUrgentPosts = () =>
-  axiosInstance.get(`/posts/urgent/`, tokenUser());
-export const getRecentPosts = () =>
-  axiosInstance.get(`/posts/recent/`, tokenUser());
+export const getUrgentPosts = () => axiosInstance.get(`/posts/urgent/`);
+export const getRecentPosts = () => axiosInstance.get(`/posts/recent/`);
 
 export const getSkills = () => axiosInstance.get("/skills/");
 

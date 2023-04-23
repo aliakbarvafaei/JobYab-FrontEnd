@@ -37,6 +37,7 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
     >
       <Grid item>
         <img
+          onClick={() => (window.location.href = `/postPage/${data.id}`)}
           className="!w-[80px] !h-[80px] cursor-pointer rounded-[50%]"
           src={
             data?.user.logo === null
@@ -56,13 +57,20 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
           }}
         >
           <Grid item>
-            <Typography className="cursor-pointer">{data.title}</Typography>
+            <Typography
+              onClick={() => (window.location.href = `/postPage/${data.id}`)}
+              className="cursor-pointer"
+            >
+              {data.title}
+            </Typography>
           </Grid>
           <Grid item className="flex items-center">
             <Typography>
-              <span>{DifferenceData(data.created_date)}</span>
+              <span className="px-[24px] pt-[20px]">
+                {DifferenceData(data.created_date)}
+              </span>
             </Typography>
-            <IconButton
+            {/* <IconButton
               disabled={!token}
               onClick={(e) => {
                 e.stopPropagation();
@@ -148,7 +156,7 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
                   className={token ? "text-primary" : "text-gray"}
                 />
               )}
-            </IconButton>
+            </IconButton> */}
           </Grid>
         </Grid>
         <Grid container className="flex" alignItems="center">

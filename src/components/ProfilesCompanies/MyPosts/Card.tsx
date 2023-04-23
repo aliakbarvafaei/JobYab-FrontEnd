@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Typography,
-  Stack,
-  Box,
-  Card,
-  Divider,
-  Button,
-} from "@mui/material";
+import { Typography, Stack, Box, Card, Divider, Button } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 import { RemovePost } from "../../../services/api";
@@ -67,6 +60,7 @@ const CardItem: React.FC<{ item: any }> = ({ item }) => {
           }}
         >
           <img
+            onClick={() => history.push(`/postPage/${item.id}`)}
             src={
               item.user.logo === null
                 ? DefaultPicture
@@ -86,6 +80,7 @@ const CardItem: React.FC<{ item: any }> = ({ item }) => {
               }}
             >
               <Typography
+                onClick={() => history.push(`/postPage/${item.id}`)}
                 component={"div"}
                 sx={{
                   display: "inline",
