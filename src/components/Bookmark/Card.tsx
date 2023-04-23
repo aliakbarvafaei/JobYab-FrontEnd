@@ -10,6 +10,7 @@ import { RemoveBookmark } from "../../services/api";
 import DifferenceData from "../../services/utils/DifferenceData";
 import { API_URL } from "../../config";
 import DefaultPicture from "../../assets/images/default.png";
+import { useHistory } from "react-router-dom";
 
 const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
   const [labels] = useState<Array<{ id: number; title: string }>>(
@@ -17,6 +18,7 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
   );
   const { setToastState } = useToast();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
+  const history = useHistory();
 
   const handleRemove = () => {
     RemoveBookmark(item.id)
@@ -64,6 +66,7 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
           }}
         >
           <img
+            onClick={() => history.push(`/postPage/${item.post.id}`)}
             src={
               item.post.user.logo === null
                 ? DefaultPicture
@@ -84,6 +87,7 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
             >
               <Typography
                 component={"div"}
+                onClick={() => history.push(`/postPage/${item.post.id}`)}
                 sx={{
                   display: "inline",
                   fontSize: { xs: "12px", sm: "14px", md: "16px" },

@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Typography,
-  Stack,
-  Box,
-  Card,
-  Divider,
-  Button,
-} from "@mui/material";
+import { Typography, Stack, Box, Card, Divider, Button } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
@@ -17,11 +10,13 @@ import { API_URL } from "../../../config";
 import { changeStateResume } from "../../../services/api";
 import DefaultPicture from "../../../assets/images/default.png";
 import DifferenceData from "../../../services/utils/DifferenceData";
+import { useHistory } from "react-router-dom";
 
 const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
   index,
   item,
 }) => {
+  const history = useHistory();
   const changeState = (state: number) => {
     changeStateResume(item.id, { state: String(state) })
       .then((response) => {
@@ -52,6 +47,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
           }}
         >
           <img
+            onClick={() => history.push(`/postPage/${item.post.id}`)}
             src={
               item.post.user.logo === null
                 ? DefaultPicture
@@ -72,6 +68,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
               }}
             >
               <Typography
+                onClick={() => history.push(`/postPage/${item.post.id}`)}
                 component={"div"}
                 sx={{
                   display: "inline",

@@ -6,11 +6,13 @@ import { sentResume } from "../../../ts/interfaces";
 import DifferenceData from "../../../services/utils/DifferenceData";
 import { API_URL } from "../../../config";
 import DefaultPicture from "../../../assets/images/default.png";
+import { useHistory } from "react-router-dom";
 
 const CardItem: React.FC<{ index: Number; item: sentResume }> = ({
   index,
   item,
 }) => {
+  const history = useHistory();
   const [labels] = useState<Array<{ id: number; title: string }>>(
     item.post.skills
   );
@@ -36,6 +38,7 @@ const CardItem: React.FC<{ index: Number; item: sentResume }> = ({
           }}
         >
           <img
+            onClick={() => history.push(`/postPage/${item.post.id}`)}
             src={
               item.post.user.logo === null
                 ? DefaultPicture
@@ -55,7 +58,11 @@ const CardItem: React.FC<{ index: Number; item: sentResume }> = ({
                 alignItems: "center",
               }}
             >
-              <Typography component={"div"} sx={{ display: "inline" }}>
+              <Typography
+                onClick={() => history.push(`/postPage/${item.post.id}`)}
+                component={"div"}
+                sx={{ display: "inline" }}
+              >
                 {item.post.title}
               </Typography>
               <Typography
