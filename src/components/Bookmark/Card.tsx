@@ -21,7 +21,7 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
   const history = useHistory();
 
   const handleRemove = () => {
-    RemoveBookmark(item.id)
+    RemoveBookmark(item.post.id)
       .then((response) => {
         setToastState((old: Array<eachToast>) =>
           addItemOnce(old.slice(), {

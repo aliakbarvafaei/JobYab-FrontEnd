@@ -203,7 +203,11 @@ const HeaderNewShort = () => {
             </Button>
             {role !== null && token !== null ? (
               <Tooltip title="حساب کاربری">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <IconButton
+                  onClick={handleOpenUserMenu}
+                  sx={{ p: 0 }}
+                  disableRipple
+                >
                   <Avatar
                     sx={{
                       width: { xs: "30px", sm: "40px" },
