@@ -62,17 +62,18 @@ const HeaderNewShort = () => {
   return (
     <AppBar
       position="static"
-      sx={{
+      className="lg:!px-[20px] lgmin:!px-[80px]"
+      style={{
         minHeight: "90px",
         justifyContent: "center",
-        paddingX: { sm: "80px", xs: "20px" },
+        // paddingX: { sm: "80px", xs: "20px" },
         fontFamily: "IRANSans",
       }}
     >
-      <Container maxWidth="xl" sx={{ padding: "0px !important" }}>
+      <Container maxWidth="xl" style={{ padding: "0px !important" }}>
         <Toolbar
           disableGutters
-          sx={{ display: "flex", justifyContent: "space-between" }}
+          style={{ display: "flex", justifyContent: "space-between" }}
         >
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
@@ -80,8 +81,9 @@ const HeaderNewShort = () => {
             noWrap
             component="a"
             href="/"
-            sx={{
-              display: { xs: "none", md: "flex" },
+            className="md:!hidden mdmin:!flex"
+            style={{
+              // display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
@@ -92,7 +94,13 @@ const HeaderNewShort = () => {
             JOBYAB
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            className="md:!flex mdmin:!hidden"
+            style={{
+              flexGrow: 1,
+              //  display: { xs: "flex", md: "none" }
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -100,7 +108,7 @@ const HeaderNewShort = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-              sx={{ padding: "0px !important" }}
+              className="!p-0"
             >
               <MenuIcon />
             </IconButton>
@@ -118,9 +126,12 @@ const HeaderNewShort = () => {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
+              className="md:!block mdmin:!hidden"
+              // style={
+              //   {
+              //     // display: { xs: "block", md: "none" },
+              //   }
+              // }
             >
               {pages.map((page) => (
                 <MenuItem
@@ -139,12 +150,13 @@ const HeaderNewShort = () => {
             noWrap
             component="a"
             href="/"
-            sx={{
-              display: { xs: "flex", md: "none" },
+            className="md:!flex mdmin:!hidden md:!text-[16px] mdmin:!text-[20px]"
+            style={{
+              // display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              fontSize: { xs: "16px", sm: "20px" },
+              // fontSize: { xs: "16px", sm: "20px" },
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
@@ -153,19 +165,24 @@ const HeaderNewShort = () => {
             JOBYAB
           </Typography>
 
-          <Box sx={{ flexGrow: 0, alignItems: "center" }}>
+          <Box style={{ flexGrow: 0, alignItems: "center" }}>
             <Button
               variant="contained"
               href="/profile-company"
-              sx={{
-                my: 2,
+              className="md:!hidden mdmin:!inline"
+              style={{
+                paddingTop: "5px",
+                paddingBottom: "5px",
+                borderRadius: "5px",
                 color: "black",
                 backgroundColor: "white",
                 gap: "5px",
                 paddingLeft: "20px",
+                paddingRight: "20px",
                 fontFamily: "IRANSans",
-                display: { xs: "none", md: "inline" },
-                marginX: "20px",
+                // display: { xs: "none", md: "inline" },
+                marginLeft: "20px",
+                marginRight: "20px",
               }}
             >
               بخش کارفرما
@@ -173,13 +190,15 @@ const HeaderNewShort = () => {
             <Button
               key="نشان شده‌ها"
               href="/profile?section=bookmark"
-              sx={{
-                my: 2,
+              className="md:!hidden mdmin:!inline-flex"
+              style={{
+                marginTop: 2,
+                marginBottom: 2,
                 color: "white",
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
-                display: { xs: "none", md: "inline-flex" },
+                // display: { xs: "none", md: "inline-flex" },
               }}
             >
               <BookmarksOutlinedIcon />
@@ -189,13 +208,15 @@ const HeaderNewShort = () => {
               key="پشتیبانی"
               onClick={handleCloseNavMenu}
               href="/profile?section=message"
-              sx={{
-                my: 2,
+              className="md:!hidden mdmin:!inline-flex"
+              style={{
+                marginTop: 2,
+                marginBottom: 2,
                 color: "white",
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
-                display: { xs: "none", md: "inline-flex" },
+                // display: { xs: "none", md: "inline-flex" },
               }}
             >
               <ContactSupportIcon />
@@ -205,18 +226,19 @@ const HeaderNewShort = () => {
               <Tooltip title="حساب کاربری">
                 <IconButton
                   onClick={handleOpenUserMenu}
-                  sx={{ p: 0 }}
+                  style={{ padding: 0 }}
                   disableRipple
                 >
                   <Avatar
-                    sx={{
-                      width: { xs: "30px", sm: "40px" },
-                      height: { xs: "30px", sm: "40px" },
-                      fontSize: { xs: "0.8rem", sm: "1.25rem" },
-                    }}
+                    className="md:!w-[30px] md:!h-[30px] md:!text-[0.8rem] mdmin:!w-[40px] mdmin:!h-[40px] mdmin:!text-[1.25rem]"
+                    // sx={{
+                    //   width: { xs: "30px", sm: "40px" },
+                    //   height: { xs: "30px", sm: "40px" },
+                    //   fontSize: { xs: "0.8rem", sm: "1.25rem" },
+                    // }}
                     src="/static/images/avatar/2.jpg"
                   />
-                  <div className="text-[14px] pr-2 text-white md:hidden">
+                  <div className="text-[14px] pr-2 text-white md:!hidden">
                     حساب کاربری
                   </div>
                 </IconButton>
@@ -224,7 +246,7 @@ const HeaderNewShort = () => {
             ) : (
               <Tooltip title="ورود | ثبت نام">
                 <Link to="/login">
-                  <IconButton sx={{ p: 0, color: "white" }}>
+                  <IconButton style={{ padding: 0, color: "white" }}>
                     {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                     <PermIdentityOutlinedIcon />
                     <div className="text-[14px] pr-2 text-white md:hidden">
@@ -235,7 +257,7 @@ const HeaderNewShort = () => {
               </Tooltip>
             )}
             <Menu
-              sx={{ mt: "45px" }}
+              style={{ marginTop: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -253,12 +275,12 @@ const HeaderNewShort = () => {
               {settings.map((setting) => (
                 <MenuItem
                   key={setting.title}
-                  sx={{
-                    "&:hover": {
-                      background: "#1976D2",
-                    },
-                  }}
-                  className="text-primary hover:text-white"
+                  // style={{
+                  //   "&:hover": {
+                  //     background: "#1976D2",
+                  //   },
+                  // }}
+                  className="text-primary hover:text-white hover:!bg-primary !block !px-[10px] !py-[6px]"
                   onClick={() => {
                     if (setting.title === "خروج") {
                       history.push("/home");

@@ -60,28 +60,27 @@ const Header = () => {
   return (
     <AppBar
       position="static"
-      sx={{
-        fontFamily: "IRANSans !important",
-        paddingX: { sm: "80px", xs: "20px" },
+      className="lg:!px-[20px] lgmin:!px-[80px]"
+      style={{
+        fontFamily: "IRANSans",
         minHeight: "90px",
         display: "flex",
         justifyContent: "center",
       }}
     >
-      <Container maxWidth="xl" sx={{ padding: "0px !important" }}>
+      <Container maxWidth="xl" style={{ padding: "0px !important" }}>
         <Toolbar
           disableGutters
-          sx={{ display: "flex", justifyContent: "space-between" }}
+          style={{ display: "flex", justifyContent: "space-between" }}
         >
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
-            sx={{
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace !important",
+            className="md:!hidden mdmin:!flex"
+            style={{
+              fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -91,7 +90,12 @@ const Header = () => {
             JOBYAB
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            className="md:!flex mdmin:!hidden"
+            style={{
+              flexGrow: 1,
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -99,7 +103,7 @@ const Header = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-              sx={{ padding: "0px !important" }}
+              style={{ padding: "0px" }}
             >
               <MenuIcon />
             </IconButton>
@@ -117,9 +121,7 @@ const Header = () => {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
+              className="md:!block mdmin:!hidden"
             >
               {pages.map((page) => (
                 <MenuItem
@@ -138,11 +140,10 @@ const Header = () => {
             noWrap
             component="a"
             href="/"
-            sx={{
-              display: { xs: "flex", md: "none" },
+            className="md:!flex mdmin:!hidden md:!text-[16px] mdmin:!text-[20px]"
+            style={{
               flexGrow: 1,
-              fontSize: { xs: "16px", sm: "20px" },
-              fontFamily: "monospace !important",
+              fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -152,19 +153,19 @@ const Header = () => {
             JOBYAB
           </Typography>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box style={{ flexGrow: 0 }}>
             <Button
               variant="contained"
               href="/profile-company/new-post"
-              sx={{
-                backgroundColor: "white !important",
-                color: "black !important",
-                fontFamily: "IRANSans !important",
-                paddingLeft: "20px",
-                display: { xs: "none !important", md: "inline !important" },
-                marginX: "20px !important",
-                padding: "5px !important",
-                borderRadius: "4px !important",
+              className="md:!hidden mdmin:!inline !px-[10px]"
+              style={{
+                backgroundColor: "white",
+                color: "black",
+                fontFamily: "IRANSans",
+                marginLeft: "20px",
+                marginRight: "20px",
+                padding: "5px",
+                borderRadius: "4px ",
               }}
             >
               + ثبت آگهی
@@ -172,16 +173,14 @@ const Header = () => {
             <Button
               key="نشان شده‌ها"
               href="/profile-company?section=bookmark"
-              sx={{
-                my: "2px !important",
+              className="md:!hidden mdmin:!inline-flex"
+              style={{
+                marginTop: "2px",
+                marginBottom: "2px",
                 color: "white",
-                gap: "5px !important",
-                paddingLeft: "20px !important",
-                fontFamily: "IRANSans !important",
-                display: {
-                  xs: "none !important",
-                  md: "inline-flex !important",
-                },
+                gap: "5px",
+                paddingLeft: "20px",
+                fontFamily: "IRANSans",
               }}
             >
               <BookmarksOutlinedIcon />
@@ -191,16 +190,14 @@ const Header = () => {
               key="پشتیبانی"
               href="/profile-company?section=message"
               onClick={handleCloseNavMenu}
-              sx={{
-                my: "2px !important",
-                color: "white !important",
-                gap: "5px !important",
-                paddingLeft: "20px !important",
-                fontFamily: "IRANSans !important",
-                display: {
-                  xs: "none !important",
-                  md: "inline-flex !important",
-                },
+              className="md:!hidden mdmin:!inline-flex"
+              style={{
+                marginTop: "2px",
+                marginBottom: "2px",
+                color: "white",
+                gap: "5px",
+                paddingLeft: "20px",
+                fontFamily: "IRANSans",
               }}
             >
               <ContactSupportIcon />
@@ -209,17 +206,13 @@ const Header = () => {
             <Tooltip title="حساب کاربری">
               <IconButton
                 onClick={handleOpenUserMenu}
-                sx={{ p: 0 }}
+                style={{ padding: 0 }}
                 disableFocusRipple
                 disableTouchRipple
                 disableRipple
               >
                 <Avatar
-                  sx={{
-                    width: { xs: "30px", sm: "40px" },
-                    height: { xs: "30px", sm: "40px" },
-                    fontSize: { xs: "0.8rem", sm: "1.25rem" },
-                  }}
+                  className="md:!w-[30px] md:!h-[30px] md:!text-[0.8rem] mdmin:!w-[40px] mdmin:!h-[40px] mdmin:!text-[1.25rem]"
                   src="/static/images/avatar/2.jpg"
                 />
                 <div className="text-[14px] pr-2 text-white md:hidden">
@@ -228,7 +221,7 @@ const Header = () => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px !important", border: "none" }}
+              style={{ marginTop: "45px", border: "none" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -245,13 +238,14 @@ const Header = () => {
             >
               <div
                 style={{
-                  display: "flex !important",
+                  display: "flex",
                   flexDirection: "column",
                 }}
               >
                 {settings.map((setting) => (
                   <MenuItem
                     key={setting.title}
+                    className="text-primary hover:text-white hover:!bg-primary !px-[10px] !py-[6px]"
                     onClick={() => {
                       if (setting.title === "خروج") {
                         history.push("/home");
