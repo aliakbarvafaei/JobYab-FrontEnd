@@ -131,14 +131,14 @@ const LoginUser: React.FC<{
     >
       <CssBaseline />
       <Box
-        sx={{
+        style={{
           marginTop: 4,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "green" }}>
+        <Avatar style={{ margin: "8px", backgroundColor: "green" }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -146,10 +146,9 @@ const LoginUser: React.FC<{
         </Typography>
         <Box
           component="form"
-          // onSubmit={handleSubmit}
           onSubmit={userLogin.handleSubmit(onSubmitHandlerUserLogin)}
           noValidate
-          sx={{ mt: 1 }}
+          style={{ marginTop: "8px" }}
         >
           <TextField
             margin="normal"
@@ -177,7 +176,6 @@ const LoginUser: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="email"
             autoFocus
           />
           <TextField
@@ -207,14 +205,18 @@ const LoginUser: React.FC<{
             label="رمزعبور"
             type={passType}
             id="password"
-            // autoComplete="current-password"
           />
           <i
             className={`fa ${iconPassword} absolute left-[40px] mt-[38px] cursor-pointer`}
             onClick={handlePassword}
             aria-hidden="true"
           ></i>
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3 }}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            style={{ marginTop: "24px" }}
+          >
             {loadingReq ? (
               <i
                 style={{ fontSize: "24.5px" }}
@@ -229,7 +231,7 @@ const LoginUser: React.FC<{
             type="button"
             fullWidth
             onClick={() => changeLoginSign("user", 4)}
-            sx={{ mt: 1, mb: 2, fontSize: "12px" }}
+            style={{ marginTop: "8px", marginBottom: "16px", fontSize: "12px" }}
           >
             فعال‌سازی حساب
           </Button>

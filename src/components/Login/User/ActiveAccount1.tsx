@@ -99,14 +99,14 @@ const ActiveAccount1User: React.FC<{
     >
       <CssBaseline />
       <Box
-        sx={{
+        style={{
           marginTop: 4,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "green" }}>
+        <Avatar style={{ margin: "8px", backgroundColor: "green" }}>
           <LockResetOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -114,10 +114,9 @@ const ActiveAccount1User: React.FC<{
         </Typography>
         <Box
           component="form"
-          // onSubmit={handleSubmit}
           onSubmit={userActive.handleSubmit(onSubmitHandlerUserActive)}
           noValidate
-          sx={{ mt: 1 }}
+          style={{ marginTop: "8px" }}
         >
           <TextField
             margin="normal"
@@ -148,14 +147,13 @@ const ActiveAccount1User: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="email"
             autoFocus
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 0 }}
+            style={{ marginTop: "24px", marginBottom: 0 }}
           >
             {loadingReq ? (
               <i
@@ -174,7 +172,7 @@ const ActiveAccount1User: React.FC<{
               history.push("/login");
               history.go(0);
             }}
-            sx={{ mt: 1, mb: 2 }}
+            style={{ marginTop: "8px", marginBottom: "16px" }}
           >
             بازگشت به صفحه ورود
           </Button>

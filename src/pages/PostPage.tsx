@@ -74,7 +74,7 @@ const PostPage = () => {
         data={adDetail}
         onclick={() => {
           // @ *todo:
-          // history.push(`/company/${adDetail?.user.id}`);
+         
           history.push(`/company/${adDetail?.id}`);
         }}
         updateData={() => {

@@ -22,40 +22,56 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
+
   "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
 
-function createData(email: string, phone_number: string, text: string, created_date: string) {
+function createData(
+  email: string,
+  phone_number: string,
+  text: string,
+  created_date: string
+) {
   return { email, phone_number, text, created_date };
 }
 
 const CustomizedTables: React.FC<{
-  data: Array<{ email: string; phone_number: string; text: string; created_date: string }>;
+  data: Array<{
+    email: string;
+    phone_number: string;
+    text: string;
+    created_date: string;
+  }>;
 }> = ({ data }) => {
-  var rows: Array<{ email: string; phone_number: string; text: string; created_date: string }> =
-    [];
+  var rows: Array<{
+    email: string;
+    phone_number: string;
+    text: string;
+    created_date: string;
+  }> = [];
   data.forEach((item) => {
-    rows.push(createData(item.email, item.phone_number, item.text, item.created_date));
+    rows.push(
+      createData(item.email, item.phone_number, item.text, item.created_date)
+    );
   });
 
   return (
-    <TableContainer component={Paper} sx={{ width: "100%" }}>
-      <Table sx={{ minWidth: "100%" }} aria-label="customized table">
+    <TableContainer component={Paper} style={{ width: "100%" }}>
+      <Table style={{ minWidth: "100%" }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell align="right">تلفن</StyledTableCell>
             <StyledTableCell
               align="right"
-              sx={{ display: { xs: "none", sm: "table-cell" } }}
+              className="sm:hidden smmin:table-cell"
             >
               ایمیل
             </StyledTableCell>
             <StyledTableCell
               align="right"
-              sx={{ display: { xs: "none", sm: "table-cell" } }}
+              className="sm:hidden smmin:table-cell"
             >
               متن پیام
             </StyledTableCell>
@@ -70,13 +86,13 @@ const CustomizedTables: React.FC<{
               </StyledTableCell>
               <StyledTableCell
                 align="right"
-                sx={{ display: { xs: "none", sm: "table-cell" } }}
+                className="sm:hidden smmin:table-cell"
               >
                 {row.email}
               </StyledTableCell>
               <StyledTableCell
                 align="right"
-                sx={{ display: { xs: "none", sm: "table-cell" } }}
+                className="sm:hidden smmin:table-cell"
               >
                 {row.text}
               </StyledTableCell>

@@ -89,10 +89,10 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
   }, [user]);
 
   return (
-    <Box className="mdmin:mx-[30%]" sx={{ fontFamily: "IRANSans" }}>
+    <Box className="mdmin:mx-[30%]" style={{ fontFamily: "IRANSans" }}>
       <h1 className="text-[20px]">پروفایل</h1>
       <Box
-        sx={{
+        style={{
           marginTop: "10px",
           fontSize: "1rem",
           backgroundColor: "white",
@@ -105,8 +105,8 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
           component="form"
           onSubmit={userRegister.handleSubmit(onSubmitHandlerUserRegiter)}
           noValidate
-          sx={{
-            mt: 0.1,
+          style={{
+            marginTop: "0.8px",
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",
@@ -251,7 +251,12 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
             }}
           />
 
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 1 }}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            style={{ marginTop: "8px" }}
+          >
             {loadingReq ? (
               <i
                 style={{ fontSize: "24.5px" }}

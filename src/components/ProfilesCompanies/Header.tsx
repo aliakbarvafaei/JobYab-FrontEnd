@@ -60,7 +60,7 @@ const Header = () => {
   return (
     <AppBar
       position="static"
-      className="lg:!px-[20px] lgmin:!px-[80px]"
+      className="lg:px-[20px] lgmin:px-[80px]"
       style={{
         fontFamily: "IRANSans",
         minHeight: "90px",
@@ -78,7 +78,7 @@ const Header = () => {
             noWrap
             component="a"
             href="/"
-            className="md:!hidden mdmin:!flex"
+            className="md:hidden mdmin:flex"
             style={{
               fontFamily: "monospace",
               fontWeight: 700,
@@ -91,7 +91,7 @@ const Header = () => {
           </Typography>
 
           <Box
-            className="md:!flex mdmin:!hidden"
+            className="md:flex mdmin:hidden"
             style={{
               flexGrow: 1,
             }}
@@ -121,7 +121,7 @@ const Header = () => {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              className="md:!block mdmin:!hidden"
+              className="md:block mdmin:hidden"
             >
               {pages.map((page) => (
                 <MenuItem
@@ -140,7 +140,7 @@ const Header = () => {
             noWrap
             component="a"
             href="/"
-            className="md:!flex mdmin:!hidden md:!text-[16px] mdmin:!text-[20px]"
+            className="md:flex mdmin:hidden md:text-[16px] mdmin:text-[20px]"
             style={{
               flexGrow: 1,
               fontFamily: "monospace",
@@ -157,7 +157,7 @@ const Header = () => {
             <Button
               variant="contained"
               href="/profile-company/new-post"
-              className="md:!hidden mdmin:!inline !px-[10px]"
+              className="md:hidden mdmin:inline px-[10px]"
               style={{
                 backgroundColor: "white",
                 color: "black",
@@ -173,7 +173,7 @@ const Header = () => {
             <Button
               key="نشان شده‌ها"
               href="/profile-company?section=bookmark"
-              className="md:!hidden mdmin:!inline-flex"
+              className="md:hidden mdmin:inline-flex"
               style={{
                 marginTop: "2px",
                 marginBottom: "2px",
@@ -190,7 +190,7 @@ const Header = () => {
               key="پشتیبانی"
               href="/profile-company?section=message"
               onClick={handleCloseNavMenu}
-              className="md:!hidden mdmin:!inline-flex"
+              className="md:hidden mdmin:inline-flex"
               style={{
                 marginTop: "2px",
                 marginBottom: "2px",
@@ -212,7 +212,7 @@ const Header = () => {
                 disableRipple
               >
                 <Avatar
-                  className="md:!w-[30px] md:!h-[30px] md:!text-[0.8rem] mdmin:!w-[40px] mdmin:!h-[40px] mdmin:!text-[1.25rem]"
+                  className="md:w-[30px] md:h-[30px] md:text-[0.8rem] mdmin:w-[40px] mdmin:h-[40px] mdmin:text-[1.25rem]"
                   src="/static/images/avatar/2.jpg"
                 />
                 <div className="text-[14px] pr-2 text-white md:hidden">
@@ -245,7 +245,7 @@ const Header = () => {
                 {settings.map((setting) => (
                   <MenuItem
                     key={setting.title}
-                    className="text-primary hover:text-white hover:!bg-primary !px-[10px] !py-[6px]"
+                    className="text-primary hover:text-white hover:bg-primary px-[10px] py-[6px]"
                     onClick={() => {
                       if (setting.title === "خروج") {
                         history.push("/home");

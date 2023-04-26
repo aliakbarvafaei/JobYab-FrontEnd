@@ -50,7 +50,7 @@ const FormDialog: React.FC<{
           component="form"
           onSubmit={Message.handleSubmit(onSubmitHandlerMessage)}
           noValidate
-          sx={{ mt: 1 }}
+          style={{ marginTop: "8px" }}
         >
           <DialogTitle>پیام جدید</DialogTitle>
           <DialogContent>
@@ -135,7 +135,10 @@ const FormDialog: React.FC<{
                 },
               }}
             />
-            <Button id={submitId} sx={{ display: "none !important" }}></Button>
+            <Button
+              id={submitId}
+              style={{ display: "none !important" }}
+            ></Button>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>لغو</Button>

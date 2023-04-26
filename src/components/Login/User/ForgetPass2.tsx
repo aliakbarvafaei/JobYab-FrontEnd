@@ -112,14 +112,14 @@ const ForgetPass2User: React.FC<{
     >
       <CssBaseline />
       <Box
-        sx={{
+        style={{
           marginTop: 4,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "green" }}>
+        <Avatar style={{ margin: "8px", backgroundColor: "green" }}>
           <LockResetOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -127,10 +127,9 @@ const ForgetPass2User: React.FC<{
         </Typography>
         <Box
           component="form"
-          // onSubmit={handleSubmit}
           onSubmit={userForget2.handleSubmit(onSubmitHandlerUserForget2)}
           noValidate
-          sx={{ mt: 1 }}
+          style={{ marginTop: "8px" }}
         >
           <TextField
             margin="normal"
@@ -161,7 +160,6 @@ const ForgetPass2User: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="email"
             autoFocus
           />
           <TextField
@@ -190,7 +188,6 @@ const ForgetPass2User: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="email"
           />
           <TextField
             margin="normal"
@@ -219,7 +216,6 @@ const ForgetPass2User: React.FC<{
             label="رمز جدید"
             type={passType}
             id="password"
-            // autoComplete="current-password"
           />
           <i
             className={`fa ${iconPassword} absolute left-[40px] mt-[38px] cursor-pointer`}
@@ -230,7 +226,7 @@ const ForgetPass2User: React.FC<{
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 0 }}
+            style={{ marginTop: "24px", marginBottom: 0 }}
           >
             {loadingReq ? (
               <i
@@ -249,7 +245,7 @@ const ForgetPass2User: React.FC<{
               history.push(`/login?email=${queryParams.get("email")}`);
               changeLoginSign("user", 2);
             }}
-            sx={{ mt: 1, mb: 2 }}
+            style={{ marginTop: "8px", marginBottom: "16px" }}
           >
             بازگشت
           </Button>

@@ -28,8 +28,8 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
   };
   return (
     <Card
-      sx={{
-        width: { sm: "80%", xs: "95%" },
+      className="sm:w-[95%] smmin:w-[80%]"
+      style={{
         height: "135px",
         fontFamily: "IRANSans",
         display: "flex",
@@ -38,9 +38,8 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
     >
       <Box className="smmin:w-[88%] sm:w-[85%]">
         <Box
-          sx={{
-            py: { xs: 1, sm: 2 },
-            px: { xs: "6px", sm: 2, md: 4 },
+          className="sm:py-[8px] smmin:py-[16px] sm:px-[6px] md:px-[16px] mdmin:px-[32px]"
+          style={{
             height: "70%",
             display: "flex",
             gap: "10%",
@@ -54,13 +53,13 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
                 : API_URL.split("api")[0] + (item.post.user.logo as string)
             }
             alt=""
-            className="rounded-[50%]"
+            className="rounded-[50%] sm:w-[40px] sm:h-[40px] smmin:w-[70px] smmin:h-[70px]"
           />
           <Stack spacing={0.5}>
             <Typography
               fontWeight={700}
               color="var(--primary)"
-              sx={{
+              style={{
                 fontFamily: "IRANSans",
 
                 display: "flex",
@@ -70,18 +69,19 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
               <Typography
                 onClick={() => history.push(`/postPage/${item.post.id}`)}
                 component={"div"}
-                sx={{
+                className="sm:text-[12px] md:text-[14px] mdmin:text-[16px]"
+                style={{
                   display: "inline",
-                  fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 }}
               >
                 {item.post.title}
               </Typography>
               <Typography
                 component={"span"}
-                sx={{
+                className="sm:text-[8px] md:text-[9px] mdmin:text-[10px]"
+                style={{
                   color: "var(--lightBlack)",
-                  fontSize: { xs: "8px", sm: "9px", md: "10px" },
+
                   marginRight: "5px",
                 }}
               >
@@ -91,37 +91,40 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{
+              className="sm:text-[8px] md:text-[10px] mdmin:text-[12px]"
+              style={{
                 fontFamily: "IRANSans",
-                fontSize: { xs: "8px", sm: "10px", md: "12px" },
               }}
             >
-              <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
+              <LocationOnIcon
+                style={{ color: "grey[500]", fontSize: "16px" }}
+              />{" "}
               {item.post.city.title}, {item.post.state.title}
             </Typography>
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{
+              className="sm:text-[8px] md:text-[10px] mdmin:text-[12px]"
+              style={{
                 fontFamily: "IRANSans",
-                fontSize: { xs: "8px", sm: "10px", md: "12px" },
               }}
             >
               <FactCheckOutlinedIcon
-                sx={{ color: "grey[500]", fontSize: "16px" }}
+                style={{ color: "grey[500]", fontSize: "16px" }}
               />{" "}
               {item.post.cooperation_type} ({item.post.salary})
             </Typography>
           </Stack>
           <Box
-            sx={{
+            className="sm:text-[8px] smmin:text-[12px]"
+            style={{
               marginRight: "auto",
               display: "flex",
               flexDirection: "column",
               gap: "10px",
               alignItems: "center",
               color: "var(--lightBlack)",
-              fontSize: { xs: "8px", sm: "12px" },
+
               textAlign: "center",
               cursor: "pointer",
             }}
@@ -129,9 +132,7 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
               (window.location.href = API_URL.split("api")[0] + item.resume)
             }
           >
-            <DownloadOutlinedIcon
-              sx={{ fontSize: { xs: "25px", sm: "35px" } }}
-            />
+            <DownloadOutlinedIcon className="sm:text-[25px] smmin:text-[35px]" />
             رزومه
           </Box>
         </Box>
@@ -140,47 +141,46 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
           direction="row"
           alignItems="center"
           justifyContent="space-between"
-          sx={{
-            px: { xs: "2px", sm: 4, md: 8 },
-            py: 1,
+          className="sm:px-[2px] md:px-[32px] mdmin:px-[64px] py-[8px]"
+          style={{
             height: "30%",
-            bgcolor: "background.default",
+            backgroundColor: "background.default",
           }}
         >
           <Typography
             variant="body2"
             color="text.secondary"
-            sx={{
+            className="sm:text-[8px] smmin:text-[12px]"
+            style={{
               fontFamily: "IRANSans",
-              fontSize: { xs: "8px", sm: "12px" },
             }}
           >
             <DriveFileRenameOutlineOutlinedIcon
-              sx={{ color: "grey[500]", fontSize: "16px" }}
+              style={{ color: "grey[500]", fontSize: "16px" }}
             />{" "}
             {item.user.full_name}
           </Typography>
           <Typography
             variant="body2"
             color="text.secondary"
-            sx={{
+            className="sm:text-[8px] smmin:text-[12px]"
+            style={{
               fontFamily: "IRANSans",
-              fontSize: { xs: "8px", sm: "12px" },
             }}
           >
-            <EmailIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
+            <EmailIcon style={{ color: "grey[500]", fontSize: "16px" }} />{" "}
             {item.user.data.username}
           </Typography>
           <Typography
             variant="body2"
             color="text.secondary"
-            sx={{
+            className="sm:text-[8px] smmin:text-[12px]"
+            style={{
               fontFamily: "IRANSans",
-              fontSize: { xs: "8px", sm: "12px" },
             }}
           >
             <FactCheckOutlinedIcon
-              sx={{ color: "grey[500]", fontSize: "16px" }}
+              style={{ color: "grey[500]", fontSize: "16px" }}
             />{" "}
             {item.user.phone_number}
           </Typography>
@@ -188,20 +188,16 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
       </Box>
       {index === 0 ? (
         <Button
-          className="smmin:w-[12%] sm:w-[15%]"
+          className="smmin:w-[12%] sm:w-[15%] sm:text-[10px] smmin:text-[14px] hover:opacity-50 hover:bg-black"
           onClick={() => changeState(2)}
-          sx={{
+          style={{
             backgroundColor: "var(--primary)",
             color: "white",
-            fontSize: { xs: "10px", sm: "14px" },
+
             fontFamily: "IRANSans",
             borderTopRightRadius: "0px",
             borderBottomRightRadius: "0px",
             minWidth: "0px",
-            "&:hover": {
-              opacity: 0.5,
-              backgroundColor: "black",
-            },
           }}
         >
           در حال بررسی
@@ -209,44 +205,38 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
       ) : index === 1 ? (
         <Box
           className="smmin:w-[12%] sm:w-[15%]"
-          sx={{ display: "flex", flexDirection: "column", height: "100%" }}
+          style={{ display: "flex", flexDirection: "column", height: "100%" }}
         >
           <Button
             onClick={() => changeState(3)}
-            sx={{
+            className="sm:text-[10px] smmin:text-[14px] hover:opacity-50 hover:bg-black"
+            style={{
               backgroundColor: "green",
               color: "white",
               height: "50%",
-              fontSize: { xs: "10px", sm: "14px" },
+
               fontFamily: "IRANSans",
               borderTopRightRadius: "0px",
               borderBottomRightRadius: "0px",
               borderBottomLeftRadius: "0px",
               minWidth: "0px",
-              "&:hover": {
-                opacity: 0.5,
-                backgroundColor: "black",
-              },
             }}
           >
             پذیرش
           </Button>
           <Button
             onClick={() => changeState(4)}
-            sx={{
+            className="sm:text-[10px] smmin:text-[14px] hover:opacity-50 hover:bg-black"
+            style={{
               backgroundColor: "red",
               color: "white",
               height: "50%",
-              fontSize: { xs: "10px", sm: "14px" },
+
               fontFamily: "IRANSans",
               borderTopRightRadius: "0px",
               borderTopLeftRadius: "0px",
               borderBottomRightRadius: "0px",
               minWidth: "0px",
-              "&:hover": {
-                opacity: 0.5,
-                backgroundColor: "black",
-              },
             }}
           >
             رد
@@ -254,19 +244,15 @@ const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
         </Box>
       ) : (
         <Button
-          className="smmin:w-[12%] sm:w-[15%]"
-          sx={{
+          className="smmin:w-[12%] sm:w-[15%] sm:text-[10px] smmin:text-[14px] hover:opacity-50 hover:bg-black"
+          style={{
             backgroundColor: `${item.state === "رد شده" ? "red" : "green"}`,
             color: "white",
-            fontSize: { xs: "10px", sm: "14px" },
+
             fontFamily: "IRANSans",
             borderTopRightRadius: "0px",
             borderBottomRightRadius: "0px",
             minWidth: "0px",
-            "&:hover": {
-              opacity: 0.5,
-              backgroundColor: "black",
-            },
           }}
         >
           {item.state === "رد شده" ? "رد شد" : "پذیرفته شد"}

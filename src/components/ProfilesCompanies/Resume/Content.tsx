@@ -24,7 +24,7 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
     getMyReciveResumes(index + 1)
       .then((response) => {
         console.log(response.data.data);
-        
+
         setResumes((old: null | Array<reciveResume>) => {
           if (old !== null) return [...old, ...response.data.data];
           else return response.data.data;
@@ -35,12 +35,11 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
       });
   }, []);
   return (
-    <Box sx={{ fontFamily: "IRANSans", paddingX: "0px" }}>
+    <Box className="px-[0px]" style={{ fontFamily: "IRANSans" }}>
       <Box
-        sx={{
+        className="px-[0px] py-[12px]"
+        style={{
           backgroundColor: "#d8dbe2",
-          paddingX: "0px",
-          paddingY: "10px",
           marginTop: "10px",
           fontSize: "1rem",
           display: "flex",
@@ -66,7 +65,7 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
           </>
         ) : (
           <>
-            <SearchIcon sx={{ fontSize: "4rem", color: "gray" }} />
+            <SearchIcon style={{ fontSize: "4rem", color: "gray" }} />
             لیست آگهی‌های این بخش خالی است
           </>
         )}

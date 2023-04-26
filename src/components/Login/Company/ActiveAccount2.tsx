@@ -114,14 +114,14 @@ const ActiveAccount2Company: React.FC<{
     >
       <CssBaseline />
       <Box
-        sx={{
+        style={{
           marginTop: 4,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "green" }}>
+        <Avatar style={{ margin: "8px", backgroundColor: "green" }}>
           <LockResetOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -129,10 +129,9 @@ const ActiveAccount2Company: React.FC<{
         </Typography>
         <Box
           component="form"
-          // onSubmit={handleSubmit}
           onSubmit={companyActive2.handleSubmit(onSubmitHandlerCompanyActive2)}
           noValidate
-          sx={{ mt: 1 }}
+          style={{ marginTop: "8px" }}
         >
           <TextField
             margin="normal"
@@ -163,7 +162,6 @@ const ActiveAccount2Company: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="email"
           />
           <TextField
             margin="normal"
@@ -191,14 +189,13 @@ const ActiveAccount2Company: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="email"
             autoFocus
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 0 }}
+            style={{ marginTop: "24px", marginBottom: 0 }}
           >
             {loadingReq ? (
               <i
@@ -216,7 +213,7 @@ const ActiveAccount2Company: React.FC<{
             onClick={() => {
               changeLoginSign("company", 4);
             }}
-            sx={{ mt: 1, mb: 2 }}
+            style={{ marginTop: "8px", marginBottom: "16px" }}
           >
             بازگشت
           </Button>

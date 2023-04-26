@@ -62,11 +62,11 @@ const HeaderNewShort = () => {
   return (
     <AppBar
       position="static"
-      className="lg:!px-[20px] lgmin:!px-[80px]"
+      className="lg:px-[20px] lgmin:px-[80px]"
       style={{
         minHeight: "90px",
         justifyContent: "center",
-        // paddingX: { sm: "80px", xs: "20px" },
+
         fontFamily: "IRANSans",
       }}
     >
@@ -75,15 +75,14 @@ const HeaderNewShort = () => {
           disableGutters
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
+          {/* <AdbIcon style={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
-            className="md:!hidden mdmin:!flex"
+            className="md:hidden mdmin:flex"
             style={{
-              // display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
@@ -98,7 +97,6 @@ const HeaderNewShort = () => {
             className="md:!flex mdmin:!hidden"
             style={{
               flexGrow: 1,
-              //  display: { xs: "flex", md: "none" }
             }}
           >
             <IconButton
@@ -108,7 +106,7 @@ const HeaderNewShort = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-              className="!p-0"
+              className="p-0"
             >
               <MenuIcon />
             </IconButton>
@@ -126,12 +124,7 @@ const HeaderNewShort = () => {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              className="md:!block mdmin:!hidden"
-              // style={
-              //   {
-              //     // display: { xs: "block", md: "none" },
-              //   }
-              // }
+              className="md:block mdmin:hidden"
             >
               {pages.map((page) => (
                 <MenuItem
@@ -150,13 +143,12 @@ const HeaderNewShort = () => {
             noWrap
             component="a"
             href="/"
-            className="md:!flex mdmin:!hidden md:!text-[16px] mdmin:!text-[20px]"
+            className="md:flex mdmin:hidden md:text-[16px] mdmin:text-[20px]"
             style={{
-              // display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              // fontSize: { xs: "16px", sm: "20px" },
+
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
@@ -169,7 +161,7 @@ const HeaderNewShort = () => {
             <Button
               variant="contained"
               href="/profile-company"
-              className="md:!hidden mdmin:!inline"
+              className="md:hidden mdmin:inline"
               style={{
                 paddingTop: "5px",
                 paddingBottom: "5px",
@@ -180,7 +172,7 @@ const HeaderNewShort = () => {
                 paddingLeft: "20px",
                 paddingRight: "20px",
                 fontFamily: "IRANSans",
-                // display: { xs: "none", md: "inline" },
+
                 marginLeft: "20px",
                 marginRight: "20px",
               }}
@@ -190,7 +182,7 @@ const HeaderNewShort = () => {
             <Button
               key="نشان شده‌ها"
               href="/profile?section=bookmark"
-              className="md:!hidden mdmin:!inline-flex"
+              className="md:hidden mdmin:inline-flex"
               style={{
                 marginTop: 2,
                 marginBottom: 2,
@@ -198,7 +190,6 @@ const HeaderNewShort = () => {
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
-                // display: { xs: "none", md: "inline-flex" },
               }}
             >
               <BookmarksOutlinedIcon />
@@ -208,7 +199,7 @@ const HeaderNewShort = () => {
               key="پشتیبانی"
               onClick={handleCloseNavMenu}
               href="/profile?section=message"
-              className="md:!hidden mdmin:!inline-flex"
+              className="md:hidden mdmin:inline-flex"
               style={{
                 marginTop: 2,
                 marginBottom: 2,
@@ -216,7 +207,6 @@ const HeaderNewShort = () => {
                 gap: "5px",
                 paddingLeft: "20px",
                 fontFamily: "IRANSans",
-                // display: { xs: "none", md: "inline-flex" },
               }}
             >
               <ContactSupportIcon />
@@ -230,15 +220,10 @@ const HeaderNewShort = () => {
                   disableRipple
                 >
                   <Avatar
-                    className="md:!w-[30px] md:!h-[30px] md:!text-[0.8rem] mdmin:!w-[40px] mdmin:!h-[40px] mdmin:!text-[1.25rem]"
-                    // sx={{
-                    //   width: { xs: "30px", sm: "40px" },
-                    //   height: { xs: "30px", sm: "40px" },
-                    //   fontSize: { xs: "0.8rem", sm: "1.25rem" },
-                    // }}
+                    className="md:w-[30px] md:h-[30px] md:text-[0.8rem] mdmin:w-[40px] mdmin:h-[40px] mdmin:text-[1.25rem]"
                     src="/static/images/avatar/2.jpg"
                   />
-                  <div className="text-[14px] pr-2 text-white md:!hidden">
+                  <div className="text-[14px] pr-2 text-white md:hidden">
                     حساب کاربری
                   </div>
                 </IconButton>
@@ -275,12 +260,7 @@ const HeaderNewShort = () => {
               {settings.map((setting) => (
                 <MenuItem
                   key={setting.title}
-                  // style={{
-                  //   "&:hover": {
-                  //     background: "#1976D2",
-                  //   },
-                  // }}
-                  className="text-primary hover:text-white hover:!bg-primary !block !px-[10px] !py-[6px]"
+                  className="text-primary hover:text-white hover:bg-primary block px-[10px] py-[6px]"
                   onClick={() => {
                     if (setting.title === "خروج") {
                       history.push("/home");

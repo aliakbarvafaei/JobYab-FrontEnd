@@ -76,7 +76,7 @@ const CompanyPage = () => {
           marginTop: 40,
           paddingTop: 30,
           boxShadow: "0 0 6px var(--primary)",
-          // marginInline: 80,
+         
           paddingBlock: 20,
         }}
       >

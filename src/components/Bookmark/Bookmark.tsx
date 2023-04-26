@@ -21,22 +21,30 @@ const Bookmark: React.FC = () => {
 
   return (
     <>
-      <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
+      <Box className="mdmin:mx-[15%]" style={{ fontFamily: "IRANSans" }}>
         <Box
-          sx={{
+          className="smmin:flex-row sm:flex-col"
+          style={{
             display: "flex",
-            flexDirection: { xs: "column", sm: "row" },
             justifyContent: "space-between",
           }}
         >
           <h1 className="text-[20px]">نشان شده‌ها</h1>
         </Box>
-        <Box sx={{ fontFamily: "IRANSans", paddingX: "0px" }}>
+        <Box
+          style={{
+            fontFamily: "IRANSans",
+            paddingLeft: "0px",
+            paddingRight: "0px",
+          }}
+        >
           <Box
-            sx={{
+            style={{
               backgroundColor: "#d8dbe2",
-              paddingX: "0px",
-              paddingY: "20px",
+              paddingLeft: "0px",
+              paddingRight: "0px",
+              paddingTop: "20px",
+              paddingBottom: "20px",
               marginTop: "10px",
               fontSize: "1rem",
               display: "flex",
@@ -63,7 +71,7 @@ const Bookmark: React.FC = () => {
               </>
             ) : (
               <>
-                <SearchIcon sx={{ fontSize: "4rem", color: "gray" }} />
+                <SearchIcon style={{ fontSize: "4rem", color: "gray" }} />
                 لیست نشان شده‌ها خالی است
               </>
             )}

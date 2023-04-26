@@ -35,10 +35,10 @@ const Step3: React.FC<{
       component="form"
       onSubmit={step3.handleSubmit(onSubmitHandlerStep3)}
       noValidate
-      sx={{
-        mt: 0.1,
+      style={{
+        marginTop: "0.8px",
         display: "flex",
-        // flexDirection: "column",
+
         minHeight: "285px",
         flexWrap: "wrap",
         alignItems: "center",
@@ -79,7 +79,7 @@ const Step3: React.FC<{
         }}
       />
 
-      <Button id="step3" type="submit" sx={{ display: "none" }} />
+      <Button id="step3" type="submit" style={{ display: "none" }} />
     </Box>
   );
 };

@@ -24,7 +24,10 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box className={className} sx={{ py: 1 }}>
+        <Box
+          className={className}
+          style={{ paddingTop: "8px", paddingBottom: "8px" }}
+        >
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -47,9 +50,9 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%", fontFamily: "IRANSans" }}>
+    <Box style={{ width: "100%", fontFamily: "IRANSans" }}>
       <Box
-        sx={{
+        style={{
           borderBottom: 1,
           borderColor: "divider",
         }}
@@ -71,17 +74,17 @@ export default function BasicTabs() {
           <Tab
             label="رزومه‌های دریافتی"
             {...a11yProps(0)}
-            sx={{ fontFamily: "IRANSans" }}
+            style={{ fontFamily: "IRANSans" }}
           />
           <Tab
             label="درحال بررسی"
             {...a11yProps(1)}
-            sx={{ fontFamily: "IRANSans" }}
+            style={{ fontFamily: "IRANSans" }}
           />
           <Tab
             label="پذیرفته یا رد"
             {...a11yProps(2)}
-            sx={{ fontFamily: "IRANSans" }}
+            style={{ fontFamily: "IRANSans" }}
           />
         </Tabs>
       </Box>

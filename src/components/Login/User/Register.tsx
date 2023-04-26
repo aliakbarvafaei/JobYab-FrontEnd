@@ -127,14 +127,14 @@ const RegisterUser: React.FC<{
     >
       <CssBaseline />
       <Box
-        sx={{
+        style={{
           marginTop: 1,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 0.5, bgcolor: "green" }}>
+        <Avatar style={{ margin: "4px", backgroundColor: "green" }}>
           <LockOpenOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -142,10 +142,9 @@ const RegisterUser: React.FC<{
         </Typography>
         <Box
           component="form"
-          // onSubmit={handleSubmit}
           onSubmit={userRegister.handleSubmit(onSubmitHandlerUserRegiter)}
           noValidate
-          sx={{ mt: 0.1 }}
+          style={{ marginTop: "0.8px" }}
         >
           <TextField
             margin="normal"
@@ -173,7 +172,6 @@ const RegisterUser: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="name"
             autoFocus
           />
           <TextField
@@ -320,7 +318,7 @@ const RegisterUser: React.FC<{
             }}
           />
           <Box
-            sx={{
+            style={{
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
@@ -342,8 +340,8 @@ const RegisterUser: React.FC<{
             <Button
               variant="outlined"
               component="label"
-              sx={{
-                fontSize: { xs: "10px", sm: "14px" },
+              className="sm:text-[10px] smmin:text-[14px]"
+              style={{
                 width: "65%",
                 fontFamily: "IRANSans",
               }}
@@ -373,7 +371,7 @@ const RegisterUser: React.FC<{
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 1, mb: 2 }}
+            style={{ marginTop: "8px", marginBottom: "16px" }}
           >
             {loadingReq ? (
               <i

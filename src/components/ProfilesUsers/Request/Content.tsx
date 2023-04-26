@@ -33,12 +33,11 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
       });
   }, []);
   return (
-    <Box sx={{ fontFamily: "IRANSans", paddingX: "0px" }}>
+    <Box style={{ fontFamily: "IRANSans" }} className="px-[0px]">
       <Box
-        sx={{
+        className="px-[0px] py-[20px]"
+        style={{
           backgroundColor: "#d8dbe2",
-          paddingX: "0px",
-          paddingY: "20px",
           marginTop: "10px",
           fontSize: "1rem",
           display: "flex",
@@ -46,7 +45,7 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
           gap: "10px",
           justifyContent: "center",
           alignItems: "center",
-          borderRadius: 4,  
+          borderRadius: 4,
         }}
       >
         {resumes === null ? (
@@ -65,7 +64,7 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
           </>
         ) : (
           <>
-            <SearchIcon sx={{ fontSize: "4rem", color: "gray" }} />
+            <SearchIcon style={{ fontSize: "4rem", color: "gray" }} />
             لیست درخواست‌های این بخش خالی است
           </>
         )}

@@ -83,7 +83,9 @@ const DetailSection = ({ data }: DetailSectionProps) => {
           <DetailItem
             title="سابقه کار"
             value={data?.experience ?? ""}
-            logo={<ManageAccountsOutlinedIcon style={{ color: "var(--primary)" }} />}
+            logo={
+              <ManageAccountsOutlinedIcon style={{ color: "var(--primary)" }} />
+            }
           />
         </Grid>
         <Grid item xs={12} sm={6} className="flex items-center">
@@ -108,14 +110,20 @@ const DetailSection = ({ data }: DetailSectionProps) => {
           <DetailItem
             title="مدرک تحصیلی"
             value={data?.degree ?? ""}
-            logo={<WorkspacePremiumOutlinedIcon style={{ color: "var(--primary)" }} />}
+            logo={
+              <WorkspacePremiumOutlinedIcon
+                style={{ color: "var(--primary)" }}
+              />
+            }
           />
         </Grid>
         <Grid item xs={12} sm={6} className="flex items-center">
           <DetailItem
             title="وضعیت سربازی"
             value={data?.sarbazi ?? ""}
-            logo={<MilitaryTechOutlinedIcon style={{ color: "var(--primary)" }} />}
+            logo={
+              <MilitaryTechOutlinedIcon style={{ color: "var(--primary)" }} />
+            }
           />
         </Grid>
       </Grid>
@@ -129,7 +137,11 @@ const DetailSection = ({ data }: DetailSectionProps) => {
           {data?.skills.map(({ title: skillTitle }) => (
             <Chip
               label={skillTitle ?? ""}
-              style={{ borderRadius: 8, background: "var(--primary)", color: "white" }}
+              style={{
+                borderRadius: 8,
+                background: "var(--primary)",
+                color: "white",
+              }}
             />
           ))}
         </Grid>

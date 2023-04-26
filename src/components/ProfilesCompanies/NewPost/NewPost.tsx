@@ -138,14 +138,10 @@ const NewPosts: React.FC = () => {
     });
   };
 
-  // const handleReset = () => {
-  //   setActiveStep(0);
-  // };
-
   return (
     <Box
       className="px-[15%] sm:px-[5%] py-[2%]"
-      sx={{
+      style={{
         fontFamily: "IRANSans",
         backgroundColor: "var(--tabBg)",
         minHeight: "90.5vh",
@@ -153,12 +149,12 @@ const NewPosts: React.FC = () => {
     >
       <h1 className="text-[20px]">ایجاد آگهی</h1>
       <Box
-        sx={{
+        className="px-[2%] py-[3%]"
+        style={{
           backgroundColor: "white",
           borderRadius: "10px",
           marginTop: "10px",
-          paddingX: "2%",
-          paddingY: "3%",
+
           minHeight: "70vh",
           fontSize: "1rem",
           display: "flex",
@@ -174,9 +170,6 @@ const NewPosts: React.FC = () => {
               optional?: React.ReactNode;
             } = {};
             if (isStepOptional(index)) {
-              // labelProps.optional = (
-              //   <Typography variant="caption">اختیاری</Typography>
-              // );
             }
             if (isStepSkipped(index)) {
               stepProps.completed = false;
@@ -199,11 +192,17 @@ const NewPosts: React.FC = () => {
         </Stepper>
         {activeStep === steps.length ? (
           <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
+            <Typography className="mt-[16px] mb-[8px]">
               همه مراحل با موفقیت طی شد.
             </Typography>
-            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <Box sx={{ flex: "1 1 auto" }} />
+            <Box
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                paddingTop: "16px",
+              }}
+            >
+              <Box style={{ flex: "1 1 auto" }} />
               <Link to="/profile-company">بازگشت به پروفایل</Link>
             </Box>
           </React.Fragment>
@@ -218,18 +217,28 @@ const NewPosts: React.FC = () => {
             <div style={{ display: activeStep === 2 ? "block" : "none" }}>
               <Step3 handleNext={handleNext} />
             </div>
-            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+            <Box
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                paddingTop: "16px",
+              }}
+            >
               <Button
                 color="inherit"
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                sx={{ mr: 1 }}
+                style={{ marginRight: "8px" }}
               >
                 قبلی
               </Button>
-              <Box sx={{ flex: "1 1 auto" }} />
+              <Box style={{ flex: "1 1 auto" }} />
               {isStepOptional(activeStep) && (
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                <Button
+                  color="inherit"
+                  onClick={handleSkip}
+                  style={{ marginRight: "8px" }}
+                >
                   رد
                 </Button>
               )}
@@ -249,11 +258,11 @@ const NewPosts: React.FC = () => {
                     className="fa fa-spinner fa-spin"
                     aria-hidden="true"
                   ></i>
-                ) : (activeStep === steps.length - 1 ? (
+                ) : activeStep === steps.length - 1 ? (
                   "پایان"
                 ) : (
                   "بعدی"
-                ))}
+                )}
               </Button>
             </Box>
           </React.Fragment>

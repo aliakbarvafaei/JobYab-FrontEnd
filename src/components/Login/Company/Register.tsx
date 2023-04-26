@@ -144,14 +144,14 @@ const RegisterCompany: React.FC<{
     >
       <CssBaseline />
       <Box
-        sx={{
+        style={{
           marginTop: 1,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 0.5, bgcolor: "green" }}>
+        <Avatar style={{ margin: "4px", backgroundColor: "green" }}>
           <LockOpenOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -161,8 +161,8 @@ const RegisterCompany: React.FC<{
           component="form"
           onSubmit={companyRegiter.handleSubmit(onSubmitHandlerCompanyRegister)}
           noValidate
-          sx={{
-            mt: 0.1,
+          style={{
+            marginTop: "0.8px",
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",
@@ -228,7 +228,6 @@ const RegisterCompany: React.FC<{
                 fontSize: "1rem",
               },
             }}
-            // autoComplete="name"
           />
           <TextField
             margin="normal"
@@ -322,7 +321,6 @@ const RegisterCompany: React.FC<{
             label="رمزعبور"
             type={passType}
             id="password"
-            // autoComplete="current-password"
           />
           <i
             className={`fa ${iconPassword} absolute smmin:right-[40%] smmin:top-[286px] sm:left-[30px] sm:top-[445px] cursor-pointer`}
@@ -389,7 +387,7 @@ const RegisterCompany: React.FC<{
               label="تعداد پرسنل"
               error={!!companyRegiter.formState.errors["count"]}
               {...companyRegiter.register("count")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"1"}>کمتر از 10</MenuItem>
               <MenuItem value={"2"}>کمتر از 100</MenuItem>
@@ -432,7 +430,7 @@ const RegisterCompany: React.FC<{
               label="حوزه فعالیت"
               error={!!companyRegiter.formState.errors["activity"]}
               {...companyRegiter.register("activity")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"فناوری اطلاعات"}>فناوری اطلاعات</MenuItem>
               <MenuItem value={"برنامه نویسی"}>برنامه نویسی</MenuItem>
@@ -476,7 +474,8 @@ const RegisterCompany: React.FC<{
           />
 
           <Box
-            sx={{
+            className="sm:w-[100%]"
+            style={{
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
@@ -484,9 +483,6 @@ const RegisterCompany: React.FC<{
               marginTop: "12px",
               marginBottom: "8px",
               width: "45%",
-              "@media (max-width: 576px)": {
-                width: "100%",
-              },
             }}
           >
             <div
@@ -502,8 +498,8 @@ const RegisterCompany: React.FC<{
             <Button
               variant="outlined"
               component="label"
-              sx={{
-                fontSize: { xs: "10px", sm: "14px" },
+              className="sm:text-[10px] smmin:text-[14px]"
+              style={{
                 width: "65%",
                 fontFamily: "IRANSans",
               }}
@@ -531,12 +527,10 @@ const RegisterCompany: React.FC<{
           </Box>
 
           <FormControl
-            sx={{
+            className="sm:w-[100%]"
+            style={{
               justifyContent: "center",
               width: "45%",
-              "@media (max-width: 576px)": {
-                width: "100%",
-              },
             }}
           >
             <RadioGroup
@@ -546,10 +540,10 @@ const RegisterCompany: React.FC<{
                 setTypeValue((event.target as HTMLInputElement).value);
               }}
               name="radio-buttons-group"
-              sx={{ flexDirection: "row" }}
+              style={{ flexDirection: "row" }}
             >
               <FormControlLabel
-                sx={{ margin: "0px" }}
+                style={{ margin: "0px" }}
                 value="حقیقی"
                 control={<Radio />}
                 label="حقیقی"
@@ -566,7 +560,7 @@ const RegisterCompany: React.FC<{
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 1, mb: 2 }}
+            style={{ marginTop: "8px", marginBottom: "16px" }}
           >
             {loadingReq ? (
               <i

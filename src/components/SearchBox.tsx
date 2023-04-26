@@ -15,11 +15,11 @@ export default function SearchBox({
 }: SearchBoxProps & InputBaseProps) {
   return (
     <Paper
-      sx={{
+      style={{
         display: "flex",
         alignItems: "center",
         flexGrow: 1,
-        height: "fit-content",
+        height: "100%",
         paddingBlock: 0.25,
         border: "1px solid rgba(0, 0, 0, 0.23)",
       }}

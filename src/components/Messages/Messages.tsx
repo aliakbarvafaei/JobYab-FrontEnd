@@ -65,11 +65,10 @@ const Messages: React.FC = () => {
 
   return (
     <>
-      <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
+      <Box className="mdmin:mx-[15%]" style={{ fontFamily: "IRANSans" }}>
         <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", sm: "row" },
+          className="flex sm:flex-col smmin:flex-row"
+          style={{
             justifyContent: "space-between",
           }}
         >
@@ -79,15 +78,23 @@ const Messages: React.FC = () => {
             className="!bg-primary !text-white md:!text-[8px] mdmin:!text-[14px] md:!mt-[10px] hover:!bg-lightBlack"
           >
             نوشتن پیام
-            <AddIcon sx={{ fontSize: { xs: "12px", sm: "18px" } }} />
+            <AddIcon className="sm:text-[12px] smmin:text-[18px]" />
           </Button>
         </Box>
-        <Box sx={{ fontFamily: "IRANSans", paddingX: "0px" }}>
+        <Box
+          style={{
+            fontFamily: "IRANSans",
+            paddingLeft: "0px",
+            paddingRight: "0px",
+          }}
+        >
           <Box
-            sx={{
+            style={{
               backgroundColor: "#d8dbe2",
-              paddingX: "0px",
-              paddingY: "20px",
+              paddingLeft: "0px",
+              paddingRight: "0px",
+              paddingTop: "20px",
+              paddingBottom: "20px",
               marginTop: "10px",
               fontSize: "1rem",
               display: "flex",
@@ -99,12 +106,12 @@ const Messages: React.FC = () => {
             }}
           >
             {messages.length > 0 ? (
-              <Box sx={{ paddingX: "20px" }}>
+              <Box className="px-[20px]">
                 <CustomizedTables data={messages} />
               </Box>
             ) : (
               <>
-                <SearchIcon sx={{ fontSize: "4rem", color: "gray" }} />
+                <SearchIcon style={{ fontSize: "4rem", color: "gray" }} />
                 لیست پیام‌ها خالی است
               </>
             )}

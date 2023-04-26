@@ -90,7 +90,7 @@ const SearchPage: React.FC = () => {
         <>
           <div className="md:mr-10 md:ml-10 xl:ml-3 xl:mr-3 xlmin:mr-20 xlmin:ml-20">
             <div
-              className="flex lg:flex-col lgmin:flex-row"
+              className="flex lg:flex-col lgmin:flex-row lg:min-h-[90px] lgmin:h-[90px]"
               style={{
                 marginTop: 50,
                 background: "rgba(25, 118, 210, 0.3)",

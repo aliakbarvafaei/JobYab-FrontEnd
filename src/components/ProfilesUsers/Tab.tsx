@@ -29,7 +29,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box className={className} sx={{ p: 3 }}>
+        <Box className={className} style={{ padding: "24px" }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -70,21 +70,19 @@ export default function BasicTabs(user: any) {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
   return (
-    <Box sx={{ width: "100%", fontFamily: "IRANSans" }}>
+    <Box style={{ width: "100%", fontFamily: "IRANSans" }}>
       <Box
-        sx={{
-          // borderBottom: 1,
+        className="sm:px-[10px] smmin:px-[80px]"
+        style={{
           borderColor: "divider",
           backgroundColor: "white",
-          paddingX: { sm: "80px", xs: "10px" },
+
           boxShadow: "0 4px 8px 0 rgba(0,0,0,.12), 0 2px 4px 0 rgba(0,0,0,.08)",
           position: "relative",
         }}
@@ -106,26 +104,38 @@ export default function BasicTabs(user: any) {
           <Tab
             label="درخواست‌های من"
             {...a11yProps(0)}
-            sx={{ borderBottom: value === 0 ? 5 : 0, fontFamily: "IRANSans" }}
+            style={{
+              borderBottom: value === 0 ? 5 : 0,
+              fontFamily: "IRANSans",
+            }}
           />
           <Tab
             label="اطلاعات"
             {...a11yProps(1)}
-            sx={{ borderBottom: value === 1 ? 5 : 0, fontFamily: "IRANSans" }}
+            style={{
+              borderBottom: value === 1 ? 5 : 0,
+              fontFamily: "IRANSans",
+            }}
           />
           <Tab
             label="پیام‌ها"
             {...a11yProps(2)}
-            sx={{ borderBottom: value === 2 ? 5 : 0, fontFamily: "IRANSans" }}
+            style={{
+              borderBottom: value === 2 ? 5 : 0,
+              fontFamily: "IRANSans",
+            }}
           />
           <Tab
             label="نشان شده‌ها"
             {...a11yProps(3)}
-            sx={{ borderBottom: value === 3 ? 5 : 0, fontFamily: "IRANSans" }}
+            style={{
+              borderBottom: value === 3 ? 5 : 0,
+              fontFamily: "IRANSans",
+            }}
           />
           <div className="mr-auto flex items-center">
             <Menu
-              sx={{ mt: "45px" }}
+              style={{ marginTop: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{

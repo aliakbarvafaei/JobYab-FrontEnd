@@ -98,10 +98,9 @@ const Step1: React.FC<{
           component="form"
           onSubmit={step1.handleSubmit(onSubmitHandlerStep1)}
           noValidate
-          sx={{
-            mt: 0.1,
+          style={{
+            marginTop: "0.8px",
             display: "flex",
-            // flexDirection: "column",
             minHeight: "285px",
             flexWrap: "wrap",
             alignItems: "center",
@@ -172,7 +171,7 @@ const Step1: React.FC<{
               )}
               error={!!step1.formState.errors["type"]}
               {...step1.register("type")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"ft"}>تمام وقت</MenuItem>
               <MenuItem value={"pt"}>پاره وقت</MenuItem>
@@ -182,7 +181,7 @@ const Step1: React.FC<{
             {step1.formState.errors["type"] ? (
               <Typography
                 component={"p"}
-                sx={{
+                style={{
                   fontSize: "12px",
                   color: "var(--error)",
                   marginLeft: "14px",
@@ -227,7 +226,7 @@ const Step1: React.FC<{
               defaultValue={initialValue(SARBAZI_CHOICES, item.sarbazi)}
               error={!!step1.formState.errors["military"]}
               {...step1.register("military")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"1"}>مهم نیست</MenuItem>
               <MenuItem value={"2"}>معافیت تحصیلی</MenuItem>
@@ -236,7 +235,7 @@ const Step1: React.FC<{
             {step1.formState.errors["military"] ? (
               <Typography
                 component={"p"}
-                sx={{
+                style={{
                   fontSize: "12px",
                   color: "var(--error)",
                   marginLeft: "14px",
@@ -283,7 +282,7 @@ const Step1: React.FC<{
               defaultValue={initialValue(DEGREE_CHOICES, item.degree)}
               error={!!step1.formState.errors["degree"]}
               {...step1.register("degree")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"0"}>مهم نیست</MenuItem>
               <MenuItem value={"1"}>زیر دیپلم</MenuItem>
@@ -297,7 +296,7 @@ const Step1: React.FC<{
             {step1.formState.errors["degree"] ? (
               <Typography
                 component={"p"}
-                sx={{
+                style={{
                   fontSize: "12px",
                   color: "var(--error)",
                   marginLeft: "14px",
@@ -342,7 +341,7 @@ const Step1: React.FC<{
               defaultValue={initialValue(EXPERIANCE_CHOICES, item.experience)}
               error={!!step1.formState.errors["work"]}
               {...step1.register("work")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"1"}>مهم نیست</MenuItem>
               <MenuItem value={"2"}>حداقل 1 سال</MenuItem>
@@ -353,7 +352,7 @@ const Step1: React.FC<{
             {step1.formState.errors["work"] ? (
               <Typography
                 component={"p"}
-                sx={{
+                style={{
                   fontSize: "12px",
                   color: "var(--error)",
                   marginLeft: "14px",
@@ -398,7 +397,7 @@ const Step1: React.FC<{
               defaultValue={initialValue(SEX_CHOICES, item.sex)}
               error={!!step1.formState.errors["gender"]}
               {...step1.register("gender")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"1"}>مهم نیست</MenuItem>
               <MenuItem value={"m"}>مرد</MenuItem>
@@ -407,7 +406,7 @@ const Step1: React.FC<{
             {step1.formState.errors["gender"] ? (
               <Typography
                 component={"p"}
-                sx={{
+                style={{
                   fontSize: "12px",
                   color: "var(--error)",
                   marginLeft: "14px",
@@ -452,7 +451,7 @@ const Step1: React.FC<{
               defaultValue={initialValue(SALARY_CHOICES, item.salary)}
               error={!!step1.formState.errors["salary"]}
               {...step1.register("salary")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"1"}>توافقی</MenuItem>
               <MenuItem value={"2"}>از 5 میلیون تومان</MenuItem>
@@ -463,7 +462,7 @@ const Step1: React.FC<{
             {step1.formState.errors["salary"] ? (
               <Typography
                 component={"p"}
-                sx={{
+                style={{
                   fontSize: "12px",
                   color: "var(--error)",
                   marginLeft: "14px",
@@ -479,7 +478,7 @@ const Step1: React.FC<{
             )}
           </FormControl>
 
-          <Button id="step1" type="submit" sx={{ display: "none" }} />
+          <Button id="step1" type="submit" style={{ display: "none" }} />
         </Box>
       )}
     </>

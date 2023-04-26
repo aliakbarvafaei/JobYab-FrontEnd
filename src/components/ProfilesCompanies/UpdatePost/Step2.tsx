@@ -119,8 +119,8 @@ const Step2: React.FC<{
       component="form"
       onSubmit={step2.handleSubmit(onSubmitHandlerStep2)}
       noValidate
-      sx={{
-        mt: 0.1,
+      style={{
+        marginTop: "0.8px",
         display: "flex",
         minHeight: "285px",
         flexWrap: "wrap",
@@ -129,13 +129,10 @@ const Step2: React.FC<{
       }}
     >
       <Box
-        sx={{
-          width: "45%",
+        className="sm:w-[100%] smmin:w-[45%]"
+        style={{
           marginTop: "16px",
           marginBottom: "8px",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
         }}
       >
         <SingleDropdownWithSearch
@@ -166,13 +163,10 @@ const Step2: React.FC<{
       </Box>
 
       <Box
-        sx={{
-          width: "45%",
+        className="sm:w-[100%] smmin:w-[45%]"
+        style={{
           marginTop: "16px",
           marginBottom: "8px",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
         }}
       >
         <SingleDropdownWithSearch
@@ -207,12 +201,12 @@ const Step2: React.FC<{
           }}
           placeholder="مهارت ها"
         />
-        <Typography component={"div"} sx={{ paddingTop: "10px" }}>
+        <Typography component={"div"} style={{ paddingTop: "10px" }}>
           {technology.map((item) => {
             return (
               <Typography
                 component={"span"}
-                sx={{
+                style={{
                   backgroundColor: "var(--primary)",
                   color: "white",
                   borderRadius: "4px",
@@ -225,7 +219,7 @@ const Step2: React.FC<{
               >
                 {find(skill, item)}
                 <CloseIcon
-                  sx={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer" }}
                   onClick={() =>
                     setTechnology((old) =>
                       old.filter((element) => element !== item)
@@ -239,13 +233,10 @@ const Step2: React.FC<{
       </Box>
 
       <Box
-        sx={{
-          width: "45%",
+        className="sm:w-[100%] smmin:w-[45%]"
+        style={{
           marginTop: "16px",
           marginBottom: "8px",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
         }}
       >
         <SingleDropdownWithSearch
@@ -281,14 +272,11 @@ const Step2: React.FC<{
       </Box>
 
       <Box
-        sx={{
-          width: "45%",
+        className="sm:w-[100%] smmin:w-[45%]"
+        style={{
           marginTop: "16px",
           marginBottom: "8px",
           marginRight: "auto",
-          "@media (max-width: 576px)": {
-            width: "100%",
-          },
         }}
       >
         <SingleDropdownWithSearch
@@ -316,7 +304,7 @@ const Step2: React.FC<{
         />
       </Box>
 
-      <Button id="step2" type="submit" sx={{ display: "none !important" }} />
+      <Button id="step2" type="submit" style={{ display: "none !important" }} />
     </Box>
   );
 };

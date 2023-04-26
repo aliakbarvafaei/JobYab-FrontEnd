@@ -104,10 +104,10 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
   }, [user]);
 
   return (
-    <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
+    <Box className="mdmin:mx-[15%]" style={{ fontFamily: "IRANSans" }}>
       <h1 className="text-[20px]">پروفایل</h1>
       <Box
-        sx={{
+        style={{
           marginTop: "10px",
           fontSize: "1rem",
           backgroundColor: "white",
@@ -119,8 +119,8 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
           component="form"
           onSubmit={companyRegiter.handleSubmit(onSubmitHandlerCompanyRegister)}
           noValidate
-          sx={{
-            mt: 0.1,
+          style={{
+            marginTop: "0.8px",
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",
@@ -232,7 +232,6 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
                 : ""
             }
             {...companyRegiter.register("phone")}
-            style={{}}
             sx={{
               width: "45%",
               "@media (max-width: 576px)": {
@@ -311,7 +310,7 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
               defaultValue={user.number_of_personnel}
               error={!!companyRegiter.formState.errors["count"]}
               {...companyRegiter.register("count")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"1"}>کمتر از 10</MenuItem>
               <MenuItem value={"2"}>کمتر از 100</MenuItem>
@@ -354,7 +353,7 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
               label="حوزه فعالیت"
               error={!!companyRegiter.formState.errors["activity"]}
               {...companyRegiter.register("activity")}
-              sx={{ justifyContent: "center", alignItems: "center" }}
+              style={{ justifyContent: "center", alignItems: "center" }}
             >
               <MenuItem value={"فناوری اطلاعات"}>فناوری اطلاعات</MenuItem>
               <MenuItem value={"برنامه نویسی"}>برنامه نویسی</MenuItem>
@@ -398,12 +397,10 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
           />
 
           <FormControl
-            sx={{
+            className="sm:w-[100%]"
+            style={{
               justifyContent: "center",
               width: "45%",
-              "@media (max-width: 576px)": {
-                width: "100%",
-              },
             }}
           >
             <RadioGroup
@@ -413,10 +410,10 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
                 setTypeValue((event.target as HTMLInputElement).value);
               }}
               name="radio-buttons-group"
-              sx={{ flexDirection: "row" }}
+              style={{ flexDirection: "row" }}
             >
               <FormControlLabel
-                sx={{ margin: "0px" }}
+                style={{ margin: "0px" }}
                 value="حقیقی"
                 control={<Radio />}
                 label="حقیقی"
@@ -429,7 +426,12 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
             </RadioGroup>
           </FormControl>
 
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 1 }}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            className="mt-[8px]"
+          >
             {loadingReq ? (
               <i
                 style={{ fontSize: "24.5px" }}

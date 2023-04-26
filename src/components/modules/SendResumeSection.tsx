@@ -39,11 +39,10 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
         marginTop: 40,
         borderRadius: 8,
         flexShrink: 0,
-        // padding: 20,
+
         maxHeight: 280,
         position: "relative",
         boxShadow: "0 0 6px rgba(0, 0, 0, 0.2)",
-        // opacity: token ? 1 : 0.2,
       }}
     >
       {(role !== "user" || allow) && (
@@ -55,7 +54,7 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
               opacity: 0.7,
               width: "100%",
               height: "100%",
-              // right: 0,
+
               borderRadius: 8,
               zIndex: 9999,
             }}
@@ -138,9 +137,7 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
                 if (!event.target?.files?.[0]) {
                   return;
                 }
-                // setInnerImage(
-                //   URL.createObjectURL(event.currentTarget?.files?.[0])
-                // );
+
                 setFile(event.target.files[0]);
               }}
             />

@@ -18,13 +18,14 @@ const MyPosts: React.FC = () => {
   }, []);
 
   return (
-    <Box className="mdmin:mx-[15%]" sx={{ fontFamily: "IRANSans" }}>
+    <Box className="mdmin:mx-[15%]" style={{ fontFamily: "IRANSans" }}>
       <h1 className="text-[20px]">آگهی‌های من</h1>
       <Box
-        sx={{
+        style={{
           backgroundColor: "#d8dbe2",
           marginTop: "10px",
-          paddingY: "20px",
+          paddingTop: "20px",
+          paddingBottom: "20px",
           fontSize: "1rem",
           display: "flex",
           flexDirection: "column",
@@ -49,7 +50,7 @@ const MyPosts: React.FC = () => {
           </>
         ) : (
           <>
-            <SearchIcon sx={{ fontSize: "4rem", color: "gray" }} />
+            <SearchIcon style={{ fontSize: "4rem", color: "gray" }} />
             لیست آگهی‌های این بخش خالی است
           </>
         )}

@@ -47,8 +47,8 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
 
   return (
     <Card
-      sx={{
-        width: { sm: "80%", xs: "95%" },
+      className="sm:w-[95%] smmin:w-[80%]"
+      style={{
         height: "135px",
         fontFamily: "IRANSans",
         display: "flex",
@@ -57,12 +57,10 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
     >
       <Box className="smmin:w-[88%] sm:w-[85%]">
         <Box
-          sx={{
-            py: { xs: 1, sm: 2 },
-            px: { xs: "6px", sm: 2, md: 4 },
+          className="sm:py-[8px] smmin:py-[16px] sm:px-[6px] md:px-[16px] mdmin:px-[32px] sm:gap-[10px] smmin:gap-[30px]"
+          style={{
             height: "70%",
             display: "flex",
-            gap: "30px",
           }}
         >
           <img
@@ -73,13 +71,13 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
                 : API_URL.split("api")[0] + (item.post.user.logo as string)
             }
             alt=""
-            className="rounded-[50%]"
+            className="rounded-[50%] sm:w-[40px] sm:h-[40px] smmin:w-[70px] smmin:h-[70px]"
           />
           <Stack spacing={0.5}>
             <Typography
               fontWeight={700}
               color="var(--primary)"
-              sx={{
+              style={{
                 fontFamily: "IRANSans",
                 display: "flex",
                 alignItems: "center",
@@ -88,18 +86,19 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
               <Typography
                 component={"div"}
                 onClick={() => history.push(`/postPage/${item.post.id}`)}
-                sx={{
+                className="sm:text-[12px] md:text-[14px] mdmin:text-[16px]"
+                style={{
                   display: "inline",
-                  fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 }}
               >
                 {item.post.title}
               </Typography>
               <Typography
                 component={"span"}
-                sx={{
+                className="sm:text-[8px] md:text-[9px] mdmin:text-[10px]"
+                style={{
                   color: "var(--lightBlack)",
-                  fontSize: { xs: "8px", sm: "9px", md: "10px" },
+
                   marginRight: "5px",
                 }}
               >
@@ -109,24 +108,26 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{
+              className="sm:text-[8px] md:text-[10px] mdmin:text-[12px]"
+              style={{
                 fontFamily: "IRANSans",
-                fontSize: { xs: "8px", sm: "10px", md: "12px" },
               }}
             >
-              <LocationOnIcon sx={{ color: "grey[500]", fontSize: "16px" }} />{" "}
+              <LocationOnIcon
+                style={{ color: "grey[500]", fontSize: "16px" }}
+              />{" "}
               {item.post.city.title}, {item.post.state.title}
             </Typography>
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{
+              className="sm:text-[8px] md:text-[10px] mdmin:text-[12px]"
+              style={{
                 fontFamily: "IRANSans",
-                fontSize: { xs: "8px", sm: "10px", md: "12px" },
               }}
             >
               <FactCheckOutlinedIcon
-                sx={{ color: "grey[500]", fontSize: "16px" }}
+                style={{ color: "grey[500]", fontSize: "16px" }}
               />{" "}
               {item.post.cooperation_type} ({item.post.salary})
             </Typography>
@@ -138,19 +139,19 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
           alignItems="center"
           justifyContent="flex-start"
           gap={"20px"}
-          sx={{
-            pl: { xs: "6px", sm: 2, md: 4 },
-            pr: { xs: "6px", sm: "86px", md: "102px" },
-            py: 1,
+          className="sm:pl-[6px] md:pl-[16px] mdmin:pl-[32px] sm:pr-[6px] md:pr-[86px] mdmin:pr-[102px]"
+          style={{
+            paddingTop: "8px",
+            paddingBottom: "8px",
             height: "30%",
-            bgcolor: "background.default",
+            backgroundColor: "background.default",
           }}
         >
           {labels.map((item, index) => {
             return (
               <Typography
                 component={"span"}
-                sx={{
+                style={{
                   backgroundColor: "var(--primary)",
                   color: "white",
                   borderRadius: "4px",
@@ -169,20 +170,16 @@ const CardItem: React.FC<{ item: { id: number; post: post } }> = ({ item }) => {
       </Box>
 
       <Button
-        className="smmin:w-[12%] sm:w-[15%]"
+        className="smmin:w-[12%] sm:w-[15%] sm:text-[10px] smmin:text-[14px] hover:opacity-50 hover:bg-black"
         onClick={handleRemove}
-        sx={{
+        style={{
           backgroundColor: "red",
           color: "white",
-          fontSize: { xs: "10px", sm: "14px" },
+
           fontFamily: "IRANSans",
           borderTopRightRadius: "0px",
           borderBottomRightRadius: "0px",
           minWidth: "0px",
-          "&:hover": {
-            opacity: 0.5,
-            backgroundColor: "black",
-          },
         }}
       >
         حذف
