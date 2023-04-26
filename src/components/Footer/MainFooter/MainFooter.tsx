@@ -109,21 +109,21 @@ const MainFooter: React.FC = () => {
           درباره ما
         </h4>
         <ul className="list-none p-0 text-[16px]">
-          <li className="pl-[25px] relative pt-[13px] text-darkGray">
+          <li className="pl-[25px] relative pt-[13px] text-darkGray block hoverItem">
             <i
               className="fa fa-map-marker absolute left-0 top-[16px]"
               aria-hidden="true"
             ></i>{" "}
             اصفهان، دانشگاه اصفهان
           </li>
-          <li className="pl-[25px] relative pt-[13px] text-darkGray">
+          <li className="pl-[25px] relative pt-[13px] text-darkGray block hoverItem">
             <i
               className="fa fa-phone absolute left-0 top-[16px]"
               aria-hidden="true"
             ></i>{" "}
             تلفن : 09123456789
           </li>
-          <li className="pl-[25px] relative pt-[13px] text-darkGray">
+          <li className="pl-[25px] relative pt-[13px] text-darkGray block hoverItem">
             <i
               className="fa fa-envelope absolute left-0 top-[16px]"
               aria-hidden="true"

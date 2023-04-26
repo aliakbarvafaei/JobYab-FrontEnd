@@ -129,6 +129,7 @@ const Header = () => {
                   onClick={() => {
                     window.location.href = page.link as string;
                   }}
+                  className="block hoverItem"
                 >
                   <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
@@ -245,7 +246,7 @@ const Header = () => {
                 {settings.map((setting) => (
                   <MenuItem
                     key={setting.title}
-                    className="text-primary hover:text-white hover:bg-primary px-[10px] py-[6px]"
+                    className="text-primary hover:text-white hover:bg-primary px-[10px] py-[6px] block hoverItem"
                     onClick={() => {
                       if (setting.title === "خروج") {
                         history.push("/home");

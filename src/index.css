@@ -1,6 +1,85 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+  body {
+    direction: rtl;
+    font-family: IRANSans;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .hoverItem {
+    position: relative !important;
+    padding-bottom: 4px;
+  }
+
+  .hoverItem:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary);
+    transform-origin: bottom right;
+    transition: transform 0.4s ease-out;
+  }
+
+  .hoverItem:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .ant-tabs-nav-list {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .ant-tabs-tab {
+    width: 48%;
+    justify-content: center;
+    margin: 0 !important;
+  }
+
+  .ant-tabs-nav {
+    margin: 0 !important;
+  }
+
+  .css-1wc848c-MuiFormHelperText-root {
+    text-align: right !important;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+    right: inherit !important;
+    left: 7px !important;
+  }
+
+  .css-z97aww-MuiFormHelperText-root.Mui-error {
+    text-align: right !important;
+  }
+  .MuiTypography-body1 {
+    font-family: IRANSans !important;
+  }
+}
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
@@ -37,81 +116,4 @@
   --tabBg: #e0e5eb;
   --error: #d32f2f;
   --lightBlack: #00000099;
-}
-body {
-  direction: rtl;
-  font-family: IRANSans;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.hoverItem {
-  display: block;
-  position: relative;
-}
-
-.hoverItem:after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--red);
-  transform-origin: bottom right;
-  transition: transform 0.4s ease-out;
-}
-
-.hoverItem:hover:after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.ant-tabs-nav-list {
-  justify-content: space-between;
-  width: 100%;
-}
-
-.ant-tabs-tab {
-  width: 48%;
-  justify-content: center;
-  margin: 0 !important;
-}
-
-.ant-tabs-nav {
-  margin: 0 !important;
-}
-
-.css-1wc848c-MuiFormHelperText-root {
-  text-align: right !important;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
-  -webkit-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
-
-input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
-}
-
-.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
-  right: inherit !important;
-  left: 7px !important;
-}
-
-.css-z97aww-MuiFormHelperText-root.Mui-error {
-  text-align: right !important;
-}
-.MuiTypography-body1 {
-  font-family: IRANSans !important;
 }
