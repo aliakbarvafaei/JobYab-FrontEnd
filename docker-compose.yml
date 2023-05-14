@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: jobyab-frontend
+    image: jobyab-frontend
+    build:
+      context: .
+      target: development
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 3000:3000
