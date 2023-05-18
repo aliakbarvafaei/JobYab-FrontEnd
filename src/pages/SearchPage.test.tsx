@@ -3,12 +3,12 @@ import { screen, render } from "@testing-library/react";
 import SearchPage from "./SearchPage";
 import configureStore from "redux-mock-store";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createMemoryHistory } from "history";
 import { Provider } from "react-redux";
 
 const mockStore = configureStore([]);
 describe("Search Page", () => {
   let store: any;
+  window.scrollTo = jest.fn();
   //   let history: any;
 
   beforeEach(() => {
@@ -29,5 +29,8 @@ describe("Search Page", () => {
     );
     const primaryButton = screen.getAllByRole("button")[1];
     expect(primaryButton).toHaveAttribute("aria-label", "حساب کاربری");
+  });
+  afterAll(() => {
+    jest.clearAllMocks();
   });
 });

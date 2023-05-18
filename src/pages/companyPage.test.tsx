@@ -15,6 +15,7 @@ jest.mock("../services/api", () => ({
 describe("CompanyDetail", () => {
   const mockScrollTo = jest.fn();
   global.scrollTo = mockScrollTo;
+  window.scrollTo = jest.fn();
   let store: any;
   let history: any;
 
@@ -57,9 +58,9 @@ describe("CompanyDetail", () => {
         </Router>
       </Provider>
     );
-
+      
     expect(getPostDetail).toHaveBeenCalledTimes(1);
-    
+
     // Assertions
     const companyIntroduction = container.getElementsByClassName(
       "introduction"
@@ -79,5 +80,8 @@ describe("CompanyDetail", () => {
     )[0] as HTMLInputElement;
     company_count.value = mockData[0].user.number_of_personnel;
     expect(company_count).toHaveValue("کمتر از 10 نفر");
+  });
+  afterAll(() => {
+    jest.clearAllMocks();
   });
 });
