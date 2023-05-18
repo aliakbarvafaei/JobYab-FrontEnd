@@ -34,10 +34,13 @@ const responsive = (length: number) => {
     },
   };
 };
+interface ParamsTypes {
+  companyId: string;
+}
 const CompanyPage = () => {
   const history = useHistory();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
-  const { companyId } = useParams<any>();
+  const { companyId } = useParams<ParamsTypes>();
   const [adDetail, setAdDetail] = useState<PostType | undefined>(undefined);
   const [companiesPosts, setCompaniesPosts] = useState<PostType[]>([]);
   useEffect(() => {
@@ -45,12 +48,10 @@ const CompanyPage = () => {
     getPostDetail(companyId)
       .then((data) => {
         setAdDetail(data.data.data);
-        console.log(data.data.data);
       })
       .catch((err) => {
         history.push("/not-found");
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-        console.error(err);
       });
   }, [companyId, history]);
   useEffect(() => {
@@ -76,14 +77,17 @@ const CompanyPage = () => {
           marginTop: 40,
           paddingTop: 30,
           boxShadow: "0 0 6px var(--primary)",
-         
+
           paddingBlock: 20,
         }}
       >
         <Typography style={{ fontSize: 18, fontWeight: "bold" }}>
           {`معرفی شرکت ${adDetail?.user.company_persian_name} (${adDetail?.user.type})`}
         </Typography>
-        <Typography style={{ fontSize: 15, fontWeight: "bold" }}>
+        <Typography
+          style={{ fontSize: 15, fontWeight: "bold" }}
+          className="introduction"
+        >
           {adDetail?.user.introduction}
         </Typography>
         <Typography
@@ -111,7 +115,7 @@ const CompanyPage = () => {
               <IconButton style={{ marginLeft: 10 }}>
                 <LanguageOutlinedIcon style={{ color: "var(--primary)" }} />
               </IconButton>
-              <Link to={adDetail?.user.website ?? ""}>
+              <Link to={adDetail?.user.website ?? ""} className="website">
                 <Typography>{adDetail?.user.website ?? "---"}</Typography>
               </Link>
             </Grid>
@@ -119,7 +123,7 @@ const CompanyPage = () => {
               <IconButton style={{ marginLeft: 10 }}>
                 <PeopleAltIcon style={{ color: "var(--primary)" }} />
               </IconButton>
-              <Typography>
+              <Typography className="companyCount">
                 {adDetail?.user.number_of_personnel === "1"
                   ? "کمتر از 10 نفر"
                   : adDetail?.user.number_of_personnel === "2"
@@ -149,7 +153,7 @@ const CompanyPage = () => {
             alignItems: "center",
           }}
         >
-          <Typography style={{ fontSize: 24 }}>تمام آگهی‌های شرکت</Typography>
+          <Typography style={{ fontSize: 24 }} id='allPosts'>تمام آگهی‌های شرکت</Typography>
           <Divider
             style={{
               width: 50,

@@ -133,8 +133,8 @@ const SearchPage: React.FC = () => {
                 }}
                 scrollColor="rgba(25, 118, 210, 0.3)"
               />
-              <Button
-                className="bg-[#ffe11b]"
+              <Button  
+                className="title"
                 style={{
                   background: "#ffe11b",
                   paddingBlock: 10,
