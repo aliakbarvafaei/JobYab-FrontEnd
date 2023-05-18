@@ -1,0 +1,17 @@
+inspections:
+  - JavaScript/Code Quality
+  - JavaScript/ESLint
+  - JavaScript/TypeScript
+  - React/JSX
+  - React/React Hooks
+
+severity:
+  JavaScript/Code Quality: WARNING
+  JavaScript/ESLint: WARNING
+  JavaScript/TypeScript: WARNING
+  React/JSX: WARNING
+  React/React Hooks: WARNING
+
+exclusions:
+  - node_modules/**
+  - build/**
