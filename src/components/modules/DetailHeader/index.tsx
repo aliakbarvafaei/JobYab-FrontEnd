@@ -2,14 +2,14 @@ import { Button, Grid, IconButton, Typography } from "@mui/material";
 import BusinessIcon from "@mui/icons-material/Business";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import { useRef } from "react";
-import { PostType } from "../../constants/types";
-import { RemoveBookmark, postBookmark } from "../../services/api";
-import { useToast } from "../../contexts/ToastState";
-import { addItemOnce } from "../../ts/functions";
-import { eachToast, statesRedux } from "../../ts/interfaces";
-import DefaultPicture from "../../assets/images/default.png";
+import { PostType } from "../../../constants/types";
+import { RemoveBookmark, postBookmark } from "../../../services/api";
+import { useToast } from "../../../contexts/ToastState";
+import { addItemOnce } from "../../../ts/functions";
+import { eachToast, statesRedux } from "../../../ts/interfaces";
+// import DefaultPicture from "../../assets/images/default.png";
 import { useHistory } from "react-router-dom";
-import { API_URL } from "../../config";
+import { API_URL } from "../../../config";
 import { useSelector } from "react-redux";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
@@ -51,7 +51,8 @@ const DetailHeader = ({
           <img
             src={
               data?.user.logo === null
-                ? DefaultPicture
+                ? // todo....
+                  "../../assets/images/default.png"
                 : API_URL.split("api")[0] + (data?.user.logo as string)
             }
             alt=""

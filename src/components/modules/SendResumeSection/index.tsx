@@ -1,12 +1,12 @@
 import { Button, InputBase, Typography } from "@mui/material";
-import { UserType } from "../../constants/types";
+import { UserType } from "../../../constants/types";
 import { useEffect, useState } from "react";
-import { eachToast, sentResume, statesRedux } from "../../ts/interfaces";
+import { eachToast, sentResume, statesRedux } from "../../../ts/interfaces";
 import { useSelector } from "react-redux";
-import { useToast } from "../../contexts/ToastState";
-import { addItemOnce } from "../../ts/functions";
+import { useToast } from "../../../contexts/ToastState";
+import { addItemOnce } from "../../../ts/functions";
 import { useHistory } from "react-router-dom";
-import { getMySentResumes } from "../../services/api";
+import { getMySentResumes } from "../../../services/api";
 
 interface SendResumeSectionProps {
   data?: UserType;
