@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
-import { PostType } from "../../constants/types";
+import { PostType } from "../../../constants/types";
 import { useHistory } from "react-router-dom";
-import { API_URL } from "../../config";
-import DefaultPicture from "../../assets/images/default.png";
+import { API_URL } from "../../../config";
+// import DefaultPicture from "../../assets/images/default.png";
 
 interface SimilarPostsProps {
   data: PostType;
@@ -31,7 +31,8 @@ const SimilarPost = ({ data }: SimilarPostsProps) => {
         style={{ width: 90, height: 90, borderRadius: "50%" }}
         src={
           data?.user.logo === null
-            ? DefaultPicture
+          // todo....
+            ? '../../assets/images/default.png'
             : API_URL.split("api")[0] + (data?.user.logo as string)
         }
         alt=""
