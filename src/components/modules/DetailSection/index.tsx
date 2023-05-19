@@ -7,8 +7,8 @@ import WcOutlinedIcon from "@mui/icons-material/WcOutlined";
 import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import MilitaryTechOutlinedIcon from "@mui/icons-material/MilitaryTechOutlined";
-import DetailItem from "./DetailItem";
-import { PostType } from "../../constants/types";
+import DetailItem from "../DetailItem";
+import { PostType } from "../../../constants/types";
 import { useRef } from "react";
 
 interface DetailSectionProps {
