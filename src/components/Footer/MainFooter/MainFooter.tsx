@@ -35,19 +35,19 @@ const MainFooter: React.FC = () => {
           باخبر باشید و براحتی در جاب یاب صاحب کار شوید.
         </p>
         <div className="flex flex-row justify-between items-center mt-[8px]">
-          <span className="cursor-pointer">
+        <span data-testid="facebook-icon" className="cursor-pointer">
             <FaFacebookF fontSize={"20px"} />
           </span>
-          <span className="cursor-pointer">
+          <span data-testid="google-plus-icon" className="cursor-pointer">
             <FaGooglePlusG fontSize={"20px"} />
           </span>
-          <span className="cursor-pointer">
+          <span data-testid="twitter-icon" className="cursor-pointer">
             <FaTwitter fontSize={"20px"} />
           </span>
-          <span className="cursor-pointer">
+          <span data-testid="instagram-icon" className="cursor-pointer">
             <FaInstagram fontSize={"20px"} />
           </span>
-          <span className="cursor-pointer">
+          <span data-testid="wifi-icon" className="cursor-pointer">
             <FaWifi fontSize={"20px"} />
           </span>
         </div>
