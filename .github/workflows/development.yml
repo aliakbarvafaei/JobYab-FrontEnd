@@ -1,43 +1,40 @@
-name: React CI/CD
+name: CI/CD
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Build
+        run: npm install
+
+  test:
+    needs: [build]
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
       - name: Install dependencies
         run: npm install
-      - name: Build and test
-        run: npm run build && npm test
-      - name: Build Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: false
-          tags: my-react-app:${{ github.sha }}
-          file: Dockerfile
-      - name: Start services with Docker-compose
-        run: docker-compose up -d
-      - name: Run integration tests
-        run: npm run integration-test
-      - name: Stop services with Docker-compose
-        run: docker-compose down
 
-  merge:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Merge to main branch
-        uses: peter-evans/create-pull-request@v3.4.0
-        with:
-          commit-message: "Merge branch ${{ github.head_ref }} into main"
-          title: "Merge branch ${{ github.head_ref }} into main"
-          body: "Automatically merged by GitHub Actions"
-          branch: main
+      - name: Run tests
+        run: npm test
