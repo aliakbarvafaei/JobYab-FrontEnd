@@ -50,7 +50,7 @@ const CompanyPage = () => {
         setAdDetail(data.data.data);
       })
       .catch((err) => {
-        history.push("/not-found");
+        // history.push("/not-found");
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       });
   }, [companyId, history]);

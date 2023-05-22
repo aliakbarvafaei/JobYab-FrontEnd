@@ -117,6 +117,7 @@ const Post = ({ onClick, data, updateData }: PostProps) => {
               <Chip
                 label={skillTitle}
                 className="!text-white !bg-primary !rounded-[8px]"
+                key={skillTitle}
               />
             ))}
           </Grid>
