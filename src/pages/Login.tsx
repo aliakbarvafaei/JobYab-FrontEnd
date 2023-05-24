@@ -3,7 +3,7 @@ import LoginBox from "../components/Login/Login";
 
 const  Login:React.FC = () => {
   return (
-    <div>
+    <div data-testid="login-box">
       <LoginBox />
     </div>
   );

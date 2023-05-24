@@ -7,6 +7,7 @@ const Footer: React.FC = () => {
   return (
     <section>
       <div
+        data-testid={"main-footer"}
         className={`${themeClass} lg:pb-[100px] md:pt-[20px] lg:pt-[30px] lgmin:py-[45px] px-total bg-lightGray`}
       >
         <MainFooter />

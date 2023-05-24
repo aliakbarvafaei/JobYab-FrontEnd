@@ -59,7 +59,7 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
         ) : resumes.length > 0 ? (
           <>
             {resumes.map((item) => (
-              <CardItem item={item} index={index} />
+              <div data-testid="card-item"><CardItem item={item} index={index} /></div>
             ))}
           </>
         ) : (

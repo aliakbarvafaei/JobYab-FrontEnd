@@ -4,7 +4,7 @@ import UpdatePosts from "../components/ProfilesCompanies/UpdatePost/UpdatePost";
 
 const UpdatePost: React.FC = () => {
   return (
-    <div>
+    <div data-testid="update-post">
       <Header />
       <UpdatePosts />
     </div>

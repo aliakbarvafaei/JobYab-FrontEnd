@@ -10,7 +10,6 @@ const ProfileCompany: React.FC = () => {
       .then((response) => {
         setUser(response.data);
         console.log(response.data);
-
       })
       .catch((err) => {
         console.log(err);
@@ -18,9 +17,9 @@ const ProfileCompany: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div data-testid="profile-company">
       <Header />
-      {user!==null && <BasicTabs user={user} />}
+      {user !== null && <BasicTabs user={user} />}
     </div>
   );
 };

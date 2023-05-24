@@ -11,7 +11,11 @@ import DifferenceData from "../../../services/utils/DifferenceData";
 import DefaultPicture from "../../../assets/images/default.png";
 import { API_URL } from "../../../config";
 
-const CardItem: React.FC<{ item: any }> = ({ item }) => {
+const CardItem: React.FC<{
+  item: any;
+  hanldeRemove?: () => void;
+  hanldeUpdate?: () => void;
+}> = ({ item }) => {
   const { setToastState } = useToast();
   const [labels] = useState<Array<{ id: number; title: string }>>(item.skills);
   const history = useHistory();

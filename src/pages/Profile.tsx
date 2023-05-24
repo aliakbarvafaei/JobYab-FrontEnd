@@ -16,7 +16,7 @@ const ProfileUser: React.FC = () => {
       });
   }, []);
   return (
-    <div>
+    <div data-testid="profile-user">
       <MobileMenu />
       <HeaderNewShort />
       {user !== null && <BasicTabs user={user} />}

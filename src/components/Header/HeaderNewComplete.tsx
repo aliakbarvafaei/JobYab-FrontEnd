@@ -42,6 +42,7 @@ const HeaderNewComplete: React.FC = () => {
               />
               <button
                 type="submit"
+                data-testid="search"
                 onClick={() => {
                   history.replace(`/search?searchText=${searchInput}`);
                   history.go(0);

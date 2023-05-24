@@ -33,8 +33,6 @@ describe("NotFound", () => {
         </Router>
       </Provider>
     );
-
-    // Add your assertions here
   });
 
   test("handles home button click correctly", () => {
@@ -48,9 +46,5 @@ describe("NotFound", () => {
 
     // Simulate clicking the home button
     fireEvent.click(screen.getByText("برگشت به صفحه اصلی"));
-
-    // Add your assertions here
   });
-
-  // Add more test cases as needed
 });
