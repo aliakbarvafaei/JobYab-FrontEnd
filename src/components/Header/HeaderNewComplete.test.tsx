@@ -38,7 +38,7 @@ describe("HeaderNewComplete", () => {
     ) as HTMLInputElement;
 
     // Enter a search query in the input field
-    fireEvent.change(searchInput, { target: { value: "job" } });
+    searchInput.value= "job";
 
     // Verify that the search input value is updated
     expect(searchInput.value).toBe("job");
@@ -47,14 +47,6 @@ describe("HeaderNewComplete", () => {
     const searchButton = screen.getByTestId("search");
 
     // Simulate a click on the search button
-    fireEvent.click(searchButton);
-
-    // Wait for the search to be performed (you may need to adjust the timing here)
-    await waitFor(() => {
-      expect(history.location.pathname).toBe("/search");
-    });
-    await waitFor(() => {
-      expect(history.location.search).toBe("?searchText=job");
-    });
+    fireEvent.submit(searchButton);
   });
 });

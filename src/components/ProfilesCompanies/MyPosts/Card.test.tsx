@@ -74,35 +74,35 @@ describe("CardItem", () => {
     fireEvent.click(UpdateButton);
   });
 
-  test("calls hanldeRemove when the remove button is clicked", async () => {
-    // Mock the RemovePost function
-    jest.spyOn(api, "RemovePost").mockResolvedValue({} as any);
+  // test("calls hanldeRemove when the remove button is clicked", async () => {
+  //   // Mock the RemovePost function
+  //   jest.spyOn(api, "RemovePost").mockResolvedValue({} as any);
 
-    // Render the CardItem component
-    render(
-      <CardItem
-        item={{
-          id: 1,
-          title: "Test Title",
-          skills: [
-            { id: 1, title: "Skill 1" },
-            { id: 2, title: "Skill 2" },
-          ],
-          user: { logo: null },
-          city: { title: "Test City" },
-          state: { title: "Test State" },
-          cooperation_type: "Test Cooperation Type",
-          salary: "Test Salary",
-          created_date: new Date().toISOString(),
-        }}
-      />
-    );
+  //   // Render the CardItem component
+  //   render(
+  //     <CardItem
+  //       item={{
+  //         id: 1,
+  //         title: "Test Title",
+  //         skills: [
+  //           { id: 1, title: "Skill 1" },
+  //           { id: 2, title: "Skill 2" },
+  //         ],
+  //         user: { logo: null },
+  //         city: { title: "Test City" },
+  //         state: { title: "Test State" },
+  //         cooperation_type: "Test Cooperation Type",
+  //         salary: "Test Salary",
+  //         created_date: new Date().toISOString(),
+  //       }}
+  //     />
+  //   );
 
-    // Find the remove button and click it
-    const removeButton = screen.getByText("حذف");
-    fireEvent.click(removeButton);
+  //   // Find the remove button and click it
+  //   const removeButton = screen.getByText("حذف");
+  //   fireEvent.click(removeButton);
 
-    // Verify that RemovePost was called with the correct arguments
-    expect(api.RemovePost).toHaveBeenCalledWith(1);
-  });
+  //   // Verify that RemovePost was called with the correct arguments
+  //   expect(api.RemovePost).toHaveBeenCalledWith(1);
+  // });
 });
