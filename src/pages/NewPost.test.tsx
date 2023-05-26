@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NewPost from "./NewPost";
 import { Provider } from "react-redux";
 import { createMemoryHistory } from "history";
 import configureStore from "redux-mock-store";
 import { Router } from "react-router-dom";
+import NewPosts from "../components/ProfilesCompanies/NewPost/NewPost";
 
 const mockStore = configureStore([]);
 
@@ -26,7 +26,7 @@ describe("NewPost", () => {
     render(
       <Provider store={store}>
         <Router history={history}>
-          <NewPost />
+          <NewPosts />
         </Router>
       </Provider>
     );
