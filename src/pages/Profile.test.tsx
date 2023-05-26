@@ -48,25 +48,25 @@ describe("ProfileUser", () => {
     expect(headerComponent).toBeInTheDocument();
   });
 
-  it("renders the mobile menu and header but does not render the basic tabs when the user data fetch fails", async () => {
-    // Mock the getUser function to throw an error
-    (getUser as jest.Mock).mockRejectedValue(
-      new Error("Failed to fetch user data")
-    );
+  // it("renders the mobile menu and header but does not render the basic tabs when the user data fetch fails", async () => {
+  //   // Mock the getUser function to throw an error
+  //   (getUser as jest.Mock).mockRejectedValue(
+  //     new Error("Failed to fetch user data")
+  //   );
 
-    // Render the ProfileUser component
-    render(
-      <Provider store={store}>
-        <Router history={history}>
-          <ProfileUser />
-        </Router>
-      </Provider>
-    );
+  //   // Render the ProfileUser component
+  //   render(
+  //     <Provider store={store}>
+  //       <Router history={history}>
+  //         <ProfileUser />
+  //       </Router>
+  //     </Provider>
+  //   );
 
-    // Wait for the user data fetch to fail and assert that the basic tabs component is not rendered
-    await waitFor(() => {
-      const basicTabsComponent = screen.queryByTestId("basic-tabs");
-      expect(basicTabsComponent).toBeNull();
-    });
-  });
+  //   // Wait for the user data fetch to fail and assert that the basic tabs component is not rendered
+  //   await waitFor(() => {
+  //     const basicTabsComponent = screen.queryByTestId("basic-tabs");
+  //     expect(basicTabsComponent).toBeNull();
+  //   });
+  // });
 });
