@@ -53,7 +53,6 @@ const RegisterUser: React.FC<{
   const onSubmitHandlerUserRegiter: SubmitHandler<userRegisterInput> = (
     values
   ) => {
-    console.log(values);
     const data = {
       full_name: values.name,
       username: values.email,

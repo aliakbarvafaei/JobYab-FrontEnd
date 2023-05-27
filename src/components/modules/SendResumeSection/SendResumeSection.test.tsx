@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
+import { UserType } from "../../../constants/types";
 
 const mockStore = configureStore([]);
 
@@ -35,9 +36,29 @@ describe("SendResumeSection Component", () => {
     // Check that clicking the disabled button doesn't trigger any actions
   });
   test("input fields should display respective data correctly", () => {
-    const mockData = {
+    const mockData: UserType = {
+      address: "تست",
+      national_code: "1245764848",
       full_name: "John Doe",
       phone_number: "1234567890",
+      data: {
+        date_joined: "",
+        email: "",
+        email_active_code: "",
+        first_name: "",
+        groups: [],
+        id: 1,
+        is_active: false,
+        is_authorized: false,
+        is_employer: false,
+        is_staff: false,
+        is_superuser: false,
+        last_login: "",
+        last_name: "",
+        password: "",
+        user_permissions: [],
+        username: "",
+      },
     };
     render(
       <Provider store={store}>
