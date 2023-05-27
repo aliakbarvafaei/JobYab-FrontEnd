@@ -298,6 +298,7 @@ exports[`Search Page renders correctly in Search Page 1`] = `
       <section>
         <div
           class="bg-lightGray lg:pb-[100px] md:pt-[20px] lg:pt-[30px] lgmin:py-[45px] px-total bg-lightGray"
+          data-testid="main-footer"
         >
           <div
             class="flex flex-row flex-wrap justify-between"
