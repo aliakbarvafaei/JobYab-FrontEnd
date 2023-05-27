@@ -68,7 +68,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "yarn run test -- --coverage --watchAll=false"
+    "coverage": "yarn run test -- --coverage -u --watchAll=false"
   },
   "eslintConfig": {
     "extends": [

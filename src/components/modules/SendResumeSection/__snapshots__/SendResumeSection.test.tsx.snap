@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SendResumeSection Component renders correctly in SendResumeSection Page 1`] = `
+<DocumentFragment>
+  <div
+    class="lgmin:w-3/12 md:w-11/12 "
+    style="background: rgb(242, 243, 244); margin-top: 40px; border-radius: 8px; flex-shrink: 0; max-height: 280px; position: relative; box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);"
+  >
+    <div
+      style="position: absolute; background: rgb(217, 221, 220); opacity: 0.7; width: 100%; height: 100%; border-radius: 8px; z-index: 9999;"
+    />
+    <div
+      style="position: absolute; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; z-index: 99999; text-align: center;"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <div
+      class="p-[20px]"
+    >
+      <div
+        class="MuiInputBase-root MuiInputBase-colorPrimary Mui-disabled text-center MuiInputBase-fullWidth css-luel6v-MuiInputBase-root"
+        style="border: 2px solid gray; border-radius: 8px; text-align: center; margin-top: 25px;"
+      >
+        <input
+          class="MuiInputBase-input Mui-disabled text-center css-yz9k0d-MuiInputBase-input"
+          disabled=""
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="MuiInputBase-root MuiInputBase-colorPrimary Mui-disabled text-center MuiInputBase-fullWidth css-luel6v-MuiInputBase-root"
+        style="border: 2px solid gray; border-radius: 8px; text-align: center; margin-top: 25px;"
+      >
+        <input
+          class="MuiInputBase-input Mui-disabled text-center css-yz9k0d-MuiInputBase-input"
+          disabled=""
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px;"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+          style="font-size: 14px; color: gray;"
+        >
+          آپلود رزومه:
+        </p>
+        <label
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
+          role="button"
+          tabindex="0"
+        >
+          آپلود
+          <input
+            accept="application/pdf, application/vnd.ms-excel"
+            hidden=""
+            multiple=""
+            type="file"
+          />
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </label>
+      </div>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-fullWidth css-xsqe0f-MuiButtonBase-root-MuiButton-root"
+        style="margin-top: 25px; margin-bottom: 10px;"
+        tabindex="0"
+        type="button"
+      >
+        ارسال رزومه
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

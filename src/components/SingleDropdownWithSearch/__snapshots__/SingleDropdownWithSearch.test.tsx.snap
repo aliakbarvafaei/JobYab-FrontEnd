@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingleDropdownWithSearch.test Component renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-container-1"
+  >
+    <div
+      class="makeStyles-control-4 makeStyles-control-12"
+    >
+      <input
+        class="bg-white cursor-pointer w-5/6 makeStyles-input-10 makeStyles-input-15"
+        disabled=""
+        placeholder="جستجو"
+        value=""
+      />
+      <button
+        class="MuiButtonBase-root MuiIconButton-root outline-none bg-background-paper p-0"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <img
+            alt="angleDownDisabled"
+            src="angle-down-disabled.svg"
+          />
+        </span>
+      </button>
+    </div>
+    <div
+      class="MuiCollapse-root MuiCollapse-hidden"
+      style="min-height: 0px;"
+    >
+      <div
+        class="MuiCollapse-wrapper"
+      >
+        <div
+          class="MuiCollapse-wrapperInner makeStyles-wrapper-8"
+        >
+          <div
+            style="height: 0px; z-index: 1000; position: relative;"
+          >
+            <div
+              class="makeStyles-parentMenuList-6 makeStyles-parentMenuList-13"
+            >
+              <div
+                class="makeStyles-menuList-7 makeStyles-menuList-14"
+              >
+                <div
+                  class="MuiInputBase-root text-text-disabled bg-background-default text-3 h-10 px-2.5 w-full flex MuiInputBase-adornedEnd"
+                  style="border: 2px solid blue; border-radius: 6px;"
+                >
+                  <input
+                    class="MuiInputBase-input MuiInputBase-inputAdornedEnd"
+                    placeholder="جستجو ..."
+                    type="text"
+                    value=""
+                  />
+                  <img
+                    alt="searchBlack"
+                    src="search-gray.svg"
+                  />
+                </div>
+                <div
+                  class="mt-2.5"
+                >
+                  <p
+                    class="text-text-disabled  text-center mt-4 "
+                  >
+                    !موردی یافت نشد 
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
