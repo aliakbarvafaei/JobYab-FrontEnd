@@ -1,0 +1,1210 @@
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "Imports and dependencies",
+  "type": "Unused import",
+  "tags": [
+    "TypeScript"
+  ],
+  "severity": "High",
+  "comment": "Unused import { filtersInterface } from \"../../ts/interfaces\";",
+  "detailsInfo": "Reports a redundant `import` statement. This is usually the case if the imported symbols are not used in the source file. To avoid side-effects, consider using bare import `import 'packageName'` instead of the regular one.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/services/api/index.ts",
+      "language": "TypeScript",
+      "line": 2,
+      "offset": 1,
+      "length": 55,
+      "code": {
+        "startLine": 1,
+        "length": 55,
+        "offset": 58,
+        "surroundingCode": "import { axiosInstance, tokenUser } from \"../../config\";\r\nimport { filtersInterface } from \"../../ts/interfaces\";\r\n\r\nexport const logoutAPI = () => axiosInstance.get(`/logout/`, tokenUser());\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "ES6UnusedImports"
+  },
+  "hash": "c326a3a142a0657f94413a4c226a9eb0110c16d30b369195a49ea05e3eab1237"
+},{
+  "tool": "Code Inspection",
+  "category": "Imports and dependencies",
+  "type": "Unused import",
+  "tags": [
+    "TypeScript JSX"
+  ],
+  "severity": "High",
+  "comment": "Unused import specifier waitFor",
+  "detailsInfo": "Reports a redundant `import` statement. This is usually the case if the imported symbols are not used in the source file. To avoid side-effects, consider using bare import `import 'packageName'` instead of the regular one.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesUsers/Information/Information.test.tsx",
+      "language": "TypeScript JSX",
+      "line": 2,
+      "offset": 37,
+      "length": 7,
+      "code": {
+        "startLine": 1,
+        "length": 7,
+        "offset": 64,
+        "surroundingCode": "import React from \"react\";\r\nimport { render, screen, fireEvent, waitFor } from \"@testing-library/react\";\r\nimport Information from \"./Information\";\r\n\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "ES6UnusedImports"
+  },
+  "hash": "794e25acf7e4ec4ef7a2bc62369a1ab4c79a1765e7947a892bad77783c3fde8c"
+},{
+  "tool": "Code Inspection",
+  "category": "Async code and promises",
+  "type": "Result of method call returning a promise is ignored",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "Moderate",
+  "comment": "Promise returned from unregister is ignored",
+  "detailsInfo": "Reports a function call that returns a `Promise` that is not used later. Such calls are usually unintended and indicate an error.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/serviceWorkerRegistration.js",
+      "language": "JavaScript",
+      "line": 131,
+      "offset": 22,
+      "length": 10,
+      "code": {
+        "startLine": 129,
+        "length": 10,
+        "offset": 89,
+        "surroundingCode": "    navigator.serviceWorker.ready\r\n      .then((registration) => {\r\n        registration.unregister();\r\n      })\r\n      .catch((error) => {\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSIgnoredPromiseFromCall"
+  },
+  "hash": "4fed3d0a06c43f21ecf484cb277b4898cca4c67bf25cdf3df658151f74e89ea8"
+},{
+  "tool": "Code Inspection",
+  "category": "Async code and promises",
+  "type": "Result of method call returning a promise is ignored",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "Moderate",
+  "comment": "Promise returned from skipWaiting is ignored",
+  "detailsInfo": "Reports a function call that returns a `Promise` that is not used later. Such calls are usually unintended and indicate an error.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/service-worker.js",
+      "language": "JavaScript",
+      "line": 68,
+      "offset": 10,
+      "length": 11,
+      "code": {
+        "startLine": 66,
+        "length": 11,
+        "offset": 115,
+        "surroundingCode": "self.addEventListener('message', (event) => {\r\n  if (event.data && event.data.type === 'SKIP_WAITING') {\r\n    self.skipWaiting();\r\n  }\r\n});\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSIgnoredPromiseFromCall"
+  },
+  "hash": "45aacd8c92fca5df1e2cf9a1e1fc62d0793090f7654b3c50d660801b472b4e4b"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Missed locally stored library for HTTP link",
+  "tags": [
+    "HTML"
+  ],
+  "severity": "High",
+  "comment": "Missed locally stored library for HTTP link",
+  "detailsInfo": "Reports a URL of an external JavaScript library that is not associated with any locally stored file. Suggests downloading the library. Such association enables the IDE to provide proper code completion and navigation.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "HTML",
+      "line": 8,
+      "offset": 16,
+      "length": 64,
+      "code": {
+        "startLine": 6,
+        "length": 64,
+        "offset": 29,
+        "surroundingCode": "<html>\n<head>\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>\n\n  <!--    <script src=\"https://cdn.plot.ly/plotly-2.17.0.js\" charset=\"utf-8\"></script>-->"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnresolvedLibraryURL"
+  },
+  "hash": "e105e35a890776a3940148a2a2862cf99e8cf360c045ded54cf2c7bfaa48e9c1"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Missed locally stored library for HTTP link",
+  "tags": [
+    "HTML"
+  ],
+  "severity": "High",
+  "comment": "Missed locally stored library for HTTP link",
+  "detailsInfo": "Reports a URL of an external JavaScript library that is not associated with any locally stored file. Suggests downloading the library. Such association enables the IDE to provide proper code completion and navigation.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "HTML",
+      "line": 11,
+      "offset": 16,
+      "length": 40,
+      "code": {
+        "startLine": 9,
+        "length": 40,
+        "offset": 106,
+        "surroundingCode": "\n  <!--    <script src=\"https://cdn.plot.ly/plotly-2.17.0.js\" charset=\"utf-8\"></script>-->\n  <script src=\"https://cdn.plot.ly/plotly-2.17.0.min.js\"></script>\n\n  <style lang=\"css\">"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnresolvedLibraryURL"
+  },
+  "hash": "4fd93f2a8658d7afcb5609e61c9be578e8d6ad2858b9beec3df1aa0441e9e3e2"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Import can be shortened",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Import can be shortened",
+  "detailsInfo": "Reports an ES6 import whose `from` part can be shortened. Suggests importing the parent directory.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/App.tsx",
+      "language": "JavaScript",
+      "line": 10,
+      "offset": 23,
+      "length": 15,
+      "code": {
+        "startLine": 8,
+        "length": 15,
+        "offset": 137,
+        "surroundingCode": "import { CSSTransition, TransitionGroup } from \"react-transition-group\";\r\nimport { Provider } from \"react-redux\";\r\nimport { store } from \"./redux/store\";\r\n\r\nconst theme = createTheme({\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "ES6PreferShortImport"
+  },
+  "hash": "08d7e0e4f94c8fbf512fe656fa5a7e73e53bb32e12e96963bb163de675056333"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter response",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/Bookmark/Card.tsx",
+      "language": "JavaScript",
+      "line": 25,
+      "offset": 14,
+      "length": 8,
+      "code": {
+        "startLine": 23,
+        "length": 8,
+        "offset": 79,
+        "surroundingCode": "  const handleRemove = () => {\r\n    RemoveBookmark(item.post.id)\r\n      .then((response) => {\r\n        setToastState((old: Array<eachToast>) =>\r\n          addItemOnce(old.slice(), {\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "2c80992789efea528fd32a1fe2fa2317c00bda8803cfda5b64704cf1f24eed11"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter index",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/Bookmark/Card.tsx",
+      "language": "JavaScript",
+      "line": 150,
+      "offset": 30,
+      "length": 5,
+      "code": {
+        "startLine": 148,
+        "length": 5,
+        "offset": 54,
+        "surroundingCode": "          }}\r\n        >\r\n          {labels.map((item, index) => {\r\n            return (\r\n              <Typography\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "9b2a57fcafa05ec7d37588002efb3dbe306701634984df9b0d5fcda2f171f275"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter token",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/services/api/index.ts",
+      "language": "JavaScript",
+      "line": 129,
+      "offset": 3,
+      "length": 5,
+      "code": {
+        "startLine": 127,
+        "length": 5,
+        "offset": 44,
+        "surroundingCode": "  category: string,\r\n  province: string,\r\n  token: null | string\r\n) => {\r\n  if (JSON.parse(localStorage.getItem(\"token_user\") as string) !== \"\") {\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "61f2bc54529312d39bb7b450b8d177d3c7fad177b0edb8c98c1ed6791d16cd00"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter response",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesCompanies/MyPosts/Card.tsx",
+      "language": "JavaScript",
+      "line": 21,
+      "offset": 14,
+      "length": 8,
+      "code": {
+        "startLine": 19,
+        "length": 8,
+        "offset": 70,
+        "surroundingCode": "  const hanldeRemove = () => {\r\n    RemovePost(item.id)\r\n      .then((response) => {\r\n        setToastState((old: Array<eachToast>) =>\r\n          addItemOnce(old.slice(), {\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "94c00ff341eedc54aacd26714e6f95046f28d0e98ffe1e43ae15536aeecb2f94"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter index",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesCompanies/MyPosts/Card.tsx",
+      "language": "JavaScript",
+      "line": 141,
+      "offset": 30,
+      "length": 5,
+      "code": {
+        "startLine": 139,
+        "length": 5,
+        "offset": 54,
+        "surroundingCode": "          }}\r\n        >\r\n          {labels.map((item, index) => {\r\n            return (\r\n              <Typography\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "5efb5e60d7f6cbfb4e596c2bad306c45d8a9e7d9edcfc7808ca82cf0a0247a37"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter response",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesCompanies/Information/Information.tsx",
+      "language": "JavaScript",
+      "line": 64,
+      "offset": 14,
+      "length": 8,
+      "code": {
+        "startLine": 62,
+        "length": 8,
+        "offset": 43,
+        "surroundingCode": "\r\n    updateCompanyAPI(data)\r\n      .then((response) => {\r\n        setloadingReq(false);\r\n        setToastState((old: Array<eachToast>) =>\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "d4b51cfc77a556ff0eebf411257b9478c5b55354a82e83aca7d30f2ad2fbaf50"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter err",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/pages/companyPage.tsx",
+      "language": "JavaScript",
+      "line": 52,
+      "offset": 15,
+      "length": 3,
+      "code": {
+        "startLine": 50,
+        "length": 3,
+        "offset": 62,
+        "surroundingCode": "        setAdDetail(data.data.data);\r\n      })\r\n      .catch((err) => {\r\n        // history.push(\"/not-found\");\r\n        window.scrollTo({ top: 0, left: 0, behavior: \"smooth\" });\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "950bfb13d57c15fe69dbc8988680698f84fe03cee5fa99f897864e758430fca3"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused constant step3Value",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesCompanies/UpdatePost/UpdatePost.tsx",
+      "language": "JavaScript",
+      "line": 66,
+      "offset": 10,
+      "length": 10,
+      "code": {
+        "startLine": 64,
+        "length": 10,
+        "offset": 159,
+        "surroundingCode": "  const [step1Value, setStep1Value] = React.useState<step1 | null>(null);\r\n  const [step2Value, setStep2Value] = React.useState<step2 | null>(null);\r\n  const [step3Value, setStep3Value] = React.useState<step3 | null>(null);\r\n\r\n  useEffect(() => {\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "1ba32a31b788b0181c677026fa9a3345b91405a2f42c0bc261154b1cce285859"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter step",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesCompanies/UpdatePost/UpdatePost.tsx",
+      "language": "JavaScript",
+      "line": 79,
+      "offset": 27,
+      "length": 4,
+      "code": {
+        "startLine": 77,
+        "length": 4,
+        "offset": 39,
+        "surroundingCode": "  }, []);\r\n\r\n  const isStepOptional = (step: number) => {\r\n    return false;\r\n  };\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "3f5b40f89256ca2c82f4f1912d17f54876401c59c5a44c6e0a6d2627f62c6e96"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter response",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesUsers/Information/Information.tsx",
+      "language": "JavaScript",
+      "line": 47,
+      "offset": 14,
+      "length": 8,
+      "code": {
+        "startLine": 45,
+        "length": 8,
+        "offset": 40,
+        "surroundingCode": "\r\n    updateUserAPI(data)\r\n      .then((response) => {\r\n        setloadingReq(false);\r\n        setToastState((old: Array<eachToast>) =>\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "15674ddc0c414601939ef9b3fa2dd26c4f24b385070d3180025fb3b755253fc6"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused constant timer",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/Toast/Toast.tsx",
+      "language": "JavaScript",
+      "line": 9,
+      "offset": 11,
+      "length": 5,
+      "code": {
+        "startLine": 7,
+        "length": 5,
+        "offset": 33,
+        "surroundingCode": "\r\n  useEffect(() => {\r\n    const timer = setTimeout(() => {\r\n      destroyToast(indexKey);\r\n    }, 3000);\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "768391e50622cdbc357b27ab5e8ccf007a6faa4f115e9ac3c42de8c71036a0fc"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter response",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesCompanies/Tab.tsx",
+      "language": "JavaScript",
+      "line": 93,
+      "offset": 14,
+      "length": 8,
+      "code": {
+        "startLine": 91,
+        "length": 8,
+        "offset": 93,
+        "surroundingCode": "  const changeLevel = () => {\r\n    ChangeLevel({ level: user.user.level + 1 })\r\n      .then((response) => {\r\n        setToastState((old: Array<eachToast>) =>\r\n          addItemOnce(old.slice(), {\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "af59dab125bf078dca31b369e0e7d39ee933b028088427db8ac8a4936f6bdba6"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter response",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesCompanies/Resume/Card.tsx",
+      "language": "JavaScript",
+      "line": 22,
+      "offset": 14,
+      "length": 8,
+      "code": {
+        "startLine": 20,
+        "length": 8,
+        "offset": 115,
+        "surroundingCode": "  const changeState = (state: number) => {\r\n    changeStateResume(item.id, { state: String(state) })\r\n      .then((response) => {\r\n        window.location.href = \"/profile-company?section=request\";\r\n      })\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "229d3a9a642deecb6302a4f7ff3fa968f20858f70dae53896e4157e57dc9bff9"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter index",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesUsers/Request/Card.tsx",
+      "language": "JavaScript",
+      "line": 118,
+      "offset": 30,
+      "length": 5,
+      "code": {
+        "startLine": 116,
+        "length": 5,
+        "offset": 54,
+        "surroundingCode": "          }}\r\n        >\r\n          {labels.map((item, index) => {\r\n            return (\r\n              <Typography\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "0bd23da6270e47e76f1deb4e276cfa52e5d48cf2c16e2236fe4f8097459a91e6"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter updateData",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/Post/index.tsx",
+      "language": "JavaScript",
+      "line": 15,
+      "offset": 32,
+      "length": 10,
+      "code": {
+        "startLine": 13,
+        "length": 10,
+        "offset": 62,
+        "surroundingCode": "  updateData?: () => void;\r\n}\r\nconst Post = ({ onClick, data, updateData }: PostProps) => {\r\n  return (\r\n    <Grid\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "bc55d61932a310f1a616e2242d06e1b47d1e6236850e5d6bb9206f4fa7bf24dd"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused constant step3Value",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesCompanies/NewPost/NewPost.tsx",
+      "language": "JavaScript",
+      "line": 47,
+      "offset": 10,
+      "length": 10,
+      "code": {
+        "startLine": 45,
+        "length": 10,
+        "offset": 159,
+        "surroundingCode": "  const [step1Value, setStep1Value] = React.useState<step1 | null>(null);\r\n  const [step2Value, setStep2Value] = React.useState<step2 | null>(null);\r\n  const [step3Value, setStep3Value] = React.useState<step3 | null>(null);\r\n\r\n  const isStepOptional = (step: number) => {\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "f817ec5225785b50342176ae77ec3c829459d27541d9be3ab4235fb141646504"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter step",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/ProfilesCompanies/NewPost/NewPost.tsx",
+      "language": "JavaScript",
+      "line": 49,
+      "offset": 27,
+      "length": 4,
+      "code": {
+        "startLine": 47,
+        "length": 4,
+        "offset": 103,
+        "surroundingCode": "  const [step3Value, setStep3Value] = React.useState<step3 | null>(null);\r\n\r\n  const isStepOptional = (step: number) => {\r\n    return false;\r\n  };\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "ea189c7dd65390d1c0ce6b9c07e0aec3b3ed9145e82a8b162a8c63775410a8d0"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter err",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/components/UserInformation.tsx",
+      "language": "JavaScript",
+      "line": 25,
+      "offset": 17,
+      "length": 3,
+      "code": {
+        "startLine": 23,
+        "length": 3,
+        "offset": 41,
+        "surroundingCode": "          }\r\n        })\r\n        .catch((err) => {\r\n          dispatch({ type: \"logout\" });\r\n          try {\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "b876635598e6b74e6fcbfee7ae25958630744e1f419a5d81b41e5fcfd6f9a3de"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused constant timeRange",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 409,
+      "offset": 13,
+      "length": 9,
+      "code": {
+        "startLine": 407,
+        "length": 9,
+        "offset": 102,
+        "surroundingCode": "      const pageDisposalTimeUs = extractTimeSeries(\"FilePageCache.totalPageDisposalsUs\")\n\n      const timeRange = document.loadedAndParsedData.dateRange\n\n      console.log(\"FPC fast hits: \" + pageFastHits)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "f773082ef23ace6f92bed14642a15fc41ee088cab3cab86bd9706eff19a98bad"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused constant flushQueueSizeAvg",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 511,
+      "offset": 13,
+      "length": 17,
+      "code": {
+        "startLine": 509,
+        "length": 17,
+        "offset": 97,
+        "surroundingCode": "      const flushQueueTasksExecuted = extractTimeSeries(\"FlushQueue.tasksExecuted\")\n\n      const flushQueueSizeAvg = extractTimeSeries(\"FlushQueue.queueSizeAvg\")\n      const flushQueueSizeMax = extractTimeSeries(\"FlushQueue.queueSizeMax\")\n      const flushQueueSize90P = extractTimeSeries(\"FlushQueue.queueSize90P\")"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "5bf1f4f8a28a9bcce5185ead9843913bb69c37e1feb0e181e3cf66d00476c6e2"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused constant flushQueueSizeMax",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 512,
+      "offset": 13,
+      "length": 17,
+      "code": {
+        "startLine": 510,
+        "length": 17,
+        "offset": 90,
+        "surroundingCode": "\n      const flushQueueSizeAvg = extractTimeSeries(\"FlushQueue.queueSizeAvg\")\n      const flushQueueSizeMax = extractTimeSeries(\"FlushQueue.queueSizeMax\")\n      const flushQueueSize90P = extractTimeSeries(\"FlushQueue.queueSize90P\")\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "15f57b7bbf166c9b7849773b737d9bc360e9aa090e5fee5a8796d57df7d0e2ac"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused constant flushQueueSize90P",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 513,
+      "offset": 13,
+      "length": 17,
+      "code": {
+        "startLine": 511,
+        "length": 17,
+        "offset": 166,
+        "surroundingCode": "      const flushQueueSizeAvg = extractTimeSeries(\"FlushQueue.queueSizeAvg\")\n      const flushQueueSizeMax = extractTimeSeries(\"FlushQueue.queueSizeMax\")\n      const flushQueueSize90P = extractTimeSeries(\"FlushQueue.queueSize90P\")\n\n      const flushQueueWaitingTimeMaxMs = extractTimeSeries(\"FlushQueue.waitingTimeMaxNs\").mulScalar(1e-6)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "811caaa62903ede2d9b2f0ad4e17a07fc1d4686b13deeaaa9d487323a36ae6a3"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter reject",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 835,
+      "offset": 29,
+      "length": 6,
+      "code": {
+        "startLine": 833,
+        "length": 6,
+        "offset": 79,
+        "surroundingCode": "        .reduce((total, size) => total + size, 0)\n\n      new Promise((resolve, reject) => {\n        let fileContents = []\n        for (file of files) {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "6b1e516b8d96dbdd3d5c543feede6381d3afe067beb46f662b301d457f3cb3e9"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused parameter data",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 960,
+      "offset": 27,
+      "length": 4,
+      "code": {
+        "startLine": 958,
+        "length": 4,
+        "offset": 73,
+        "surroundingCode": "\n    /* Updates UI after CSV data is loaded */\n    function onDataLoaded(data) {\n      const names = document.loadedAndParsedData.names\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "5523d665df223bcc3ff00afd9b06085f475a1c803bb663ba12d01c51d4abbada"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused constant min",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 984,
+      "offset": 13,
+      "length": 3,
+      "code": {
+        "startLine": 982,
+        "length": 3,
+        "offset": 70,
+        "surroundingCode": "\n      //TODO RC: how to iterate time range hour by hour?\n      const min = document.loadedAndParsedData.dateRange[0]\n      const max = document.loadedAndParsedData.dateRange[1]\n      // for(v=min; v<max; v++) {"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "21aea8c9df57a30aa5a3f94bb7f9cb9e1b46a97a421d1afd084bd47f18c173df"
+},{
+  "tool": "Code Inspection",
+  "category": "Unused symbols",
+  "type": "Unused local symbol",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "High",
+  "comment": "Unused constant max",
+  "detailsInfo": "Reports an unused locally accessible parameter, local variable, function, class, or private member declaration.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 985,
+      "offset": 13,
+      "length": 3,
+      "code": {
+        "startLine": 983,
+        "length": 3,
+        "offset": 129,
+        "surroundingCode": "      //TODO RC: how to iterate time range hour by hour?\n      const min = document.loadedAndParsedData.dateRange[0]\n      const max = document.loadedAndParsedData.dateRange[1]\n      // for(v=min; v<max; v++) {\n      //     $timeRangeChooser.append(`<option value=\"\">---all---</option>`)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSUnusedLocalSymbols"
+  },
+  "hash": "9e1764d26f6995354ba1b86008c468ca4f58e4d4cfd87a31fa7351bca0ff954f"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Deprecated symbol used",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "Moderate",
+  "comment": "Deprecated symbol used, consult docs for better alternative",
+  "detailsInfo": "Reports a usage of a deprecated function variable.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 1014,
+      "offset": 32,
+      "length": 5,
+      "code": {
+        "startLine": 1012,
+        "length": 5,
+        "offset": 123,
+        "surroundingCode": "           title=\"Select 'open-telemetry-metrics.*.csv' files\"\n           class=\"fileInput\"\n           onchange=\"readFiles(event.target.files)\"\n    />\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSDeprecatedSymbols"
+  },
+  "hash": "7a20b6bfbec36664d575727b6881c10c76fa31deffd2e526d6a25320d7fafb9d"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Deprecated symbol used",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "Moderate",
+  "comment": "Deprecated symbol used, consult docs for better alternative",
+  "detailsInfo": "Reports a usage of a deprecated function variable.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "log/open-telemetry-metrics-plotter.html",
+      "language": "JavaScript",
+      "line": 1064,
+      "offset": 34,
+      "length": 5,
+      "code": {
+        "startLine": 1062,
+        "length": 5,
+        "offset": 129,
+        "surroundingCode": "             class=\"fileInput\"\n             title=\"Select 'open-telemetry-metrics.*.csv' files\"\n             onchange=\"readFiles(event.target.files)\"\n      />\n"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSDeprecatedSymbols"
+  },
+  "hash": "e345fbe718dee78e5e410207fa8bb28330bbd17cc0822f6b4eb88a7789ad3db4"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Type mismatch",
+  "tags": [
+    "ECMAScript 6"
+  ],
+  "severity": "Moderate",
+  "comment": "Initializer type string is not assignable to variable type ActionType.LOGIN",
+  "detailsInfo": "Reports incorrect type of:\n\n* a parameter in a function call\n* a return value\n* an assigned expression\n\nTypeScript code is ignored.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/redux/action-creators/index.js",
+      "language": "ECMAScript 6",
+      "line": 6,
+      "offset": 11,
+      "length": 7,
+      "code": {
+        "startLine": 4,
+        "length": 7,
+        "offset": 31,
+        "surroundingCode": "\r\nenum ActionType {\r\n  LOGIN = 'login',\r\n  LOGOUT = 'logout',\r\n}\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSValidateTypes"
+  },
+  "hash": "e11d428fed44d64cedc835bf5c70b1892f50fd70ad588ddf5df8e7020776250a"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Type mismatch",
+  "tags": [
+    "ECMAScript 6"
+  ],
+  "severity": "Moderate",
+  "comment": "Initializer type string is not assignable to variable type ActionType.LOGOUT",
+  "detailsInfo": "Reports incorrect type of:\n\n* a parameter in a function call\n* a return value\n* an assigned expression\n\nTypeScript code is ignored.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/redux/action-creators/index.js",
+      "language": "ECMAScript 6",
+      "line": 7,
+      "offset": 12,
+      "length": 8,
+      "code": {
+        "startLine": 5,
+        "length": 8,
+        "offset": 50,
+        "surroundingCode": "enum ActionType {\r\n  LOGIN = 'login',\r\n  LOGOUT = 'logout',\r\n}\r\n\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSValidateTypes"
+  },
+  "hash": "812f72e846cb2116037a621a7c1781b9297796c39fef5222b1de3f693cd1de36"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Type mismatch",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "Moderate",
+  "comment": "Method expression is not of Function type",
+  "detailsInfo": "Reports incorrect type of:\n\n* a parameter in a function call\n* a return value\n* an assigned expression\n\nTypeScript code is ignored.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/redux/action-creators/index.js",
+      "language": "JavaScript",
+      "line": 30,
+      "offset": 7,
+      "length": 8,
+      "code": {
+        "startLine": 28,
+        "length": 8,
+        "offset": 19,
+        "surroundingCode": "      });\r\n\r\n      dispatch({\r\n        type: ActionType.SEARCH_REPOSITORIES_SUCCESS,\r\n        payload: names,\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSValidateTypes"
+  },
+  "hash": "1ef38be0731f59127744482c585e6eb81d85973015b6f01fa7b46612e6999677"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Type mismatch",
+  "tags": [
+    "JavaScript"
+  ],
+  "severity": "Moderate",
+  "comment": "Method expression is not of Function type",
+  "detailsInfo": "Reports incorrect type of:\n\n* a parameter in a function call\n* a return value\n* an assigned expression\n\nTypeScript code is ignored.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/redux/action-creators/index.js",
+      "language": "JavaScript",
+      "line": 35,
+      "offset": 7,
+      "length": 8,
+      "code": {
+        "startLine": 33,
+        "length": 8,
+        "offset": 38,
+        "surroundingCode": "      });\r\n    } catch (err) {\r\n      dispatch({\r\n        type: ActionType.SEARCH_REPOSITORIES_ERROR,\r\n        payload: err.message,\r"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "project",
+    "inspectionName": "JSValidateTypes"
+  },
+  "hash": "d5d39deefe207e9f24c9a20969ae9069fac1c5fd6fd48a8090e88c6c6d202de2"
+}]}

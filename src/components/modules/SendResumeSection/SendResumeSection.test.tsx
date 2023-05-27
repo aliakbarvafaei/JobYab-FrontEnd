@@ -1,10 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SendResumeSection from ".";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
+import { UserType } from "../../../constants/types";
 
 const mockStore = configureStore([]);
 
@@ -21,6 +22,74 @@ describe("SendResumeSection Component", () => {
     });
     history = createMemoryHistory();
   });
+  test("renders correctly in SendResumeSection Page", async () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <SendResumeSection />
+        </Router>
+      </Provider>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  test("handles file upload", () => {
+    const { getByLabelText } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <SendResumeSection />
+        </Router>
+      </Provider>
+    );
+    const fileInput = getByLabelText("آپلود");
+    const file = new File(["resume content"], "resume.pdf", {
+      type: "application/pdf",
+    });
+
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    // Add assertions to check if the file was set correctly in the component state
+  });
+  test("handles resume submission", () => {
+    const { getByText } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <SendResumeSection />
+        </Router>
+      </Provider>
+    );
+    const submitButton = getByText("ارسال رزومه");
+
+    fireEvent.click(submitButton);
+
+    // Add assertions to check if the resume submission logic is executed correctly
+  });
+  test("renders user full name correctly", () => {
+    const fullName = "Erfan Nourbakhsh";
+    const { getByDisplayValue } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <SendResumeSection data={{ full_name: fullName }} />
+        </Router>
+      </Provider>
+    );
+    const fullNameInput = getByDisplayValue(fullName);
+
+    expect(fullNameInput).toBeInTheDocument();
+  });
+  test("renders user phone number correctly", () => {
+    const phoneNumber = "1234567890";
+    const { getByDisplayValue } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <SendResumeSection data={{ phone_number: phoneNumber }} />
+        </Router>
+      </Provider>
+    );
+    const phoneNumberInput = getByDisplayValue(phoneNumber);
+
+    expect(phoneNumberInput).toBeInTheDocument();
+  });
+
   test("submit button should be disabled when no file is uploaded", () => {
     render(
       <Provider store={store}>
@@ -35,9 +104,29 @@ describe("SendResumeSection Component", () => {
     // Check that clicking the disabled button doesn't trigger any actions
   });
   test("input fields should display respective data correctly", () => {
-    const mockData = {
+    const mockData: UserType = {
+      address: "تست",
+      national_code: "1245764848",
       full_name: "John Doe",
       phone_number: "1234567890",
+      data: {
+        date_joined: "",
+        email: "",
+        email_active_code: "",
+        first_name: "",
+        groups: [],
+        id: 1,
+        is_active: false,
+        is_authorized: false,
+        is_employer: false,
+        is_staff: false,
+        is_superuser: false,
+        last_login: "",
+        last_name: "",
+        password: "",
+        user_permissions: [],
+        username: "",
+      },
     };
     render(
       <Provider store={store}>

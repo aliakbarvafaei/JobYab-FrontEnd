@@ -1,0 +1,5 @@
+[2023-05-27 04:13:29,095]   INFO -    org.jetbrains.analysis.Main:33 - Generating final reports...
+[2023-05-27 04:13:29,098]   INFO -               internal.message:34 - Code Inspection version: 0.10.70
+[2023-05-27 04:13:29,230]   INFO - ana.sarif.CodeInspectionReader:37 - Reading problems and description from sarif: /data/results/qodana.sarif.json
+[2023-05-27 04:13:29,774]   INFO - ana.sarif.CodeInspectionReader:50 - Writing sarif problems
+[2023-05-27 04:13:30,460]   INFO -    org.jetbrains.analysis.Main:51 - Done

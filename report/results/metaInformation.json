@@ -1,0 +1,14 @@
+{
+  "total": 39,
+  "tools inspection": {
+    "Code Inspection": 39
+  },
+  "linter": "QDJS",
+  "attributes": {
+    "vcs": {
+      "sarifIdea": {}
+    },
+    "deviceId": "200820300000000-1050-9262-fe3c-5b97f6afe175",
+    "jobUrl": ""
+  }
+}

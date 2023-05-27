@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/schemastore/schemastore/master/src/schemas/json/sarif-2.1.0-rtm.5.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "QDJS",
+          "fullName": "Qodana for JS",
+          "version": "231.8898.72",
+          "rules": [],
+          "taxa": [],
+          "language": "en-US",
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "isComprehensive": false
+        },
+        "extensions": []
+      },
+      "invocations": [
+        {
+          "exitCode": 0,
+          "toolExecutionNotifications": [],
+          "executionSuccessful": true
+        }
+      ],
+      "language": "en-US",
+      "results": [],
+      "automationDetails": {
+        "id": "project/qodana/2023-05-27",
+        "guid": "79a45842-1356-4197-851f-bfc5bb4233dd",
+        "properties": {
+          "jobUrl": ""
+        }
+      },
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ],
+      "properties": {
+        "configProfile": "absent",
+        "deviceId": "200820300000000-1050-9262-fe3c-5b97f6afe175"
+      }
+    }
+  ]
+}
