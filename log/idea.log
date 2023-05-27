@@ -1,0 +1,1179 @@
+2023-05-27 04:11:10,635 [     16]   INFO - #c.i.i.AppStarter - ------------------------------------------------------ IDE STARTED ------------------------------------------------------
+2023-05-27 04:11:10,720 [    101]   INFO - #c.i.i.AppStarter - JNA library (64-bit) loaded in 51 ms
+2023-05-27 04:11:10,736 [    117]   INFO - #c.i.i.AppStarter - IDE: Qodana for JS (build #QDJS-231.8898.72, 19 Apr 2023 05:01)
+2023-05-27 04:11:10,748 [    129]   INFO - #c.i.i.AppStarter - OS: Linux (5.15.90.1-microsoft-standard-wsl2, amd64)
+2023-05-27 04:11:10,750 [    131]   INFO - #c.i.i.AppStarter - JRE: 17.0.6+10-b829.9 (JetBrains s.r.o.)
+2023-05-27 04:11:10,764 [    145]   INFO - #c.i.i.AppStarter - JVM: 17.0.6+10-b829.9 (OpenJDK 64-Bit Server VM)
+2023-05-27 04:11:10,782 [    163]   INFO - #c.i.i.AppStarter - PID: 12
+2023-05-27 04:11:10,797 [    178]   INFO - #c.i.i.AppStarter - desktop: null
+2023-05-27 04:11:10,814 [    195]   INFO - #c.i.i.AppStarter - JVM options: [-XX:ErrorFile=/root/java_error_in_webstorm_%p.log, -XX:HeapDumpPath=/root/java_error_in_webstorm_.hprof, -Deap.login.enabled=false, -Dfus.internal.reduce.initial.delay=true, -Didea.application.info.value=/opt/idea/bin/QodanaAppInfo.xml, -Didea.config.path=/root/.config/idea, -Didea.headless.enable.statistics=true, -Didea.headless.statistics.device.id=200820300000000-1050-9262-fe3c-5b97f6afe175, -Didea.headless.statistics.max.files.to.send=5000, -Didea.headless.statistics.salt=812e1fd203d1c2b825120f594e73043f, -Didea.log.path=/data/results/log, -Didea.parent.prefix=WebStorm, -Didea.platform.prefix=Qodana, -Didea.plugins.path=/data/cache/plugins/231, -Didea.qodana.thirdpartyplugins.accept=true, -Didea.system.path=/data/cache/idea/231, -Dinspect.save.project.settings=true, -Djava.awt.headless=true, -Djava.net.useSystemProxies=true, -Djdk.attach.allowAttachSelf=true, -Djdk.http.auth.tunneling.disabledSchemes="", -Djdk.module.illegalAccess.silent=true, -Dkotlinx.coroutines.debug=off, -Dqodana.automation.guid=79a45842-1356-4197-851f-bfc5bb4233dd, -Dsun.io.useCanonCaches=false, -Dsun.tools.attach.tmp.only=true, -XX:+HeapDumpOnOutOfMemoryError, -XX:+UseG1GC, -XX:-OmitStackTraceInFastThrow, -XX:CICompilerCount=2, -XX:MaxJavaStackTraceDepth=10000, -XX:MaxRAMPercentage=70, -XX:ReservedCodeCacheSize=512m, -XX:SoftRefLRUPolicyMSPerMB=50, -Xlog:gc*:/data/results/log/gc.log, -ea, -Djb.vmOptionsFile=/root/.config/idea/ide.vmoptions, -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader, -Didea.vendor.name=JetBrains, -Didea.paths.selector=WebStorm2023.1, -Djna.boot.library.path=/opt/idea/lib/jna/amd64, -Dpty4j.preferred.native.folder=/opt/idea/lib/pty4j, -Djna.nosys=true, -Djna.noclasspath=true, -Dsplash=true, --add-opens=java.base/java.io=ALL-UNNAMED, --add-opens=java.base/java.lang=ALL-UNNAMED, --add-opens=java.base/java.lang.ref=ALL-UNNAMED, --add-opens=java.base/java.lang.reflect=ALL-UNNAMED, --add-opens=java.base/java.net=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.base/java.nio.charset=ALL-UNNAMED, --add-opens=java.base/java.text=ALL-UNNAMED, --add-opens=java.base/java.time=ALL-UNNAMED, --add-opens=java.base/java.util=ALL-UNNAMED, --add-opens=java.base/java.util.concurrent=ALL-UNNAMED, --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED, --add-opens=java.base/jdk.internal.vm=ALL-UNNAMED, --add-opens=java.base/sun.nio.ch=ALL-UNNAMED, --add-opens=java.base/sun.nio.fs=ALL-UNNAMED, --add-opens=java.base/sun.security.ssl=ALL-UNNAMED, --add-opens=java.base/sun.security.util=ALL-UNNAMED, --add-opens=java.base/sun.net.dns=ALL-UNNAMED, --add-opens=java.desktop/com.sun.java.swing.plaf.gtk=ALL-UNNAMED, --add-opens=java.desktop/java.awt=ALL-UNNAMED, --add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-opens=java.desktop/java.awt.image=ALL-UNNAMED, --add-opens=java.desktop/java.awt.peer=ALL-UNNAMED, --add-opens=java.desktop/java.awt.font=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.image=ALL-UNNAMED, --add-opens=java.desktop/sun.awt=ALL-UNNAMED, --add-opens=java.desktop/sun.font=ALL-UNNAMED, --add-opens=java.desktop/sun.java2d=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED, --add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED, --add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED, --add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED]
+2023-05-27 04:11:10,825 [    206]   INFO - #c.i.i.AppStarter - args: inspect qodana --stub-profile /data/cache/profile.xml /data/project /data/results
+2023-05-27 04:11:10,833 [    214]   INFO - #c.i.i.AppStarter - library path: /usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+2023-05-27 04:11:10,834 [    215]   INFO - #c.i.i.AppStarter - boot library path: /opt/idea/jbr/lib
+2023-05-27 04:11:10,889 [    270]   INFO - #c.i.i.AppStarter - locale=en_US JNU=UTF-8 file.encoding=UTF-8
+    idea.config.path=/root/.config/idea
+    idea.system.path=/data/cache/idea/231
+    idea.plugins.path=/data/cache/plugins/231 -> ?
+    idea.log.path=/data/results/log
+2023-05-27 04:11:10,910 [    291]   WARN - #c.i.i.p.PluginManager - <resource-bundle>com.jetbrains.webstorm.WebstormCommon</resource-bundle> tag is found in an xml descriptor included into the platform part of the IDE but the platform part uses predefined bundles (e.g. ActionsBundle for actions) anyway; this tag must be replaced by a corresponding attribute in some inner tags (e.g. by 'resource-bundle' attribute in 'actions' tag)
+2023-05-27 04:11:10,927 [    308]   INFO - #c.i.i.AppStarter - CPU cores: 8; ForkJoinPool.commonPool: java.util.concurrent.ForkJoinPool@7b6ab6d1[Running, parallelism = 8, size = 0, active = 0, running = 0, steals = 0, tasks = 0, submissions = 0]; factory: com.intellij.concurrency.IdeaForkJoinWorkerThreadFactory@7cd169d5
+2023-05-27 04:11:11,019 [    400]   INFO - #c.i.i.p.PluginManager - Module intellij.webDeployment/phpStorm is not enabled because dependency com.intellij.modules.phpstorm is not available
+Module intellij.less/copyright is not enabled because dependency com.intellij.copyright is not available
+Module intellij.less/watcher is not enabled because dependency com.intellij.plugins.watcher is not available
+Module intellij.platform.images.copyright is not enabled because dependency com.intellij.copyright is not available
+Module intellij.postcss/copyright is not enabled because dependency com.intellij.copyright is not available
+Module intellij.grazie.properties is not enabled because dependency com.intellij.properties is not available
+Module intellij.grazie.markdown is not enabled because dependency org.intellij.plugins.markdown is not available
+Module intellij.grazie.java is not enabled because dependency com.intellij.java is not available
+Module intellij.javascript.debugger.javaee is not enabled because dependency com.intellij.javaee is not available
+Module intellij.javascript.debugger.nashorn is not enabled because dependency com.intellij.java is not available
+Module intellij.javascript.devkit is not enabled because dependency intellij.devkit.core is not available
+Module intellij.javascript.impl/diagrams is not enabled because dependency com.intellij.diagram is not available
+Module intellij.vuejs/copyright is not enabled because dependency com.intellij.copyright is not available
+Module intellij.sh.python is not enabled because dependency com.intellij.modules.python is not available
+Module intellij.sh.markdown is not enabled because dependency org.intellij.plugins.markdown is not available
+Module intellij.sh.copyright is not enabled because dependency com.intellij.copyright is not available
+Module intellij.sh.terminal is not enabled because dependency org.jetbrains.plugins.terminal is not available
+Module intellij.angularJS/diagram is not enabled because dependency intellij.javascript.impl/diagrams is not available
+2023-05-27 04:11:11,076 [    457]   INFO - #c.i.i.p.PluginManager - Loaded bundled plugins: Git (231.8898), Qodana (231.8898), Shared Project Indexes (231.8898), Tailwind CSS (231.8898), TSLint (231.8898), Vue.js (231.8898), Angular and AngularJS (231.8898), Styled Components & Styled JSX (231.8898), Karma (231.8898), Node.js (231.8898), Shared Indexes (231.8898), EditorConfig (231.8898), TextMate Bundles (231.8898), EJS (231.8898), Handlebars/Mustache (231.8898), Webpack (231.8898), Grazie Lite (231.8898), Images (231.8898), PostCSS (231.8898), Less (231.8898), Shell Script (231.8898), Pug (ex-Jade) (231.8898), Mercurial (231.8898), JavaScript Debugger (231.8898), Dependency Analysis (231.8898), Prettier (231.8898), Polymer & Web Components (231.8898), WebP Support (231.8898), Configuration Script (231.8898), YAML (231.8898), JavaScript and TypeScript (231.8898), HTML Tools (231.8898), Gherkin (231.8898), IDEA CORE (231.8898.72), FTP/SFTP/WebDAV Connectivity (231.8898), CSS (231.8898), JavaScript Intention Power Pack (231.8898), Sass (231.8898), Cucumber.js (231.8898), IntelliLang (231.8898)
+2023-05-27 04:11:11,443 [    824]   INFO - #c.i.c.InspectionApplication - Command line arguments: [inspect, qodana, --stub-profile, /data/cache/profile.xml, /data/project, /data/results]
+2023-05-27 04:11:11,502 [    883]   INFO - STDOUT - By using this Docker image, you agree to
+2023-05-27 04:11:11,508 [    889]   INFO - STDOUT - - JetBrains Privacy Policy (https://jb.gg/jetbrains-privacy-policy)
+2023-05-27 04:11:11,510 [    891]   INFO - STDOUT - - JETBRAINS EAP USER AGREEMENT (https://jb.gg/jetbrains-user-eap)
+2023-05-27 04:11:11,512 [    893]   INFO - STDOUT - 
+2023-05-27 04:11:11,513 [    894]   INFO - STDOUT - The Docker image includes an evaluation license.
+2023-05-27 04:11:11,515 [    896]   INFO - STDOUT - The license will expire on June 18, 2023.
+2023-05-27 04:11:11,516 [    897]   INFO - STDOUT - Please ensure you pull a new image on time.
+2023-05-27 04:11:11,737 [   1118]   INFO - #c.i.i.p.ExpiredPluginsState - Plugins to skip: []
+2023-05-27 04:11:11,757 [   1138]   INFO - #c.i.u.i.PageCacheUtils - File page caching params:
+2023-05-27 04:11:11,760 [   1141]   INFO - #c.i.u.i.PageCacheUtils - 	DEFAULT_PAGE_SIZE:10485760
+2023-05-27 04:11:11,762 [   1143]   INFO - #c.i.u.i.PageCacheUtils - 	FilePageCache: regular
+2023-05-27 04:11:11,763 [   1144]   INFO - #c.i.u.i.PageCacheUtils - 	DirectByteBuffers pool: 104857600 bytes
+2023-05-27 04:11:11,783 [   1164]   INFO - #c.i.a.o.PathMacrosImpl - Loaded path macros: {}
+2023-05-27 04:11:11,803 [   1184]   WARN - #c.i.o.v.n.p.l.VfsLog - VFS Log version differs from the implementation version: log null vs implementation -43
+2023-05-27 04:11:11,809 [   1190]   INFO - #c.i.u.s.JBUIScale - System scale factor: 1.0 (IDE-managed HiDPI)
+2023-05-27 04:11:11,876 [   1257]   INFO - #c.i.o.v.n.p.PersistentFSConnector - VFS uses strict names enumerator
+2023-05-27 04:11:11,949 [   1330]   INFO - #c.i.o.v.n.p.PersistentFSConnector - VFS uses regular attributes storage
+2023-05-27 04:11:12,041 [   1422]   INFO - #c.i.o.v.n.p.FSRecords - using REGULAR storage for VFS records
+2023-05-27 04:11:12,066 [   1447]   INFO - #o.j.i.BuiltInServerManager - built-in server started, port 63342
+2023-05-27 04:11:12,274 [   1655]   INFO - #c.i.u.n.s.CertificateManager - Default SSL context initialized
+2023-05-27 04:11:12,309 [   1690]   INFO - #c.i.o.v.n.p.PersistentFSConnector - 9 ms to load free records and inverted name index
+2023-05-27 04:11:12,347 [   1728]   INFO - #c.i.o.v.i.l.NativeFileWatcherImpl - Native file watcher is disabled
+2023-05-27 04:11:12,753 [   2134]   INFO - #c.i.i.s.p.i.SharedIndexMainZipStorage - Shared Indexes Storage is opened and empty
+2023-05-27 04:11:12,756 [   2137]   INFO - STDOUT -                                         
+2023-05-27 04:11:12,759 [   2140]   INFO - STDOUT -           _              _       
+2023-05-27 04:11:12,761 [   2142]   INFO - STDOUT -          /\ \           /\ \        Qodana for JS 2023.1 EAP
+2023-05-27 04:11:12,762 [   2143]   INFO - STDOUT -         /  \ \         /  \ \       Documentation
+2023-05-27 04:11:12,763 [   2144]   INFO - STDOUT -        / /\ \ \       / /\ \ \      https://jb.gg/qodana-docs
+2023-05-27 04:11:12,764 [   2145]   INFO - STDOUT -       / / /\ \ \     / / /\ \ \     Contact us at
+2023-05-27 04:11:12,765 [   2146]   INFO - STDOUT -      / / /  \ \_\   / / /  \ \_\    qodana-support@jetbrains.com
+2023-05-27 04:11:12,766 [   2147]   INFO - STDOUT -     / / / _ / / /  / / /   / / /    Or via our issue tracker
+2023-05-27 04:11:12,768 [   2149]   INFO - STDOUT -    / / / /\ \/ /  / / /   / / /     https://jb.gg/qodana-issue
+2023-05-27 04:11:12,769 [   2150]   INFO - STDOUT -   / / /__\ \ \/  / / /___/ / /      Or share your feedback at our forum
+2023-05-27 04:11:12,771 [   2152]   INFO - STDOUT -  / / /____\ \ \ / / /____\/ /       https://jb.gg/qodana-forum
+2023-05-27 04:11:12,772 [   2153]   INFO - STDOUT -  \/________\_\/ \/_________/     
+2023-05-27 04:11:12,773 [   2154]   INFO - STDOUT -                                                    
+2023-05-27 04:11:12,775 [   2156]   INFO - STDOUT -                                         
+2023-05-27 04:11:12,780 [   2161]   INFO - STDOUT - Starting up Qodana for JS 2023.1 EAP (build QDJS-231.8898.72) …done.
+2023-05-27 04:11:12,790 [   2171]   INFO - #o.j.q.s.i.r.ConsoleLog - Preparing for the Project opening stage ...
+2023-05-27 04:11:12,791 [   2172]   INFO - STDOUT - Preparing for the Project opening stage ...
+2023-05-27 04:11:12,861 [   2242]   INFO - STDOUT - 
+2023-05-27 04:11:12,921 [   2302]   INFO - #c.i.o.u.r.RegistryValue - Registry value 'unknown.sdk.auto' has changed to 'false'
+2023-05-27 04:11:13,191 [   2572]   INFO - #c.i.w.i.i.l.m.ModuleBridgeLoaderService - Workspace model loaded without cache. Loading real project state into workspace model. Thread[JobScheduler FJ pool 0/8,4,main]
+2023-05-27 04:11:13,288 [   2669]   INFO - #c.i.w.i.i.j.s.JpsGlobalModelSynchronizerImpl - Loading global entities from files
+2023-05-27 04:11:13,311 [   2692]   INFO - #c.i.w.i.i.GlobalWorkspaceModel - Sync global entities with mutable entity storage
+2023-05-27 04:11:13,487 [   2868]   INFO - #c.i.u.i.FileBasedIndexImpl - Indices to be built:TodoIndex(v = 4109),filetypes(v = 4096),angularjs.ui.router.views.index(v = 65),HashFragmentIndex(v = 19115599),HtmlScriptSrcIndex(v = 1),DomFileIndex(v = 0),fileIncludes(v = 6),CssIndex(v = 39),editorconfig.index.name(v = 5),Trigram.Index(v = 4099),css.template.selectors(v = 34),js.package.index(v = 12),FilenameIndex(v = 258),js.string.literal.words.index(v = 4),RelaxSymbolIndex(v = 0),CompassFunctionsIndex(v = 37),html5.custom.attributes.index(v = 1),VueNoScriptFilesIndex(v = 10),angularjs.app.index(v = 65),SchemaTypeInheritance(v = 2),js.implicit.elements.index(v = 974876),angularjs.template.cache(v = 65),js.test.names(v = 23),TypeScriptExternalPathCandidates(v = 0),yaml.keys.name(v = 1),HtmlTagIdIndex(v = 3),VueComponentStylesIndex(v = 2),FrameworkDetectionIndex(v = 65536),IdIndex(v = 4118),Stubs(v = 46),WebComponentsIndex(v = 5),json.file.root.values(v = 5),XmlNamespaces(v = 8),js.custom.single.entry.index(v = 974866),XmlTagNames(v = 1)
+2023-05-27 04:11:13,497 [   2878]   INFO - c.i.u.i.FileBasedIndexDataInitialization - Index data initialization done: 1119 ms. Initialized indexes: [FilenameIndex, filetypes, DomFileIndex, RelaxSymbolIndex, Trigram.Index, FrameworkDetectionIndex, fileIncludes, TodoIndex, XmlTagNames, SchemaTypeInheritance, IdIndex, json.file.root.values, html5.custom.attributes.index, XmlNamespaces, HtmlTagIdIndex, Stubs, HashFragmentIndex, editorconfig.index.name, yaml.keys.name, CssIndex, js.package.index, CompassFunctionsIndex, js.custom.single.entry.index, js.test.names, js.implicit.elements.index, HtmlScriptSrcIndex, css.template.selectors, js.string.literal.words.index, VueNoScriptFilesIndex, VueComponentStylesIndex, WebComponentsIndex, angularjs.template.cache, angularjs.app.index, TypeScriptExternalPathCandidates, angularjs.ui.router.views.index].
+2023-05-27 04:11:13,514 [   2895]   INFO - #c.i.w.i.i.EntitiesOrphanageImpl - Update orphanage. null modules added
+2023-05-27 04:11:13,521 [   2902]   INFO - #c.i.w.i.i.WorkspaceModelImpl - Project model updated to version 1 in 145 ms: Apply JPS storage (iml files)
+2023-05-27 04:11:13,522 [   2903]   INFO - #c.i.w.i.i.EntitiesOrphanageImpl - Update orphanage. null modules added
+2023-05-27 04:11:13,649 [   3030]   INFO - #c.i.p.c.ProjectCodeStyleSettingsManager - Initialized from default code style settings.
+2023-05-27 04:11:13,976 [   3357]   INFO - #c.i.w.i.i.EntitiesOrphanageImpl - Update orphanage. null modules added
+2023-05-27 04:11:13,977 [   3358]   INFO - #c.i.w.i.i.WorkspaceModelImpl - Project model updated to version 2 in 38 ms: Module model commit
+2023-05-27 04:11:13,979 [   3360]   INFO - #c.i.p.s.StubIndexImpl - Following stub indices will be built:ts.local.classes(v = 2),js.generics.index(v = 2),amd.requirePaths.index(v = 2),angular2.metadata.pipe.index(v = 9),Css.custom.property(v = 2),ts.embedded.content.index(v = 2),angularjs.ui.router.states.index(v = 65),angular2.metadata.function.index(v = 9),Less.mixins(v = 2),js.nonglobal.symbol.index(v = 2),vuex.store.index(v = 25),JS.base.types.index(v = 3),js.amd.modules(v = 2),angular2.metadata.node.index(v = 9),Less.variables(v = 2),angularjs.filter.index(v = 65),Css.attr(v = 2),js.global.symbol.index(v = 2),vue.url.index(v = 25),js.imported.bindings.index(v = 2),es6.assignment.index(v = 2),js.gcl.modules(v = 2),vue.extends.binding.index(v = 25),angular2.source.directive.index(v = 9),js.qualified.shortName(v = 4),amd.baseUrl.index(v = 2),js.export.default.react.component.index(v = 2),vue.mixin.binding.index(v = 25),jade.mixin(v = 2),angular2.templateUrl.index(v = 9),js.element.qualifiedName(v = 3),dom.elementClass(v = 0),angular2.metadata.module.index(v = 9),vue.composition.app.index(v = 25),ts.external.module.index(v = 3),angularjs.directives.index(v = 65),JS.subclass.stub.index(v = 2),Scss.mixin(v = 3),Css.ampersand.selector(v = 2),angular2.ivy.module.index(v = 9),angular2.source.module.index(v = 9),dom.namespaceKey(v = 1),js.exported.index(v = 2),vue.options.index(v = 25),js.typedef.index2(v = 2),angular2.source.pipe.index(v = 9),postcss.custom.selector(v = 2),js.class.index2(v = 3),js.used.remote.modules(v = 2),JS.class.super(v = 5),vue.global.filters.index(v = 25),Css.id(v = 2),js.lazy.packages(v = 3),vue.components.index(v = 25),angularjs.controller.index(v = 65),angularjs.generic.modules.index(v = 65),Css.custom.mixin(v = 2),angular2.metadata.className.index(v = 9),js.doc.modules(v = 2),Scss.function(v = 3),es6.exported.index(v = 2),angularjs.delimiter.index(v = 65),js.symbol.qualified.names.index(v = 1),angular2.metadata.directive.index(v = 9),postcss.custom.media(v = 2),Scss.variable(v = 2),angularjs.module.index(v = 65),js.symbol.index2(v = 6),angular2.ivy.pipe.index(v = 9),angularjs.directives.doc.index(v = 65),angular2.ivy.directive.index(v = 9),angularjs.symbol.index(v = 65),js.local.namespace.members.index(v = 2),vue.id.index(v = 25),Scss.placeholder.selector(v = 2),Css.class(v = 2),vue.global.directives.index(v = 25),js.namespace.index(v = 2),angularjs.templateUrl.index(v = 65),JS.class.implements(v = 3),JS.global.qualified.elements(v = 3),JS.framework.markers.index(v = 2),angularjs.ui.router.generic.states.index(v = 65)
+2023-05-27 04:11:13,981 [   3362]   INFO - c.i.p.s.StubIndexImpl$StubIndexInitialization - Index data initialization done: 482 ms. Initialized stub indexes: {js.gcl.modules, js.symbol.qualified.names.index, vue.global.directives.index, js.element.qualifiedName, angular2.metadata.module.index, vuex.store.index, jade.mixin, vue.extends.binding.index, Css.custom.property, amd.baseUrl.index, angularjs.generic.modules.index, vue.global.filters.index, Css.class, angularjs.directives.index, angular2.ivy.pipe.index, ts.external.module.index, js.used.remote.modules, JS.class.super, angular2.source.module.index, es6.assignment.index, angularjs.directives.doc.index, Css.id, ts.embedded.content.index, angular2.metadata.node.index, angular2.source.pipe.index, js.symbol.index2, js.exported.index, angularjs.ui.router.states.index, vue.id.index, JS.global.qualified.elements, Scss.mixin, Less.variables, postcss.custom.selector, Scss.placeholder.selector, js.nonglobal.symbol.index, js.export.default.react.component.index, angularjs.filter.index, js.generics.index, dom.namespaceKey, Less.mixins, vue.composition.app.index, js.lazy.packages, angular2.metadata.function.index, angular2.templateUrl.index, Css.custom.mixin, angular2.metadata.directive.index, Css.attr, vue.url.index, js.qualified.shortName, js.global.symbol.index, Scss.function, Css.ampersand.selector, angular2.metadata.className.index, js.class.index2, angular2.metadata.pipe.index, angularjs.ui.router.generic.states.index, js.doc.modules, angularjs.module.index, vue.mixin.binding.index, postcss.custom.media, angularjs.templateUrl.index, angularjs.controller.index, vue.options.index, JS.subclass.stub.index, Scss.variable, js.amd.modules, amd.requirePaths.index, es6.exported.index, js.typedef.index2, js.local.namespace.members.index, JS.base.types.index, js.imported.bindings.index, JS.framework.markers.index, angular2.ivy.directive.index, angular2.ivy.module.index, angular2.source.directive.index, angularjs.delimiter.index, vue.components.index, dom.elementClass, angularjs.symbol.index, ts.local.classes, JS.class.implements, js.namespace.index}.
+2023-05-27 04:11:14,064 [   3445]   INFO - #c.i.w.i.i.EntitiesOrphanageImpl - Update orphanage. null modules added
+2023-05-27 04:11:14,070 [   3451]   INFO - #c.i.o.a.i.NonBlockingReadActionImpl - OTel monitoring for NonBlockingReadAction is enabled
+2023-05-27 04:11:14,085 [   3466]   INFO - #c.i.w.i.i.WorkspaceModelImpl - Project model updated to version 3 in 45 ms: Root model commit
+2023-05-27 04:11:14,502 [   3883]   INFO - #c.i.w.i.i.EntitiesOrphanageImpl - Update orphanage. null modules added
+2023-05-27 04:11:14,505 [   3886]   INFO - #c.i.w.i.i.WorkspaceModelImpl - Project model updated to version 4 in 354 ms: Root model commit
+2023-05-27 04:11:14,703 [   4084]   INFO - #c.i.u.i.UnindexedFilesScanner - Started scanning for indexing of project. Reason: On project open
+2023-05-27 04:11:14,712 [   4093]   INFO - #c.i.u.i.UnindexedFilesScanner - Performing delayed pushing properties tasks for project took 3ms; general responsiveness: ok; EDT responsiveness: ok
+2023-05-27 04:11:15,229 [   4610]   INFO - #c.i.l.t.l.TypeScriptLibraryProviderImpl - Start refreshing typescript libraries
+2023-05-27 04:11:15,270 [   4651]   INFO - #c.i.u.i.UnindexedFilesScanner - Scanning of project uses 8 scanning threads
+2023-05-27 04:11:15,386 [   4767]   INFO - #c.i.l.t.l.TypeScriptLibraryProviderImpl - End refreshing typescript libraries
+2023-05-27 04:11:23,938 [  13319]   INFO - #c.i.w.i.i.EntitiesOrphanageImpl - Update orphanage. null modules added
+2023-05-27 04:11:23,942 [  13323]   INFO - #c.i.w.i.i.WorkspaceModelImpl - Project model updated to version 5 in 23 ms: JS: apply diff
+2023-05-27 04:11:29,034 [  18415]   INFO - #c.i.u.i.UnindexedFilesScanner - Scanning completed for project. Number of scanned files: 659; Number of files for indexing: 612 took 14321ms; general responsiveness: ok; EDT responsiveness: ok
+2023-05-27 04:11:29,035 [  18416]   INFO - #c.i.u.i.UnindexedFilesScanner - 15375f63: marking roots for initial VFS refresh
+2023-05-27 04:11:29,045 [  18426]   INFO - #c.i.u.i.UnindexedFilesScanner - 15375f63: starting initial VFS refresh
+2023-05-27 04:11:30,070 [  19451]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 51 packages (0 with '@web-types' prefix) in 1712ms (https://registry.npmjs.org/-/v1/search?&text=%22%40web-types%22&from=0&size=51)
+2023-05-27 04:11:31,138 [  20519]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 51 packages (0 with '@web-types' prefix) in 1066ms (https://registry.npmjs.org/-/v1/search?&text=%22%40web-types%22&from=51&size=51)
+2023-05-27 04:11:32,484 [  21865]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 51 packages (0 with '@web-types' prefix) in 1344ms (https://registry.npmjs.org/-/v1/search?&text=%22%40web-types%22&from=102&size=51)
+2023-05-27 04:11:33,548 [  22929]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 51 packages (0 with '@web-types' prefix) in 1039ms (https://registry.npmjs.org/-/v1/search?&text=%22%40web-types%22&from=153&size=51)
+2023-05-27 04:11:34,601 [  23982]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 51 packages (7 with '@web-types' prefix) in 1051ms (https://registry.npmjs.org/-/v1/search?&text=%22%40web-types%22&from=204&size=51)
+2023-05-27 04:11:35,661 [  25042]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 44 packages (2 with '@web-types' prefix) in 1059ms (https://registry.npmjs.org/-/v1/search?&text=%22%40web-types%22&from=255&size=44)
+2023-05-27 04:11:36,670 [  26051]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 17 packages (1 with '@web-types' prefix) in 1007ms (https://registry.npmjs.org/-/v1/search?&text=%22%40web-types%22&from=299&size=42)
+2023-05-27 04:11:37,769 [  27150]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 1 versions for @web-types/vue-client-only in 1078ms
+2023-05-27 04:11:37,804 [  27185]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 8 versions for @web-types/quasar in 1121ms
+2023-05-27 04:11:38,852 [  28233]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 1 versions for @web-types/vue-no-ssr in 1081ms
+2023-05-27 04:11:39,842 [  29223]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 115 versions for @web-types/vuetify in 2036ms
+2023-05-27 04:11:39,963 [  29344]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 3 versions for @web-types/at-nuxt-vue-app in 1109ms
+2023-05-27 04:11:41,094 [  30475]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 3 versions for @web-types/lit in 1130ms
+2023-05-27 04:11:41,398 [  30779]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 44 versions for @web-types/quasar-framework in 1555ms
+2023-05-27 04:11:42,172 [  31553]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 2 versions for @web-types/vue-router in 1076ms
+2023-05-27 04:11:42,837 [  32218]   INFO - #o.j.q.s.i.r.ConsoleLog - Keep running Project opening ... so far 30s
+2023-05-27 04:11:42,879 [  32260]   INFO - STDOUT - (Project opening) Opening project…
+2023-05-27 04:11:42,890 [  32271]   INFO - STDOUT -                                                                                 
+2023-05-27 04:11:43,190 [  32571]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 30 versions for @web-types/bootstrap-vue in 1789ms
+2023-05-27 04:11:43,695 [  33076]   INFO - #c.i.j.n.n.r.NpmRegistryServiceImpl - Found 1 dist-tags, 31 versions for @web-types/vue in 1522ms
+2023-05-27 04:11:47,601 [  36982]   INFO - #c.i.u.i.UnindexedFilesScanner - 15375f63: initial VFS refresh finished 18552 ms
+2023-05-27 04:11:47,618 [  36999]   INFO - #c.i.u.i.UnindexedFilesIndexer - Use 8 indexing threads for indexing of project
+2023-05-27 04:12:04,040 [  53421]   INFO - #c.i.u.i.ProjectChangedFilesScanner - Scanning refreshed files of project : 6 to update, calculated in 152ms
+2023-05-27 04:12:04,322 [  53703]   INFO - #c.i.u.i.UnindexedFilesIndexer - Finished for project. Unindexed files update took 16713ms; general responsiveness: ok; EDT responsiveness: ok
+2023-05-27 04:12:04,337 [  53718]   INFO - #c.i.u.i.UnindexedFilesIndexer - Use 8 indexing threads for indexing of project
+2023-05-27 04:12:04,338 [  53719]   INFO - #c.i.u.i.ProjectChangedFilesScanner - Scanning refreshed files of project : 0 to update, calculated in 0ms
+2023-05-27 04:12:04,339 [  53720]   INFO - #c.i.u.i.UnindexedFilesIndexer - Finished for project. Unindexed files update took 3ms; general responsiveness: ok; EDT responsiveness: ok
+2023-05-27 04:12:04,358 [  53739]   INFO - #c.i.c.InspectionApplicationBase - Waiting for startup activities
+2023-05-27 04:12:04,509 [  53890]   INFO - #c.i.o.e.s.p.m.ExternalProjectsDataStorage - Load external projects data in 3 millis (read time: 3)
+2023-05-27 04:12:04,595 [  53976]   INFO - #c.i.i.s.IdeStartupScripts - 0 startup script(s) found
+2023-05-27 04:12:04,599 [  53980]   INFO - #c.i.w.i.i.EntitiesOrphanageImpl - Update orphanage. null modules added
+2023-05-27 04:12:04,610 [  53991]   INFO - #c.i.w.i.i.WorkspaceModelImpl - Project model updated to version 6 in 13 ms: Node: update library entities
+2023-05-27 04:12:04,626 [  54007]   INFO - #c.i.c.InspectionApplicationBase - Startup activities finished
+2023-05-27 04:12:04,626 [  54007]   INFO - #c.i.d.PerformanceWatcherImpl - Post-startup activities under progress took 279ms; general responsiveness: ok; EDT responsiveness: ok
+2023-05-27 04:12:04,716 [  54097]   INFO - #c.i.i.s.p.i.ExcludedChunkList - Chunks [bundled-js-predefined-1d06a55b98c1-e95fd0b84d23-JavaScript-QDJS-231.8898.72] added as excluded. Reason: java.lang.Exception: Chunk bundled-js-predefined-1d06a55b98c1-e95fd0b84d23-JavaScript-QDJS-231.8898.72 is incompatible and is not registered for project 'project'
+2023-05-27 04:12:04,718 [  54099]   WARN - #c.i.i.s.p.i.SharedIndexChunkConfigurationImpl - Chunk bundled-js-predefined-1d06a55b98c1-e95fd0b84d23-JavaScript-QDJS-231.8898.72 is incompatible and is not registered for project 'project'
+2023-05-27 04:12:05,262 [  54643]   WARN - #c.i.i.s.p.i.BundledSharedIndexPostStartupActivity - Skipped 1 pre-built shared indexes: bundled-js-predefined-1d06a55b98c1-e95fd0b84d23-JavaScript-QDJS-231.8898.72
+2023-05-27 04:12:05,284 [  54665]   INFO - #c.i.i.b.BookmarkManager - no state loaded for old bookmarks
+2023-05-27 04:12:05,348 [  54729]   INFO - #c.i.i.f.FavoritesManager - no state loaded for old favorites
+2023-05-27 04:12:05,558 [  54939]   INFO - #c.i.o.v.i.p.NewMappings - VCS Root: [Git] - [<Project>]
+2023-05-27 04:12:05,726 [  55107]   INFO - #git4idea.commands.GitHandler - [.] git version
+2023-05-27 04:12:05,844 [  55225]   INFO - #git4idea.commands.GitHandler - git version 2.30.2
+2023-05-27 04:12:05,883 [  55264]   INFO - #git4idea.config.GitExecutableManager - Git version for /usr/bin/git: 2.30.2.0 (UNIX)
+2023-05-27 04:12:05,910 [  55291]   INFO - #c.i.o.v.i.p.NewMappings - Mapped Roots: 1
+2023-05-27 04:12:06,929 [  56310]   WARN - #c.i.j.n.i.l.NodeJsLocalInterpreter - Npm global package dir hasn't been calculated in 2000 ms, making a guess
+2023-05-27 04:12:06,936 [  56317]   INFO - #c.i.j.n.i.l.NodeJsLocalInterpreter - Guessed config prefix for /usr/local/bin/node: /usr/local
+2023-05-27 04:12:07,021 [  56402]   INFO - #c.i.l.j.l.JSLinterGuesser - For ESLint configSection found, and linter in /data/project/node_modules/eslint.
+2023-05-27 04:12:07,506 [  56887]   INFO - #c.i.j.n.i.l.NodeJsLocalInterpreter - /usr/local/bin/npm config get prefix=/usr/local (2581 ms)
+2023-05-27 04:12:08,609 [  57990]   INFO - #c.i.l.j.l.JSLinterGuesser - ESLint is enabled: 'eslintConfig' is in package.json.
+2023-05-27 04:12:09,663 [  59044]   INFO - #c.i.d.MemorySizeConfigurator - Memory size configurator skipped: Unable to determine current -Xmx. VM options file is /root/.config/idea/ide.vmoptions
+2023-05-27 04:12:12,896 [  62277]   INFO - #o.j.q.s.i.r.ConsoleLog - Keep running Project opening ... so far 1m
+2023-05-27 04:12:12,898 [  62279]   INFO - STDOUT - (Project opening) Keep running Project opening ... so far 30s
+2023-05-27 04:12:12,903 [  62284]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:23,043 [  72424]   INFO - #git4idea.commands.GitHandler - git status took 11248 ms. Command parameters: 
+setsid /usr/bin/git -c credential.helper= -c core.quotepath=false -c log.showSignature=false status --porcelain -z --no-renames --untracked-files=all --ignored=matching --
+2023-05-27 04:12:34,684 [  84065]   WARN - #c.i.o.v.ExternallyAddedFilesProcessorImpl - Cannot find project config directory for non-default and non-directory based project project
+2023-05-27 04:12:34,689 [  84070]   INFO - #c.i.l.j.b.n.PackageJsonBuildFileManager - Found package.json in /data/project: file:///data/project/package.json
+2023-05-27 04:12:34,710 [  84091]   INFO - #c.i.l.j.b.b.JsbtStartupActivity - Found [file:///data/project/package.json] for com.intellij.lang.javascript.buildTools.npm.NpmScriptsService
+2023-05-27 04:12:34,765 [  84146]   INFO - STDOUT - (Project opening) Keep running Project opening ... so far 1m
+2023-05-27 04:12:34,766 [  84147]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:34,770 [  84151]   INFO - STDOUT - (Project opening) done.
+2023-05-27 04:12:34,773 [  84154]   INFO - #o.j.q.s.i.r.ConsoleLog - The Project opening stage completed in 1m 21s
+2023-05-27 04:12:34,775 [  84156]   INFO - STDOUT - The Project opening stage completed in 1m 21s
+2023-05-27 04:12:35,015 [  84396]   INFO - #c.i.j.n.p.n.PackageVersionRangeMatcher - Matching 66 done in 117 ms
+2023-05-27 04:12:35,831 [  85212]   WARN - #c.i.c.i.YamlInspectionProfileImpl - Unknown scope format: test:*..*
+com.intellij.psi.search.scope.packageSet.ParsingException: Unknown scope type at position 1
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.error(PackageSetFactoryImpl.java:199)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parsePattern(PackageSetFactoryImpl.java:128)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parseTerm(PackageSetFactoryImpl.java:119)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parseIntersection(PackageSetFactoryImpl.java:97)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parseUnion(PackageSetFactoryImpl.java:87)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parse(PackageSetFactoryImpl.java:80)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl.compile(PackageSetFactoryImpl.java:69)
+	at com.intellij.codeInspection.inspectionProfile.YamlInspectionProfileImpl.parsePattern(YamlInspectionProfileImpl.kt:227)
+	at com.intellij.codeInspection.inspectionProfile.YamlInspectionProfileImpl.createScope(YamlInspectionProfileImpl.kt:219)
+	at com.intellij.codeInspection.inspectionProfile.YamlInspectionProfileImpl.buildEffectiveProfile(YamlInspectionProfileImpl.kt:186)
+	at org.jetbrains.qodana.staticAnalysis.profile.providers.QodanaEmbeddedProfilesProvider.provideProfile(QodanaEmbeddedProfilesProvider.kt:28)
+	at org.jetbrains.qodana.staticAnalysis.profile.QodanaInspectionProfileProvider.runProviders(QodanaInspectionProfileProvider.java:17)
+	at org.jetbrains.qodana.staticAnalysis.profile.QodanaInspectionProfileManager.getProfile(QodanaInspectionProfileManager.kt:77)
+	at org.jetbrains.qodana.staticAnalysis.profile.QodanaProjectInspectionProfileManager.getProfile(QodanaInspectionProfileManager.kt:165)
+	at org.jetbrains.qodana.staticAnalysis.profile.QodanaInspectionProfileManager.getQodanaProfile(QodanaInspectionProfileManager.kt:81)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.QodanaInspectionProfileLoader.loadProfileByName(QodanaInspectionProfileLoader.kt:14)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.QodanaInspectionProfileLoader.loadProfileByName(QodanaInspectionProfileLoader.kt:12)
+	at com.intellij.codeInspection.InspectionProfileLoader.tryLoadProfileByNameOrPath(InspectionProfileLoader.java:22)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.QodanaInspectionApplication.loadInspectionProfile(QodanaInspectionApplication.kt:244)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.QodanaInspectionApplication.run(QodanaInspectionApplication.kt:128)
+	at com.intellij.codeInspection.InspectionApplicationBase.execute(InspectionApplicationBase.java:155)
+	at com.intellij.codeInspection.InspectionApplicationBase.startup(InspectionApplicationBase.java:123)
+	at com.intellij.codeInspection.InspectionMain.main(InspectionMain.java:119)
+	at com.intellij.idea.ApplicationLoader.initApplicationImpl$lambda$4(ApplicationLoader.kt:196)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2023-05-27 04:12:35,999 [  85380]   INFO - #o.j.q.s.i.r.QodanaInspectionApplication - Used scope: Project Files
+2023-05-27 04:12:36,001 [  85382]   INFO - STDOUT - Initializing project…Inspecting with the 'qodana.starter' profile
+2023-05-27 04:12:36,086 [  85467]   INFO - #o.j.q.s.p.QodanaProfile - The 'qodana.sanity' profile is configured for sanity checks
+2023-05-27 04:12:36,194 [  85575]   WARN - #c.i.c.i.YamlInspectionProfileImpl - Unknown scope format: test:*..*
+com.intellij.psi.search.scope.packageSet.ParsingException: Unknown scope type at position 1
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.error(PackageSetFactoryImpl.java:199)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parsePattern(PackageSetFactoryImpl.java:128)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parseTerm(PackageSetFactoryImpl.java:119)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parseIntersection(PackageSetFactoryImpl.java:97)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parseUnion(PackageSetFactoryImpl.java:87)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl$Parser.parse(PackageSetFactoryImpl.java:80)
+	at com.intellij.psi.search.scope.packageSet.PackageSetFactoryImpl.compile(PackageSetFactoryImpl.java:69)
+	at com.intellij.codeInspection.inspectionProfile.YamlInspectionProfileImpl.parsePattern(YamlInspectionProfileImpl.kt:227)
+	at com.intellij.codeInspection.inspectionProfile.YamlInspectionProfileImpl.createScope(YamlInspectionProfileImpl.kt:219)
+	at com.intellij.codeInspection.inspectionProfile.YamlInspectionProfileImpl.buildEffectiveProfile(YamlInspectionProfileImpl.kt:186)
+	at org.jetbrains.qodana.staticAnalysis.profile.providers.QodanaEmbeddedProfilesProvider.provideProfile(QodanaEmbeddedProfilesProvider.kt:28)
+	at org.jetbrains.qodana.staticAnalysis.profile.QodanaInspectionProfileProvider.runProviders(QodanaInspectionProfileProvider.java:17)
+	at org.jetbrains.qodana.staticAnalysis.profile.QodanaInspectionProfileManager.getProfile(QodanaInspectionProfileManager.kt:77)
+	at org.jetbrains.qodana.staticAnalysis.profile.QodanaProjectInspectionProfileManager.getProfile(QodanaInspectionProfileManager.kt:165)
+	at org.jetbrains.qodana.staticAnalysis.profile.QodanaInspectionProfileManager.getQodanaProfile(QodanaInspectionProfileManager.kt:81)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.QodanaInspectionProfileLoader.loadProfileByName(QodanaInspectionProfileLoader.kt:14)
+	at org.jetbrains.qodana.staticAnalysis.profile.QodanaProfile$Companion.create(QodanaProfile.kt:59)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.QodanaInspectionApplication.constructQodanaRunner(QodanaInspectionApplication.kt:78)
+	at org.jetbrains.qodana.staticAnalysis.inspections.runner.QodanaInspectionApplication.run(QodanaInspectionApplication.kt:129)
+	at com.intellij.codeInspection.InspectionApplicationBase.execute(InspectionApplicationBase.java:155)
+	at com.intellij.codeInspection.InspectionApplicationBase.startup(InspectionApplicationBase.java:123)
+	at com.intellij.codeInspection.InspectionMain.main(InspectionMain.java:119)
+	at com.intellij.idea.ApplicationLoader.initApplicationImpl$lambda$4(ApplicationLoader.kt:196)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2023-05-27 04:12:36,212 [  85593]   INFO - #o.j.q.s.p.QodanaProfile - The 'qodana.recommended' profile is configured for promo checks
+2023-05-27 04:12:36,264 [  85645]   WARN - #o.j.q.s.s.GitReportContributor - Unable to find the branch name, please set the environment variable QODANA_BRANCH
+2023-05-27 04:12:36,272 [  85653]   INFO - STDOUT -  0%
+2023-05-27 04:12:44,622 [  94003]   INFO - #o.j.q.s.i.r.ConsoleLog - Preparing for the Project configuration stage ...
+2023-05-27 04:12:44,623 [  94004]   INFO - STDOUT - Preparing for the Project configuration stage ...
+2023-05-27 04:12:44,659 [  94040]   INFO - STDOUT - 
+2023-05-27 04:12:44,662 [  94043]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:44,668 [  94049]   INFO - STDOUT - (Project configuration) Detected 1 package.json files under the project to inst
+2023-05-27 04:12:44,671 [  94052]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:44,675 [  94056]   INFO - STDOUT - (Project configuration) File file:///data/project/package.json is skipped
+2023-05-27 04:12:44,676 [  94057]   INFO - #o.j.q.s.i.r.ConsoleLog - The Project configuration stage completed in 54ms
+2023-05-27 04:12:44,677 [  94058]   INFO - STDOUT - The Project configuration stage completed in 54ms
+2023-05-27 04:12:44,785 [  94166]   INFO - #o.j.q.s.i.r.ConsoleLog - Preparing for the Project analysis stage ...
+2023-05-27 04:12:44,787 [  94168]   INFO - STDOUT - Preparing for the Project analysis stage ...
+2023-05-27 04:12:44,809 [  94190]   INFO - STDOUT - 
+2023-05-27 04:12:44,810 [  94191]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:44,934 [  94315]   INFO - #c.i.a.AnalysisScope - Scanning scope took 126 ms
+2023-05-27 04:12:45,023 [  94404]   INFO - STDOUT - (Project analysis) Scanning scope… 0%
+2023-05-27 04:12:45,025 [  94406]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:45,038 [  94419]   INFO - STDOUT - (Project analysis) Analyzing code 0% [index.html]
+2023-05-27 04:12:45,040 [  94421]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:45,127 [  94508]   INFO - STDOUT - (Project analysis) Analyzing code 0% [index.html]
+2023-05-27 04:12:45,129 [  94510]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:45,152 [  94533]   INFO - STDOUT - (Project analysis) Analyzing code 0% [detailHeader.test.tsx.snap]
+2023-05-27 04:12:45,158 [  94539]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:45,173 [  94554]   INFO - STDOUT - (Project analysis) Analyzing code 0% [DifferenceData.tsx.html]
+2023-05-27 04:12:45,180 [  94561]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:45,232 [  94613]   INFO - STDOUT - (Project analysis) Analyzing code 1% [useOutsideClicker.tsx.html]
+2023-05-27 04:12:45,235 [  94616]   INFO - STDOUT -                                                                                 
+2023-05-27 04:12:45,291 [  94672]   INFO - STDOUT - (Project analysis) Analyzing code 1% [index.ts.html]
+2023-05-27 04:12:45,296 [  94677]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,619 [ 113000]   INFO - STDOUT - (Project analysis) Analyzing code 1% [clover.xml]
+2023-05-27 04:13:03,622 [ 113003]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,633 [ 113014]   INFO - STDOUT - (Project analysis) Analyzing code 1% [types.ts]
+2023-05-27 04:13:03,635 [ 113016]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,638 [ 113019]   INFO - STDOUT - (Project analysis) Analyzing code 1% [DetailSection.test.tsx]
+2023-05-27 04:13:03,639 [ 113020]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,650 [ 113031]   INFO - STDOUT - (Project analysis) Analyzing code 2% [index.ts]
+2023-05-27 04:13:03,651 [ 113032]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,659 [ 113040]   INFO - STDOUT - (Project analysis) Analyzing code 2% [diagnostic-2023-05-27-04-12-04.338.json]
+2023-05-27 04:13:03,670 [ 113051]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,672 [ 113053]   INFO - STDOUT - (Project analysis) Analyzing code 2% [index.html]
+2023-05-27 04:13:03,673 [ 113054]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,676 [ 113057]   INFO - STDOUT - (Project analysis) Analyzing code 3% [robots.txt]
+2023-05-27 04:13:03,679 [ 113060]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,690 [ 113071]   INFO - STDOUT - (Project analysis) Analyzing code 2% [coverage-final.json]
+2023-05-27 04:13:03,693 [ 113074]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,707 [ 113088]   INFO - STDOUT - (Project analysis) Analyzing code 3% [lcov.info]
+2023-05-27 04:13:03,710 [ 113091]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,742 [ 113123]   INFO - STDOUT - (Project analysis) Analyzing code 3% [usersReducer.ts]
+2023-05-27 04:13:03,743 [ 113124]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,757 [ 113138]   INFO - STDOUT - (Project analysis) Analyzing code 3% [index.html]
+2023-05-27 04:13:03,761 [ 113142]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,769 [ 113150]   INFO - STDOUT - (Project analysis) Analyzing code 3% [types.ts.html]
+2023-05-27 04:13:03,774 [ 113155]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:03,799 [ 113180]   INFO - STDOUT - (Project analysis) Analyzing code 4% [ParseURL.tsx.html]
+2023-05-27 04:13:03,806 [ 113187]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:04,003 [ 113384]   INFO - STDOUT - (Project analysis) Analyzing code 4% [Step3.tsx.html]
+2023-05-27 04:13:04,019 [ 113400]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:04,056 [ 113437]   INFO - STDOUT - (Project analysis) Analyzing code 4% [development.yml]
+2023-05-27 04:13:04,058 [ 113439]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:04,600 [ 113981]   INFO - #c.i.x.Html5SchemaProvider - HTML5_SCHEMA_LOCATION = /opt/idea/lib/app.jar!/resources/html5-schema/html5.rnc
+2023-05-27 04:13:04,624 [ 114005]   WARN - #c.i.e.p.UnixProcessManager - Error killing the process
+java.lang.IllegalStateException: java.io.IOException: Cannot run program "ps": error=2, No such file or directory
+	at com.intellij.execution.process.UnixProcessManager.processCommandOutput(UnixProcessManager.java:234)
+	at com.intellij.execution.process.UnixProcessManager.processPSOutput(UnixProcessManager.java:225)
+	at com.intellij.execution.process.UnixProcessManager.findChildProcesses(UnixProcessManager.java:194)
+	at com.intellij.execution.process.UnixProcessManager.sendSignalToProcessTree(UnixProcessManager.java:167)
+	at com.intellij.execution.process.UnixProcessManager.sendSignalToProcessTree(UnixProcessManager.java:155)
+	at com.intellij.execution.process.UnixProcessManager.sendSignalToProcessTree(UnixProcessManager.java:143)
+	at com.intellij.execution.process.UnixProcessManager.sendSigKillToProcessTree(UnixProcessManager.java:138)
+	at com.intellij.execution.process.OSProcessUtil.killProcessTree(OSProcessUtil.java:48)
+	at com.intellij.execution.process.OSProcessHandler.killProcessTreeSync(OSProcessHandler.java:239)
+	at com.intellij.execution.process.OSProcessHandler.lambda$killProcessTree$1(OSProcessHandler.java:233)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot run program "ps": error=2, No such file or directory
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1143)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1073)
+	at java.base/java.lang.Runtime.exec(Runtime.java:594)
+	at java.base/java.lang.Runtime.exec(Runtime.java:453)
+	at com.intellij.execution.process.UnixProcessManager.processCommandOutput(UnixProcessManager.java:230)
+	... 18 more
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:314)
+	at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:244)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1110)
+	... 22 more
+2023-05-27 04:13:04,630 [ 114011]   WARN - #c.i.e.p.OSProcessHandler - Cannot kill process tree. Trying to destroy process using Java API. Cmdline:
+/usr/local/bin/node /data/project/node_modules/eslint/bin/eslint.js -c /data/project/package.json --print-config /data/project/package.json
+2023-05-27 04:13:04,910 [ 114291]   INFO - STDOUT - (Project analysis) Analyzing code 4% [index.html]
+2023-05-27 04:13:04,912 [ 114293]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:04,925 [ 114306]   INFO - STDOUT - (Project analysis) Analyzing code 5% [detailHeader.test.tsx]
+2023-05-27 04:13:04,926 [ 114307]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:04,936 [ 114317]   INFO - STDOUT - (Project analysis) Analyzing code 5% [index.html]
+2023-05-27 04:13:04,938 [ 114319]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:04,948 [ 114329]   INFO - STDOUT - (Project analysis) Analyzing code 5% [index.html]
+2023-05-27 04:13:04,951 [ 114332]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:05,494 [ 114875]   INFO - STDOUT - (Project analysis) Analyzing code 5% [index.html]
+2023-05-27 04:13:05,506 [ 114887]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:05,539 [ 114920]   INFO - STDOUT - (Project analysis) Analyzing code 5% [index.tsx]
+2023-05-27 04:13:05,560 [ 114941]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:05,620 [ 115001]   INFO - STDOUT - (Project analysis) Analyzing code 6% [index.html]
+2023-05-27 04:13:05,623 [ 115004]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:05,659 [ 115040]   INFO - STDOUT - (Project analysis) Analyzing code 6% [useOutsideClicker.tsx]
+2023-05-27 04:13:05,680 [ 115061]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:05,747 [ 115128]   INFO - #o.j.q.s.i.r.AsyncInspectionToolResultWriter - Async result writer started
+2023-05-27 04:13:05,776 [ 115157]   INFO - STDOUT - (Project analysis) Analyzing code 6% [index.ts]
+2023-05-27 04:13:05,777 [ 115158]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:05,818 [ 115199]   INFO - STDOUT - (Project analysis) Analyzing code 6% [index.js]
+2023-05-27 04:13:05,821 [ 115202]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,128 [ 115509]   INFO - STDOUT - (Project analysis) Analyzing code 6% [index.html]
+2023-05-27 04:13:06,132 [ 115513]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,234 [ 115615]   INFO - #c.i.o.a.Experiments - Experimental features enabled for user: wsl.p9.support, wsl.prefer.p9.support, wsl.p9.show.roots.in.file.chooser, wsl.execute.with.wsl.exe, linux.native.menu, recent.and.edited.files.together, show.create.new.element.in.popup, search.everywhere.mixed.results, new.project.wizard, editor.reader.mode, new.large.text.file.viewer
+2023-05-27 04:13:06,317 [ 115698]   INFO - STDOUT - (Project analysis) Analyzing code 7% [DifferenceData.tsx]
+2023-05-27 04:13:06,319 [ 115700]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,579 [ 115960]   INFO - STDOUT - (Project analysis) Analyzing code 7% [tempData.test.tsx]
+2023-05-27 04:13:06,584 [ 115965]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,599 [ 115980]   INFO - STDOUT - (Project analysis) Analyzing code 7% [ToastState.tsx]
+2023-05-27 04:13:06,611 [ 115992]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,651 [ 116032]   INFO - STDOUT - (Project analysis) Analyzing code 7% [Bookmark.tsx]
+2023-05-27 04:13:06,664 [ 116045]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,675 [ 116056]   INFO - STDOUT - (Project analysis) Analyzing code 8% [index.tsx.html]
+2023-05-27 04:13:06,681 [ 116062]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,711 [ 116092]   INFO - STDOUT - (Project analysis) Analyzing code 8% [index.html]
+2023-05-27 04:13:06,715 [ 116096]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,736 [ 116117]   INFO - STDOUT - (Project analysis) Analyzing code 8% [ToastState.tsx.html]
+2023-05-27 04:13:06,737 [ 116118]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,755 [ 116136]   INFO - STDOUT - (Project analysis) Analyzing code 8% [UpdatePost.tsx.html]
+2023-05-27 04:13:06,758 [ 116139]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:06,768 [ 116149]   INFO - STDOUT - (Project analysis) Analyzing code 8% [Step3.tsx.html]
+2023-05-27 04:13:06,774 [ 116155]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,001 [ 116382]   INFO - STDOUT - (Project analysis) Analyzing code 9% [base.css]
+2023-05-27 04:13:07,003 [ 116384]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,014 [ 116395]   INFO - STDOUT - (Project analysis) Analyzing code 9% [Card.tsx]
+2023-05-27 04:13:07,016 [ 116397]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,084 [ 116465]   INFO - STDOUT - (Project analysis) Analyzing code 9% [Card.test.tsx]
+2023-05-27 04:13:07,085 [ 116466]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,198 [ 116579]   INFO - STDOUT - (Project analysis) Analyzing code 9% [package.json]
+2023-05-27 04:13:07,200 [ 116581]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,219 [ 116600]   INFO - STDOUT - (Project analysis) Analyzing code 10% [Default.tsx]
+2023-05-27 04:13:07,221 [ 116602]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,236 [ 116617]   INFO - STDOUT - (Project analysis) Analyzing code 10% [setupTests.ts.html]
+2023-05-27 04:13:07,238 [ 116619]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,261 [ 116642]   INFO - STDOUT - (Project analysis) Analyzing code 10% [index.html]
+2023-05-27 04:13:07,267 [ 116648]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,274 [ 116655]   INFO - STDOUT - (Project analysis) Analyzing code 10% [index.tsx]
+2023-05-27 04:13:07,277 [ 116658]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,312 [ 116693]   INFO - STDOUT - (Project analysis) Analyzing code 10% [index.html]
+2023-05-27 04:13:07,316 [ 116697]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,338 [ 116719]   INFO - STDOUT - (Project analysis) Analyzing code 11% [ProtectedRoute.tsx.html]
+2023-05-27 04:13:07,340 [ 116721]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,343 [ 116724]   INFO - STDOUT - (Project analysis) Analyzing code 11% [HeaderNewShort.tsx.html]
+2023-05-27 04:13:07,345 [ 116726]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,365 [ 116746]   INFO - STDOUT - (Project analysis) Analyzing code 11% [index.html]
+2023-05-27 04:13:07,380 [ 116761]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,401 [ 116782]   INFO - STDOUT - (Project analysis) Analyzing code 11% [UrgentCard.tsx.html]
+2023-05-27 04:13:07,402 [ 116783]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,404 [ 116785]   INFO - STDOUT - (Project analysis) Analyzing code 12% [index.tsx]
+2023-05-27 04:13:07,406 [ 116787]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,411 [ 116792]   INFO - STDOUT - (Project analysis) Analyzing code 12% [index.tsx]
+2023-05-27 04:13:07,412 [ 116793]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,432 [ 116813]   INFO - STDOUT - (Project analysis) Analyzing code 12% [index.html]
+2023-05-27 04:13:07,436 [ 116817]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,439 [ 116820]   INFO - STDOUT - (Project analysis) Analyzing code 12% [index.tsx]
+2023-05-27 04:13:07,450 [ 116831]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,475 [ 116856]   INFO - STDOUT - (Project analysis) Analyzing code 12% [index.tsx.html]
+2023-05-27 04:13:07,476 [ 116857]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,482 [ 116863]   INFO - STDOUT - (Project analysis) Analyzing code 13% [Bookmark.tsx.html]
+2023-05-27 04:13:07,483 [ 116864]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,499 [ 116880]   INFO - STDOUT - (Project analysis) Analyzing code 13% [Step1.tsx.html]
+2023-05-27 04:13:07,504 [ 116885]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,737 [ 117118]   INFO - STDOUT - (Project analysis) Analyzing code 13% [Step2.tsx.html]
+2023-05-27 04:13:07,750 [ 117131]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:07,963 [ 117344]   INFO - STDOUT - (Project analysis) Analyzing code 13% [angle-up-golden.svg]
+2023-05-27 04:13:07,965 [ 117346]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,109 [ 117490]   INFO - STDOUT - (Project analysis) Analyzing code 13% [similarPost.test.tsx]
+2023-05-27 04:13:08,113 [ 117494]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,131 [ 117512]   INFO - STDOUT - (Project analysis) Analyzing code 14% [index.ts]
+2023-05-27 04:13:08,132 [ 117513]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,173 [ 117554]   INFO - STDOUT - (Project analysis) Analyzing code 14% [index.tsx.html]
+2023-05-27 04:13:08,174 [ 117555]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,208 [ 117589]   INFO - STDOUT - (Project analysis) Analyzing code 14% [store.ts]
+2023-05-27 04:13:08,209 [ 117590]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,260 [ 117641]   INFO - STDOUT - (Project analysis) Analyzing code 14% [SendResumeSection.test.tsx]
+2023-05-27 04:13:08,262 [ 117643]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,276 [ 117657]   INFO - STDOUT - (Project analysis) Analyzing code 15% [Login.tsx]
+2023-05-27 04:13:08,282 [ 117663]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,293 [ 117674]   INFO - STDOUT - (Project analysis) Analyzing code 15% [Option.tsx.html]
+2023-05-27 04:13:08,295 [ 117676]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,356 [ 117737]   INFO - STDOUT - (Project analysis) Analyzing code 15% [index.html]
+2023-05-27 04:13:08,357 [ 117738]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,371 [ 117752]   INFO - STDOUT - (Project analysis) Analyzing code 15% [NewPost.tsx]
+2023-05-27 04:13:08,375 [ 117756]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,386 [ 117767]   INFO - STDOUT - (Project analysis) Analyzing code 15% [index.html]
+2023-05-27 04:13:08,388 [ 117769]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,405 [ 117786]   INFO - STDOUT - (Project analysis) Analyzing code 16% [Resume.tsx.html]
+2023-05-27 04:13:08,410 [ 117791]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,451 [ 117832]   INFO - STDOUT - (Project analysis) Analyzing code 16% [index.html]
+2023-05-27 04:13:08,455 [ 117836]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,476 [ 117857]   INFO - STDOUT - (Project analysis) Analyzing code 16% [MyPosts.tsx.html]
+2023-05-27 04:13:08,480 [ 117861]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,489 [ 117870]   INFO - STDOUT - (Project analysis) Analyzing code 16% [README.md]
+2023-05-27 04:13:08,490 [ 117871]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,506 [ 117887]   INFO - STDOUT - (Project analysis) Analyzing code 17% [Messages.tsx]
+2023-05-27 04:13:08,507 [ 117888]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,536 [ 117917]   INFO - STDOUT - (Project analysis) Analyzing code 17% [Messages.tsx.html]
+2023-05-27 04:13:08,538 [ 117919]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,562 [ 117943]   INFO - STDOUT - (Project analysis) Analyzing code 17% [index.tsx.html]
+2023-05-27 04:13:08,568 [ 117949]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,718 [ 118099]   INFO - STDOUT - (Project analysis) Analyzing code 17% [Card.tsx.html]
+2023-05-27 04:13:08,739 [ 118120]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,757 [ 118138]   INFO - STDOUT - (Project analysis) Analyzing code 17% [MobileMenu.tsx]
+2023-05-27 04:13:08,758 [ 118139]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,851 [ 118232]   INFO - STDOUT - (Project analysis) Analyzing code 18% [index.html]
+2023-05-27 04:13:08,852 [ 118233]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,907 [ 118288]   INFO - STDOUT - (Project analysis) Analyzing code 18% [companyPage.test.tsx]
+2023-05-27 04:13:08,910 [ 118291]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:08,949 [ 118330]   INFO - STDOUT - (Project analysis) Analyzing code 18% [index.tsx]
+2023-05-27 04:13:08,952 [ 118333]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,005 [ 118386]   INFO - STDOUT - (Project analysis) Analyzing code 18% [index.ts]
+2023-05-27 04:13:09,010 [ 118391]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,114 [ 118495]   INFO - STDOUT - (Project analysis) Analyzing code 18% [index.html]
+2023-05-27 04:13:09,118 [ 118499]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,202 [ 118583]   INFO - STDOUT - (Project analysis) Analyzing code 19% [Option.test.tsx]
+2023-05-27 04:13:09,204 [ 118585]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,231 [ 118612]   INFO - STDOUT - (Project analysis) Analyzing code 19% [HeaderNewComplete.tsx]
+2023-05-27 04:13:09,232 [ 118613]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,236 [ 118617]   INFO - STDOUT - (Project analysis) Analyzing code 19% [index.ts.html]
+2023-05-27 04:13:09,246 [ 118627]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,261 [ 118642]   INFO - STDOUT - (Project analysis) Analyzing code 19% [HeaderNewShort.test.tsx]
+2023-05-27 04:13:09,265 [ 118646]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,278 [ 118659]   INFO - STDOUT - (Project analysis) Analyzing code 20% [ForgetPass1.tsx.html]
+2023-05-27 04:13:09,280 [ 118661]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,308 [ 118689]   INFO - STDOUT - (Project analysis) Analyzing code 20% [Table.test.tsx]
+2023-05-27 04:13:09,310 [ 118691]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,503 [ 118884]   INFO - STDOUT - (Project analysis) Analyzing code 20% [Dockerfile]
+2023-05-27 04:13:09,509 [ 118890]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,577 [ 118958]   INFO - STDOUT - (Project analysis) Analyzing code 20% [tailwind.config.js]
+2023-05-27 04:13:09,578 [ 118959]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,637 [ 119018]   INFO - STDOUT - (Project analysis) Analyzing code 20% [search-gray.svg]
+2023-05-27 04:13:09,642 [ 119023]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,719 [ 119100]   INFO - STDOUT - (Project analysis) Analyzing code 21% [Step3.tsx]
+2023-05-27 04:13:09,722 [ 119103]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,744 [ 119125]   INFO - STDOUT - (Project analysis) Analyzing code 21% [Post.test.tsx]
+2023-05-27 04:13:09,757 [ 119138]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,790 [ 119171]   INFO - STDOUT - (Project analysis) Analyzing code 21% [index.html]
+2023-05-27 04:13:09,791 [ 119172]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,927 [ 119308]   INFO - STDOUT - (Project analysis) Analyzing code 21% [Profile.tsx.html]
+2023-05-27 04:13:09,931 [ 119312]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:09,964 [ 119345]   INFO - STDOUT - (Project analysis) Analyzing code 22% [MyPosts.tsx]
+2023-05-27 04:13:09,966 [ 119347]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:10,008 [ 119389]   INFO - STDOUT - (Project analysis) Analyzing code 22% [usersReducer.ts.html]
+2023-05-27 04:13:10,010 [ 119391]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:10,202 [ 119583]   INFO - STDOUT - (Project analysis) Analyzing code 22% [MainFooter.tsx.html]
+2023-05-27 04:13:10,202 [ 119583]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:10,239 [ 119620]   INFO - STDOUT - (Project analysis) Analyzing code 22% [HeaderNewShort.tsx]
+2023-05-27 04:13:10,239 [ 119620]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:11,440 [ 120821]   INFO - STDOUT - (Project analysis) Analyzing code 22% [pagination.test.tsx.snap]
+2023-05-27 04:13:11,441 [ 120822]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:11,582 [ 120963]   INFO - STDOUT - (Project analysis) Analyzing code 23% [searchBox.test.tsx]
+2023-05-27 04:13:11,588 [ 120969]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:11,600 [ 120981]   INFO - STDOUT - (Project analysis) Analyzing code 23% [TitlePages.test.tsx]
+2023-05-27 04:13:11,604 [ 120985]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:11,999 [ 121380]   INFO - STDOUT - (Project analysis) Analyzing code 23% [Card.tsx]
+2023-05-27 04:13:12,019 [ 121400]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,024 [ 121405]   INFO - STDOUT - (Project analysis) Analyzing code 23% [Step2.tsx]
+2023-05-27 04:13:12,038 [ 121419]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,064 [ 121445]   INFO - STDOUT - (Project analysis) Analyzing code 24% [PostPage.tsx]
+2023-05-27 04:13:12,079 [ 121460]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,134 [ 121515]   INFO - STDOUT - (Project analysis) Analyzing code 24% [index.html]
+2023-05-27 04:13:12,149 [ 121530]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,239 [ 121620]   INFO - STDOUT - (Project analysis) Analyzing code 24% [index.html]
+2023-05-27 04:13:12,242 [ 121623]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,345 [ 121726]   INFO - STDOUT - (Project analysis) Analyzing code 24% [Profile.tsx]
+2023-05-27 04:13:12,346 [ 121727]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,359 [ 121740]   INFO - STDOUT - (Project analysis) Analyzing code 24% [react-app-env.d.ts]
+2023-05-27 04:13:12,360 [ 121741]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,377 [ 121758]   INFO - STDOUT - (Project analysis) Analyzing code 25% [.dockerignore]
+2023-05-27 04:13:12,378 [ 121759]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,476 [ 121857]   INFO - STDOUT - (Project analysis) Analyzing code 25% [index.tsx.html]
+2023-05-27 04:13:12,482 [ 121863]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,507 [ 121888]   INFO - STDOUT - (Project analysis) Analyzing code 25% [Information.tsx]
+2023-05-27 04:13:12,509 [ 121890]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,545 [ 121926]   INFO - STDOUT - (Project analysis) Analyzing code 25% [index.html]
+2023-05-27 04:13:12,559 [ 121940]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,611 [ 121992]   INFO - STDOUT - (Project analysis) Analyzing code 25% [Step1.tsx.html]
+2023-05-27 04:13:12,624 [ 122005]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,708 [ 122089]   INFO - STDOUT - (Project analysis) Analyzing code 26% [companyPage.tsx]
+2023-05-27 04:13:12,717 [ 122098]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,742 [ 122123]   INFO - STDOUT - (Project analysis) Analyzing code 26% [.gitignore]
+2023-05-27 04:13:12,743 [ 122124]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,763 [ 122144]   INFO - STDOUT - (Project analysis) Analyzing code 26% [Tab.tsx.html]
+2023-05-27 04:13:12,767 [ 122148]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,783 [ 122164]   INFO - STDOUT - (Project analysis) Analyzing code 26% [index.html]
+2023-05-27 04:13:12,785 [ 122166]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,792 [ 122173]   INFO - STDOUT - (Project analysis) Analyzing code 27% [index.tsx.html]
+2023-05-27 04:13:12,803 [ 122184]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,814 [ 122195]   INFO - STDOUT - (Project analysis) Analyzing code 27% [UpdatePost.tsx]
+2023-05-27 04:13:12,815 [ 122196]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:12,839 [ 122220]   INFO - STDOUT - (Project analysis) Analyzing code 27% [Header.tsx.html]
+2023-05-27 04:13:12,840 [ 122221]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,010 [ 122391]   INFO - STDOUT - (Project analysis) Analyzing code 27% [sorter.js]
+2023-05-27 04:13:13,014 [ 122395]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,266 [ 122647]   INFO - STDOUT - (Project analysis) Analyzing code 27% [Login.tsx]
+2023-05-27 04:13:13,273 [ 122654]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,279 [ 122660]   INFO - STDOUT - (Project analysis) Analyzing code 28% [serviceWorkerRegistration.js]
+2023-05-27 04:13:13,282 [ 122663]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,290 [ 122671]   INFO - STDOUT - (Project analysis) Analyzing code 28% [Card.test.tsx]
+2023-05-27 04:13:13,292 [ 122673]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,355 [ 122736]   INFO - STDOUT - (Project analysis) Analyzing code 28% [config.ts.html]
+2023-05-27 04:13:13,357 [ 122738]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,405 [ 122786]   INFO - STDOUT - (Project analysis) Analyzing code 28% [SearchPage.tsx]
+2023-05-27 04:13:13,410 [ 122791]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,461 [ 122842]   INFO - STDOUT - (Project analysis) Analyzing code 29% [3967f8bfcdf02e2b966e2f252738ddca.svg]
+2023-05-27 04:13:13,464 [ 122845]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,539 [ 122920]   INFO - STDOUT - (Project analysis) Analyzing code 29% [index.tsx.html]
+2023-05-27 04:13:13,553 [ 122934]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,593 [ 122974]   INFO - STDOUT - (Project analysis) Analyzing code 29% [index.tsx]
+2023-05-27 04:13:13,609 [ 122990]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,828 [ 123209]   INFO - STDOUT - (Project analysis) Analyzing code 29% [Login.tsx.html]
+2023-05-27 04:13:13,829 [ 123210]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,958 [ 123339]   INFO - STDOUT - (Project analysis) Analyzing code 29% [ParseURL.tsx]
+2023-05-27 04:13:13,960 [ 123341]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:13,992 [ 123373]   INFO - STDOUT - (Project analysis) Analyzing code 30% [MyPosts.test.tsx]
+2023-05-27 04:13:13,993 [ 123374]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,010 [ 123391]   INFO - STDOUT - (Project analysis) Analyzing code 30% [postcss.config.js]
+2023-05-27 04:13:14,012 [ 123393]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,060 [ 123441]   INFO - STDOUT - (Project analysis) Analyzing code 30% [index.tsx.html]
+2023-05-27 04:13:14,066 [ 123447]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,081 [ 123462]   INFO - STDOUT - (Project analysis) Analyzing code 30% [index.html]
+2023-05-27 04:13:14,089 [ 123470]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,100 [ 123481]   INFO - STDOUT - (Project analysis) Analyzing code 31% [index.html]
+2023-05-27 04:13:14,115 [ 123496]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,121 [ 123502]   INFO - STDOUT - (Project analysis) Analyzing code 31% [store.ts.html]
+2023-05-27 04:13:14,127 [ 123508]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,135 [ 123516]   INFO - STDOUT - (Project analysis) Analyzing code 31% [Step1.tsx]
+2023-05-27 04:13:14,141 [ 123522]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,162 [ 123543]   INFO - STDOUT - (Project analysis) Analyzing code 31% [index.html]
+2023-05-27 04:13:14,164 [ 123545]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,173 [ 123554]   INFO - STDOUT - (Project analysis) Analyzing code 31% [ForgetPass2.tsx]
+2023-05-27 04:13:14,176 [ 123557]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,201 [ 123582]   INFO - STDOUT - (Project analysis) Analyzing code 32% [Bookmark.test.tsx]
+2023-05-27 04:13:14,202 [ 123583]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,235 [ 123616]   INFO - STDOUT - (Project analysis) Analyzing code 32% [Register.tsx.html]
+2023-05-27 04:13:14,245 [ 123626]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,257 [ 123638]   INFO - STDOUT - (Project analysis) Analyzing code 32% [index.ts]
+2023-05-27 04:13:14,262 [ 123643]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,283 [ 123664]   INFO - STDOUT - (Project analysis) Analyzing code 32% [ProfileCompany.tsx.html]
+2023-05-27 04:13:14,285 [ 123666]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,300 [ 123681]   INFO - STDOUT - (Project analysis) Analyzing code 32% [interfaces.ts.html]
+2023-05-27 04:13:14,301 [ 123682]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,335 [ 123716]   INFO - STDOUT - (Project analysis) Analyzing code 33% [TitlePages.tsx]
+2023-05-27 04:13:14,337 [ 123718]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,349 [ 123730]   INFO - STDOUT - (Project analysis) Analyzing code 33% [ActiveAccount2.tsx.html]
+2023-05-27 04:13:14,352 [ 123733]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,384 [ 123765]   INFO - STDOUT - (Project analysis) Analyzing code 33% [ForgetPass2.tsx.html]
+2023-05-27 04:13:14,386 [ 123767]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,435 [ 123816]   INFO - STDOUT - (Project analysis) Analyzing code 33% [NotFound.test.tsx]
+2023-05-27 04:13:14,437 [ 123818]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,445 [ 123826]   INFO - STDOUT - (Project analysis) Analyzing code 34% [Login.test.tsx]
+2023-05-27 04:13:14,449 [ 123830]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,487 [ 123868]   INFO - STDOUT - (Project analysis) Analyzing code 34% [ForgetPass2.tsx]
+2023-05-27 04:13:14,489 [ 123870]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,526 [ 123907]   INFO - STDOUT - (Project analysis) Analyzing code 34% [index.tsx]
+2023-05-27 04:13:14,529 [ 123910]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,565 [ 123946]   INFO - STDOUT - (Project analysis) Analyzing code 34% [index.html]
+2023-05-27 04:13:14,567 [ 123948]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,603 [ 123984]   INFO - STDOUT - (Project analysis) Analyzing code 34% [index.html]
+2023-05-27 04:13:14,606 [ 123987]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,621 [ 124002]   INFO - STDOUT - (Project analysis) Analyzing code 35% [index.html]
+2023-05-27 04:13:14,622 [ 124003]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,643 [ 124024]   INFO - STDOUT - (Project analysis) Analyzing code 35% [Login.tsx.html]
+2023-05-27 04:13:14,644 [ 124025]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,660 [ 124041]   INFO - STDOUT - (Project analysis) Analyzing code 35% [Information.tsx.html]
+2023-05-27 04:13:14,665 [ 124046]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,681 [ 124062]   INFO - STDOUT - (Project analysis) Analyzing code 35% [TabRequest.tsx.html]
+2023-05-27 04:13:14,683 [ 124064]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,699 [ 124080]   INFO - STDOUT - (Project analysis) Analyzing code 36% [index.html]
+2023-05-27 04:13:14,700 [ 124081]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,718 [ 124099]   INFO - STDOUT - (Project analysis) Analyzing code 36% [Content.tsx.html]
+2023-05-27 04:13:14,720 [ 124101]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,732 [ 124113]   INFO - STDOUT - (Project analysis) Analyzing code 36% [Card.tsx.html]
+2023-05-27 04:13:14,735 [ 124116]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,747 [ 124128]   INFO - STDOUT - (Project analysis) Analyzing code 36% [idea.log]
+2023-05-27 04:13:14,749 [ 124130]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,771 [ 124152]   INFO - STDOUT - (Project analysis) Analyzing code 36% [SearchPage.tsx.html]
+2023-05-27 04:13:14,776 [ 124157]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,792 [ 124173]   INFO - #o.j.q.s.i.r.ConsoleLog - Keep running Project analysis ... so far 30s
+2023-05-27 04:13:14,794 [ 124175]   INFO - STDOUT - (Project analysis) Analyzing code 37% [index.css]
+2023-05-27 04:13:14,796 [ 124177]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:14,922 [ 124303]   INFO - STDOUT - (Project analysis) Keep running Project analysis ... so far 30s
+2023-05-27 04:13:14,923 [ 124304]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,072 [ 124453]   INFO - STDOUT - (Project analysis) Analyzing code 37% [ForgetPass1.test.tsx]
+2023-05-27 04:13:15,077 [ 124458]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,084 [ 124465]   INFO - STDOUT - (Project analysis) Analyzing code 37% [Register.tsx]
+2023-05-27 04:13:15,100 [ 124481]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,113 [ 124494]   INFO - STDOUT - (Project analysis) Analyzing code 37% [Information.tsx]
+2023-05-27 04:13:15,116 [ 124497]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,132 [ 124513]   INFO - STDOUT - (Project analysis) Analyzing code 37% [Login.tsx.html]
+2023-05-27 04:13:15,137 [ 124518]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,177 [ 124558]   INFO - STDOUT - (Project analysis) Analyzing code 38% [setupTests.ts]
+2023-05-27 04:13:15,179 [ 124560]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,422 [ 124803]   INFO - STDOUT - (Project analysis) Analyzing code 38% [ActiveAccount1.tsx]
+2023-05-27 04:13:15,423 [ 124804]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,426 [ 124807]   INFO - STDOUT - (Project analysis) Analyzing code 38% [Login.tsx]
+2023-05-27 04:13:15,448 [ 124829]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,458 [ 124839]   INFO - STDOUT - (Project analysis) Analyzing code 38% [Register.tsx]
+2023-05-27 04:13:15,470 [ 124851]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,483 [ 124864]   INFO - STDOUT - (Project analysis) Analyzing code 39% [ActiveAccount1.tsx.html]
+2023-05-27 04:13:15,484 [ 124865]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,500 [ 124881]   INFO - STDOUT - (Project analysis) Analyzing code 39% [UpdatePost.tsx.html]
+2023-05-27 04:13:15,501 [ 124882]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,508 [ 124889]   INFO - STDOUT - (Project analysis) Analyzing code 39% [Home.tsx.html]
+2023-05-27 04:13:15,514 [ 124895]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,521 [ 124902]   INFO - STDOUT - (Project analysis) Analyzing code 39% [ForgetPass1.tsx]
+2023-05-27 04:13:15,524 [ 124905]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,536 [ 124917]   INFO - STDOUT - (Project analysis) Analyzing code 39% [reportWebVitals.ts.html]
+2023-05-27 04:13:15,537 [ 124918]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,550 [ 124931]   INFO - STDOUT - (Project analysis) Analyzing code 40% [index.html]
+2023-05-27 04:13:15,552 [ 124933]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,579 [ 124960]   INFO - STDOUT - (Project analysis) Analyzing code 40% [open-telemetry-metrics.2023-05-27-04-11-
+2023-05-27 04:13:15,593 [ 124974]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,601 [ 124982]   INFO - STDOUT - (Project analysis) Analyzing code 40% [App.tsx]
+2023-05-27 04:13:15,606 [ 124987]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,619 [ 125000]   INFO - STDOUT - (Project analysis) Analyzing code 40% [Request.tsx]
+2023-05-27 04:13:15,624 [ 125005]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,642 [ 125023]   INFO - STDOUT - (Project analysis) Analyzing code 41% [Header.tsx]
+2023-05-27 04:13:15,643 [ 125024]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,655 [ 125036]   INFO - STDOUT - (Project analysis) Analyzing code 41% [NewPost.tsx.html]
+2023-05-27 04:13:15,656 [ 125037]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,678 [ 125059]   INFO - STDOUT - (Project analysis) Analyzing code 41% [Register.test.tsx]
+2023-05-27 04:13:15,679 [ 125060]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,685 [ 125066]   INFO - STDOUT - (Project analysis) Analyzing code 41% [index.html]
+2023-05-27 04:13:15,687 [ 125068]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,730 [ 125111]   INFO - STDOUT - (Project analysis) Analyzing code 41% [ActiveAccount2.tsx.html]
+2023-05-27 04:13:15,731 [ 125112]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,812 [ 125193]   INFO - STDOUT - (Project analysis) Analyzing code 42% [Register.tsx.html]
+2023-05-27 04:13:15,829 [ 125210]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,833 [ 125214]   INFO - STDOUT - (Project analysis) Analyzing code 42% [tsconfig.json]
+2023-05-27 04:13:15,834 [ 125215]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,841 [ 125222]   INFO - STDOUT - (Project analysis) Analyzing code 42% [ForgetPass1.tsx]
+2023-05-27 04:13:15,858 [ 125239]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,889 [ 125270]   INFO - STDOUT - (Project analysis) Analyzing code 42% [index.html]
+2023-05-27 04:13:15,892 [ 125273]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,957 [ 125338]   INFO - STDOUT - (Project analysis) Analyzing code 43% [index.html]
+2023-05-27 04:13:15,965 [ 125346]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:15,981 [ 125362]   INFO - STDOUT - (Project analysis) Analyzing code 43% [TabRequest.tsx]
+2023-05-27 04:13:15,999 [ 125380]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,009 [ 125390]   INFO - STDOUT - (Project analysis) Analyzing code 43% [config.ts]
+2023-05-27 04:13:16,010 [ 125391]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,039 [ 125420]   INFO - STDOUT - (Project analysis) Analyzing code 43% [index.html]
+2023-05-27 04:13:16,042 [ 125423]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,120 [ 125501]   INFO - STDOUT - (Project analysis) Analyzing code 43% [TitlePages.tsx.html]
+2023-05-27 04:13:16,122 [ 125503]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,168 [ 125549]   INFO - STDOUT - (Project analysis) Analyzing code 44% [reportWebVitals.ts]
+2023-05-27 04:13:16,169 [ 125550]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,187 [ 125568]   INFO - STDOUT - (Project analysis) Analyzing code 44% [Tab.tsx.html]
+2023-05-27 04:13:16,191 [ 125572]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,307 [ 125688]   INFO - STDOUT - (Project analysis) Analyzing code 44% [ActiveAccount1.tsx.html]
+2023-05-27 04:13:16,308 [ 125689]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,439 [ 125820]   INFO - STDOUT - (Project analysis) Analyzing code 44% [Toast.tsx]
+2023-05-27 04:13:16,440 [ 125821]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,451 [ 125832]   INFO - STDOUT - (Project analysis) Analyzing code 44% [Tab.tsx]
+2023-05-27 04:13:16,452 [ 125833]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,453 [ 125834]   INFO - STDOUT - (Project analysis) Analyzing code 45% [Card.tsx]
+2023-05-27 04:13:16,454 [ 125835]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,468 [ 125849]   INFO - STDOUT - (Project analysis) Analyzing code 45% [MainFooter.tsx]
+2023-05-27 04:13:16,469 [ 125850]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,474 [ 125855]   INFO - STDOUT - (Project analysis) Analyzing code 45% [Card.tsx]
+2023-05-27 04:13:16,479 [ 125860]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,506 [ 125887]   INFO - STDOUT - (Project analysis) Analyzing code 45% [ForgetPass1.tsx.html]
+2023-05-27 04:13:16,520 [ 125901]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,639 [ 126020]   INFO - STDOUT - (Project analysis) Analyzing code 46% [index.html]
+2023-05-27 04:13:16,649 [ 126030]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,666 [ 126047]   INFO - STDOUT - (Project analysis) Analyzing code 46% [UpdatePost.tsx]
+2023-05-27 04:13:16,668 [ 126049]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,732 [ 126113]   INFO - STDOUT - (Project analysis) Analyzing code 46% [functions.ts.html]
+2023-05-27 04:13:16,733 [ 126114]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,758 [ 126139]   INFO - STDOUT - (Project analysis) Analyzing code 46% [index.tsx]
+2023-05-27 04:13:16,762 [ 126143]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,776 [ 126157]   INFO - STDOUT - (Project analysis) Analyzing code 46% [PostPage.tsx.html]
+2023-05-27 04:13:16,780 [ 126161]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,886 [ 126267]   INFO - STDOUT - (Project analysis) Analyzing code 47% [NotFound.tsx.html]
+2023-05-27 04:13:16,888 [ 126269]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,909 [ 126290]   INFO - STDOUT - (Project analysis) Analyzing code 47% [TabResume.tsx]
+2023-05-27 04:13:16,910 [ 126291]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:16,951 [ 126332]   INFO - STDOUT - (Project analysis) Analyzing code 47% [Information.test.tsx]
+2023-05-27 04:13:16,952 [ 126333]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,068 [ 126449]   INFO - STDOUT - (Project analysis) Analyzing code 47% [companyPage.tsx.html]
+2023-05-27 04:13:17,074 [ 126455]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,091 [ 126472]   INFO - STDOUT - (Project analysis) Analyzing code 48% [pagination.test.tsx]
+2023-05-27 04:13:17,094 [ 126475]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,169 [ 126550]   INFO - STDOUT - (Project analysis) Analyzing code 48% [service-worker.js.html]
+2023-05-27 04:13:17,178 [ 126559]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,209 [ 126590]   INFO - STDOUT - (Project analysis) Analyzing code 48% [ActiveAccount2.tsx]
+2023-05-27 04:13:17,210 [ 126591]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,297 [ 126678]   INFO - STDOUT - (Project analysis) Analyzing code 48% [index.html]
+2023-05-27 04:13:17,319 [ 126700]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,341 [ 126722]   INFO - STDOUT - (Project analysis) Analyzing code 48% [functions.ts]
+2023-05-27 04:13:17,362 [ 126743]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,380 [ 126761]   INFO - STDOUT - (Project analysis) Analyzing code 49% [index.ts.html]
+2023-05-27 04:13:17,381 [ 126762]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,402 [ 126783]   INFO - STDOUT - (Project analysis) Analyzing code 49% [Login.tsx]
+2023-05-27 04:13:17,404 [ 126785]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,439 [ 126820]   INFO - STDOUT - (Project analysis) Analyzing code 49% [App.tsx.html]
+2023-05-27 04:13:17,445 [ 126826]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,454 [ 126835]   INFO - STDOUT - (Project analysis) Analyzing code 49% [MobileMenu.test.tsx]
+2023-05-27 04:13:17,455 [ 126836]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,462 [ 126843]   INFO - STDOUT - (Project analysis) Analyzing code 50% [ActiveAccount2.tsx]
+2023-05-27 04:13:17,469 [ 126850]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,474 [ 126855]   INFO - STDOUT - (Project analysis) Analyzing code 50% [Content.tsx]
+2023-05-27 04:13:17,475 [ 126856]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,491 [ 126872]   INFO - STDOUT - (Project analysis) Analyzing code 50% [qodana.yaml]
+2023-05-27 04:13:17,492 [ 126873]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,501 [ 126882]   INFO - STDOUT - (Project analysis) Analyzing code 50% [Dialog.tsx.html]
+2023-05-27 04:13:17,507 [ 126888]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,805 [ 127186]   INFO - STDOUT - (Project analysis) Analyzing code 50% [Card.tsx.html]
+2023-05-27 04:13:17,832 [ 127213]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,870 [ 127251]   INFO - STDOUT - (Project analysis) Analyzing code 51% [Step3.tsx]
+2023-05-27 04:13:17,878 [ 127259]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,908 [ 127289]   INFO - STDOUT - (Project analysis) Analyzing code 51% [Content.tsx.html]
+2023-05-27 04:13:17,909 [ 127290]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,919 [ 127300]   INFO - STDOUT - (Project analysis) Analyzing code 51% [index.html]
+2023-05-27 04:13:17,921 [ 127302]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,947 [ 127328]   INFO - STDOUT - (Project analysis) Analyzing code 51% [Option.tsx]
+2023-05-27 04:13:17,950 [ 127331]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,951 [ 127332]   INFO - STDOUT - (Project analysis) Analyzing code 51% [Card.tsx.html]
+2023-05-27 04:13:17,953 [ 127334]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:17,982 [ 127363]   INFO - STDOUT - (Project analysis) Analyzing code 52% [MobileMenu.tsx.html]
+2023-05-27 04:13:17,999 [ 127380]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,010 [ 127391]   INFO - STDOUT - (Project analysis) Analyzing code 52% [docker-compose.yml]
+2023-05-27 04:13:18,029 [ 127410]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,060 [ 127441]   INFO - STDOUT - (Project analysis) Analyzing code 52% [index.html]
+2023-05-27 04:13:18,062 [ 127443]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,081 [ 127462]   INFO - STDOUT - (Project analysis) Analyzing code 52% [ProtectedRoute.tsx]
+2023-05-27 04:13:18,095 [ 127476]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,115 [ 127496]   INFO - STDOUT - (Project analysis) Analyzing code 53% [angle-down-disabled.svg]
+2023-05-27 04:13:18,120 [ 127501]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,159 [ 127540]   INFO - STDOUT - (Project analysis) Analyzing code 53% [Step2.tsx.html]
+2023-05-27 04:13:18,160 [ 127541]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,196 [ 127577]   INFO - STDOUT - (Project analysis) Analyzing code 53% [index.html]
+2023-05-27 04:13:18,211 [ 127592]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,275 [ 127656]   INFO - STDOUT - (Project analysis) Analyzing code 53% [index.ts.html]
+2023-05-27 04:13:18,284 [ 127665]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,299 [ 127680]   INFO - STDOUT - (Project analysis) Analyzing code 53% [jest.config.json]
+2023-05-27 04:13:18,300 [ 127681]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,314 [ 127695]   INFO - STDOUT - (Project analysis) Analyzing code 54% [SearchPage.test.tsx]
+2023-05-27 04:13:18,317 [ 127698]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,352 [ 127733]   INFO - STDOUT - (Project analysis) Analyzing code 54% [index.ts.html]
+2023-05-27 04:13:18,353 [ 127734]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,557 [ 127938]   INFO - STDOUT - (Project analysis) Analyzing code 54% [Footer.tsx.html]
+2023-05-27 04:13:18,565 [ 127946]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,572 [ 127953]   INFO - STDOUT - (Project analysis) Analyzing code 54% [UrgentCard.tsx]
+2023-05-27 04:13:18,574 [ 127955]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,610 [ 127991]   INFO - STDOUT - (Project analysis) Analyzing code 55% [interfaces.ts]
+2023-05-27 04:13:18,619 [ 128000]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,722 [ 128103]   INFO - STDOUT - (Project analysis) Analyzing code 55% [index.html]
+2023-05-27 04:13:18,724 [ 128105]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,728 [ 128109]   INFO - STDOUT - (Project analysis) Analyzing code 55% [ProfileCompany.tsx]
+2023-05-27 04:13:18,731 [ 128112]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,734 [ 128115]   INFO - STDOUT - (Project analysis) Analyzing code 55% [NewPost.tsx]
+2023-05-27 04:13:18,735 [ 128116]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,744 [ 128125]   INFO - STDOUT - (Project analysis) Analyzing code 55% [Step1.tsx]
+2023-05-27 04:13:18,752 [ 128133]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,766 [ 128147]   INFO - STDOUT - (Project analysis) Analyzing code 56% [index.html]
+2023-05-27 04:13:18,769 [ 128150]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,802 [ 128183]   INFO - STDOUT - (Project analysis) Analyzing code 56% [Default.tsx.html]
+2023-05-27 04:13:18,803 [ 128184]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,814 [ 128195]   INFO - STDOUT - (Project analysis) Analyzing code 56% [manifest.json]
+2023-05-27 04:13:18,816 [ 128197]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,888 [ 128269]   INFO - STDOUT - (Project analysis) Analyzing code 56% [NotFound.tsx]
+2023-05-27 04:13:18,892 [ 128273]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,936 [ 128317]   INFO - STDOUT - (Project analysis) Analyzing code 56% [index.tsx]
+2023-05-27 04:13:18,938 [ 128319]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:18,952 [ 128333]   INFO - STDOUT - (Project analysis) Analyzing code 57% [Resume.tsx]
+2023-05-27 04:13:18,953 [ 128334]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,055 [ 128436]   INFO - STDOUT - (Project analysis) Analyzing code 57% [serviceWorkerRegistration.js.html]
+2023-05-27 04:13:19,060 [ 128441]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,073 [ 128454]   INFO - STDOUT - (Project analysis) Analyzing code 57% [Content.tsx]
+2023-05-27 04:13:19,077 [ 128458]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,205 [ 128586]   INFO - STDOUT - (Project analysis) Analyzing code 57% [ForgetPass2.tsx.html]
+2023-05-27 04:13:19,206 [ 128587]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,208 [ 128589]   INFO - STDOUT - (Project analysis) Analyzing code 58% [Messages.test.tsx]
+2023-05-27 04:13:19,210 [ 128591]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,224 [ 128605]   INFO - STDOUT - (Project analysis) Analyzing code 58% [Table.tsx]
+2023-05-27 04:13:19,225 [ 128606]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,233 [ 128614]   INFO - STDOUT - (Project analysis) Analyzing code 58% [index.tsx.html]
+2023-05-27 04:13:19,238 [ 128619]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,251 [ 128632]   INFO - STDOUT - (Project analysis) Analyzing code 58% [UserInformation.tsx.html]
+2023-05-27 04:13:19,253 [ 128634]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,263 [ 128644]   INFO - STDOUT - (Project analysis) Analyzing code 58% [block-navigation.js]
+2023-05-27 04:13:19,266 [ 128647]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,413 [ 128794]   INFO - STDOUT - (Project analysis) Analyzing code 59% [SingleDropdownWithSearch.tsx.html]
+2023-05-27 04:13:19,418 [ 128799]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,602 [ 128983]   INFO - STDOUT - (Project analysis) Analyzing code 59% [Footer.tsx]
+2023-05-27 04:13:19,603 [ 128984]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,605 [ 128986]   INFO - STDOUT - (Project analysis) Analyzing code 59% [Step2.tsx]
+2023-05-27 04:13:19,606 [ 128987]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,617 [ 128998]   INFO - STDOUT - (Project analysis) Analyzing code 59% [detailItem.test.tsx]
+2023-05-27 04:13:19,622 [ 129003]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,624 [ 129005]   INFO - STDOUT - (Project analysis) Analyzing code 60% [Information.tsx.html]
+2023-05-27 04:13:19,625 [ 129006]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,654 [ 129035]   INFO - STDOUT - (Project analysis) Analyzing code 60% [Request.tsx.html]
+2023-05-27 04:13:19,656 [ 129037]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,676 [ 129057]   INFO - STDOUT - (Project analysis) Analyzing code 60% [TabResume.tsx.html]
+2023-05-27 04:13:19,677 [ 129058]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,703 [ 129084]   INFO - STDOUT - (Project analysis) Analyzing code 60% [Table.tsx.html]
+2023-05-27 04:13:19,726 [ 129107]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,738 [ 129119]   INFO - STDOUT - (Project analysis) Analyzing code 60% [MainFooter.test.tsx]
+2023-05-27 04:13:19,749 [ 129130]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,764 [ 129145]   INFO - STDOUT - (Project analysis) Analyzing code 61% [index.html]
+2023-05-27 04:13:19,789 [ 129170]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,802 [ 129183]   INFO - STDOUT - (Project analysis) Analyzing code 61% [Dialog.tsx]
+2023-05-27 04:13:19,804 [ 129185]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,824 [ 129205]   INFO - STDOUT - (Project analysis) Analyzing code 61% [NewPost.tsx.html]
+2023-05-27 04:13:19,838 [ 129219]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,847 [ 129228]   INFO - STDOUT - (Project analysis) Analyzing code 61% [Toast.tsx.html]
+2023-05-27 04:13:19,847 [ 129228]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,855 [ 129236]   INFO - STDOUT - (Project analysis) Analyzing code 62% [HeaderNewComplete.tsx.html]
+2023-05-27 04:13:19,857 [ 129238]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,861 [ 129242]   INFO - STDOUT - (Project analysis) Analyzing code 62% [index.html]
+2023-05-27 04:13:19,862 [ 129243]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,869 [ 129250]   INFO - STDOUT - (Project analysis) Analyzing code 62% [ActiveAccount1.tsx]
+2023-05-27 04:13:19,875 [ 129256]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,880 [ 129261]   INFO - STDOUT - (Project analysis) Analyzing code 62% [index.tsx.html]
+2023-05-27 04:13:19,883 [ 129264]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,900 [ 129281]   INFO - STDOUT - (Project analysis) Analyzing code 62% [Login.tsx.html]
+2023-05-27 04:13:19,904 [ 129285]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,935 [ 129316]   INFO - STDOUT - (Project analysis) Analyzing code 63% [gc.log]
+2023-05-27 04:13:19,938 [ 129319]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:19,962 [ 129343]   INFO - STDOUT - (Project analysis) Analyzing code 63% [Demo.html]
+2023-05-27 04:13:19,969 [ 129350]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:20,025 [ 129406]   INFO - STDOUT - (Project analysis) Analyzing code 63% [index.tsx]
+2023-05-27 04:13:20,026 [ 129407]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:20,134 [ 129515]   INFO - STDOUT - (Project analysis) Analyzing code 63% [UserInformation.tsx]
+2023-05-27 04:13:20,136 [ 129517]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:20,176 [ 129557]   INFO - STDOUT - (Project analysis) Analyzing code 63% [Home.test.tsx]
+2023-05-27 04:13:20,176 [ 129557]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:20,283 [ 129664]   INFO - STDOUT - (Project analysis) Analyzing code 64% [service-worker.js]
+2023-05-27 04:13:20,285 [ 129666]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:20,430 [ 129811]   INFO - STDOUT - (Project analysis) Analyzing code 64% [Tab.tsx]
+2023-05-27 04:13:20,449 [ 129830]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:22,010 [ 131391]   INFO - STDOUT - (Project analysis) Analyzing code 64% [Home.tsx]
+2023-05-27 04:13:22,010 [ 131391]   INFO - STDOUT -                                                                                 
+2023-05-27 04:13:23,080 [ 132461]   INFO - STDOUT - (Project analysis) Analyzing code 64% [open-telemetry-metrics-plotter.html]
+2023-05-27 04:13:23,082 [ 132463]   INFO - #o.j.q.s.i.r.ConsoleLog - The Project analysis stage completed in 38s
+2023-05-27 04:13:23,083 [ 132464]   INFO - STDOUT - The Project analysis stage completed in 38s
+2023-05-27 04:13:23,197 [ 132578]   INFO - #o.j.q.s.i.r.AsyncInspectionToolResultWriter - Async result writer finished
+2023-05-27 04:13:23,341 [ 132722]   INFO - #c.j.d.m.DependencyAnalysisDescriber - Running Dependency Analysis project describer
+2023-05-27 04:13:23,366 [ 132747]   INFO - STDOUT - 
+2023-05-27 04:13:23,369 [ 132750]   INFO - STDOUT - Qodana - Detailed summary
+2023-05-27 04:13:23,374 [ 132755]   INFO - STDOUT - Analysis results: 39 problems detected
+2023-05-27 04:13:23,375 [ 132756]   INFO - STDOUT - By severity: High - 31, Moderate - 8
+2023-05-27 04:13:23,376 [ 132757]   INFO - STDOUT - ----------------------------------------------------------------------------
+2023-05-27 04:13:23,378 [ 132759]   INFO - STDOUT - Name                                                Severity  Problems count
+2023-05-27 04:13:23,379 [ 132760]   INFO - STDOUT - ----------------------------------------------------------------------------
+2023-05-27 04:13:23,380 [ 132761]   INFO - STDOUT - Unused local symbol                                     High              26
+2023-05-27 04:13:23,381 [ 132762]   INFO - STDOUT - Missed locally stored library for HTTP link             High               2
+2023-05-27 04:13:23,382 [ 132763]   INFO - STDOUT - Unused import                                           High               2
+2023-05-27 04:13:23,382 [ 132763]   INFO - STDOUT - Import can be shortened                                 High               1
+2023-05-27 04:13:23,383 [ 132764]   INFO - STDOUT - Type mismatch                                       Moderate               4
+2023-05-27 04:13:23,384 [ 132765]   INFO - STDOUT - Deprecated symbol used                              Moderate               2
+2023-05-27 04:13:23,385 [ 132766]   INFO - STDOUT - Result of method call returning a promise is ignor  Moderate               2
+2023-05-27 04:13:23,386 [ 132767]   INFO - STDOUT - ed                                                                          
+2023-05-27 04:13:23,388 [ 132769]   INFO - STDOUT - ----------------------------------------------------------------------------
+2023-05-27 04:13:23,389 [ 132770]   INFO - #c.i.o.v.i.h.DefaultRemoteContentProvider - Remote host terminated the handshake
+javax.net.ssl.SSLHandshakeException: Remote host terminated the handshake
+	at java.base/sun.security.ssl.SSLSocketImpl.handleEOF(SSLSocketImpl.java:1719)
+	at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1518)
+	at java.base/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1425)
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455)
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426)
+	at java.base/sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:580)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:187)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.followRedirect0(HttpURLConnection.java:2902)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.followRedirect(HttpURLConnection.java:2811)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1927)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1589)
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:529)
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:308)
+	at com.intellij.util.io.HttpRequests.openConnection(HttpRequests.java:619)
+	at com.intellij.util.io.HttpRequests$RequestImpl.getConnection(HttpRequests.java:361)
+	at com.intellij.openapi.vfs.impl.http.DefaultRemoteContentProvider.lambda$downloadContent$1(DefaultRemoteContentProvider.java:55)
+	at com.intellij.util.io.HttpRequests.doProcess(HttpRequests.java:524)
+	at com.intellij.util.io.HttpRequests.process(HttpRequests.java:506)
+	at com.intellij.util.io.HttpRequests$RequestBuilderImpl.connect(HttpRequests.java:335)
+	at com.intellij.openapi.vfs.impl.http.DefaultRemoteContentProvider.connect(DefaultRemoteContentProvider.java:95)
+	at com.intellij.openapi.vfs.impl.http.DefaultRemoteContentProvider.downloadContent(DefaultRemoteContentProvider.java:54)
+	at com.intellij.openapi.vfs.impl.http.DefaultRemoteContentProvider.lambda$saveContent$0(DefaultRemoteContentProvider.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.EOFException: SSL peer shut down incorrectly
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:478)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.decode(SSLSocketInputRecord.java:160)
+	at java.base/sun.security.ssl.SSLTransport.decode(SSLTransport.java:111)
+	at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1510)
+	... 27 more
+2023-05-27 04:13:23,390 [ 132771]   INFO - STDOUT - 
+2023-05-27 04:13:23,393 [ 132774]   INFO - STDOUT - 
+2023-05-27 04:13:23,446 [ 132827]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,447 [ 132828]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,448 [ 132829]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,449 [ 132830]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,450 [ 132831]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,451 [ 132832]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,452 [ 132833]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,454 [ 132835]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,456 [ 132837]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,457 [ 132838]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,458 [ 132839]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:23,459 [ 132840]   WARN - #o.j.q.s.s.DefaultQodanaProblemSarifReporter - Couldn't match duplicate problems to eachother
+2023-05-27 04:13:24,736 [ 134117]   INFO - #o.j.q.s.i.r.QodanaInspectionApplication - sessionId: 23052704-5ede3c087696
+2023-05-27 04:13:25,467 [ 134848]   INFO - #c.i.c.ComponentStoreImpl - Saving Project(name=project, containerState=COMPONENT_CREATED, componentStore=/data/project)ChangeListManager took 39 ms, ExternalProjectsData took 12 ms, ExternalProjectsManager took 14 ms, PropertiesComponent took 39 ms, XDebuggerManager took 49 ms
+2023-05-27 04:13:26,078 [ 135459]   WARN - #c.i.e.p.UnixProcessManager - Error killing the process
+java.lang.IllegalStateException: java.io.IOException: Cannot run program "ps": error=2, No such file or directory
+	at com.intellij.execution.process.UnixProcessManager.processCommandOutput(UnixProcessManager.java:234)
+	at com.intellij.execution.process.UnixProcessManager.processPSOutput(UnixProcessManager.java:225)
+	at com.intellij.execution.process.UnixProcessManager.findChildProcesses(UnixProcessManager.java:194)
+	at com.intellij.execution.process.UnixProcessManager.sendSignalToProcessTree(UnixProcessManager.java:167)
+	at com.intellij.execution.process.UnixProcessManager.sendSignalToProcessTree(UnixProcessManager.java:155)
+	at com.intellij.execution.process.UnixProcessManager.sendSignalToProcessTree(UnixProcessManager.java:143)
+	at com.intellij.execution.process.UnixProcessManager.sendSigIntToProcessTree(UnixProcessManager.java:134)
+	at com.intellij.execution.process.KillableProcessHandler.destroyProcessGracefully(KillableProcessHandler.java:235)
+	at com.intellij.execution.process.KillableProcessHandler.doDestroyProcess(KillableProcessHandler.java:142)
+	at com.intellij.execution.process.KillableProcessHandler.destroyProcessImpl(KillableProcessHandler.java:136)
+	at com.intellij.execution.process.ProcessHandler.lambda$destroyProcess$0(ProcessHandler.java:125)
+	at com.intellij.execution.process.ProcessHandler$TasksRunner.execute(ProcessHandler.java:281)
+	at com.intellij.execution.process.ProcessHandler.destroyProcess(ProcessHandler.java:122)
+	at git4idea.commands.GitTextHandler.tryKill(GitTextHandler.java:143)
+	at git4idea.commands.GitTextHandler.lambda$waitForProcess$0(GitTextHandler.java:132)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeNonCancelableSection$3(CoreProgressManager.java:222)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$computeInNonCancelableSection$4(CoreProgressManager.java:230)
+	at com.intellij.openapi.progress.Cancellation.computeInNonCancelableSection(Cancellation.java:99)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeInNonCancelableSection(CoreProgressManager.java:230)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeNonCancelableSection(CoreProgressManager.java:221)
+	at git4idea.commands.GitTextHandler.waitForProcess(GitTextHandler.java:131)
+	at git4idea.commands.GitHandler.runInCurrentThread(GitHandler.java:413)
+	at git4idea.commands.GitImplBase.doRun(GitImplBase.java:201)
+	at git4idea.commands.GitImplBase.run(GitImplBase.java:163)
+	at git4idea.commands.GitImplBase.runCommand(GitImplBase.java:63)
+	at git4idea.index.GitIndexStatusUtilKt.getFileStatus(GitIndexStatusUtil.kt:84)
+	at git4idea.index.GitIndexStatusUtilKt.getStatus(GitIndexStatusUtil.kt:65)
+	at git4idea.status.GitStagingAreaHolder.refresh(GitStagingAreaHolder.java:107)
+	at git4idea.status.GitChangeProvider.getChanges(GitChangeProvider.java:69)
+	at com.intellij.openapi.vcs.changes.ChangeListManagerImpl.actualUpdate(ChangeListManagerImpl.java:724)
+	at com.intellij.openapi.vcs.changes.ChangeListManagerImpl.iterateScopes(ChangeListManagerImpl.java:624)
+	at com.intellij.openapi.vcs.changes.ChangeListManagerImpl.lambda$updateImmediately$12(ChangeListManagerImpl.java:530)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.vcs.changes.ChangeListManagerImpl.lambda$updateImmediately$15(ChangeListManagerImpl.java:529)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.lambda$runUnderDisposeAwareIndicator$12(BackgroundTaskUtil.java:332)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.runUnderDisposeAwareIndicator(BackgroundTaskUtil.java:361)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.runUnderDisposeAwareIndicator(BackgroundTaskUtil.java:331)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.runUnderDisposeAwareIndicator(BackgroundTaskUtil.java:323)
+	at com.intellij.openapi.vcs.changes.ChangeListManagerImpl.updateImmediately(ChangeListManagerImpl.java:479)
+	at com.intellij.openapi.vcs.changes.UpdateRequestsQueue$RefreshRunnable.run(UpdateRequestsQueue.java:280)
+	at com.intellij.openapi.vcs.changes.ChangeListManagerImpl$MyLoggingRunnable.run(ChangeListManagerImpl.java:1740)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at com.intellij.util.concurrency.SchedulingWrapper$MyScheduledFutureTask.run(SchedulingWrapper.java:272)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.doRun(BoundedTaskExecutor.java:248)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.access$200(BoundedTaskExecutor.java:28)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.executeFirstTaskAndHelpQueue(BoundedTaskExecutor.java:221)
+	at com.intellij.util.ConcurrencyUtil.runUnderThreadName(ConcurrencyUtil.java:227)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.run(BoundedTaskExecutor.java:210)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot run program "ps": error=2, No such file or directory
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1143)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1073)
+	at java.base/java.lang.Runtime.exec(Runtime.java:594)
+	at java.base/java.lang.Runtime.exec(Runtime.java:453)
+	at com.intellij.execution.process.UnixProcessManager.processCommandOutput(UnixProcessManager.java:230)
+	... 68 more
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:314)
+	at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:244)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1110)
+	... 72 more
+2023-05-27 04:13:26,089 [ 135470]   WARN - #c.i.e.p.UnixProcessManager - Error killing the process
+java.lang.IllegalStateException: java.io.IOException: Cannot run program "ps": error=2, No such file or directory
+	at com.intellij.execution.process.UnixProcessManager.processCommandOutput(UnixProcessManager.java:234)
+	at com.intellij.execution.process.UnixProcessManager.processPSOutput(UnixProcessManager.java:225)
+	at com.intellij.execution.process.UnixProcessManager.findChildProcesses(UnixProcessManager.java:194)
+	at com.intellij.execution.process.UnixProcessManager.sendSignalToProcessTree(UnixProcessManager.java:167)
+	at com.intellij.execution.process.UnixProcessManager.sendSignalToProcessTree(UnixProcessManager.java:155)
+	at com.intellij.execution.process.UnixProcessManager.sendSignalToProcessTree(UnixProcessManager.java:143)
+	at com.intellij.execution.process.UnixProcessManager.sendSigIntToProcessTree(UnixProcessManager.java:134)
+	at com.intellij.execution.process.KillableProcessHandler.destroyProcessGracefully(KillableProcessHandler.java:235)
+	at com.intellij.execution.process.KillableProcessHandler.doDestroyProcess(KillableProcessHandler.java:142)
+	at com.intellij.execution.process.KillableProcessHandler.destroyProcessImpl(KillableProcessHandler.java:136)
+	at com.intellij.execution.process.ProcessHandler.lambda$destroyProcess$0(ProcessHandler.java:125)
+	at com.intellij.execution.process.ProcessHandler$TasksRunner.execute(ProcessHandler.java:281)
+	at com.intellij.execution.process.ProcessHandler.destroyProcess(ProcessHandler.java:122)
+	at git4idea.commands.GitTextHandler.tryKill(GitTextHandler.java:143)
+	at git4idea.commands.GitTextHandler.lambda$waitForProcess$0(GitTextHandler.java:132)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeNonCancelableSection$3(CoreProgressManager.java:222)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$computeInNonCancelableSection$4(CoreProgressManager.java:230)
+	at com.intellij.openapi.progress.Cancellation.computeInNonCancelableSection(Cancellation.java:99)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeInNonCancelableSection(CoreProgressManager.java:230)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeNonCancelableSection(CoreProgressManager.java:221)
+	at git4idea.commands.GitTextHandler.waitForProcess(GitTextHandler.java:131)
+	at git4idea.commands.GitHandler.runInCurrentThread(GitHandler.java:413)
+	at git4idea.commands.GitImplBase.doRun(GitImplBase.java:201)
+	at git4idea.commands.GitImplBase.run(GitImplBase.java:163)
+	at git4idea.commands.GitImplBase.runCommand(GitImplBase.java:63)
+	at git4idea.index.GitIndexStatusUtilKt.getFileStatus(GitIndexStatusUtil.kt:84)
+	at git4idea.repo.GitUntrackedFilesHolder.refreshFiles(GitUntrackedFilesHolder.java:351)
+	at git4idea.repo.GitUntrackedFilesHolder.update(GitUntrackedFilesHolder.java:249)
+	at com.intellij.util.ui.update.DisposableUpdate$1.doRun(DisposableUpdate.java:31)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.runUnderDisposeAwareIndicator(BackgroundTaskUtil.java:361)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.runUnderDisposeAwareIndicator(BackgroundTaskUtil.java:339)
+	at com.intellij.util.ui.update.DisposableUpdate.run(DisposableUpdate.java:19)
+	at com.intellij.util.ui.update.MergingUpdateQueue.execute(MergingUpdateQueue.java:350)
+	at com.intellij.util.ui.update.MergingUpdateQueue.execute(MergingUpdateQueue.java:340)
+	at com.intellij.util.ui.update.MergingUpdateQueue.doExecute(MergingUpdateQueue.java:297)
+	at com.intellij.util.ui.update.MergingUpdateQueue.flush(MergingUpdateQueue.java:280)
+	at com.intellij.util.ui.update.MergingUpdateQueue.run(MergingUpdateQueue.java:245)
+	at com.intellij.util.concurrency.QueueProcessor.runSafely(QueueProcessor.java:249)
+	at com.intellij.util.Alarm$Request.runSafely(Alarm.java:365)
+	at com.intellij.util.Alarm$Request.run(Alarm.java:354)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at com.intellij.util.concurrency.SchedulingWrapper$MyScheduledFutureTask.run(SchedulingWrapper.java:272)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.doRun(BoundedTaskExecutor.java:248)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.access$200(BoundedTaskExecutor.java:28)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.executeFirstTaskAndHelpQueue(BoundedTaskExecutor.java:221)
+	at com.intellij.util.ConcurrencyUtil.runUnderThreadName(ConcurrencyUtil.java:227)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.run(BoundedTaskExecutor.java:210)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot run program "ps": error=2, No such file or directory
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1143)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1073)
+	at java.base/java.lang.Runtime.exec(Runtime.java:594)
+	at java.base/java.lang.Runtime.exec(Runtime.java:453)
+	at com.intellij.execution.process.UnixProcessManager.processCommandOutput(UnixProcessManager.java:230)
+	... 63 more
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:314)
+	at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:244)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1110)
+	... 67 more
+2023-05-27 04:13:26,093 [ 135474]   WARN - #c.i.e.p.OSProcessHandler - Cannot kill process tree. Trying to destroy process using Java API. Cmdline:
+setsid /usr/bin/git -c credential.helper= -c core.quotepath=false -c log.showSignature=false status --porcelain -z --untracked-files=no --ignored=no -- .idea src/components/SingleDropdownWithSearch.tsx
+2023-05-27 04:13:26,096 [ 135477]   WARN - #c.i.e.p.OSProcessHandler - Process has been already terminated: setsid /usr/bin/git -c credential.helper= -c core.quotepath=false -c log.showSignature=false status --porcelain -z --no-renames --untracked-files=all --ignored=matching -- .idea .idea/inspectionProfiles/Project_Default.xml
+2023-05-27 04:13:27,086 [ 136467]   INFO - #c.i.w.i.i.j.s.JpsGlobalModelSynchronizerImpl - Saving global entities to files
+2023-05-27 04:13:27,149 [ 136530]   INFO - #c.i.a.o.PathMacrosImpl - Saved path macros: {}
+2023-05-27 04:13:27,182 [ 136563]   INFO - #c.i.c.ComponentStoreImpl - Saving appFeatureUsageStatistics took 15 ms
+2023-05-27 04:13:27,249 [ 136630]   INFO - #c.i.i.s.e.u.EventLogExternalUploader - Started external process for uploading event log
+2023-05-27 04:13:27,300 [ 136681]   INFO - #o.j.i.BuiltInServer - web server stopped
+2023-05-27 04:13:27,312 [ 136693]   INFO - #c.i.u.i.FileBasedIndexImpl - Index dispose started
+2023-05-27 04:13:27,403 [ 136784]   INFO - #c.i.p.s.StubIndexImpl - StubIndexExtension-s were unloaded
+2023-05-27 04:13:27,404 [ 136785]   INFO - #c.i.p.s.SerializationManagerImpl - Start shutting down /data/cache/idea/231/index/rep.names
+2023-05-27 04:13:27,405 [ 136786]   INFO - #c.i.p.s.SerializationManagerImpl - Finished shutting down /data/cache/idea/231/index/rep.names
+2023-05-27 04:13:27,409 [ 136790]   INFO - #c.i.u.i.FileBasedIndexImpl - Index dispose completed in 97ms.
+2023-05-27 04:13:27,488 [ 136869]   INFO - #c.i.o.v.n.p.PersistentFSImpl - VFS dispose started
+2023-05-27 04:13:27,497 [ 136878] SEVERE - #c.i.o.a.i.ApplicationImpl - VFS already disposed
+com.intellij.serviceContainer.AlreadyDisposedException: VFS already disposed
+	at com.intellij.openapi.vfs.newvfs.persistent.FSRecords.handleError(FSRecords.java:951)
+	at com.intellij.openapi.vfs.newvfs.persistent.FSRecords.getNameByNameId(FSRecords.java:696)
+	at com.intellij.openapi.vfs.newvfs.impl.FileNameCache.getVFileName(FileNameCache.java:144)
+	at com.intellij.openapi.vfs.newvfs.impl.FileNameCache.getVFileName(FileNameCache.java:153)
+	at com.intellij.openapi.vfs.newvfs.impl.VirtualFileSystemEntry.getNameSequence(VirtualFileSystemEntry.java:147)
+	at com.intellij.openapi.vfs.newvfs.impl.VirtualFileSystemEntry.appendPathOnFileSystem(VirtualFileSystemEntry.java:245)
+	at com.intellij.openapi.vfs.newvfs.impl.VirtualFileSystemEntry.getUrl(VirtualFileSystemEntry.java:265)
+	at com.intellij.openapi.vfs.newvfs.impl.VirtualFileSystemEntry.toString(VirtualFileSystemEntry.java:390)
+	at java.base/java.lang.String.valueOf(String.java:4216)
+	at java.base/java.lang.StringBuilder.append(StringBuilder.java:173)
+	at java.base/java.util.AbstractCollection.toString(AbstractCollection.java:457)
+	at java.base/java.lang.StringConcatHelper.stringOf(StringConcatHelper.java:453)
+	at java.base/java.lang.StringConcatHelper.simpleConcat(StringConcatHelper.java:408)
+	at com.intellij.javascript.nodejs.library.NodeModulesDirectoryManager.createLibrarySafely(NodeModulesDirectoryManager.java:358)
+	at com.intellij.javascript.nodejs.library.NodeModulesDirectoryManager.lambda$doAddNodeModulesDirs$12(NodeModulesDirectoryManager.java:339)
+	at com.intellij.openapi.application.impl.ApplicationImpl$1.run(ApplicationImpl.java:252)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-05-27 04:13:27,498 [ 136879]   INFO - #c.i.o.v.n.p.PersistentFSImpl - VFS dispose completed in 10ms.
+2023-05-27 04:13:27,500 [ 136881] SEVERE - #c.i.o.a.i.ApplicationImpl - Qodana for JS 2023.1 EAP  Build #QDJS-231.8898.72
+2023-05-27 04:13:27,504 [ 136885] SEVERE - #c.i.o.a.i.ApplicationImpl - JDK: 17.0.6; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2023-05-27 04:13:27,507 [ 136888] SEVERE - #c.i.o.a.i.ApplicationImpl - OS: Linux
+2023-05-27 04:13:27,519 [ 136900]   INFO - #c.i.o.f.i.FileTypeDetectionService - 18 auto-detected files. Detection took 1936 ms
+2023-05-27 04:13:27,546 [ 136927]   INFO - #c.i.i.AppStarter - ------------------------------------------------------ IDE SHUTDOWN ------------------------------------------------------

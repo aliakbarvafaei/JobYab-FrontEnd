@@ -34,10 +34,13 @@ const responsive = (length: number) => {
     },
   };
 };
+interface ParamsTypes {
+  id: string;
+}
 const PostPage = () => {
   const history = useHistory();
-  const { id } = useParams<any>();
   const { role } = useSelector((state: statesRedux) => state.userAuth);
+  const { id } = useParams<ParamsTypes>();
   const [adDetail, setAdDetail] = useState<PostType | undefined>(undefined);
   const [similarAds, setSimilarAds] = useState<PostType[]>([]);
   const [userData, setUserData] = useState<UserType | undefined>(undefined);
@@ -74,7 +77,7 @@ const PostPage = () => {
         data={adDetail}
         onclick={() => {
           // @ *todo:
-         
+
           history.push(`/company/${adDetail?.id}`);
         }}
         updateData={() => {

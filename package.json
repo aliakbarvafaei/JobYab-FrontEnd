@@ -64,11 +64,11 @@
     "zod": "^3.21.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --p 5000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "yarn run test -- --coverage --watchAll=false"
+    "coverage": "yarn run test -- --coverage -u --watchAll=false"
   },
   "eslintConfig": {
     "extends": [

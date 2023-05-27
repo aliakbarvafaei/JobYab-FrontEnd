@@ -1,0 +1,16 @@
+{
+  "languages": [
+    "textmate",
+    "JSON",
+    "HTML",
+    "Plain text",
+    "TypeScript",
+    "TypeScript JSX",
+    "JavaScript",
+    "SVG",
+    "CSS",
+    "YAML",
+    "XML",
+    ".gitignore (GitIgnore)"
+  ]
+}

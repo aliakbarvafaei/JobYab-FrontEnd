@@ -1,4 +1,3 @@
-import React from "react";
 import { screen, render } from "@testing-library/react";
 import SearchPage from "./SearchPage";
 import configureStore from "redux-mock-store";
@@ -29,6 +28,29 @@ describe("Search Page", () => {
     );
     const primaryButton = screen.getAllByRole("button")[1];
     expect(primaryButton).toHaveAttribute("aria-label", "حساب کاربری");
+  });
+  it("renders correctly in Search Page", () => {
+    const { asFragment } = render(
+      <Router>
+        <Provider store={store}>
+          <SearchPage />
+        </Provider>
+      </Router>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  test("displays loading spinner while data is being fetched", () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <SearchPage />
+        </Provider>
+      </Router>
+    );
+
+    const loadingSpinner = screen.getByRole("progressbar");
+
+    expect(loadingSpinner).toBeInTheDocument();
   });
   afterAll(() => {
     jest.clearAllMocks();

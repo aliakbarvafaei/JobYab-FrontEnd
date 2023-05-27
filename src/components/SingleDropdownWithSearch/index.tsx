@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { useOnClickOutside } from "../services/hooks/useOutsideClicker";
+import { useOnClickOutside } from "../../services/hooks/useOutsideClicker";
 import {
   IconButton,
   List,
@@ -12,9 +12,9 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import AngleDown from "../assets/images/NewImage_Job/angle-down-disabled.svg";
-import AngleUp from "../assets/images/NewImage_Job/angle-up-golden.svg";
-import SearchGray from "../assets/images/NewImage_Job/search-gray.svg";
+import AngleDown from "../../assets/images/NewImage_Job/angle-down-disabled.svg";
+import AngleUp from "../../assets/images/NewImage_Job/angle-up-golden.svg";
+import SearchGray from "../../assets/images/NewImage_Job/search-gray.svg";
 
 const useStyle = makeStyles((theme) => ({
   container: { flexGrow: 1 },
