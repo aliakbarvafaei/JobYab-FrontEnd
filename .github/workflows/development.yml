@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  buildProject:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,8 +21,8 @@ jobs:
       - name: Build
         run: npm install
 
-  test:
-    needs: [build]
+  testProject:
+    needs: [buildProject]
     runs-on: ubuntu-latest
 
     steps:

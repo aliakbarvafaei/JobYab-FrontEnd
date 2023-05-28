@@ -22,6 +22,30 @@ describe("SendResumeSection Component", () => {
     });
     history = createMemoryHistory();
   });
+  const mockData: UserType = {
+    address: "تست",
+    national_code: "1245764848",
+    full_name: "John Doe",
+    phone_number: "1234567890",
+    data: {
+      date_joined: "",
+      email: "",
+      email_active_code: "",
+      first_name: "",
+      groups: [],
+      id: 1,
+      is_active: false,
+      is_authorized: false,
+      is_employer: false,
+      is_staff: false,
+      is_superuser: false,
+      last_login: "",
+      last_name: "",
+      password: "",
+      user_permissions: [],
+      username: "",
+    },
+  };
   test("renders correctly in SendResumeSection Page", async () => {
     const { asFragment } = render(
       <Provider store={store}>
@@ -65,10 +89,34 @@ describe("SendResumeSection Component", () => {
   });
   test("renders user full name correctly", () => {
     const fullName = "Erfan Nourbakhsh";
+    const data: UserType = {
+      address: "تست",
+      national_code: "1245764848",
+      full_name: fullName,
+      phone_number: "1234567890",
+      data: {
+        date_joined: "",
+        email: "",
+        email_active_code: "",
+        first_name: "",
+        groups: [],
+        id: 1,
+        is_active: false,
+        is_authorized: false,
+        is_employer: false,
+        is_staff: false,
+        is_superuser: false,
+        last_login: "",
+        last_name: "",
+        password: "",
+        user_permissions: [],
+        username: "",
+      },
+    };
     const { getByDisplayValue } = render(
       <Provider store={store}>
         <Router history={history}>
-          <SendResumeSection data={{ full_name: fullName }} />
+          <SendResumeSection data={data} />
         </Router>
       </Provider>
     );
@@ -78,10 +126,34 @@ describe("SendResumeSection Component", () => {
   });
   test("renders user phone number correctly", () => {
     const phoneNumber = "1234567890";
+    const data: UserType = {
+      address: "تست",
+      national_code: "1245764848",
+      full_name: "fullName",
+      phone_number: phoneNumber,
+      data: {
+        date_joined: "",
+        email: "",
+        email_active_code: "",
+        first_name: "",
+        groups: [],
+        id: 1,
+        is_active: false,
+        is_authorized: false,
+        is_employer: false,
+        is_staff: false,
+        is_superuser: false,
+        last_login: "",
+        last_name: "",
+        password: "",
+        user_permissions: [],
+        username: "",
+      },
+    };
     const { getByDisplayValue } = render(
       <Provider store={store}>
         <Router history={history}>
-          <SendResumeSection data={{ phone_number: phoneNumber }} />
+          <SendResumeSection data={data} />
         </Router>
       </Provider>
     );
@@ -104,30 +176,6 @@ describe("SendResumeSection Component", () => {
     // Check that clicking the disabled button doesn't trigger any actions
   });
   test("input fields should display respective data correctly", () => {
-    const mockData: UserType = {
-      address: "تست",
-      national_code: "1245764848",
-      full_name: "John Doe",
-      phone_number: "1234567890",
-      data: {
-        date_joined: "",
-        email: "",
-        email_active_code: "",
-        first_name: "",
-        groups: [],
-        id: 1,
-        is_active: false,
-        is_authorized: false,
-        is_employer: false,
-        is_staff: false,
-        is_superuser: false,
-        last_login: "",
-        last_name: "",
-        password: "",
-        user_permissions: [],
-        username: "",
-      },
-    };
     render(
       <Provider store={store}>
         <Router history={history}>
