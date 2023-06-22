@@ -183,3 +183,10 @@ export const getCities = (stateId: number) =>
   axiosInstance.get(`/cities/${stateId}/`);
 
 /** */
+
+export const updateAccessToken = (refreshToken: string) =>
+  axiosInstance.get("/update-access/", {
+    headers: {
+      Authorization: `Token ${refreshToken}`,
+    },
+  });
