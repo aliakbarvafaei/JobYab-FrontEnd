@@ -46,7 +46,7 @@ const DefaultLayout: React.FC = () => {
         <div className="page-content container-fluid">
           <Switch>
             {AppRoutes.map((prop, key) => {
-              if (key === 0) UserInformation();
+              // if (key === 0) UserInformation();
               if (prop.private) {
                 return (
                   <ProtectedRoute

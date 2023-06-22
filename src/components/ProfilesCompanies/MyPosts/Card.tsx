@@ -3,20 +3,23 @@ import { Typography, Stack, Box, Card, Divider, Button } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
 import { RemovePost } from "../../../services/api";
-import { addItemOnce } from "../../../ts/functions";
+import { accessToken, addItemOnce } from "../../../ts/functions";
 import { eachToast } from "../../../ts/interfaces";
 import { useToast } from "../../../contexts/ToastState";
 import { useHistory } from "react-router-dom";
 import DifferenceData from "../../../services/utils/DifferenceData";
 import DefaultPicture from "../../../assets/images/default.png";
 import { API_URL } from "../../../config";
+import { useDispatch } from "react-redux";
 
 const CardItem: React.FC<{ item: any }> = ({ item }) => {
   const { setToastState } = useToast();
   const [labels] = useState<Array<{ id: number; title: string }>>(item.skills);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const hanldeRemove = () => {
+    accessToken(dispatch);
     RemovePost(item.id)
       .then((response) => {
         setToastState((old: Array<eachToast>) =>

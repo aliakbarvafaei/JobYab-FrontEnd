@@ -5,12 +5,12 @@ import { useRef } from "react";
 import { PostType } from "../../../constants/types";
 import { RemoveBookmark, postBookmark } from "../../../services/api";
 import { useToast } from "../../../contexts/ToastState";
-import { addItemOnce } from "../../../ts/functions";
+import { accessToken, addItemOnce } from "../../../ts/functions";
 import { eachToast, statesRedux } from "../../../ts/interfaces";
 // import DefaultPicture from "../../assets/images/default.png";
 import { useHistory } from "react-router-dom";
 import { API_URL } from "../../../config";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 interface DetailHeaderProps {
@@ -29,7 +29,8 @@ const DetailHeader = ({
   const { setToastState } = useToast();
   const history = useHistory();
   const { token } = useSelector((state: statesRedux) => state.userAuth);
-
+  const dispatch = useDispatch();
+  
   return (
     <Grid
       className=" sm:mr-1 sm:ml-1 md:mr-10 md:ml-10 xl:ml-3 xl:mr-3 xlmin:mr-20 xlmin:ml-20"
@@ -121,6 +122,7 @@ const DetailHeader = ({
               style={{ marginLeft: 5, padding: 5 }}
               disabled={!token}
               onClick={() => {
+                accessToken(dispatch);
                 if (data?.is_bookmark) {
                   RemoveBookmark(data.id || 0)
                     .then((res) => {

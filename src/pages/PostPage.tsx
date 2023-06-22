@@ -12,10 +12,11 @@ import DetailSection from "../components/modules/DetailSection";
 import { useHistory, useParams } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/ProfilesCompanies/Header";
 import { PostType, UserType } from "../constants/types";
 import { getPostDetail, getSimilarPosts, getUser } from "../services/api";
+import { accessToken } from "../ts/functions";
 
 const responsive = (length: number) => {
   return {
@@ -45,9 +46,11 @@ const PostPage = () => {
   const [similarAds, setSimilarAds] = useState<PostType[]>([]);
   const [userData, setUserData] = useState<UserType | undefined>(undefined);
 
+  const dispatch = useDispatch();
   const windowWidth = useRef(window.innerWidth);
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    accessToken(dispatch);
     getPostDetail(id)
       .then((data) => {
         setAdDetail(data.data.data);
@@ -59,11 +62,13 @@ const PostPage = () => {
       });
   }, [id, history]);
   useEffect(() => {
+    accessToken(dispatch);
     getSimilarPosts(id).then((data) => {
       setSimilarAds(data.data.data);
     });
   }, [id]);
   useEffect(() => {
+    accessToken(dispatch);
     getUser().then((data) => {
       setUserData(data.data);
     });

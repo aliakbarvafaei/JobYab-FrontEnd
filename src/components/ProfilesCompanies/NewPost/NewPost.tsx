@@ -11,8 +11,9 @@ import Step3 from "./Step3";
 import { NewPost } from "../../../services/api";
 import { Link } from "react-router-dom";
 import { eachToast } from "../../../ts/interfaces";
-import { addItemOnce } from "../../../ts/functions";
+import { accessToken, addItemOnce } from "../../../ts/functions";
 import { useToast } from "../../../contexts/ToastState";
+import { useDispatch } from "react-redux";
 
 interface step1 {
   title: string;
@@ -46,6 +47,8 @@ const NewPosts: React.FC = () => {
   const [step2Value, setStep2Value] = React.useState<step2 | null>(null);
   const [step3Value, setStep3Value] = React.useState<step3 | null>(null);
 
+  const dispatch = useDispatch();
+  
   const isStepOptional = (step: number) => {
     return false;
   };
@@ -74,6 +77,7 @@ const NewPosts: React.FC = () => {
         description: values.bio,
       };
       setloadingReq(true);
+      accessToken(dispatch);
       NewPost(data)
         .then((response) => {
           console.log(response);

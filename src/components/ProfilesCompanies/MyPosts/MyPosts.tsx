@@ -3,11 +3,15 @@ import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CardItem from "./Card";
 import { getMyPosts } from "../../../services/api";
+import { accessToken } from "../../../ts/functions";
+import { useDispatch } from "react-redux";
 
 const MyPosts: React.FC = () => {
   const [MyPosts, setMyPosts] = useState<null | Array<any>>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    accessToken(dispatch);
     getMyPosts()
       .then((response) => {
         setMyPosts(response.data.data);

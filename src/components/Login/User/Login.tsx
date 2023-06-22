@@ -18,6 +18,7 @@ import { useHistory } from "react-router-dom";
 import { loginUserAPI } from "../../../services/api";
 import { addItemOnce } from "../../../ts/functions";
 import { eachToast } from "../../../ts/interfaces";
+import Cookies from "js-cookie";
 
 const userLoginSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -54,18 +55,20 @@ const LoginUser: React.FC<{
               key: Math.random(),
             })
           );
+          Cookies.set("access", response.data.token, { expires: 0.000042 });
+          Cookies.set("refresh", response.data.token, { expires: 1 });
           dispatch({
             type: "login",
             payload: ["user", response.data.token],
           });
-          try {
-            localStorage.setItem(
-              "token_user",
-              JSON.stringify(response.data.token)
-            );
-          } catch (e) {
-            console.error({ e });
-          }
+          // try {
+          //   localStorage.setItem(
+          //     "token_user",
+          //     JSON.stringify(response.data.token)
+          //   );
+          // } catch (e) {
+          //   console.error({ e });
+          // }
           history.push("/home");
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
           userLogin.reset();

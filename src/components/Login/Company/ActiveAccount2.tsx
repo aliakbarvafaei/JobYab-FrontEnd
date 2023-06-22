@@ -16,6 +16,7 @@ import { eachToast } from "../../../ts/interfaces";
 import { addItemOnce } from "../../../ts/functions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const companyActiveSchema2 = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -54,18 +55,20 @@ const ActiveAccount2Company: React.FC<{
               key: Math.random(),
             })
           );
+          Cookies.set("access", response.data.token, { expires: 0.042 });
+          Cookies.set("refresh", response.data.token, { expires: 1 });
           dispatch({
             type: "login",
             payload: ["company", response.data.token],
           });
-          try {
-            localStorage.setItem(
-              "token_user",
-              JSON.stringify(response.data.token)
-            );
-          } catch (e) {
-            console.error({ e });
-          }
+          // try {
+          //   localStorage.setItem(
+          //     "token_user",
+          //     JSON.stringify(response.data.token)
+          //   );
+          // } catch (e) {
+          //   console.error({ e });
+          // }
           history.push("/home");
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         }

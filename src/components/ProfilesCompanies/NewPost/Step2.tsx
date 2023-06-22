@@ -86,7 +86,7 @@ const Step2: React.FC<{ handleNext: (values: any) => void }> = ({
     if (technology.length === 0) step2.setValue("technology", parseInt(""));
     else
       step2.setValue("technology", technology[technology.length - 1] as number);
-  }, [technology]);
+  }, [technology,step2]);
 
   return (
     <Box

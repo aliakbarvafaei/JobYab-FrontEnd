@@ -19,6 +19,7 @@ import { eachToast, statesRedux } from "../../ts/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemOnce } from "../../ts/functions";
 import { useToast } from "../../contexts/ToastState";
+import Cookies from "js-cookie";
 
 const pages = [
   { title: "نشان شده‌ها", link: "/profile?section=bookmark" },
@@ -267,7 +268,9 @@ const HeaderNewShort = () => {
                       history.push("/home");
                       handleCloseUserMenu();
                       dispatch({ type: "logout" });
-                      localStorage.setItem("token_user", JSON.stringify(""));
+                      Cookies.remove("access");
+                      Cookies.remove("refresh");
+                      // localStorage.setItem("token_user", JSON.stringify(""));
                       setToastState((old: Array<eachToast>) =>
                         addItemOnce(old.slice(), {
                           title: "1",

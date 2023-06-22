@@ -4,11 +4,16 @@ import SearchIcon from "@mui/icons-material/Search";
 import CardItem from "./Card";
 import { getMyReciveResumes } from "../../../services/api";
 import { reciveResume } from "../../../ts/interfaces";
+import { accessToken } from "../../../ts/functions";
+import { useDispatch } from "react-redux";
 
 const Content: React.FC<{ index: number }> = ({ index }) => {
   const [resumes, setResumes] = useState<null | Array<reciveResume>>(null);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    accessToken(dispatch);
     if (index === 2) {
       getMyReciveResumes(index + 2)
         .then((response) => {

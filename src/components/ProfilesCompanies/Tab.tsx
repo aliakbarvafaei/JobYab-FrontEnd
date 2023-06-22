@@ -14,9 +14,10 @@ import Information from "./Information/Information";
 import Messages from "../Messages/Messages";
 import Bookmark from "../Bookmark/Bookmark";
 import { ChangeLevel } from "../../services/api";
-import { addItemOnce } from "../../ts/functions";
+import { accessToken, addItemOnce } from "../../ts/functions";
 import { eachToast } from "../../ts/interfaces";
 import { useToast } from "../../contexts/ToastState";
+import { useDispatch } from "react-redux";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -57,6 +58,7 @@ const level = ["ارتقای سطح"];
 export default function BasicTabs(user: any) {
   const queryParams = new URLSearchParams(window.location.search);
   const { setToastState } = useToast();
+  const dispatch = useDispatch();
 
   const [value, setValue] = React.useState(() => {
     if (queryParams.get("section")) {
@@ -89,6 +91,7 @@ export default function BasicTabs(user: any) {
   };
 
   const changeLevel = () => {
+    accessToken(dispatch);
     ChangeLevel({ level: user.user.level + 1 })
       .then((response) => {
         setToastState((old: Array<eachToast>) =>

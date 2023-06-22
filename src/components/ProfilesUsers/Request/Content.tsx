@@ -4,11 +4,16 @@ import SearchIcon from "@mui/icons-material/Search";
 import CardItem from "./Card";
 import { getMySentResumes } from "../../../services/api";
 import { sentResume } from "../../../ts/interfaces";
+import { accessToken } from "../../../ts/functions";
+import { useDispatch } from "react-redux";
 
 const Content: React.FC<{ index: number }> = ({ index }) => {
   const [resumes, setResumes] = useState<null | Array<sentResume>>(null);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    accessToken(dispatch);
     if (index === 2) {
       getMySentResumes(index + 2)
         .then((response) => {
@@ -59,7 +64,9 @@ const Content: React.FC<{ index: number }> = ({ index }) => {
         ) : resumes.length > 0 ? (
           <>
             {resumes.map((item) => (
-              <CardItem item={item} index={index} />
+              <div data-testid="card-item">
+                <CardItem item={item} index={index} />
+              </div>
             ))}
           </>
         ) : (

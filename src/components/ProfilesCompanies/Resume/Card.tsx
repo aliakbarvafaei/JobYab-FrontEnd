@@ -11,13 +11,18 @@ import { changeStateResume } from "../../../services/api";
 import DefaultPicture from "../../../assets/images/default.png";
 import DifferenceData from "../../../services/utils/DifferenceData";
 import { useHistory } from "react-router-dom";
+import { accessToken } from "../../../ts/functions";
+import { useDispatch } from "react-redux";
 
 const CardItem: React.FC<{ index: Number; item: reciveResume }> = ({
   index,
   item,
 }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const changeState = (state: number) => {
+    accessToken(dispatch);
     changeStateResume(item.id, { state: String(state) })
       .then((response) => {
         window.location.href = "/profile-company?section=request";

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useToast } from "../contexts/ToastState";
 import { getUser } from "../services/api";
+import Cookies from "js-cookie";
 
 const UserInformation = () => {
   const { setToastState } = useToast();
@@ -24,6 +25,8 @@ const UserInformation = () => {
         })
         .catch((err) => {
           dispatch({ type: "logout" });
+          Cookies.remove("access");
+          Cookies.remove("refresh");
           try {
             localStorage.setItem("token_user", JSON.stringify(""));
           } catch (e) {
@@ -32,6 +35,8 @@ const UserInformation = () => {
         });
     } else {
       dispatch({ type: "logout" });
+      Cookies.remove("access");
+      Cookies.remove("refresh");
     }
   }, [dispatch, setToastState]);
 

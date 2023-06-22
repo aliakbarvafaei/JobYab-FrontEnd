@@ -2,9 +2,9 @@ import { Button, InputBase, Typography } from "@mui/material";
 import { UserType } from "../../../constants/types";
 import { useEffect, useState } from "react";
 import { eachToast, sentResume, statesRedux } from "../../../ts/interfaces";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useToast } from "../../../contexts/ToastState";
-import { addItemOnce } from "../../../ts/functions";
+import { accessToken, addItemOnce } from "../../../ts/functions";
 import { useHistory } from "react-router-dom";
 import { getMySentResumes } from "../../../services/api";
 
@@ -18,8 +18,10 @@ const SendResumeSection = ({ data, postId }: SendResumeSectionProps) => {
   const { setToastState } = useToast();
   const history = useHistory();
   const [allow, setAllow] = useState<boolean>(false);
-
+  const dispatch = useDispatch();
+  
   useEffect(() => {
+    accessToken(dispatch);
     getMySentResumes(5)
       .then((response) => {
         response.data.data.forEach((element: sentResume) => {

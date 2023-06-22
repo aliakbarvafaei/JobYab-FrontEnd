@@ -8,7 +8,7 @@ import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import { Link, useHistory, useParams } from "react-router-dom";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import { statesRedux } from "../ts/interfaces";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/ProfilesCompanies/Header";
 import { useEffect, useState } from "react";
 import { getCompaniesPostsPublic, getPostDetail } from "../services/api";
@@ -16,6 +16,7 @@ import { PostType } from "../constants/types";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import Carousel from "react-multi-carousel";
 import SimilarPost from "../components/modules/SimilarPost";
+import { accessToken } from "../ts/functions";
 
 const responsive = (length: number) => {
   return {
@@ -43,8 +44,11 @@ const CompanyPage = () => {
   const { companyId } = useParams<ParamsTypes>();
   const [adDetail, setAdDetail] = useState<PostType | undefined>(undefined);
   const [companiesPosts, setCompaniesPosts] = useState<PostType[]>([]);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    accessToken(dispatch);
     getPostDetail(companyId)
       .then((data) => {
         setAdDetail(data.data.data);
@@ -56,6 +60,7 @@ const CompanyPage = () => {
   }, [companyId, history]);
   useEffect(() => {
     if (adDetail !== undefined) {
+      accessToken(dispatch);
       getCompaniesPostsPublic(String(adDetail?.user.id)).then((data) => {
         setCompaniesPosts(data.data.data);
       });
@@ -153,7 +158,9 @@ const CompanyPage = () => {
             alignItems: "center",
           }}
         >
-          <Typography style={{ fontSize: 24 }} id='allPosts'>تمام آگهی‌های شرکت</Typography>
+          <Typography style={{ fontSize: 24 }} id="allPosts">
+            تمام آگهی‌های شرکت
+          </Typography>
           <Divider
             style={{
               width: 50,

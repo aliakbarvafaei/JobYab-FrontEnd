@@ -1,5 +1,6 @@
+import Cookies from "js-cookie";
 import { axiosInstance, tokenUser } from "../../config";
-import { filtersInterface } from "../../ts/interfaces";
+// import { filtersInterface } from "../../ts/interfaces";
 
 export const logoutAPI = () => axiosInstance.get(`/logout/`, tokenUser());
 
@@ -99,9 +100,7 @@ export const changeStateResume = (id: number, data: any) =>
   axiosInstance.post(`/employer/request-state/${id}/`, data, {
     headers: {
       "Content-Type": "multipart/form-data",
-      Authorization: `Token ${JSON.parse(
-        localStorage.getItem("token_user") as string
-      )}`,
+      Authorization: `Token ${Cookies.get("access") as string}`,
     },
   });
 export const sendResume = (postId: string, resume: any) =>
@@ -128,7 +127,7 @@ export const getPrivatePosts = (
   province: string,
   token: null | string
 ) => {
-  if (JSON.parse(localStorage.getItem("token_user") as string) !== "") {
+  if ((Cookies.get("access") as string) !== "") {
     return axiosInstance.post(
       `/postsfilter/`,
       {
@@ -158,7 +157,7 @@ export const getTotalPosts = () => axiosInstance.get(`/posts/`);
 // export const getPrivatePosts = () => axiosInstance.get(`/posts/`);
 
 export const getPostDetail = (idAd: string) => {
-  if (JSON.parse(localStorage.getItem("token_user") as string) === "")
+  if ((Cookies.get("access") as string) === "")
     return axiosInstance.get(`/posts/${idAd}/`);
   else return axiosInstance.get(`/posts/${idAd}/`, tokenUser());
 };

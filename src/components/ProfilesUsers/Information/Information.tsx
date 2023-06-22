@@ -8,7 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { updateUserAPI } from "../../../services/api";
 import { useToast } from "../../../contexts/ToastState";
 import { eachToast } from "../../../ts/interfaces";
-import { addItemOnce } from "../../../ts/functions";
+import { accessToken, addItemOnce } from "../../../ts/functions";
+import { useDispatch } from "react-redux";
 
 const userRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -26,6 +27,7 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
   const { setToastState } = useToast();
   const [loadingReq, setloadingReq] = useState<boolean>(false);
 
+  const dispatch = useDispatch();
   const userRegister = useForm<userRegisterInput>({
     resolver: zodResolver(userRegisterSchema),
   });
@@ -43,6 +45,7 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
     };
     setloadingReq(true);
 
+    accessToken(dispatch);
     updateUserAPI(data)
       .then((response) => {
         setloadingReq(false);

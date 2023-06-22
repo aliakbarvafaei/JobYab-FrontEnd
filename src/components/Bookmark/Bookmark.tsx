@@ -4,12 +4,17 @@ import SearchIcon from "@mui/icons-material/Search";
 import CardItem from "./Card";
 import { getBookmark } from "../../services/api";
 import { post } from "../../ts/interfaces";
+import { accessToken } from "../../ts/functions";
+import { useDispatch } from "react-redux";
 
 const Bookmark: React.FC = () => {
   const [bookmarks, setBookmarks] = useState<Array<{ id: number; post: post }>>(
     []
   );
+  const dispatch = useDispatch();
   useEffect(() => {
+    accessToken(dispatch);
+
     getBookmark()
       .then((response) => {
         setBookmarks(response.data.data);

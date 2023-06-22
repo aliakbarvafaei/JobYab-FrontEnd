@@ -7,6 +7,7 @@ import { Box } from "@mui/material";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import BookmarksOutlinedIcon from "@mui/icons-material/BookmarksOutlined";
 import ApartmentIcon from "@mui/icons-material/Apartment";
+import Cookies from "js-cookie";
 
 const myAccountLoggedOut = [
   { title: "ورود", pathTo: "/login" },
@@ -70,10 +71,12 @@ const MobileMenu: React.FC = () => {
                           if (item.title === "خروج") {
                             history.push("/home");
                             dispatch({ type: "logout" });
-                            localStorage.setItem(
-                              "token_user",
-                              JSON.stringify("")
-                            );
+                            Cookies.remove("access");
+                            Cookies.remove("refresh");
+                            // localStorage.setItem(
+                            //   "token_user",
+                            //   JSON.stringify("")
+                            // );
                             setToastState((old: Array<eachToast>) =>
                               addItemOnce(old.slice(), {
                                 title: "1",

@@ -11,8 +11,9 @@ import Step3 from "./Step3";
 import { UpdatePost, getPost } from "../../../services/api";
 import { Link, useParams } from "react-router-dom";
 import { eachToast } from "../../../ts/interfaces";
-import { addItemOnce } from "../../../ts/functions";
+import { accessToken, addItemOnce } from "../../../ts/functions";
 import { useToast } from "../../../contexts/ToastState";
+import { useDispatch } from "react-redux";
 
 interface post {
   id: number;
@@ -65,7 +66,10 @@ const UpdatePosts: React.FC = () => {
   const [step2Value, setStep2Value] = React.useState<step2 | null>(null);
   const [step3Value, setStep3Value] = React.useState<step3 | null>(null);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    accessToken(dispatch);
     getPost(postId)
       .then((response) => {
         setItem(response.data.data);
@@ -106,6 +110,7 @@ const UpdatePosts: React.FC = () => {
       console.log(data);
 
       setloadingReq(true);
+      accessToken(dispatch);
       UpdatePost(data, postId)
         .then((response) => {
           console.log(response);

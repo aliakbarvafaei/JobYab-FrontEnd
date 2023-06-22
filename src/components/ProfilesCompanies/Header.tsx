@@ -18,6 +18,7 @@ import { useToast } from "../../contexts/ToastState";
 import { addItemOnce } from "../../ts/functions";
 import { eachToast } from "../../ts/interfaces";
 import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const pages = [
   { title: "آگهی جدید", link: "/profile-company/new-post" },
@@ -252,7 +253,9 @@ const Header = () => {
                         history.push("/home");
                         handleCloseUserMenu();
                         dispatch({ type: "logout" });
-                        localStorage.setItem("token_user", JSON.stringify(""));
+                        Cookies.remove("access");
+                        Cookies.remove("refresh");
+                        // localStorage.setItem("token_user", JSON.stringify(""));
                         setToastState((old: Array<eachToast>) =>
                           addItemOnce(old.slice(), {
                             title: "1",

@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
@@ -20,9 +21,7 @@ export const axiosInstance = axios.create({
 export const tokenUser = () => {
   return {
     headers: {
-      Authorization: `Token ${JSON.parse(
-        localStorage.getItem("token_user") as string
-      )}`,
+      Authorization: `Token ${Cookies.get("access") as string}`,
     },
   };
 };

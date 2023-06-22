@@ -15,7 +15,8 @@ import Select from "@mui/material/Select";
 import { useToast } from "../../../contexts/ToastState";
 import { updateCompanyAPI } from "../../../services/api";
 import { eachToast } from "../../../ts/interfaces";
-import { addItemOnce } from "../../../ts/functions";
+import { accessToken, addItemOnce } from "../../../ts/functions";
+import { useDispatch } from "react-redux";
 
 const companyRegisterSchema = object({
   email: string().nonempty("ایمیل اجباری است").email("ایمیل نادرست است"),
@@ -37,6 +38,7 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
   const { setToastState } = useToast();
   const [loadingReq, setloadingReq] = useState<boolean>(false);
   const [typeValue, setTypeValue] = useState<string>(user.type);
+  const dispatch = useDispatch();
 
   const companyRegiter = useForm<companyRegisterInput>({
     resolver: zodResolver(companyRegisterSchema),
@@ -59,6 +61,8 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
     };
 
     setloadingReq(true);
+
+    accessToken(dispatch);
 
     updateCompanyAPI(data)
       .then((response) => {
@@ -101,7 +105,7 @@ const Information: React.FC<{ user: any }> = ({ user }) => {
     companyRegiter.setValue("nameEnglish", user.company_english_name);
     companyRegiter.setValue("phone", user.company_phone_number);
     companyRegiter.setValue("websit", user.website);
-  }, [user]);
+  }, [user, companyRegiter]);
 
   return (
     <Box className="mdmin:mx-[15%]" style={{ fontFamily: "IRANSans" }}>
