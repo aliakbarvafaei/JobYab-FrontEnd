@@ -27,20 +27,13 @@ const Bookmark: React.FC = () => {
   return (
     <>
       <Box className="mdmin:mx-[15%]" style={{ fontFamily: "IRANSans" }}>
-        <Box
-          className="smmin:flex-row sm:flex-col"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
+        <Box className="flex justify-between smmin:flex-row sm:flex-col">
           <h1 className="text-[20px]">نشان شده‌ها</h1>
         </Box>
         <Box
+          className="pl-0 pr-0"
           style={{
             fontFamily: "IRANSans",
-            paddingLeft: "0px",
-            paddingRight: "0px",
           }}
         >
           <Box
